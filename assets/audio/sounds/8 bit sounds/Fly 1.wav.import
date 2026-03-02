@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpgskcx4ha6yq"
+path="res://.godot/imported/Fly 1.wav-2ec59a35505293f73506c8de65648aac.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/8 bit sounds/Fly 1.wav"
+dest_files=["res://.godot/imported/Fly 1.wav-2ec59a35505293f73506c8de65648aac.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cg7q83fhkm7dr"]
+
+[ext_resource type="Script" uid="uid://77yrfffvwrpn" path="res://assets/scripts/item/heart_container.gd" id="1_x35jy"]
+[ext_resource type="Texture2D" uid="uid://6kqkfeoqxins" path="res://assets/sprites/Entities/heart_container.png" id="2_x35jy"]
+[ext_resource type="AudioStream" uid="uid://d3h3wj5wdi2gr" path="res://assets/audio/sounds/nes_sounds/plant_growth.ogg" id="3_x35jy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_syf2w"]
+radius = 8.0
+
+[node name="HeartContainer" type="Area2D" unique_id=461514915]
+script = ExtResource("1_x35jy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1516475470]
+position = Vector2(4.172325e-07, 0)
+texture = ExtResource("2_x35jy")
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=222771288]
+shape = SubResource("CircleShape2D_syf2w")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=710692774]
+stream = ExtResource("3_x35jy")
+volume_db = 2.5
+pitch_scale = 1.25
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

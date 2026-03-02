@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dc7ls063wk6kr"]
+
+[ext_resource type="Script" uid="uid://dwieckrpfcxdx" path="res://assets/scripts/effects/blood_drop.gd" id="1_2qdwx"]
+[ext_resource type="Texture2D" uid="uid://ddhaijrtxlfsm" path="res://assets/sprites/Particles/particleblood_small.png" id="1_7kpoi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2qdwx"]
+radius = 2.0
+
+[node name="BloodDrop" type="Area2D" unique_id=1819049367]
+collision_layer = 0
+collision_mask = 768
+script = ExtResource("1_2qdwx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=485852265]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7kpoi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1974847902]
+shape = SubResource("CircleShape2D_2qdwx")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

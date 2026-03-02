@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ciy0lrwhh0c3"]
+
+[ext_resource type="Script" uid="uid://bwouyogypo58y" path="res://assets/scripts/gravity_swapper.gd" id="1_iumif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7s55"]
+
+[node name="GravitySwapper" type="Area2D" unique_id=1808506249]
+gravity_space_override = 1
+script = ExtResource("1_iumif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2026493293]
+shape = SubResource("RectangleShape2D_t7s55")
+
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D" unique_id=203658462]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0, 0.85490197, 1, 0.3137255)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c2gpu6hrlgf01"]
+
+[ext_resource type="Texture2D" uid="uid://ddhaijrtxlfsm" path="res://assets/sprites/Particles/particleblood_small.png" id="1_tdqta"]
+
+[sub_resource type="Curve" id="Curve_tdqta"]
+_data = [Vector2(0.84749454, 0.99999994), 0.0, 0.0, 0, 0, Vector2(0.99564266, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w6avs"]
+curve = SubResource("Curve_tdqta")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lrxyd"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 8, 1)
+angle_min = -44.99999
+angle_max = 45.00001
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 150.0
+initial_velocity_max = 450.0
+gravity = Vector3(0, 400, 0)
+scale_min = 0.29999998
+alpha_curve = SubResource("CurveTexture_w6avs")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="BloodParticles2" type="GPUParticles2D" unique_id=1969053959]
+amount = 64
+texture = ExtResource("1_tdqta")
+lifetime = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_lrxyd")

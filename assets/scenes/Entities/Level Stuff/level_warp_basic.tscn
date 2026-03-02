@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bph7yu7b5hiqh"]
+
+[ext_resource type="PackedScene" uid="uid://dcew5veiuggoh" path="res://assets/scenes/Entities/Level Stuff/level_warp.tscn" id="1_wcw1h"]
+[ext_resource type="Texture2D" uid="uid://dca0ucd50f04l" path="res://assets/sprites/Entities/levelWarp.png" id="2_kdnvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdnvh"]
+resource_local_to_scene = true
+size = Vector2(11.151259, 25.557156)
+
+[node name="LevelWarpBasic" unique_id=2082002628 instance=ExtResource("1_wcw1h")]
+process_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=210356573]
+position = Vector2(0, -16)
+texture = ExtResource("2_kdnvh")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1427167532]
+position = Vector2(-2.3841858e-07, -13.375001)
+shape = SubResource("RectangleShape2D_kdnvh")

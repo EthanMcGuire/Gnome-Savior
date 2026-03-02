@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://ccbsxcpsis2gx"]
+
+[ext_resource type="Script" uid="uid://cwqipr5362ild" path="res://assets/scripts/item/coin.gd" id="1_lnth6"]
+[ext_resource type="Texture2D" uid="uid://bg4f2k1g3x1x8" path="res://assets/sprites/Entities/coin.png" id="2_c736g"]
+[ext_resource type="AudioStream" uid="uid://cw1bcatqjgsvf" path="res://assets/audio/sounds/item/coin.wav" id="3_4x281"]
+
+[sub_resource type="Animation" id="Animation_8xntx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vm6pf"]
+resource_name = "collect"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(64, 0, 16, 16), Rect2(80, 0, 16, 16), Rect2(96, 0, 16, 16), Rect2(112, 0, 16, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.3764706)]
+}
+
+[sub_resource type="Animation" id="Animation_rx8ki"]
+resource_name = "spin"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 16, 16), Rect2(16, 0, 16, 16), Rect2(32, 0, 16, 16), Rect2(48, 0, 16, 16), Rect2(0, 0, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vm6pf"]
+_data = {
+&"RESET": SubResource("Animation_8xntx"),
+&"collect": SubResource("Animation_vm6pf"),
+&"spin": SubResource("Animation_rx8ki")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xntx"]
+radius = 4.0
+height = 14.0
+
+[node name="Coin" type="Area2D" unique_id=461514915]
+script = ExtResource("1_lnth6")
+itemName = "Coin"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1689184975]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_vm6pf")
+autoplay = &"spin"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1516475470]
+texture = ExtResource("2_c736g")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=222771288]
+shape = SubResource("CapsuleShape2D_8xntx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=710692774]
+stream = ExtResource("3_4x281")
+volume_db = -5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

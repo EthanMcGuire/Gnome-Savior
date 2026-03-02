@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dgt6mejq5mnsr"]
+
+[ext_resource type="Script" uid="uid://df0njaxmr1dhs" path="res://assets/scripts/Level Stuff/portal_endpoint.gd" id="1_mf1qd"]
+[ext_resource type="Texture2D" uid="uid://bowp3wik1jvja" path="res://assets/sprites/Entities/portal.png" id="2_v3h60"]
+[ext_resource type="AudioStream" uid="uid://2ydfnasqxdkf" path="res://assets/audio/sounds/nes_sounds/bird.ogg" id="3_s723n"]
+
+[node name="PortalEndpoint" type="Node2D" unique_id=521861170]
+script = ExtResource("1_mf1qd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=457762114]
+self_modulate = Color(0.88235295, 0, 0, 1)
+texture = ExtResource("2_v3h60")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2087904698]
+unique_name_in_owner = true
+stream = ExtResource("3_s723n")
+volume_db = 3.25
+pitch_scale = 0.5

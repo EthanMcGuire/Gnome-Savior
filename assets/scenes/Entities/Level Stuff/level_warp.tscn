@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dcew5veiuggoh"]
+
+[ext_resource type="Script" uid="uid://jofernked4hl" path="res://assets/scripts/level_warp.gd" id="1_1o1jm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o1jm"]
+resource_local_to_scene = true
+size = Vector2(14.868345, 37.515095)
+
+[node name="LevelWarp" type="Area2D" unique_id=2082002628]
+collision_layer = 0
+script = ExtResource("1_1o1jm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1427167532]
+position = Vector2(-2.3841858e-07, -20)
+scale = Vector2(1.0761116, 1.0662374)
+shape = SubResource("RectangleShape2D_1o1jm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

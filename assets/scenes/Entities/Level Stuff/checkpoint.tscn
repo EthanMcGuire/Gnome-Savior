@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://com2u5kxhj3vj"]
+
+[ext_resource type="Script" uid="uid://cr5k8xteyymg4" path="res://assets/scripts/Level Stuff/checkpoint.gd" id="1_vvm4j"]
+[ext_resource type="Texture2D" uid="uid://ctywu5wa1i6p2" path="res://assets/sprites/dungeon/cage3.png" id="2_okqmh"]
+[ext_resource type="Texture2D" uid="uid://i3flebhwq1l7" path="res://assets/sprites/dungeon/cage4.png" id="3_6ysb5"]
+[ext_resource type="Texture2D" uid="uid://bkhxefup1rla0" path="res://assets/sprites/dungeon/cage_back.png" id="3_303xp"]
+[ext_resource type="AudioStream" uid="uid://conm83tqnys4x" path="res://assets/audio/sounds/cage/iron_door.ogg" id="3_okqmh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okqmh"]
+radius = 6.0
+height = 22.0
+
+[node name="Checkpoint" type="Area2D" unique_id=1366965764]
+collision_layer = 0
+script = ExtResource("1_vvm4j")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=201514615]
+unique_name_in_owner = true
+stream = ExtResource("3_okqmh")
+volume_db = -2.25
+pitch_scale = 1.25
+max_distance = 580.0
+
+[node name="Cage" type="Node2D" parent="." unique_id=1035702497]
+
+[node name="SpriteBack" type="Sprite2D" parent="Cage" unique_id=1207254049]
+position = Vector2(0, -11.999999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_303xp")
+
+[node name="SpriteClosed" type="Sprite2D" parent="Cage" unique_id=726056468]
+unique_name_in_owner = true
+position = Vector2(0, -6.9999995)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_okqmh")
+offset = Vector2(0, -48)
+
+[node name="SpriteOpen" type="Sprite2D" parent="Cage" unique_id=478603443]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -6.9999995)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_6ysb5")
+offset = Vector2(64, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=984717242]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_okqmh")
+
+[node name="SpawnPoint" type="Node2D" parent="." unique_id=950571191]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

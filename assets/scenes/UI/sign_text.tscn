@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dhbkiap1a2c1l"]
+
+[ext_resource type="Script" uid="uid://v1hhciy5ob8h" path="res://assets/scripts/UI/sign_text.gd" id="1_6enil"]
+[ext_resource type="Texture2D" uid="uid://cf8pc7wc2v7ii" path="res://assets/sprites/UI/sign_ui.png" id="1_8pbpw"]
+[ext_resource type="LabelSettings" uid="uid://boolnwfv1u8qb" path="res://assets/ui_settings/label_settings_sign.tres" id="2_xdgkf"]
+
+[node name="SignText" type="Control" unique_id=777188122]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_6enil")
+
+[node name="SignBoard" type="NinePatchRect" parent="." unique_id=1012207412]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -80.0
+offset_right = 224.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_8pbpw")
+region_rect = Rect2(0, 0, 12, 12)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="SignBoard" unique_id=417113814]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 440.0
+offset_bottom = 56.0
+text = "Press space to jump. Press space to jump. Press space to jump. Press space to jump. Press space to jump."
+label_settings = ExtResource("2_xdgkf")
+autowrap_mode = 2

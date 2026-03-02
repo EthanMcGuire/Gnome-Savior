@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cn24ynmqciis5"]
+
+[ext_resource type="AudioStream" uid="uid://cfjt40olbbtey" path="res://assets/audio/music/basic_platformer_music_-_world_2.wav" id="1_dmlsh"]
+[ext_resource type="AudioStream" uid="uid://bxvixfjcpa4ly" path="res://assets/audio/sounds/nes_sounds/achieved.ogg" id="2_5oahs"]
+[ext_resource type="PackedScene" uid="uid://c2gn2jbabhk4b" path="res://assets/scenes/UI/hud.tscn" id="2_dw3k1"]
+[ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="3_8hsts"]
+[ext_resource type="Script" uid="uid://c73tbrkn1feux" path="res://assets/scripts/label_retry.gd" id="5_5oahs"]
+[ext_resource type="PackedScene" uid="uid://dhbkiap1a2c1l" path="res://assets/scenes/UI/sign_text.tscn" id="6_r3mdm"]
+
+[node name="LevelBase" type="Node2D" unique_id=709013900]
+
+[node name="Audio" type="Node2D" parent="." unique_id=699784968]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1405472104]
+process_mode = 3
+stream = ExtResource("1_dmlsh")
+volume_db = -15.0
+autoplay = true
+
+[node name="AudioStreamLifeUp" type="AudioStreamPlayer" parent="Audio" unique_id=307656827]
+stream = ExtResource("2_5oahs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=124569661]
+layer = 2000
+
+[node name="HUD" parent="CanvasLayer" unique_id=2115374832 instance=ExtResource("2_dw3k1")]
+
+[node name="LabelRetry" type="Label" parent="CanvasLayer" unique_id=935156151]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -11.5
+offset_right = 63.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS R TO RETRY"
+label_settings = ExtResource("3_8hsts")
+script = ExtResource("5_5oahs")
+
+[node name="CanvasBack" type="CanvasLayer" parent="." unique_id=1790950364]
+layer = 500
+
+[node name="SignText" parent="CanvasBack" unique_id=777188122 instance=ExtResource("6_r3mdm")]
+
+[node name="LevelData" type="Node2D" parent="." unique_id=1105766902]
+
+[node name="Debris" type="Node2D" parent="." unique_id=1680051603]
+
+[node name="Players" type="Node2D" parent="." unique_id=1967525565]
+
+[node name="Particles" type="Node2D" parent="." unique_id=1627306310]
+
+[node name="Effects" type="Node2D" parent="." unique_id=2132413461]
+
+[node name="Blood" type="Sprite2D" parent="." unique_id=421080039]
+centered = false

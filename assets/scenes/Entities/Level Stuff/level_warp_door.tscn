@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dwwaffsup3o1d"]
+
+[ext_resource type="PackedScene" uid="uid://dcew5veiuggoh" path="res://assets/scenes/Entities/Level Stuff/level_warp.tscn" id="1_2gnjx"]
+[ext_resource type="Script" uid="uid://dh2nn03dscahw" path="res://assets/scripts/level_warp_door.gd" id="2_qn3pb"]
+[ext_resource type="Texture2D" uid="uid://33g1l0d0bduk" path="res://assets/sprites/Entities/door931-fixed.jpg" id="2_ujb04"]
+[ext_resource type="AudioStream" uid="uid://bij1hr7kg2b3q" path="res://assets/audio/sounds/doorset/qubodup-DoorOpen08.ogg" id="3_eihw8"]
+[ext_resource type="AudioStream" uid="uid://dm4fhsbhhsdo7" path="res://assets/audio/sounds/doorset/qubodup-DoorClose07.ogg" id="4_qn3pb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eojlu"]
+resource_local_to_scene = true
+size = Vector2(18.585432, 47.831745)
+
+[node name="LevelWarpDoor" unique_id=2082002628 instance=ExtResource("1_2gnjx")]
+process_mode = 3
+script = ExtResource("2_qn3pb")
+
+[node name="Door931Fixed2" type="Sprite2D" parent="." index="0" unique_id=210356573]
+position = Vector2(-1.4210855e-14, -25.85)
+scale = Vector2(0.019999998, 0.019999998)
+texture = ExtResource("2_ujb04")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1427167532]
+position = Vector2(-2.3841858e-07, -25.5)
+shape = SubResource("RectangleShape2D_eojlu")
+
+[node name="AudioStreamDoorOpen" type="AudioStreamPlayer2D" parent="." index="2" unique_id=429705256]
+unique_name_in_owner = true
+stream = ExtResource("3_eihw8")
+
+[node name="AudioStreamDoorClose" type="AudioStreamPlayer2D" parent="." index="3" unique_id=1606955271]
+unique_name_in_owner = true
+stream = ExtResource("4_qn3pb")
+
+[connection signal="finished" from="AudioStreamDoorOpen" to="." method="_on_audio_stream_door_open_finished"]
+[connection signal="finished" from="AudioStreamDoorClose" to="." method="_on_audio_stream_door_close_finished"]

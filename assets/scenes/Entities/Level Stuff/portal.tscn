@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://1g1oi8h4rkvv"]
+
+[ext_resource type="Texture2D" uid="uid://bowp3wik1jvja" path="res://assets/sprites/Entities/portal.png" id="1_nbfr2"]
+[ext_resource type="Script" uid="uid://tu6uh01iisfg" path="res://assets/scripts/Level Stuff/portal.gd" id="1_vg0gs"]
+
+[sub_resource type="Animation" id="Animation_nbfr2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vg0gs"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.78458416, 0.7071068, 0.75785834),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bp1kf"]
+_data = {
+&"RESET": SubResource("Animation_nbfr2"),
+&"idle": SubResource("Animation_vg0gs")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vg0gs"]
+radius = 5.0
+
+[node name="Portal" type="Area2D" unique_id=599182297]
+collision_layer = 0
+script = ExtResource("1_vg0gs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1771295273]
+texture = ExtResource("1_nbfr2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=356044944]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_bp1kf")
+autoplay = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1676396884]
+shape = SubResource("CircleShape2D_vg0gs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

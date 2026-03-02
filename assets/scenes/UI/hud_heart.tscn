@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cv3d3vi2ke5h8"]
+
+[ext_resource type="Texture2D" uid="uid://di3kc6ppfhjv6" path="res://assets/sprites/UI/hud.png" id="1_wdrb8"]
+[ext_resource type="Script" uid="uid://drg7unannoeid" path="res://assets/scripts/hud_heart.gd" id="2_kglka"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kglka"]
+resource_local_to_scene = true
+atlas = ExtResource("1_wdrb8")
+region = Rect2(0, 8, 8, 8)
+
+[node name="HudHeart" type="TextureRect" unique_id=1956797215]
+offset_right = 16.0
+offset_bottom = 16.0
+texture = SubResource("AtlasTexture_kglka")
+script = ExtResource("2_kglka")

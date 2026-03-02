@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3qa3hcmkd2jb"
+path="res://.godot/imported/Wrong 2.wav-741c3939487a8ae15b493bf27acacf60.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/8 bit sounds/Wrong 2.wav"
+dest_files=["res://.godot/imported/Wrong 2.wav-741c3939487a8ae15b493bf27acacf60.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

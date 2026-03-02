@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c0gp0b2dnmg3q"]
+
+[ext_resource type="Script" uid="uid://dpscaqtw6r3ij" path="res://assets/scripts/effects/blood.gd" id="1_aj3th"]
+[ext_resource type="Texture2D" uid="uid://ddhaijrtxlfsm" path="res://assets/sprites/Particles/particleblood_small.png" id="1_kqgsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aj3th"]
+size = Vector2(5.625, 5.625)
+
+[node name="Blood" type="Area2D" unique_id=47031450]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_aj3th")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151803022]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_kqgsi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1544418551]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_aj3th")

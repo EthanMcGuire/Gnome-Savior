@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://vw53d3oqapsy"]
+
+[ext_resource type="Script" uid="uid://bfwm4y1jjshk1" path="res://assets/scripts/item/one_up.gd" id="1_ahs2b"]
+[ext_resource type="Texture2D" uid="uid://c2210gc4r824x" path="res://assets/sprites/Entities/one_up.png" id="2_odwi7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xntx"]
+radius = 4.0
+height = 10.0
+
+[node name="OneUp" type="Area2D" unique_id=461514915]
+script = ExtResource("1_ahs2b")
+itemName = "One Up"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1516475470]
+texture = ExtResource("2_odwi7")
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=222771288]
+shape = SubResource("CapsuleShape2D_8xntx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

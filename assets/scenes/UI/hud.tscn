@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://c2gn2jbabhk4b"]
+
+[ext_resource type="Texture2D" uid="uid://di3kc6ppfhjv6" path="res://assets/sprites/UI/hud.png" id="1_48imw"]
+[ext_resource type="Script" uid="uid://ctldp0gby4sc0" path="res://assets/scripts/hud.gd" id="1_fkaho"]
+[ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="2_3h8us"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h8us"]
+atlas = ExtResource("1_48imw")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tqus"]
+atlas = ExtResource("1_48imw")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkaho"]
+atlas = ExtResource("1_48imw")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dmxk"]
+atlas = ExtResource("1_48imw")
+region = Rect2(16, 0, 8, 8)
+
+[node name="HUD" type="Control" unique_id=2115374832]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fkaho")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1181814863]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Coin" type="TextureRect" parent="." unique_id=1683137770]
+layout_mode = 1
+offset_left = 80.0
+offset_right = 96.0
+offset_bottom = 16.0
+texture = SubResource("AtlasTexture_3h8us")
+
+[node name="CoinX" type="TextureRect" parent="Coin" unique_id=1236801985]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0tqus")
+
+[node name="CoinLabel" type="Label" parent="Coin/CoinX" unique_id=809022246]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 8.0
+grow_vertical = 2
+text = "100"
+label_settings = ExtResource("2_3h8us")
+
+[node name="Lives" type="TextureRect" parent="." unique_id=424037569]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1.0
+offset_right = 24.0
+offset_bottom = 17.0
+texture = SubResource("AtlasTexture_fkaho")
+
+[node name="LivesX" type="TextureRect" parent="Lives" unique_id=2132976033]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0dmxk")
+
+[node name="LivesLabel" type="Label" parent="Lives/LivesX" unique_id=1790745169]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 8.0
+grow_vertical = 2
+text = "100"
+label_settings = ExtResource("2_3h8us")
+
+[node name="Health" type="Control" parent="." unique_id=1345294718]
+unique_name_in_owner = true
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 19.0
+offset_right = 168.0
+offset_bottom = 35.0

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c4wlkav65ke4m"]
+
+[ext_resource type="Texture2D" uid="uid://ddhaijrtxlfsm" path="res://assets/sprites/Particles/particleblood_small.png" id="1_07m6s"]
+[ext_resource type="Script" uid="uid://kxjvr6e4tcwu" path="res://assets/scripts/blood_particles.gd" id="2_554ev"]
+
+[node name="BloodParticles" type="CPUParticles2D" unique_id=1760919876]
+texture_filter = 1
+emitting = false
+amount = 96
+texture = ExtResource("1_07m6s")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(8, 8)
+direction = Vector2(0, -1)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 450.0
+linear_accel_min = -25.0
+linear_accel_max = -25.0
+angle_max = 360.0
+scale_amount_min = 0.3
+script = ExtResource("2_554ev")
+
+[node name="FreeTimer" type="Timer" parent="." unique_id=261057277]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

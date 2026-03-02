@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://cmvfjnmclnvcs"]
+
+[ext_resource type="Script" uid="uid://bsgyxepb2mbnv" path="res://assets/scripts/scene_death_transition.gd" id="1_36bhd"]
+[ext_resource type="Texture2D" uid="uid://di3kc6ppfhjv6" path="res://assets/sprites/UI/hud.png" id="2_e0sot"]
+[ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="3_s3d36"]
+[ext_resource type="AudioStream" uid="uid://dx3cblrfcdtsq" path="res://assets/audio/sounds/other/Bruh_Sound_Effect_345.wav" id="4_leo5o"]
+[ext_resource type="AudioStream" uid="uid://bxv47f7vocgov" path="res://assets/audio/sounds/other/hihihihihihihing.wav" id="5_cc1yf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3d36"]
+atlas = ExtResource("2_e0sot")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leo5o"]
+atlas = ExtResource("2_e0sot")
+region = Rect2(16, 0, 8, 8)
+
+[node name="SceneDeathTransition" type="Node2D" unique_id=412156649]
+process_mode = 3
+script = ExtResource("1_36bhd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=892571989]
+layer = 1000
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1718110459]
+unique_name_in_owner = true
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0, 0, 0, 0)
+
+[node name="Lives" type="TextureRect" parent="CanvasLayer" unique_id=1751786475]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_s3d36")
+stretch_mode = 4
+
+[node name="LivesX" type="TextureRect" parent="CanvasLayer/Lives" unique_id=53692754]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_leo5o")
+
+[node name="LivesLabel" type="Label" parent="CanvasLayer/Lives/LivesX" unique_id=1075047352]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 13.0
+grow_vertical = 2
+text = "99"
+label_settings = ExtResource("3_s3d36")
+
+[node name="AudioStreamGameOver" type="AudioStreamPlayer" parent="." unique_id=1081609034]
+unique_name_in_owner = true
+stream = ExtResource("4_leo5o")
+volume_db = 15.0
+
+[node name="AudioStreamHaha" type="AudioStreamPlayer" parent="." unique_id=1183852286]
+unique_name_in_owner = true
+stream = ExtResource("5_cc1yf")
+volume_db = 2.0

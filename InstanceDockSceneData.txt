@@ -1,0 +1,41 @@
+[{
+"name": "Items",
+"scenes": [{
+&"scene": "res://assets/scenes/Entities/Items/coin.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Items/one_up.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Items/heart_container.tscn"
+}]
+}, {
+"name": "Level",
+"scenes": [{
+&"scene": "res://assets/scenes/Entities/moving_platform.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/level_warp.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/level_warp_door.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/camera_region.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/sign.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/level_warp_basic.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/portal.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/checkpoint.tscn"
+}]
+}, {
+"name": "Traps",
+"scenes": [{
+&"scene": "res://assets/scenes/Entities/spike_eye.tscn"
+}]
+}, {
+"name": "Characters",
+"scenes": [{
+&"scene": "res://assets/scenes/Entities/gnome.tscn"
+}]
+}]
