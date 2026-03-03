@@ -1,10 +1,10 @@
 extends Node2D
 class_name SceneEndTransition;
 
-var nextScene: String;
+var nextScene: PackedScene;
 var transitionStarted := false;
 
-func startTransition(transitionTime: float, _nextScene: String) -> void:
+func startTransition(transitionTime: float, _nextScene: PackedScene) -> void:
 	var tween;
 	var color: Color = Color(0.0, 0.0, 0.0, 1.0);
 	

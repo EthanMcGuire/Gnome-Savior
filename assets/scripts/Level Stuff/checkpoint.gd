@@ -36,6 +36,7 @@ func _open() -> void:
 	gnome = null;
 	
 	GameManager.checkpointHit(checkpointName);
+	GameManager.createStarParticles(%SpawnPoint.global_position);
 
 func _showOpenSprite() -> void:
 	%SpriteClosed.visible = false;

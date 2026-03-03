@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cn24ynmqciis5"]
 
-[ext_resource type="AudioStream" uid="uid://cfjt40olbbtey" path="res://assets/audio/music/basic_platformer_music_-_world_2.wav" id="1_dmlsh"]
 [ext_resource type="AudioStream" uid="uid://bxvixfjcpa4ly" path="res://assets/audio/sounds/nes_sounds/achieved.ogg" id="2_5oahs"]
 [ext_resource type="PackedScene" uid="uid://c2gn2jbabhk4b" path="res://assets/scenes/UI/hud.tscn" id="2_dw3k1"]
 [ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="3_8hsts"]
@@ -13,7 +12,6 @@
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1405472104]
 process_mode = 3
-stream = ExtResource("1_dmlsh")
 volume_db = -15.0
 autoplay = true
 

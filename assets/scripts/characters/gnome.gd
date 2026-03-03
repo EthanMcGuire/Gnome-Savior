@@ -26,6 +26,8 @@ enum GNOME_STATE {
 @export var bloodEffectVelocityScaleMax := 0.35;
 ## Velocity scale in relation to knockback the player received.
 @export var debrisVelocityScale := 0.5;
+@export var debrisSizeMin := 2;
+@export var debrisSizeMax := 4;
 
 var state := GNOME_STATE.GNOME_STATE_DEAD;
 var moveDirection := 1.0;
@@ -109,7 +111,7 @@ func takeDamage(knockback: Vector2) -> void:
 func _createDeathEffects(knockback: Vector2) -> void:
 	GameManager.createBloodParticles(global_position);
 	GameManager.createBloodEffect(global_position, knockback, bloodEffectDegreesRange, bloodEffectVelocityScaleMin, bloodEffectVelocityScaleMax, bloodEffectCountMin, bloodEffectCountMax);
-	GameManager.createDebris(global_position + Vector2(-10.0, -16.0), %Sprite2D.get_texture(), %Sprite2D.flip_h, knockback * debrisVelocityScale, Vector2(6.0, 0.0), Vector2(22.0, 32.0), 4.0)
+	GameManager.createDebris(global_position + Vector2(-10.0, -16.0), %Sprite2D.get_texture(), %Sprite2D.flip_h, knockback * debrisVelocityScale, Vector2(6.0, 0.0), Vector2(22.0, 32.0), debrisSizeMin, debrisSizeMax)
 
 #endregion Effects
 

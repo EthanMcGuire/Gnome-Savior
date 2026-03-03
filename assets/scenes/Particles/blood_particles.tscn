@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4wlkav65ke4m"]
 
 [ext_resource type="Texture2D" uid="uid://ddhaijrtxlfsm" path="res://assets/sprites/Particles/particleblood_small.png" id="1_07m6s"]
-[ext_resource type="Script" uid="uid://kxjvr6e4tcwu" path="res://assets/scripts/blood_particles.gd" id="2_554ev"]
+[ext_resource type="Script" uid="uid://kxjvr6e4tcwu" path="res://assets/scripts/particles/basic_particles.gd" id="2_554ev"]
 
 [node name="BloodParticles" type="CPUParticles2D" unique_id=1760919876]
 texture_filter = 1

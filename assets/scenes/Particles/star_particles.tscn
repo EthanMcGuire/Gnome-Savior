@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cuajfwp5erm4w"]
+
+[ext_resource type="Texture2D" uid="uid://cykeq13pdovan" path="res://assets/sprites/Particles/star.png" id="1_cyl1e"]
+[ext_resource type="Script" uid="uid://bv33ch3jkxb8q" path="res://assets/scripts/particles/basic_gpu_particles.gd" id="2_4u3dk"]
+[ext_resource type="PackedScene" uid="uid://1foxu8c1ohmx" path="res://assets/scenes/Particles/sparkle_particles.tscn" id="3_4u3dk"]
+
+[sub_resource type="Gradient" id="Gradient_vetov"]
+offsets = PackedFloat32Array(0, 0.51339287, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vg3eq"]
+gradient = SubResource("Gradient_vetov")
+
+[sub_resource type="Curve" id="Curve_cyl1e"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.50339556), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rqbxg"]
+curve = SubResource("Curve_cyl1e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o1bnh"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+angle_min = -29.99999
+angle_max = 30.000011
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 50.0
+initial_velocity_max = 125.0
+angular_velocity_min = -45.000015
+angular_velocity_max = 44.999985
+gravity = Vector3(0, 150, 0)
+linear_accel_min = -50.0
+linear_accel_max = -50.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_rqbxg")
+color_ramp = SubResource("GradientTexture1D_vg3eq")
+sub_emitter_mode = 1
+sub_emitter_frequency = 59.629999999999995
+
+[node name="StarParticles" type="GPUParticles2D" unique_id=289888810]
+emitting = false
+amount = 16
+sub_emitter = NodePath("SparkleParticles")
+texture = ExtResource("1_cyl1e")
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_o1bnh")
+script = ExtResource("2_4u3dk")
+
+[node name="FreeTimer" type="Timer" parent="." unique_id=730908975]
+
+[node name="SparkleParticles" parent="." unique_id=1574713727 instance=ExtResource("3_4u3dk")]
+
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]

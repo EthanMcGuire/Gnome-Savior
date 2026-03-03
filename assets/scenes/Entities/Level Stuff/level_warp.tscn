@@ -9,6 +9,7 @@ size = Vector2(14.868345, 37.515095)
 [node name="LevelWarp" type="Area2D" unique_id=2082002628]
 collision_layer = 0
 script = ExtResource("1_1o1jm")
+warpLevel = "res://assets/scenes/Levels/level_1.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1427167532]
 position = Vector2(-2.3841858e-07, -20)

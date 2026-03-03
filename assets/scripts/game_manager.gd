@@ -1,10 +1,11 @@
 extends Node
 
-const STARTING_LEVEL := "res://assets/scenes/Levels/level_1.tscn";
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_1.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
 const BLOOD_PARTICLE := preload("res://assets/scenes/Particles/blood_particles.tscn");
+const STAR_PARTICLE := preload("res://assets/scenes/Particles/star_particles.tscn");
 const BLOOD_EFFECT := preload("res://assets/scenes/Effects/blood.tscn");
 const DEBRIS := preload("res://assets/scenes/Entities/debris.tscn");
 const BLOOD_PARTICLE_SPRITE := preload("res://assets/sprites/Particles/particleblood_small.png");
@@ -28,6 +29,7 @@ var debris: Node2D;
 var levelData: Node2D;
 var particles: Node2D;
 var effects: Node2D;
+var musicPlayer: AudioStreamPlayer;
 var soundLifeUp: AudioStreamPlayer;
 var bloodSprite: Sprite2D;
 var signText: SignText;
@@ -42,9 +44,10 @@ var bloodDrawImage = BLOOD_PARTICLE_SPRITE.get_image();
 var bloodSize := 8;
 var needToRedrawBlood := false;
 
-# Level nodes
+# Level data
 var level: Level = null;
-var currentLevel: String = "";
+var currentScene: PackedScene = null;
+var currentLevelName: String = "";
 var playerSpawn: PlayerSpawn = null;
 
 #region Save_Data_Variables
@@ -78,10 +81,10 @@ func _process(delta: float) -> void:
 			if (playerIsDead):
 				playerIsDead = false;
 				retryLabel.visible = false;
-				startDeathTransition(currentLevel);
+				startDeathTransition(currentScene);
 			else:
 				# Don't reduce lives
-				startLevelTransition(currentLevel);
+				startLevelTransition(currentScene);
 
 func _loadBaseNodes() -> void:
 	hud = get_node("/root/LevelBase/CanvasLayer/HUD");
@@ -98,6 +101,8 @@ func _loadBaseNodes() -> void:
 	assert(particles);
 	effects = get_node("/root/LevelBase/Effects");
 	assert(effects);
+	musicPlayer = get_node("/root/LevelBase/Audio/MusicPlayer");
+	assert(musicPlayer);
 	soundLifeUp = get_node("/root/LevelBase/Audio/AudioStreamLifeUp");
 	assert(soundLifeUp);
 	bloodSprite = get_node("/root/LevelBase/Blood");
@@ -116,28 +121,26 @@ func gameOver() -> void:
 		
 #region Level
 	
-func loadLevel(nextScene: String) -> void:
-	var scene = load(nextScene) as PackedScene;
+func loadLevel(nextScene: PackedScene) -> void:
+	assert(nextScene);
 	
-	assert(scene);
+	currentScene = nextScene;
 	
 	_destroyPlayer();
 	_createPlayer();
 	_unloadLevelData();
 	
 	# Load the level
-	level = scene.instantiate();
+	level = currentScene.instantiate();
 	levelData.add_child(level);
 	
 	# Player
 	playerSpawn = level.get_node("PlayerSpawn");
 	assert(playerSpawn);
 	
-	# New level was reloaded?
-	if (currentLevel != nextScene):
-		currentLevel = nextScene;
-		_createBloodCanvas(level.levelWidth, level.levelHeight);
-		_clearCheckpointData();
+	# New level was loaded?
+	if (currentLevelName != level.levelName):
+		_loadNewLevelData();
 		
 	# Only move the player to spawn if we don't have a checkpoint set
 	if (currentCheckpoint == ""):
@@ -147,14 +150,21 @@ func loadLevel(nextScene: String) -> void:
 
 func _unloadLevelData() -> void:
 	for child in levelData.get_children():
-		child.queue_free();
+		child.free();
 	
 	_clearDebris();
 	_freeParticles();
 	_freeEffects();
 	playerSpawn = null;
 
-func startLevelTransition(nextScene: String) -> void:
+func _loadNewLevelData() -> void:
+	currentLevelName = level.levelName;
+	_createBloodCanvas(level.levelWidth, level.levelHeight);
+	_clearCheckpointData();
+	_stopMusic();
+	_playMusic(level.music);
+
+func startLevelTransition(nextScene: PackedScene) -> void:
 	var transition;
 	
 	levelLoaded = false;
@@ -163,7 +173,7 @@ func startLevelTransition(nextScene: String) -> void:
 	add_child(transition);
 	transition.startTransition(LEVEL_TRANSITION_TIME, nextScene);
 	
-func startDeathTransition(nextScene: String) -> void:
+func startDeathTransition(nextScene: PackedScene) -> void:
 	var transition;
 	
 	levelLoaded = false;
@@ -173,6 +183,21 @@ func startDeathTransition(nextScene: String) -> void:
 	transition.startTransition(DEATH_TRANSITION_TIME, nextScene);
 
 #endregion Level
+
+#region Music
+
+func _playMusic(music: AudioStream):
+	if (!music):
+		print("GameManager: In _playMusic() music is null.");
+		return;
+		
+	musicPlayer.stream = music;
+	musicPlayer.play();
+
+func _stopMusic():
+	musicPlayer.stop();
+
+#endregion Music
 
 #region Blood
 
@@ -207,9 +232,14 @@ func drawBlood(pos: Vector2):
 #region Particles
 
 func createBloodParticles(pos: Vector2) -> void:
-	var blood = BLOOD_PARTICLE.instantiate();
-	blood.global_position = pos;
-	addParticles(blood);
+	var part = BLOOD_PARTICLE.instantiate();
+	part.global_position = pos;
+	addParticles(part);
+	
+func createStarParticles(pos: Vector2) -> void:
+	var part = STAR_PARTICLE.instantiate();
+	part.global_position = pos;
+	addParticles(part);
 
 func addParticles(particleNode) -> void:
 	particles.add_child(particleNode);
@@ -323,7 +353,7 @@ func moveCameraToGoal():
 
 #region Debris
 
-func createDebris(pos: Vector2, texture: Texture2D, flipH: bool, knockback: Vector2, spriteOffset: Vector2, spriteSize: Vector2, debrisSize: float):
+func createDebris(pos: Vector2, texture: Texture2D, flipH: bool, knockback: Vector2, spriteOffset: Vector2, spriteSize: Vector2, debrisSizeMin: float, debrisSizeMax: float):
 	var x;
 	var y;
 	
@@ -331,20 +361,28 @@ func createDebris(pos: Vector2, texture: Texture2D, flipH: bool, knockback: Vect
 	y = 0.0;
 	
 	while x < spriteSize.x:
+		var debrisWidth;
+		
+		debrisWidth = randi_range(debrisSizeMin, debrisSizeMax);
+		debrisWidth = min(debrisWidth, spriteSize.x - x);
+		
 		while y < spriteSize.y:
-			
+			var debrisHeight;
 			var debris: Debris = DEBRIS.instantiate();
+			
+			debrisHeight = randi_range(debrisSizeMin, debrisSizeMax);
+			debrisHeight = min(debrisHeight, spriteSize.y - y);
 
 			debris.global_position = Vector2(pos.x + x, pos.y + y);
 			debris.setTexture(texture, flipH);
-			debris.setRegion(spriteOffset.x + x, spriteOffset.y + y, debrisSize, debrisSize);
+			debris.setRegion(spriteOffset.x + x, spriteOffset.y + y, debrisWidth, debrisHeight);
 			debris.applyKnockback(knockback);
 			
 			GameManager.addDebris(debris);
 			
-			y += debrisSize;
+			y += debrisHeight;
 		
-		x += debrisSize;
+		x += debrisWidth;
 		y = 0.0;
 
 func addDebris(_debris) -> void:

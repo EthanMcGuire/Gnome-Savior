@@ -9,12 +9,10 @@ func _ready() -> void:
 	
 	$CanvasLayer.layer = 1000;	# Move to front
 	
-	#get_tree().paused = true;
 	tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS);
 	
 	tween.tween_property(%ColorRect, "color", color, transitionTime);
 	tween.tween_callback(endTranstition);
 
 func endTranstition() -> void:
-	#get_tree().paused = false;
 	queue_free();

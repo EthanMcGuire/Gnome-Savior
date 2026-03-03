@@ -43,6 +43,8 @@ enum GRAVITY {
 @export var bloodEffectVelocityScaleMax := 0.35;
 ## Velocity scale in relation to knockback the player received.
 @export var debrisVelocityScale := 0.5;
+@export var debrisSizeMin := 2;
+@export var debrisSizeMax := 5;
 
 #endregion Export_Variables
 
@@ -335,7 +337,7 @@ func _moveHorizontalVelocityTowardsZero() -> void:
 func _createDeathEffects(knockback: Vector2) -> void:
 	GameManager.createBloodParticles(global_position);
 	GameManager.createBloodEffect(global_position, knockback, bloodEffectDegreesRange, bloodEffectVelocityScaleMin, bloodEffectVelocityScaleMax, bloodEffectCountMin, bloodEffectCountMax);
-	GameManager.createDebris(global_position + Vector2(-9.0, -9.0), playerSprite.get_texture(), playerSprite.flip_h, knockback * debrisVelocityScale, Vector2(7.0, 16.0), Vector2(18.0, 16.0), 4.0)
+	GameManager.createDebris(global_position + Vector2(-9.0, -9.0), playerSprite.get_texture(), playerSprite.flip_h, knockback * debrisVelocityScale, Vector2(7.0, 16.0), Vector2(18.0, 16.0), debrisSizeMin, debrisSizeMax)
 
 #endregion Effects
 

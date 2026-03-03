@@ -5,11 +5,11 @@ const SHOW_LIVES_DELAY := 1.0;
 const LIVES_REDUCE_DELAY := 1.0;
 const END_TRANSITION_DELAY := 1.0;
 
-var nextScene: String;
+var nextScene: PackedScene;
 var transitionStarted := false;
 var gameOver = false;
 
-func startTransition(transitionTime: float, _nextScene: String) -> void:
+func startTransition(transitionTime: float, _nextScene: PackedScene) -> void:
 	var tween;
 	var color: Color = Color(0.0, 0.0, 0.0, 1.0);
 	

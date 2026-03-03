@@ -2,9 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://civ4yk5xhynw6" path="res://assets/scenes/Levels/level.tscn" id="1_yqvk3"]
 [ext_resource type="PackedScene" uid="uid://lcnaux1kh772" path="res://assets/scenes/Entities/camera_region.tscn" id="2_jnypy"]
+[ext_resource type="AudioStream" uid="uid://dff6pcdq0erqa" path="res://assets/audio/music/8-bit_mechanical_complex.mp3" id="2_xhky1"]
 [ext_resource type="PackedScene" uid="uid://dcew5veiuggoh" path="res://assets/scenes/Entities/Level Stuff/level_warp.tscn" id="3_jnypy"]
 
 [node name="Level_2" unique_id=690160627 instance=ExtResource("1_yqvk3")]
+levelName = "Level_2"
+music = ExtResource("2_xhky1")
 
 [node name="Clouds06" parent="Background/Parallax/CloudsFront" parent_id_path=PackedInt32Array(686149496) index="0" unique_id=2078708586]
 position = Vector2(21, 180)
@@ -26,5 +29,5 @@ regionSizeY = 270.0
 [node name="LevelWarp" parent="LevelWarps" parent_id_path=PackedInt32Array(49862679) index="0" unique_id=2082002628 instance=ExtResource("3_jnypy")]
 position = Vector2(977, 224)
 
-[node name="PlayerSpawn" parent="." index="8" unique_id=641898817]
+[node name="PlayerSpawn" parent="." index="12" unique_id=641898817]
 position = Vector2(32, 217)

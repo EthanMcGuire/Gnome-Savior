@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://civ4yk5xhynw6" path="res://assets/scenes/Levels/level.tscn" id="1_snlcw"]
 [ext_resource type="PackedScene" uid="uid://ccbsxcpsis2gx" path="res://assets/scenes/Entities/Items/coin.tscn" id="2_3kgdv"]
+[ext_resource type="AudioStream" uid="uid://cfjt40olbbtey" path="res://assets/audio/music/basic_platformer_music_-_world_2.wav" id="2_vi1u8"]
 [ext_resource type="PackedScene" uid="uid://lcnaux1kh772" path="res://assets/scenes/Entities/camera_region.tscn" id="2_x3mf6"]
 [ext_resource type="PackedScene" uid="uid://bph7yu7b5hiqh" path="res://assets/scenes/Entities/Level Stuff/level_warp_basic.tscn" id="3_jrkym"]
 [ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/moving_platform.tscn" id="4_ti06f"]
@@ -13,14 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://dgt6mejq5mnsr" path="res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn" id="8_kw78w"]
 [ext_resource type="PackedScene" uid="uid://cg7q83fhkm7dr" path="res://assets/scenes/Entities/Items/heart_container.tscn" id="9_bskwp"]
 
-[sub_resource type="Curve2D" id="Curve2D_8f3bp"]
+[sub_resource type="Curve2D" id="Curve2D_cu4tg"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 156, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_wjyxl"]
+[sub_resource type="Curve2D" id="Curve2D_6xnex"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -194)
@@ -28,8 +29,10 @@ _data = {
 point_count = 2
 
 [node name="Level_1" unique_id=690160627 instance=ExtResource("1_snlcw")]
+levelName = "Level_1"
 levelWidth = 2000.0
 levelHeight = 400.0
+music = ExtResource("2_vi1u8")
 
 [node name="LayerBackFront" parent="TileMap" parent_id_path=PackedInt32Array(1744099430) index="1" unique_id=1463511529]
 tile_map_data = PackedByteArray("AAAdAAcAAAAAAAgAAAAeAAcAAAABAAgAAAAfAAcAAAACAAgAAAAfAAYAAAACAAgAAAAeAAYAAAABAAgAAAAdAAYAAAAAAAgAAAAdAAUAAAAAAAcAAAAeAAUAAAABAAcAAAAfAAUAAAACAAcAAABjAAQAAAABAAgAAABkAAQAAAABAAgAAABlAAQAAAABAAgAAABjAAMAAAABAAgAAABkAAMAAAABAAgAAABlAAMAAAABAAgAAABmAAQAAAABAAgAAABmAAMAAAABAAgAAABnAAQAAAABAAgAAABnAAMAAAABAAgAAABnAAIAAAABAAcAAABmAAIAAAABAAcAAABlAAIAAAABAAcAAABkAAIAAAABAAcAAABjAAIAAAABAAcAAABiAAQAAAAAAAgAAABiAAMAAAAAAAgAAABiAAIAAAAAAAcAAABoAAQAAAACAAgAAABoAAMAAAACAAgAAABoAAIAAAACAAcAAAA=")
@@ -46,17 +49,18 @@ regionSizeY = 420.25
 
 [node name="LevelWarpBasic" parent="LevelWarps" parent_id_path=PackedInt32Array(49862679) index="0" unique_id=2082002628 instance=ExtResource("3_jrkym")]
 position = Vector2(1144, 224)
+warpLevel = "res://assets/scenes/Levels/level_2.tscn"
 
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("4_ti06f")]
 position = Vector2(635, 163)
-curve = SubResource("Curve2D_8f3bp")
+curve = SubResource("Curve2D_cu4tg")
 easeType = 2
 transitionType = 4
 
 [node name="MovingPlatform2" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="1" unique_id=419557159 instance=ExtResource("4_ti06f")]
 position = Vector2(1032, 211)
 scale = Vector2(1.5, 1)
-curve = SubResource("Curve2D_wjyxl")
+curve = SubResource("Curve2D_6xnex")
 deltaSpeedPixelsStart = 48.0
 deltaSpeedPixelsReturn = 48.0
 easeType = 2

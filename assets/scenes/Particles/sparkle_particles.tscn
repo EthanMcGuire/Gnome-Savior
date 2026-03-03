@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://1foxu8c1ohmx"]
+
+[sub_resource type="Curve" id="Curve_urluc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.24799998, 0.49235988), 0.0, 0.0, 0, 0, Vector2(0.49599993, 1), 0.0, 0.0, 0, 0, Vector2(0.7479999, 0.50339556), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_xnbhp"]
+curve = SubResource("Curve_urluc")
+
+[sub_resource type="Gradient" id="Gradient_urluc"]
+offsets = PackedFloat32Array(0, 0.71875, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.7919991, 0.79199916, 0.7919991, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xnbhp"]
+gradient = SubResource("Gradient_urluc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lkxlk"]
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+damping_min = 2.0
+damping_max = 2.0
+scale_min = 0.5
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("GradientTexture1D_xnbhp")
+alpha_curve = SubResource("CurveTexture_xnbhp")
+hue_variation_min = -0.15000002
+hue_variation_max = 0.14999998
+
+[node name="SparkleParticles" type="GPUParticles2D" unique_id=1574713727]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_lkxlk")
