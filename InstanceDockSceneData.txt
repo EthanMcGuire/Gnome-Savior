@@ -32,6 +32,10 @@
 "name": "Traps",
 "scenes": [{
 &"scene": "res://assets/scenes/Entities/spike_eye.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/saw_blade.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/swinging_saw.tscn"
 }]
 }, {
 "name": "Characters",

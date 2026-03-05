@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c2fv2jx1g025t"]
+
+[ext_resource type="Script" uid="uid://v5hmxqhenvdo" path="res://assets/scripts/trap/saw_blade.gd" id="1_n0j6o"]
+[ext_resource type="Texture2D" uid="uid://b5fw0jb5htkgk" path="res://assets/sprites/traps/serra_redonda.png" id="2_gt25t"]
+
+[sub_resource type="Curve2D" id="Curve2D_n0j6o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -43)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_gt25t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_aiju2"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_73wyi"]
+_data = {
+&"RESET": SubResource("Animation_gt25t"),
+&"idle": SubResource("Animation_aiju2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n44ds"]
+radius = 14.0
+
+[node name="SawBlade" type="Node2D" unique_id=1567372320]
+script = ExtResource("1_n0j6o")
+easeType = 2
+transitionType = 4
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1074488608]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_n0j6o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1995524461]
+unique_name_in_owner = true
+rotation = -1.5707964
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1537027594]
+remote_path = NodePath("../../../Trap")
+update_rotation = false
+update_scale = false
+
+[node name="Trap" type="Area2D" parent="." unique_id=173899554]
+rotation = -1.5707964
+collision_layer = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Trap" unique_id=1122717669]
+libraries/ = SubResource("AnimationLibrary_73wyi")
+autoplay = &"idle"
+
+[node name="Saw" type="Node2D" parent="Trap" unique_id=161027795]
+position = Vector2(5.9604645e-08, 1.4901161e-08)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Sprite2D" type="Sprite2D" parent="Trap/Saw" unique_id=38081857]
+position = Vector2(0.74999994, 0.24999999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_gt25t")
+offset = Vector2(0, -1)
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trap" unique_id=1846387794]
+shape = SubResource("CircleShape2D_n44ds")
+
+[connection signal="body_entered" from="Trap" to="." method="_on_trap_body_entered"]

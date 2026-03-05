@@ -4,24 +4,31 @@
 [ext_resource type="PackedScene" uid="uid://ccbsxcpsis2gx" path="res://assets/scenes/Entities/Items/coin.tscn" id="2_3kgdv"]
 [ext_resource type="AudioStream" uid="uid://cfjt40olbbtey" path="res://assets/audio/music/basic_platformer_music_-_world_2.wav" id="2_vi1u8"]
 [ext_resource type="PackedScene" uid="uid://lcnaux1kh772" path="res://assets/scenes/Entities/camera_region.tscn" id="2_x3mf6"]
+[ext_resource type="Texture2D" uid="uid://b64pc152xe7go" path="res://assets/sprites/Background/Clouds_and_Mountains/Cloud01.png" id="3_6xnex"]
 [ext_resource type="PackedScene" uid="uid://bph7yu7b5hiqh" path="res://assets/scenes/Entities/Level Stuff/level_warp_basic.tscn" id="3_jrkym"]
+[ext_resource type="Texture2D" uid="uid://00wex6nc6so" path="res://assets/sprites/Background/Clouds_and_Mountains/Cloud02.png" id="4_ge1p7"]
 [ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/moving_platform.tscn" id="4_ti06f"]
-[ext_resource type="PackedScene" uid="uid://c6r3cxue66idc" path="res://assets/scenes/Entities/spike_eye.tscn" id="4_yqtpd"]
+[ext_resource type="PackedScene" uid="uid://c6r3cxue66idc" path="res://assets/scenes/Entities/Traps/spike_eye.tscn" id="4_yqtpd"]
+[ext_resource type="Texture2D" uid="uid://dkpfmoxypenni" path="res://assets/sprites/Background/Clouds_and_Mountains/Cloud03.png" id="5_br1en"]
 [ext_resource type="PackedScene" uid="uid://cwtmqimtblb37" path="res://assets/scenes/Entities/Level Stuff/sign.tscn" id="5_jrkym"]
 [ext_resource type="PackedScene" uid="uid://com2u5kxhj3vj" path="res://assets/scenes/Entities/Level Stuff/checkpoint.tscn" id="5_vi1u8"]
 [ext_resource type="PackedScene" uid="uid://1g1oi8h4rkvv" path="res://assets/scenes/Entities/Level Stuff/portal.tscn" id="6_8f3bp"]
+[ext_resource type="Texture2D" uid="uid://dfl0wlx2cw2lm" path="res://assets/sprites/Background/Clouds_and_Mountains/BackgroundMountain_01.png" id="6_pi3en"]
+[ext_resource type="Texture2D" uid="uid://bsvpnknf8y4vy" path="res://assets/sprites/Background/Clouds_and_Mountains/Clouds04.png" id="7_e5382"]
 [ext_resource type="PackedScene" uid="uid://vw53d3oqapsy" path="res://assets/scenes/Entities/Items/one_up.tscn" id="7_p82jc"]
+[ext_resource type="Texture2D" uid="uid://cu7ypo03rhscs" path="res://assets/sprites/Background/Clouds_and_Mountains/BackgroundMuntain02.png" id="8_b2igq"]
 [ext_resource type="PackedScene" uid="uid://dgt6mejq5mnsr" path="res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn" id="8_kw78w"]
 [ext_resource type="PackedScene" uid="uid://cg7q83fhkm7dr" path="res://assets/scenes/Entities/Items/heart_container.tscn" id="9_bskwp"]
+[ext_resource type="PackedScene" uid="uid://bfkyghq7wcuwa" path="res://assets/scenes/Entities/Traps/swinging_saw.tscn" id="16_br1en"]
 
-[sub_resource type="Curve2D" id="Curve2D_cu4tg"]
+[sub_resource type="Curve2D" id="Curve2D_ge1p7"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 156, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_6xnex"]
+[sub_resource type="Curve2D" id="Curve2D_br1en"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -194)
@@ -33,6 +40,92 @@ levelName = "Level_1"
 levelWidth = 2000.0
 levelHeight = 400.0
 music = ExtResource("2_vi1u8")
+
+[node name="CloudsBack" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="0" unique_id=1340182314]
+scroll_scale = Vector2(0.15, 0.25)
+repeat_size = Vector2(490, 0)
+repeat_times = 2
+
+[node name="Cloud01" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="0" unique_id=2126723588]
+position = Vector2(124, 90)
+texture = ExtResource("3_6xnex")
+
+[node name="Cloud02" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="1" unique_id=657127132]
+position = Vector2(321, 97)
+texture = ExtResource("3_6xnex")
+
+[node name="Cloud09" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="2" unique_id=856336348]
+position = Vector2(153, 163)
+texture = ExtResource("3_6xnex")
+
+[node name="Cloud04" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="3" unique_id=1472777153]
+position = Vector2(377, 87)
+texture = ExtResource("4_ge1p7")
+
+[node name="Cloud03" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="4" unique_id=1114612766]
+position = Vector2(143, 93)
+texture = ExtResource("4_ge1p7")
+
+[node name="Cloud07" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="5" unique_id=359017748]
+position = Vector2(125, 167)
+texture = ExtResource("4_ge1p7")
+
+[node name="Cloud06" type="Sprite2D" parent="Background/Parallax/CloudsBack" index="6" unique_id=994858900]
+position = Vector2(305, 190)
+texture = ExtResource("3_6xnex")
+
+[node name="CloudsBack2" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="1" unique_id=1663059474]
+scroll_scale = Vector2(0.2, 0.35)
+repeat_size = Vector2(480, 0)
+repeat_times = 2
+
+[node name="Cloud08" type="Sprite2D" parent="Background/Parallax/CloudsBack2" index="0" unique_id=1887099572]
+position = Vector2(412, 141)
+texture = ExtResource("5_br1en")
+
+[node name="Cloud05" type="Sprite2D" parent="Background/Parallax/CloudsBack2" index="1" unique_id=1112696808]
+position = Vector2(149, 113)
+texture = ExtResource("5_br1en")
+
+[node name="MountainBack" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="2" unique_id=1968475199]
+scroll_scale = Vector2(0.25, 0.45)
+repeat_size = Vector2(270, 0)
+repeat_times = 3
+
+[node name="BackgroundMountain01" type="Sprite2D" parent="Background/Parallax/MountainBack" index="0" unique_id=2142471053]
+modulate = Color(0.601223, 0.601223, 0.60122293, 1)
+position = Vector2(0, 13.000004)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("6_pi3en")
+centered = false
+
+[node name="CloudsFront" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="3" unique_id=1736870764]
+scroll_scale = Vector2(0.35, 0.55)
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(-1, 0)
+repeat_times = 2
+
+[node name="Clouds06" type="Sprite2D" parent="Background/Parallax/CloudsFront" index="0" unique_id=386017993]
+position = Vector2(750, 142)
+texture = ExtResource("7_e5382")
+
+[node name="Clouds05" type="Sprite2D" parent="Background/Parallax/CloudsFront" index="1" unique_id=1874300337]
+position = Vector2(343, 168)
+texture = ExtResource("7_e5382")
+
+[node name="Clouds04" type="Sprite2D" parent="Background/Parallax/CloudsFront" index="2" unique_id=1502617036]
+position = Vector2(145, 96)
+texture = ExtResource("7_e5382")
+
+[node name="Mountain" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="4" unique_id=1938370903]
+scroll_scale = Vector2(0.5, 0.65)
+repeat_size = Vector2(270, 0)
+repeat_times = 3
+
+[node name="BackgroundMuntain02" type="Sprite2D" parent="Background/Parallax/Mountain" index="0" unique_id=308999483]
+position = Vector2(0, 72)
+texture = ExtResource("8_b2igq")
+centered = false
 
 [node name="LayerBackFront" parent="TileMap" parent_id_path=PackedInt32Array(1744099430) index="1" unique_id=1463511529]
 tile_map_data = PackedByteArray("AAAdAAcAAAAAAAgAAAAeAAcAAAABAAgAAAAfAAcAAAACAAgAAAAfAAYAAAACAAgAAAAeAAYAAAABAAgAAAAdAAYAAAAAAAgAAAAdAAUAAAAAAAcAAAAeAAUAAAABAAcAAAAfAAUAAAACAAcAAABjAAQAAAABAAgAAABkAAQAAAABAAgAAABlAAQAAAABAAgAAABjAAMAAAABAAgAAABkAAMAAAABAAgAAABlAAMAAAABAAgAAABmAAQAAAABAAgAAABmAAMAAAABAAgAAABnAAQAAAABAAgAAABnAAMAAAABAAgAAABnAAIAAAABAAcAAABmAAIAAAABAAcAAABlAAIAAAABAAcAAABkAAIAAAABAAcAAABjAAIAAAABAAcAAABiAAQAAAAAAAgAAABiAAMAAAAAAAgAAABiAAIAAAAAAAcAAABoAAQAAAACAAgAAABoAAMAAAACAAgAAABoAAIAAAACAAcAAAA=")
@@ -53,14 +146,14 @@ warpLevel = "res://assets/scenes/Levels/level_2.tscn"
 
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("4_ti06f")]
 position = Vector2(635, 163)
-curve = SubResource("Curve2D_cu4tg")
+curve = SubResource("Curve2D_ge1p7")
 easeType = 2
 transitionType = 4
 
 [node name="MovingPlatform2" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="1" unique_id=419557159 instance=ExtResource("4_ti06f")]
 position = Vector2(1032, 211)
 scale = Vector2(1.5, 1)
-curve = SubResource("Curve2D_6xnex")
+curve = SubResource("Curve2D_br1en")
 deltaSpeedPixelsStart = 48.0
 deltaSpeedPixelsReturn = 48.0
 easeType = 2
@@ -254,6 +347,7 @@ position = Vector2(1656, 70)
 
 [node name="SpikeEye58" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="57" unique_id=1642799105 instance=ExtResource("4_yqtpd")]
 position = Vector2(1688, 24)
+moveDir = 1
 
 [node name="SpikeEye59" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="58" unique_id=2133953346 instance=ExtResource("4_yqtpd")]
 position = Vector2(1704, 24)
@@ -308,6 +402,13 @@ position = Vector2(1752, 38)
 
 [node name="SpikeEye73" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="75" unique_id=737899762 instance=ExtResource("4_yqtpd")]
 position = Vector2(1704, 52)
+
+[node name="SwingingSaw2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="76" unique_id=439975574 instance=ExtResource("16_br1en")]
+position = Vector2(240, 128)
+sawSpeed = 5.0
+
+[node name="SwingingSaw" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="77" unique_id=147394102 instance=ExtResource("16_br1en")]
+position = Vector2(932, 76)
 
 [node name="Checkpoint" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="0" unique_id=1366965764 instance=ExtResource("5_vi1u8")]
 position = Vector2(1104, 16)

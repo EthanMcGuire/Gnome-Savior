@@ -80,10 +80,10 @@ func _physics_process(delta: float) -> void:
 	if (state != PLAYER_STATE.DEAD):
 		move_and_slide();
 
-func takeDamage(knockback: Vector2) -> void:
+func takeDamage(knockback: Vector2, damage: int) -> void:
 	if (state == PLAYER_STATE.HURT || state == PLAYER_STATE.DEAD): return;
 	
-	if (GameManager.getPlayerHp() > 1):
+	if (GameManager.getPlayerHp() > damage):
 		_addHorizontalVelocity(knockback.x);
 		_addVerticalVelocity(knockback.y);
 		_enter_state(PLAYER_STATE.HURT);
@@ -91,7 +91,7 @@ func takeDamage(knockback: Vector2) -> void:
 		_enter_state(PLAYER_STATE.DEAD);
 		call_deferred("_createDeathEffects", knockback);
 		
-	GameManager.removePlayerHp(1);
+	GameManager.removePlayerHp(damage);
 
 func _horizontalMovement() -> void:
 	var direction := Input.get_axis("move_left", "move_right");

@@ -94,10 +94,10 @@ func freeGnome() -> void:
 		moveDirection = 1;
 		%Sprite2D.flip_h = true;
 	
-func takeDamage(knockback: Vector2) -> void:
+func takeDamage(knockback: Vector2, damage: int) -> void:
 	if (state != GNOME_STATE.GNOME_STATE_FREE): return;
 	
-	hp -= 1;
+	hp -= damage;
 	
 	if (hp > 0):
 		velocity += knockback;
