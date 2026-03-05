@@ -254,8 +254,10 @@ size = Vector2(10, 10)
 
 [node name="SpikeEye" type="Node2D" unique_id=147394102]
 script = ExtResource("1_jo2ja")
+knockback = 450.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1910904077]
+unique_name_in_owner = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D" unique_id=1898494118]
 unique_name_in_owner = true

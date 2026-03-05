@@ -68,6 +68,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Trap" type="Area2D" parent="." unique_id=173899554]
+unique_name_in_owner = true
 rotation = -1.5707964
 collision_layer = 2
 

@@ -9,6 +9,7 @@ enum MOVE_DIR {
 }
 
 @export var moveDir := MOVE_DIR.MOVE_DIR_NONE;
+@export var speed := 1.0;
 
 func _ready() -> void:
 	match moveDir:
@@ -23,5 +24,7 @@ func _ready() -> void:
 		MOVE_DIR.MOVE_DIR_UP:
 			%AnimationPlayer.play("move_up");
 
+	%AnimationPlayer.speed_scale = speed;
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	_dealDamage(body);
+	_dealDamage(body, %Area2D.global_position);

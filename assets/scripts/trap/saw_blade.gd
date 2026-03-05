@@ -27,4 +27,4 @@ func _ready() -> void:
 
 
 func _on_trap_body_entered(body: Node2D) -> void:
-	_dealDamage(body);
+	_dealDamage(body, %Trap.global_position);

@@ -57,6 +57,7 @@ position = Vector2(0, 10)
 texture = ExtResource("2_m71lg")
 
 [node name="Saw" type="Area2D" parent="Anchor" unique_id=1910904077]
+unique_name_in_owner = true
 position = Vector2(0, 22)
 
 [node name="Sprite2D" type="Sprite2D" parent="Anchor/Saw" unique_id=1121595667]

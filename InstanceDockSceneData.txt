@@ -36,6 +36,8 @@
 &"scene": "res://assets/scenes/Entities/Traps/saw_blade.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/swinging_saw.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/spike.tscn"
 }]
 }, {
 "name": "Characters",

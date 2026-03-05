@@ -20,15 +20,16 @@
 [ext_resource type="PackedScene" uid="uid://dgt6mejq5mnsr" path="res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn" id="8_kw78w"]
 [ext_resource type="PackedScene" uid="uid://cg7q83fhkm7dr" path="res://assets/scenes/Entities/Items/heart_container.tscn" id="9_bskwp"]
 [ext_resource type="PackedScene" uid="uid://bfkyghq7wcuwa" path="res://assets/scenes/Entities/Traps/swinging_saw.tscn" id="16_br1en"]
+[ext_resource type="PackedScene" uid="uid://dt05ndcmgqls" path="res://assets/scenes/Entities/Traps/spike.tscn" id="17_pi3en"]
 
-[sub_resource type="Curve2D" id="Curve2D_ge1p7"]
+[sub_resource type="Curve2D" id="Curve2D_br1en"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 156, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_br1en"]
+[sub_resource type="Curve2D" id="Curve2D_pi3en"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -194)
@@ -146,14 +147,14 @@ warpLevel = "res://assets/scenes/Levels/level_2.tscn"
 
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("4_ti06f")]
 position = Vector2(635, 163)
-curve = SubResource("Curve2D_ge1p7")
+curve = SubResource("Curve2D_br1en")
 easeType = 2
 transitionType = 4
 
 [node name="MovingPlatform2" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="1" unique_id=419557159 instance=ExtResource("4_ti06f")]
 position = Vector2(1032, 211)
 scale = Vector2(1.5, 1)
-curve = SubResource("Curve2D_br1en")
+curve = SubResource("Curve2D_pi3en")
 deltaSpeedPixelsStart = 48.0
 deltaSpeedPixelsReturn = 48.0
 easeType = 2
@@ -405,10 +406,42 @@ position = Vector2(1704, 52)
 
 [node name="SwingingSaw2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="76" unique_id=439975574 instance=ExtResource("16_br1en")]
 position = Vector2(240, 128)
-sawSpeed = 5.0
 
 [node name="SwingingSaw" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="77" unique_id=147394102 instance=ExtResource("16_br1en")]
 position = Vector2(932, 76)
+
+[node name="Spike" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="78" unique_id=156872903 instance=ExtResource("17_pi3en")]
+position = Vector2(440, 144)
+
+[node name="Spike2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="79" unique_id=1953438324 instance=ExtResource("17_pi3en")]
+position = Vector2(424, 144)
+
+[node name="Spike3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="80" unique_id=2034981508 instance=ExtResource("17_pi3en")]
+position = Vector2(536, 144)
+
+[node name="Spike4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="81" unique_id=51905445 instance=ExtResource("17_pi3en")]
+position = Vector2(552, 144)
+
+[node name="Spike5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="82" unique_id=1483903448 instance=ExtResource("17_pi3en")]
+position = Vector2(488, 128)
+
+[node name="Spike6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="83" unique_id=1068580902 instance=ExtResource("17_pi3en")]
+position = Vector2(472, 128)
+
+[node name="Spike7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="84" unique_id=1144362017 instance=ExtResource("17_pi3en")]
+position = Vector2(504, 128)
+
+[node name="SpikeEye77" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="85" unique_id=1156409239 instance=ExtResource("4_yqtpd")]
+position = Vector2(133, 215)
+moveDir = 4
+
+[node name="SpikeEye78" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="86" unique_id=921561743 instance=ExtResource("4_yqtpd")]
+position = Vector2(150, 215)
+moveDir = 4
+
+[node name="SpikeEye79" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="87" unique_id=404159138 instance=ExtResource("4_yqtpd")]
+position = Vector2(167, 215)
+moveDir = 4
 
 [node name="Checkpoint" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="0" unique_id=1366965764 instance=ExtResource("5_vi1u8")]
 position = Vector2(1104, 16)

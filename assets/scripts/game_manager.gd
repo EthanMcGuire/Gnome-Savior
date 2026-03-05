@@ -13,7 +13,7 @@ const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100;
 
-var maxHp := 1;
+var maxHp := 10;
 var hp := maxHp;
 var lives := 3;
 var coins := 0;
