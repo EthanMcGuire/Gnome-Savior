@@ -21,15 +21,17 @@
 [ext_resource type="PackedScene" uid="uid://cg7q83fhkm7dr" path="res://assets/scenes/Entities/Items/heart_container.tscn" id="9_bskwp"]
 [ext_resource type="PackedScene" uid="uid://bfkyghq7wcuwa" path="res://assets/scenes/Entities/Traps/swinging_saw.tscn" id="16_br1en"]
 [ext_resource type="PackedScene" uid="uid://dt05ndcmgqls" path="res://assets/scenes/Entities/Traps/spike.tscn" id="17_pi3en"]
+[ext_resource type="PackedScene" uid="uid://1buyysynbwlg" path="res://assets/scenes/Entities/Traps/moving_spike.tscn" id="18_e5382"]
+[ext_resource type="Script" uid="uid://dt050w0lib6jg" path="res://assets/scripts/trap/moving_spike.gd" id="19_b2igq"]
 
-[sub_resource type="Curve2D" id="Curve2D_br1en"]
+[sub_resource type="Curve2D" id="Curve2D_y24qx"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 156, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_pi3en"]
+[sub_resource type="Curve2D" id="Curve2D_s2w7k"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -194)
@@ -147,14 +149,14 @@ warpLevel = "res://assets/scenes/Levels/level_2.tscn"
 
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("4_ti06f")]
 position = Vector2(635, 163)
-curve = SubResource("Curve2D_br1en")
+curve = SubResource("Curve2D_y24qx")
 easeType = 2
 transitionType = 4
 
 [node name="MovingPlatform2" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="1" unique_id=419557159 instance=ExtResource("4_ti06f")]
 position = Vector2(1032, 211)
 scale = Vector2(1.5, 1)
-curve = SubResource("Curve2D_pi3en")
+curve = SubResource("Curve2D_s2w7k")
 deltaSpeedPixelsStart = 48.0
 deltaSpeedPixelsReturn = 48.0
 easeType = 2
@@ -442,6 +444,14 @@ moveDir = 4
 [node name="SpikeEye79" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="87" unique_id=404159138 instance=ExtResource("4_yqtpd")]
 position = Vector2(167, 215)
 moveDir = 4
+
+[node name="MovingSpike" type="Node2D" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="88" unique_id=1484627651 instance=ExtResource("18_e5382")]
+position = Vector2(112, 224)
+script = ExtResource("19_b2igq")
+
+[node name="MovingSpike2" type="Node2D" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="89" unique_id=349309289 instance=ExtResource("18_e5382")]
+position = Vector2(192, 192)
+script = ExtResource("19_b2igq")
 
 [node name="Checkpoint" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="0" unique_id=1366965764 instance=ExtResource("5_vi1u8")]
 position = Vector2(1104, 16)

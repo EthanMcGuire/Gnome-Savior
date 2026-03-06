@@ -38,6 +38,8 @@
 &"scene": "res://assets/scenes/Entities/Traps/swinging_saw.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/spike.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/moving_spike.tscn"
 }]
 }, {
 "name": "Characters",

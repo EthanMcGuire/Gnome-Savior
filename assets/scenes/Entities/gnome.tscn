@@ -135,16 +135,19 @@ max_distance = 560.0
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_358qc")
 pitch_scale = 1.1
+max_distance = 560.0
 
 [node name="AudioStreamScream" type="AudioStreamPlayer2D" parent="Sound" unique_id=1319222320]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_ku20x")
 volume_db = 1.25
 pitch_scale = 1.1
+max_distance = 560.0
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer2D" parent="Sound" unique_id=1673036672]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamMP3_dhn4g")
+max_distance = 560.0
 
 [node name="HurtTimer" type="Timer" parent="." unique_id=1996192716]
 unique_name_in_owner = true
