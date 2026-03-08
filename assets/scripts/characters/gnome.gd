@@ -10,7 +10,7 @@ enum GNOME_STATE {
 
 @export_group("Movement")
 @export var moveSpeed := 96.0;
-@export var speedStopLerp := 64.0;
+@export var speedStopLerp := 32.0;
 
 @export_group("Sound")
 @export var laughTimeMin := 1.0;
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 			moveDirection *= -1;
 			%Sprite2D.flip_h = !%Sprite2D.flip_h;
 	elif (state == GNOME_STATE.GNOME_STATE_HURT):
-		velocity.x = move_toward(velocity.x, 0, speedStopLerp * delta);
+		velocity.x = move_toward(velocity.x, 0, speedStopLerp);
 		
 		move_and_slide();
 		

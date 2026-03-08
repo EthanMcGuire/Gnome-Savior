@@ -25,6 +25,7 @@ var levelLoaded := false;
 var hud: HUD;
 var retryLabel: LabelRetry;
 var pauseScreen: Control;
+var speedrunTimer: SpeedrunTimer;
 var players: Node2D;
 var debris: Node2D;
 var levelData: Node2D;
@@ -52,6 +53,9 @@ var currentScene: PackedScene = null;
 var currentLevelName: String = "";
 var playerSpawn: PlayerSpawn = null;
 
+# Speedrun time
+var speedrunTimeMs := 0;
+
 #region Save_Data_Variables
 
 var heartContainersCollected = [];
@@ -76,25 +80,7 @@ func startGame() -> void:
 	loadLevel(STARTING_LEVEL);
 	
 func _process(delta: float) -> void:
-	if (needToRedrawBlood):
-		needToRedrawBlood = false;
-		_updateBloodSprite();
-	
-	if (levelLoaded):
-	
-		if (Input.is_action_just_pressed("pause")):
-			_toggleGamePaused();
-		
-		if (!get_tree().paused && Input.is_action_just_pressed("restart")):
-			print("RESTARTING LEVEL.");
-			
-			if (playerIsDead):
-				playerIsDead = false;
-				retryLabel.visible = false;
-				startDeathTransition(currentScene);
-			else:
-				# Don't reduce lives
-				startLevelTransition(currentScene);
+	_update(delta);
 
 func _loadBaseNodes() -> void:
 	hud = get_node("/root/LevelBase/CanvasLayer/HUD");
@@ -103,6 +89,8 @@ func _loadBaseNodes() -> void:
 	assert(retryLabel);
 	pauseScreen = get_node("/root/LevelBase/CanvasLayer/PauseScreen");
 	assert(pauseScreen);
+	speedrunTimer = get_node("/root/LevelBase/CanvasLayer/SpeedrunTimer");
+	assert(speedrunTimer);
 	players = get_node("/root/LevelBase/Players");
 	assert(players);
 	debris = get_node("/root/LevelBase/Debris");
@@ -136,6 +124,40 @@ func gameOver() -> void:
 func _toggleGamePaused() -> void:
 	get_tree().paused = !get_tree().paused;
 	pauseScreen.visible = get_tree().paused;
+
+#region Update
+
+func _update(delta: float) -> void:
+	if (needToRedrawBlood):
+		needToRedrawBlood = false;
+		_updateBloodSprite();
+	
+	if (levelLoaded):
+		_updateLevel(delta);
+
+func _updateLevel(delta: float) -> void:
+	if (Input.is_action_just_pressed("pause")):
+		_toggleGamePaused();
+		
+	if (!get_tree().paused):
+		_updateSpeedrunTime(delta);
+		
+		if (Input.is_action_just_pressed("restart")):
+			print("RESTARTING LEVEL.");
+			
+			if (playerIsDead):
+				playerIsDead = false;
+				retryLabel.visible = false;
+				startDeathTransition(currentScene);
+			else:
+				# Don't reduce lives
+				startLevelTransition(currentScene);
+
+func _updateSpeedrunTime(delta: float) -> void:
+	speedrunTimeMs += delta * 1000;
+	speedrunTimer.setTime(speedrunTimeMs);
+
+#endregion Update
 		
 #region Level
 	

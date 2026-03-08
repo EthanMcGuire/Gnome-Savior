@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c73tbrkn1feux" path="res://assets/scripts/label_retry.gd" id="5_5oahs"]
 [ext_resource type="PackedScene" uid="uid://cwgn3tae8dypp" path="res://assets/scenes/UI/pause_screen.tscn" id="6_1rfi3"]
 [ext_resource type="PackedScene" uid="uid://dhbkiap1a2c1l" path="res://assets/scenes/UI/sign_text.tscn" id="6_r3mdm"]
+[ext_resource type="PackedScene" uid="uid://cds5hbhmmuixs" path="res://assets/scenes/UI/speedrun_timer.tscn" id="7_xsi40"]
 
 [node name="LevelBase" type="Node2D" unique_id=709013900]
 script = ExtResource("1_r3mdm")
@@ -41,6 +42,8 @@ grow_vertical = 2
 text = "PRESS R TO RETRY"
 label_settings = ExtResource("3_8hsts")
 script = ExtResource("5_5oahs")
+
+[node name="SpeedrunTimer" parent="CanvasLayer" unique_id=110181162 instance=ExtResource("7_xsi40")]
 
 [node name="PauseScreen" parent="CanvasLayer" unique_id=1443011352 instance=ExtResource("6_1rfi3")]
 visible = false

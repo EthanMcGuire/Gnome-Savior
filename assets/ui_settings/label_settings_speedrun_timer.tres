@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://hxulqx84ua8q"]
+
+[ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="1_l2b52"]
+
+[resource]
+font = ExtResource("1_l2b52")
+font_size = 12
+font_color = Color(0, 1, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)

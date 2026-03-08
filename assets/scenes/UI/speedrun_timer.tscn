@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cds5hbhmmuixs"]
+
+[ext_resource type="Script" uid="uid://omk5irbd8m6a" path="res://assets/scripts/UI/speedrun_timer.gd" id="1_c1q8l"]
+[ext_resource type="LabelSettings" uid="uid://hxulqx84ua8q" path="res://assets/ui_settings/label_settings_speedrun_timer.tres" id="2_l3tkh"]
+[ext_resource type="LabelSettings" uid="uid://ds64jiprdw6tm" path="res://assets/ui_settings/label_settings_speedrun_timer_small.tres" id="3_2y6q6"]
+
+[node name="SpeedrunTimer" type="Control" unique_id=110181162]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("1_c1q8l")
+
+[node name="LabelTime" type="Label" parent="." unique_id=415410386]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_right = -26.0
+offset_bottom = 19.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "00:00"
+label_settings = ExtResource("2_l3tkh")
+horizontal_alignment = 2
+
+[node name="LabelDecimal" type="Label" parent="." unique_id=2072736404]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 25.0
+grow_horizontal = 0
+text = ".00"
+label_settings = ExtResource("3_2y6q6")
