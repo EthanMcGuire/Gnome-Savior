@@ -4,7 +4,7 @@ class_name Trap
 @export var damage := 1;
 @export var knockback := 400.0;
 
-func _dealDamage(body: Node2D, knockbackPos: Vector2) -> void:
+func _dealDamage(body: Node2D, knockbackPos: Vector2) -> bool:
 	if (body.has_method("takeDamage")):
 		var knockbackDir;
 		
@@ -12,3 +12,7 @@ func _dealDamage(body: Node2D, knockbackPos: Vector2) -> void:
 		knockbackDir = knockbackDir.normalized();
 		
 		body.takeDamage(knockbackDir * knockback, damage);
+		
+		return true;
+	
+	return false;

@@ -27,6 +27,8 @@
 &"scene": "res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Level Stuff/checkpoint.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/tree.tscn"
 }]
 }, {
 "name": "Traps",
@@ -40,6 +42,16 @@
 &"scene": "res://assets/scenes/Entities/Traps/spike.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/moving_spike.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/gun.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/rotating_gun.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/apple.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/spike_eye.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/spike_eye_fixed.tscn"
 }]
 }, {
 "name": "Characters",

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ccvjsftgp7ahj"]
+
+[ext_resource type="Script" uid="uid://b3pe37w8eo7jt" path="res://assets/scripts/trap/rotating_gun.gd" id="1_arc2b"]
+[ext_resource type="Texture2D" uid="uid://cd425or6pbpxq" path="res://assets/sprites/traps/turret/Tower.png" id="1_b8pel"]
+[ext_resource type="PackedScene" uid="uid://dv0hpy16a8abt" path="res://assets/scenes/Entities/Traps/gun.tscn" id="2_arc2b"]
+
+[node name="RotatingGun" type="Node2D" unique_id=76967077]
+script = ExtResource("1_arc2b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=448077983]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_b8pel")
+offset = Vector2(-8, 0)
+
+[node name="Gun" parent="." unique_id=806748769 instance=ExtResource("2_arc2b")]
+unique_name_in_owner = true

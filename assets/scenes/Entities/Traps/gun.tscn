@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dv0hpy16a8abt"]
+
+[ext_resource type="Texture2D" uid="uid://b1cdtacrj1rae" path="res://assets/sprites/traps/turret/Cannon.png" id="1_8imyo"]
+[ext_resource type="Script" uid="uid://3ghp5aqp5jcf" path="res://assets/scripts/trap/gun.gd" id="1_h038i"]
+[ext_resource type="AudioStream" uid="uid://bv72ryk0lwe4a" path="res://assets/audio/sounds/trap/Gun/light_machine_gun.mp3" id="3_mjp8d"]
+
+[sub_resource type="Animation" id="Animation_mjp8d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-70, -176)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yxbvv"]
+resource_name = "shoot"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.09), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-70, -176), Vector2(-70, -169), Vector2(-70, -176)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfuvt"]
+_data = {
+&"RESET": SubResource("Animation_mjp8d"),
+&"shoot": SubResource("Animation_yxbvv")
+}
+
+[node name="Gun" type="Node2D" unique_id=806748769]
+script = ExtResource("1_h038i")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1485209482]
+stream = ExtResource("3_mjp8d")
+volume_db = 1.0
+max_distance = 320.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=465129936]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_rfuvt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1830045463]
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_8imyo")
+centered = false
+offset = Vector2(-70, -176)
+
+[node name="Body" type="StaticBody2D" parent="." unique_id=1929484377]
+rotation = 1.5707964
+collision_layer = 258
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body" unique_id=395264375]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(4, -6, 6, -3, 6, 5, 4, 7, -4, 7, -6, 5, -6, -3, -4, -6, -2, -10, -2.0000007, -16, 1.9999993, -16, 2, -10)
+
+[node name="RayCast2D" type="RayCast2D" parent="Body" unique_id=1291349091]
+unique_name_in_owner = true
+rotation = -1.5707964
+target_position = Vector2(160, 0)
+collision_mask = 257
+
+[node name="BulletSpawn" type="Node2D" parent="." unique_id=94753241]
+unique_name_in_owner = true
+position = Vector2(19, 0)

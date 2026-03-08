@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://carphlb4gqcyd"
-path="res://.godot/imported/knifesharpener1.wav-fd6dc2bba7cdff152fcfbb887776ac06.sample"
+path="res://.godot/imported/knifesharpener1.wav-743e37410bb26877d70a594759c8eb78.sample"
 
 [deps]
 
-source_file="res://assets/audio/sounds/trap/knifesharpener1.wav"
-dest_files=["res://.godot/imported/knifesharpener1.wav-fd6dc2bba7cdff152fcfbb887776ac06.sample"]
+source_file="res://assets/audio/sounds/trap/spike/knifesharpener1.wav"
+dest_files=["res://.godot/imported/knifesharpener1.wav-743e37410bb26877d70a594759c8eb78.sample"]
 
 [params]
 

@@ -11,9 +11,9 @@ const DEBRIS := preload("res://assets/scenes/Entities/debris.tscn");
 const BLOOD_PARTICLE_SPRITE := preload("res://assets/sprites/Particles/particleblood_small.png");
 const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
-const COINS_ONE_UP := 100;
+const COINS_ONE_UP := 100; 
 
-var maxHp := 10;
+var maxHp := 1;
 var hp := maxHp;
 var lives := 3;
 var coins := 0;
@@ -24,6 +24,7 @@ var levelLoaded := false;
 # Base nodes
 var hud: HUD;
 var retryLabel: LabelRetry;
+var pauseScreen: Control;
 var players: Node2D;
 var debris: Node2D;
 var levelData: Node2D;
@@ -33,6 +34,7 @@ var musicPlayer: AudioStreamPlayer;
 var soundLifeUp: AudioStreamPlayer;
 var bloodSprite: Sprite2D;
 var signText: SignText;
+var projectiles: Node2D;
 
 var player : PlayerController;
 var camera: PlayerCamera = null;
@@ -61,8 +63,13 @@ var currentCheckpoint = "";
 func _ready() -> void:
 	randomize();
 	
+	# So we can unpause the game
+	process_mode = Node.PROCESS_MODE_ALWAYS;
+	
 	bloodDrawImage.resize(bloodSize, bloodSize);
 	
+## This needs to be called to start the game! Should be called when in the scene 'level_base'
+func startGame() -> void:
 	_loadBaseNodes();
 	_resetGameData();
 	
@@ -73,9 +80,12 @@ func _process(delta: float) -> void:
 		needToRedrawBlood = false;
 		_updateBloodSprite();
 	
-	if (Input.is_action_just_pressed("restart")):
-		# Only let the player press restart if a level is loaded
-		if (levelLoaded):
+	if (levelLoaded):
+	
+		if (Input.is_action_just_pressed("pause")):
+			_toggleGamePaused();
+		
+		if (!get_tree().paused && Input.is_action_just_pressed("restart")):
 			print("RESTARTING LEVEL.");
 			
 			if (playerIsDead):
@@ -91,6 +101,8 @@ func _loadBaseNodes() -> void:
 	assert(hud);
 	retryLabel = get_node("/root/LevelBase/CanvasLayer/LabelRetry");
 	assert(retryLabel);
+	pauseScreen = get_node("/root/LevelBase/CanvasLayer/PauseScreen");
+	assert(pauseScreen);
 	players = get_node("/root/LevelBase/Players");
 	assert(players);
 	debris = get_node("/root/LevelBase/Debris");
@@ -109,6 +121,8 @@ func _loadBaseNodes() -> void:
 	assert(bloodSprite);
 	signText = get_node("/root/LevelBase/CanvasBack/SignText");
 	assert(signText);
+	projectiles = get_node("/root/LevelBase/Projectiles");
+	assert(projectiles);
 
 func _resetGameData() -> void:
 	setLives(3);
@@ -118,6 +132,10 @@ func _resetGameData() -> void:
 
 func gameOver() -> void:
 	get_tree().quit();
+	
+func _toggleGamePaused() -> void:
+	get_tree().paused = !get_tree().paused;
+	pauseScreen.visible = get_tree().paused;
 		
 #region Level
 	
@@ -155,6 +173,7 @@ func _unloadLevelData() -> void:
 	_clearDebris();
 	_freeParticles();
 	_freeEffects();
+	_freeProjectiles();
 	playerSpawn = null;
 
 func _loadNewLevelData() -> void:
@@ -290,6 +309,17 @@ func _freeEffects() -> void:
 
 #endregion Effects
 
+#region Projectiles
+
+func addProjectile(projectileNode) -> void:
+	projectiles.add_child(projectileNode);
+	
+func _freeProjectiles() -> void:
+	for child in projectiles.get_children():
+		child.queue_free();
+
+#endregion Projectiles
+
 #region Sign
 
 func showSign(text: String) -> void:
@@ -336,6 +366,11 @@ func setPlayerPosition(newPosition: Vector2) -> void:
 	
 	player.global_position = newPosition;
 	moveCameraToGoal();
+	
+func getPlayerPosition() -> Vector2:
+	assert(player);
+	
+	return player.global_position;
 		
 #endregion Player
 

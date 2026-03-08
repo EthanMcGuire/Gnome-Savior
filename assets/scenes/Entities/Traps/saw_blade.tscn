@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c2fv2jx1g025t"]
 
 [ext_resource type="Script" uid="uid://v5hmxqhenvdo" path="res://assets/scripts/trap/saw_blade.gd" id="1_n0j6o"]
+[ext_resource type="AudioStream" uid="uid://clhc0qxiwh1ik" path="res://assets/audio/sounds/trap/saw/dragon-studio-8-bit-buzz-463201.wav" id="2_aiju2"]
 [ext_resource type="Texture2D" uid="uid://b5fw0jb5htkgk" path="res://assets/sprites/traps/serra_redonda.png" id="2_gt25t"]
 
 [sub_resource type="Curve2D" id="Curve2D_n0j6o"]
@@ -71,6 +72,13 @@ update_scale = false
 unique_name_in_owner = true
 rotation = -1.5707964
 collision_layer = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Trap" unique_id=1734935406]
+rotation = 1.5707964
+stream = ExtResource("2_aiju2")
+volume_db = -10.0
+autoplay = true
+max_distance = 320.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Trap" unique_id=1122717669]
 libraries/ = SubResource("AnimationLibrary_73wyi")

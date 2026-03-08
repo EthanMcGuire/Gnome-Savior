@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c6r3cxue66idc"]
+[gd_scene format=3 uid="uid://ctjb3pfo6wkb5"]
 
-[ext_resource type="Texture2D" uid="uid://b7p47rq4fvhnd" path="res://assets/sprites/traps/spike_eye.png" id="1_4it4c"]
-[ext_resource type="Script" uid="uid://bblxnwf38pllg" path="res://assets/scripts/trap/spike_eye.gd" id="1_jo2ja"]
+[ext_resource type="Script" uid="uid://bblxnwf38pllg" path="res://assets/scripts/trap/spike_eye.gd" id="1_bqaq0"]
+[ext_resource type="Texture2D" uid="uid://b7p47rq4fvhnd" path="res://assets/sprites/traps/spike_eye.png" id="2_w6plq"]
 
 [sub_resource type="Animation" id="Animation_jo2ja"]
 length = 0.001
@@ -253,7 +253,7 @@ _data = {
 size = Vector2(10, 10)
 
 [node name="SpikeEye" type="Node2D" unique_id=147394102]
-script = ExtResource("1_jo2ja")
+script = ExtResource("1_bqaq0")
 knockback = 450.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1910904077]
@@ -266,7 +266,7 @@ libraries/ = SubResource("AnimationLibrary_idmte")
 autoplay = &"idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1121595667]
-texture = ExtResource("1_4it4c")
+texture = ExtResource("2_w6plq")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 

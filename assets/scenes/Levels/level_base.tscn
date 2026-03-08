@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://cn24ynmqciis5"]
 
+[ext_resource type="Script" uid="uid://ptbe5ntakte2" path="res://assets/scripts/level/level_base.gd" id="1_r3mdm"]
 [ext_resource type="AudioStream" uid="uid://bxvixfjcpa4ly" path="res://assets/audio/sounds/nes_sounds/achieved.ogg" id="2_5oahs"]
 [ext_resource type="PackedScene" uid="uid://c2gn2jbabhk4b" path="res://assets/scenes/UI/hud.tscn" id="2_dw3k1"]
 [ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="3_8hsts"]
 [ext_resource type="Script" uid="uid://c73tbrkn1feux" path="res://assets/scripts/label_retry.gd" id="5_5oahs"]
+[ext_resource type="PackedScene" uid="uid://cwgn3tae8dypp" path="res://assets/scenes/UI/pause_screen.tscn" id="6_1rfi3"]
 [ext_resource type="PackedScene" uid="uid://dhbkiap1a2c1l" path="res://assets/scenes/UI/sign_text.tscn" id="6_r3mdm"]
 
 [node name="LevelBase" type="Node2D" unique_id=709013900]
+script = ExtResource("1_r3mdm")
 
 [node name="Audio" type="Node2D" parent="." unique_id=699784968]
 
@@ -39,6 +42,9 @@ text = "PRESS R TO RETRY"
 label_settings = ExtResource("3_8hsts")
 script = ExtResource("5_5oahs")
 
+[node name="PauseScreen" parent="CanvasLayer" unique_id=1443011352 instance=ExtResource("6_1rfi3")]
+visible = false
+
 [node name="CanvasBack" type="CanvasLayer" parent="." unique_id=1790950364]
 layer = 500
 
@@ -49,6 +55,8 @@ layer = 500
 [node name="Debris" type="Node2D" parent="." unique_id=1680051603]
 
 [node name="Players" type="Node2D" parent="." unique_id=1967525565]
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=698584628]
 
 [node name="Particles" type="Node2D" parent="." unique_id=1627306310]
 

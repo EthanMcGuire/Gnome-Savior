@@ -1,0 +1,140 @@
+[gd_scene format=4 uid="uid://g26jsbqycnyv"]
+
+[ext_resource type="Script" uid="uid://dvjfmn4lb54mb" path="res://assets/scripts/level/intro.gd" id="1_ajrlx"]
+[ext_resource type="AudioStream" uid="uid://btk1s2eu08plj" path="res://assets/audio/music/Danish Mega Pony v. 4 OST - Track 02 (Fire Level).mp3" id="1_o6f3b"]
+[ext_resource type="Texture2D" uid="uid://dqfl2i6545q0x" path="res://assets/sprites/Background/burningbg.png" id="2_ajrlx"]
+[ext_resource type="TileSet" uid="uid://bsj6ahxf3veof" path="res://assets/tilesets/tile_set_fun_platformer.tres" id="3_03l00"]
+[ext_resource type="LabelSettings" uid="uid://boolnwfv1u8qb" path="res://assets/ui_settings/label_settings_sign.tres" id="4_kie4v"]
+[ext_resource type="Texture2D" uid="uid://jv5a7gkyeiai" path="res://assets/sprites/Tree/tree_noose.png" id="4_x1hqg"]
+[ext_resource type="Texture2D" uid="uid://b3ukx52g0occo" path="res://assets/sprites/Entities/all_gnomes.png" id="5_odusm"]
+
+[sub_resource type="Animation" id="Animation_ajrlx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_kie4v"]
+resource_name = "fire"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 64, 24), Rect2(0, 24, 64, 24), Rect2(0, 48, 64, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8lkj"]
+_data = {
+&"RESET": SubResource("Animation_ajrlx"),
+&"fire": SubResource("Animation_kie4v")
+}
+
+[node name="Intro" type="Node2D" unique_id=1928656440]
+script = ExtResource("1_ajrlx")
+
+[node name="TransitionTimer" type="Timer" parent="." unique_id=378466319]
+wait_time = 26.0
+one_shot = true
+autostart = true
+
+[node name="StartTimer" type="Timer" parent="." unique_id=782869205]
+unique_name_in_owner = true
+wait_time = 7.0
+one_shot = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1811038836]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("1_o6f3b")
+autoplay = true
+
+[node name="Background" type="Node2D" parent="." unique_id=1889970620]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background" unique_id=597241428]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background/CanvasLayer" unique_id=1669209972]
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0, 0, 0, 1)
+
+[node name="Gnome" type="Node2D" parent="Background/CanvasLayer" unique_id=2035757878]
+unique_name_in_owner = true
+position = Vector2(88, 0)
+
+[node name="TileMap" type="Node2D" parent="Background/CanvasLayer/Gnome" unique_id=1638020297]
+
+[node name="LayerBackFront" type="TileMapLayer" parent="Background/CanvasLayer/Gnome/TileMap" unique_id=718656874]
+use_parent_material = true
+tile_map_data = PackedByteArray("AABjAAQAAAABAAgAAABkAAQAAAABAAgAAABlAAQAAAABAAgAAABjAAMAAAABAAgAAABkAAMAAAABAAgAAABlAAMAAAABAAgAAABmAAQAAAABAAgAAABmAAMAAAABAAgAAABnAAQAAAABAAgAAABnAAMAAAABAAgAAABnAAIAAAABAAcAAABmAAIAAAABAAcAAABlAAIAAAABAAcAAABkAAIAAAABAAcAAABjAAIAAAABAAcAAABiAAQAAAAAAAgAAABiAAMAAAAAAAgAAABiAAIAAAAAAAcAAABoAAQAAAACAAgAAABoAAMAAAACAAgAAABoAAIAAAACAAcAAAAaAAsAAAAAAAYAAAAbAAsAAAABAAYAAAAcAAsAAAABAAYAAAAdAAsAAAACAAYAAAAaAAoAAAAAAAQAAAAbAAoAAAABAAQAAAAcAAoAAAABAAQAAAAdAAoAAAACAAQAAAA=")
+tile_set = ExtResource("3_03l00")
+
+[node name="Tree" type="Sprite2D" parent="Background/CanvasLayer/Gnome" unique_id=463993818]
+position = Vector2(430, 112)
+texture = ExtResource("4_x1hqg")
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Gnome" type="Sprite2D" parent="Background/CanvasLayer/Gnome" unique_id=38182129]
+position = Vector2(462, 146)
+texture = ExtResource("5_odusm")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Background" type="Sprite2D" parent="Background/CanvasLayer" unique_id=1626608913]
+texture_repeat = 2
+position = Vector2(0, 240)
+scale = Vector2(7.4999995, 3.7500002)
+texture = ExtResource("2_ajrlx")
+centered = false
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 24)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/CanvasLayer" unique_id=1476626976]
+libraries/ = SubResource("AnimationLibrary_h8lkj")
+autoplay = &"fire"
+speed_scale = 1.25
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1655513267]
+layer = 2000
+
+[node name="IntroText" type="Label" parent="HUD" unique_id=270339855]
+unique_name_in_owner = true
+offset_left = 120.0
+offset_top = 285.0
+offset_right = 360.0
+offset_bottom = 585.0
+text = "This is a message from the Gnomes.
+
+We desperately need your help. We have been isolated from our brothers and trapped by the dark lord Gilgamesh.
+
+Together we are strong, but we are powerless on our own.
+
+We have been scattered across the universe. Please, rescue us. With your help we may be able to defeat Gilgamesh once and for all.
+
+You are the chosen one. Only you can hear our plea. 
+
+You are the Gnome Savior."
+label_settings = ExtResource("4_kie4v")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

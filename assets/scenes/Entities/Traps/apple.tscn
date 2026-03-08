@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://5bbrpxagfgdu"]
+
+[ext_resource type="Texture2D" uid="uid://y7bnk5yvyadm" path="res://assets/sprites/Entities/apple.png" id="1_enywg"]
+[ext_resource type="Script" uid="uid://cgyimbjdp2dn4" path="res://assets/scripts/trap/apple.gd" id="1_qapi1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qapi1"]
+radius = 8.0
+
+[node name="Apple" type="Node2D" unique_id=209970007]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_qapi1")
+gravity = 175.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=450765658]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 257
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=908586249]
+unique_name_in_owner = true
+texture = ExtResource("1_enywg")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=7668289]
+shape = SubResource("CircleShape2D_qapi1")
+
+[node name="RayCast2D" type="RayCast2D" parent="Area2D" unique_id=449242680]
+unique_name_in_owner = true
+target_position = Vector2(0, 256)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

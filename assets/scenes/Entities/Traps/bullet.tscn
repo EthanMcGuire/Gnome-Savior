@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ujb4dhl2a0l5"]
+
+[ext_resource type="Texture2D" uid="uid://d11sbfu88p4vu" path="res://assets/sprites/traps/turret/Bullet_Cannon.png" id="1_jpknm"]
+[ext_resource type="Script" uid="uid://dq2lvhqpt4px" path="res://assets/scripts/trap/bullet.gd" id="1_klxnn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klxnn"]
+radius = 1.0
+height = 4.0
+
+[node name="Bullet" type="Area2D" unique_id=15007810]
+scale = Vector2(1.1, 1.1)
+collision_layer = 2
+collision_mask = 257
+script = ExtResource("1_klxnn")
+moveSpeed = 240.0
+knockback = 350.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1050730873]
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jpknm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=126065303]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_klxnn")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=396196167]
+rotation = 1.5707964
+color = Color(1, 0.972549, 1, 1)
+texture = ExtResource("1_jpknm")
+texture_scale = 0.15
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1438533024]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

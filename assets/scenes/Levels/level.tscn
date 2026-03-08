@@ -30,6 +30,10 @@ region_rect = Rect2(0, 0, 270, 200)
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1744099430]
 
+[node name="LayerBack2" type="TileMapLayer" parent="TileMap" unique_id=193524362]
+use_parent_material = true
+tile_set = ExtResource("4_llgw8")
+
 [node name="LayerBack" type="TileMapLayer" parent="TileMap" unique_id=1400858132]
 use_parent_material = true
 tile_set = ExtResource("4_llgw8")
@@ -44,6 +48,8 @@ tile_map_data = PackedByteArray("AAAdABQAAQAGAAQAAAAdABMAAQAFAAMAAAAdABIAAQAGAAQ
 tile_set = ExtResource("5_myik0")
 
 [node name="CameraRegions" type="Node2D" parent="." unique_id=1450925723]
+
+[node name="Trees" type="Node2D" parent="." unique_id=2098368406]
 
 [node name="LevelWarps" type="Node2D" parent="." unique_id=49862679]
 

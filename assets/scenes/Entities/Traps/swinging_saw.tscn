@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfkyghq7wcuwa"]
 
 [ext_resource type="Script" uid="uid://sk6msjpmf8s1" path="res://assets/scripts/trap/swinging_saw.gd" id="1_m71lg"]
+[ext_resource type="AudioStream" uid="uid://bonq7xejpphaf" path="res://assets/audio/sounds/swish/swish-9.wav" id="2_gvy70"]
 [ext_resource type="Texture2D" uid="uid://b5fw0jb5htkgk" path="res://assets/sprites/traps/serra_redonda.png" id="2_hp76f"]
 [ext_resource type="Texture2D" uid="uid://by7ypswyvu2qj" path="res://assets/sprites/traps/wood.png" id="2_m71lg"]
 [ext_resource type="Texture2D" uid="uid://burwfbpxr3qit" path="res://assets/sprites/traps/swinging_saw_anchor.png" id="4_skin3"]
@@ -22,12 +23,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_skin3"]
 resource_name = "swing"
 length = 2.0
 loop_mode = 1
-step = 0.5
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -35,10 +48,22 @@ tracks/0/path = NodePath("Anchor:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.6, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -1.3962634015954636, 1.3962634015954636]
+"values": [0.0, -1.4835298641951802, -1.4835298, 1.4835298641951802, 1.4835299]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.65, 1.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gvy70"]
@@ -49,6 +74,14 @@ _data = {
 
 [node name="SwingingSaw" type="Node2D" unique_id=147394102]
 script = ExtResource("1_m71lg")
+speed = 1.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1787977062]
+unique_name_in_owner = true
+stream = ExtResource("2_gvy70")
+volume_db = 0.5
+pitch_scale = 0.65
+max_distance = 320.0
 
 [node name="Anchor" type="Node2D" parent="." unique_id=1897038379]
 
@@ -59,6 +92,7 @@ texture = ExtResource("2_m71lg")
 [node name="Saw" type="Area2D" parent="Anchor" unique_id=1910904077]
 unique_name_in_owner = true
 position = Vector2(0, 22)
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Anchor/Saw" unique_id=1121595667]
 position = Vector2(0.4, 0.15)
@@ -69,7 +103,7 @@ region_rect = Rect2(0, 0, 16, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/Saw" unique_id=1130837243]
 shape = SubResource("CircleShape2D_m71lg")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=455399303]
+[node name="SpriteAnchor" type="Sprite2D" parent="." unique_id=455399303]
 texture = ExtResource("4_skin3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=58960965]

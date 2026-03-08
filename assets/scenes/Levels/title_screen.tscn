@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://v331iayhisit"]
+
+[ext_resource type="Script" uid="uid://8kgwascpvi60" path="res://assets/scripts/level/title_screen.gd" id="1_7sbyh"]
+[ext_resource type="Texture2D" uid="uid://yv6e1j5dxplj" path="res://assets/sprites/Background/bg.png" id="2_75tu5"]
+[ext_resource type="AudioStream" uid="uid://dec2cnc60guv5" path="res://assets/audio/music/basic_platformer_music_-_title.wav" id="2_tuuty"]
+[ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="4_0kqpb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0kqpb"]
+font = ExtResource("4_0kqpb")
+font_size = 30
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.2509804)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_0kqpb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vjl5c"]
+resource_name = "title"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0adw"]
+_data = {
+&"RESET": SubResource("Animation_0kqpb"),
+&"title": SubResource("Animation_vjl5c")
+}
+
+[node name="TitleScreen" type="Node2D" unique_id=1928656440]
+script = ExtResource("1_7sbyh")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1811038836]
+process_mode = 3
+stream = ExtResource("2_tuuty")
+volume_db = -15.0
+autoplay = true
+
+[node name="Background" type="Node2D" parent="." unique_id=1889970620]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background" unique_id=597241428]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="Background/CanvasLayer" unique_id=1626608913]
+texture_repeat = 2
+position = Vector2(0, 29.999994)
+scale = Vector2(2.9999998, 1.8749998)
+texture = ExtResource("2_75tu5")
+centered = false
+offset = Vector2(0, -16)
+region_rect = Rect2(0, 0, 270, 200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819565069]
+layer = 2000
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1810811374]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 64.0
+offset_right = 255.0
+offset_bottom = 110.0
+grow_horizontal = 2
+use_top_left = true
+
+[node name="Title" type="Label" parent="CanvasLayer/CenterContainer" unique_id=1229562817]
+layout_mode = 2
+text = "GNOME SAVIOR"
+label_settings = SubResource("LabelSettings_0kqpb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPlay" type="MenuButton" parent="CanvasLayer" unique_id=2113296807]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = 16.0
+offset_right = 27.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0kqpb")
+toggle_mode = false
+keep_pressed_outside = true
+text = "PLAY"
+flat = false
+
+[node name="ButtonQuit" type="MenuButton" parent="CanvasLayer" unique_id=1563036381]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = 64.0
+offset_right = 27.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0kqpb")
+toggle_mode = false
+keep_pressed_outside = true
+text = "QUIT
+"
+flat = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1061234694]
+libraries/ = SubResource("AnimationLibrary_m0adw")
+autoplay = &"title"
+
+[connection signal="pressed" from="CanvasLayer/ButtonPlay" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
