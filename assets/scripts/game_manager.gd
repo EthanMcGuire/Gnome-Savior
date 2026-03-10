@@ -1,6 +1,6 @@
 extends Node
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_1.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_2.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -202,8 +202,7 @@ func _loadNewLevelData() -> void:
 	currentLevelName = level.levelName;
 	_createBloodCanvas(level.levelWidth, level.levelHeight);
 	_clearCheckpointData();
-	_stopMusic();
-	_playMusic(level.music);
+	_loadLevelMusic(level.music);
 
 func startLevelTransition(nextScene: PackedScene) -> void:
 	var transition;
@@ -227,7 +226,11 @@ func startDeathTransition(nextScene: PackedScene) -> void:
 
 #region Music
 
-func _playMusic(music: AudioStream):
+func _loadLevelMusic(music: AudioStream) -> void:
+	if (musicPlayer.stream != music):
+		_playMusic(music);
+
+func _playMusic(music: AudioStream) -> void:
 	if (!music):
 		print("GameManager: In _playMusic() music is null.");
 		return;
@@ -235,7 +238,7 @@ func _playMusic(music: AudioStream):
 	musicPlayer.stream = music;
 	musicPlayer.play();
 
-func _stopMusic():
+func _stopMusic() -> void:
 	musicPlayer.stop();
 
 #endregion Music
