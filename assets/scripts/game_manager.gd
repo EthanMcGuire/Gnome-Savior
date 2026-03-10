@@ -1,5 +1,7 @@
 extends Node
 
+const IS_TEST := true;
+
 const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_2.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
@@ -66,11 +68,13 @@ var currentCheckpoint = "";
  
 func _ready() -> void:
 	randomize();
+	bloodDrawImage.resize(bloodSize, bloodSize);
 	
 	# So we can unpause the game
 	process_mode = Node.PROCESS_MODE_ALWAYS;
 	
-	bloodDrawImage.resize(bloodSize, bloodSize);
+	if (IS_TEST):
+		get_tree().change_scene_to_file("res://assets/scenes/Levels/level_base.tscn");
 	
 ## This needs to be called to start the game! Should be called when in the scene 'level_base'
 func startGame() -> void:
