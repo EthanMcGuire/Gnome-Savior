@@ -17,6 +17,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1733592118]
-polygon = PackedVector2Array(0, -6, 8, 8, -8, 8)
+polygon = PackedVector2Array(0, -5, 8, 8, -8, 8)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

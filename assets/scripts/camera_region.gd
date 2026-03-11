@@ -4,7 +4,7 @@ class_name CameraRegion
 
 @export var firstRegion := false;
 
-@export_range(16.0, 3200.0, 0.25) var regionSizeX := 16.0:
+@export_range(16.0, 6000.0, 0.25) var regionSizeX := 16.0:
 	set(value):
 		regionSizeX = value;
 		snappedRegionSizeX = _snapValue(regionSizeX);

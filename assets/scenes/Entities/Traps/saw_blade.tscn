@@ -78,7 +78,7 @@ rotation = 1.5707964
 stream = ExtResource("2_aiju2")
 volume_db = -10.0
 autoplay = true
-max_distance = 320.0
+max_distance = 400.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Trap" unique_id=1122717669]
 libraries/ = SubResource("AnimationLibrary_73wyi")

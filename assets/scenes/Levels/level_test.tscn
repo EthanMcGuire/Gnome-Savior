@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://1wvt1h4kfu6r" path="res://assets/sprites/Tiles/tiles.png" id="1_lcj4h"]
 [ext_resource type="PackedScene" uid="uid://bxfdmr1fma12x" path="res://assets/scenes/Entities/player.tscn" id="2_ia5dg"]
 [ext_resource type="AudioStream" uid="uid://bf20jihp82yf1" path="res://assets/audio/music/basic_platformer_music_-_world_1.wav" id="3_ia5dg"]
-[ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/moving_platform.tscn" id="4_0md5e"]
+[ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/Level Stuff/moving_platform.tscn" id="4_0md5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0e48y"]
 texture = ExtResource("1_lcj4h")

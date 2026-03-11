@@ -1,15 +1,17 @@
-[gd_scene format=3 uid="uid://1buyysynbwlg"]
+[gd_scene format=3 uid="uid://bbsb1cb286pwf"]
 
-[ext_resource type="Script" uid="uid://dt050w0lib6jg" path="res://assets/scripts/trap/moving_spike.gd" id="1_0wttd"]
-[ext_resource type="AudioStream" uid="uid://carphlb4gqcyd" path="res://assets/audio/sounds/trap/spike/knifesharpener1.wav" id="2_73546"]
-[ext_resource type="Texture2D" uid="uid://pij15y4ij83a" path="res://assets/sprites/traps/spike.png" id="2_h12q0"]
+[ext_resource type="Script" uid="uid://dt050w0lib6jg" path="res://assets/scripts/trap/moving_spike.gd" id="1_ar56k"]
+[ext_resource type="AudioStream" uid="uid://carphlb4gqcyd" path="res://assets/audio/sounds/trap/spike/knifesharpener1.wav" id="2_m44pk"]
+[ext_resource type="Texture2D" uid="uid://pij15y4ij83a" path="res://assets/sprites/traps/spike.png" id="3_4nl06"]
 
 [node name="MovingSpike" type="Node2D" unique_id=147394102]
-script = ExtResource("1_0wttd")
+modulate = Color(1, 0, 0, 1)
+script = ExtResource("1_ar56k")
+damage = 99
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=669765538]
 unique_name_in_owner = true
-stream = ExtResource("2_73546")
+stream = ExtResource("2_m44pk")
 volume_db = -0.5
 pitch_scale = 1.1
 max_distance = 400.0
@@ -21,7 +23,7 @@ collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1121595667]
 unique_name_in_owner = true
-texture = ExtResource("2_h12q0")
+texture = ExtResource("3_4nl06")
 centered = false
 offset = Vector2(-8, -8)
 region_enabled = true

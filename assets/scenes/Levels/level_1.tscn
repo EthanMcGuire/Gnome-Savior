@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lcnaux1kh772" path="res://assets/scenes/Entities/camera_region.tscn" id="2_x3mf6"]
 [ext_resource type="PackedScene" uid="uid://bph7yu7b5hiqh" path="res://assets/scenes/Entities/Level Stuff/level_warp_basic.tscn" id="3_jrkym"]
 [ext_resource type="Texture2D" uid="uid://rw8vdvehs0nh" path="res://assets/sprites/Background/pixel_ocean_and_sky_background/4.png" id="3_kw78w"]
-[ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/moving_platform.tscn" id="4_ti06f"]
+[ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/Level Stuff/moving_platform.tscn" id="4_ti06f"]
 [ext_resource type="TileSet" uid="uid://bp5lxhp62uf5b" path="res://assets/tilesets/tile_set_nes.tres" id="5_br1en"]
 [ext_resource type="PackedScene" uid="uid://cwtmqimtblb37" path="res://assets/scenes/Entities/Level Stuff/sign.tscn" id="5_jrkym"]
 [ext_resource type="TileSet" uid="uid://bsj6ahxf3veof" path="res://assets/tilesets/tile_set_fun_platformer.tres" id="5_rvgxx"]

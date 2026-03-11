@@ -52,6 +52,10 @@
 &"scene": "res://assets/scenes/Entities/Traps/spike_eye.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/spike_eye_fixed.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/one_shot_spike.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/one_shot_moving_spike.tscn"
 }]
 }, {
 "name": "Characters",

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b7el0rtw1snaw"]
+
+[ext_resource type="PackedScene" uid="uid://dt05ndcmgqls" path="res://assets/scenes/Entities/Traps/spike.tscn" id="1_o4p62"]
+
+[node name="OneShotSpike" type="Node2D" unique_id=147394102]
+
+[node name="Spike" parent="." unique_id=1714221456 instance=ExtResource("1_o4p62")]
+modulate = Color(1, 0, 0, 1)
+damage = 99
