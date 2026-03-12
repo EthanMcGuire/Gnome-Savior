@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://dt05ndcmgqls" path="res://assets/scenes/Entities/Traps/spike.tscn" id="17_pi3en"]
 [ext_resource type="PackedScene" uid="uid://1buyysynbwlg" path="res://assets/scenes/Entities/Traps/moving_spike.tscn" id="18_e5382"]
 
-[sub_resource type="Curve2D" id="Curve2D_pi3en"]
+[sub_resource type="Curve2D" id="Curve2D_br1en"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -194)
@@ -97,7 +97,7 @@ warpLevel = "res://assets/scenes/Levels/level_2.tscn"
 
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("4_ti06f")]
 position = Vector2(1616, 728)
-curve = SubResource("Curve2D_pi3en")
+curve = SubResource("Curve2D_br1en")
 easeType = 2
 transitionType = 4
 
@@ -366,17 +366,17 @@ position = Vector2(1272, 352)
 [node name="MovingSpike23" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="70" unique_id=1370706281 instance=ExtResource("18_e5382")]
 position = Vector2(1288, 352)
 
-[node name="Apple" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="71" unique_id=209970007 instance=ExtResource("12_ge1p7")]
+[node name="Apple2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="71" unique_id=209970007 instance=ExtResource("12_ge1p7")]
 position = Vector2(304, 268)
 isFake = true
 
-[node name="Apple2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="72" unique_id=458546248 instance=ExtResource("12_ge1p7")]
+[node name="Apple3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="72" unique_id=458546248 instance=ExtResource("12_ge1p7")]
 position = Vector2(272, 244)
 
-[node name="Apple3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="73" unique_id=1791579208 instance=ExtResource("12_ge1p7")]
+[node name="Apple4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="73" unique_id=1791579208 instance=ExtResource("12_ge1p7")]
 position = Vector2(484, 160)
 
-[node name="Apple4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="74" unique_id=432647112 instance=ExtResource("12_ge1p7")]
+[node name="Apple5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="74" unique_id=432647112 instance=ExtResource("12_ge1p7")]
 position = Vector2(516, 150)
 isFake = true
 

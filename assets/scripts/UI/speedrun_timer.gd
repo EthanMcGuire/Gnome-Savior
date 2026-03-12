@@ -12,5 +12,5 @@ func setTime(ms: int):
 	minutes = int(seconds) / 60;
 	seconds = fmod(seconds, 60.0);
 	
-	%LabelTime.text = "%d:%d" % [minutes, floor(seconds)];
+	%LabelTime.text = "%d:%02d" % [minutes, floor(seconds)];
 	%LabelDecimal.text = ".%02d" % [fmod(seconds, 1.0) * 100];
