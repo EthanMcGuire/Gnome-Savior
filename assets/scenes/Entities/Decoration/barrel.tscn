@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dh0dafdhaythd"]
+
+[ext_resource type="Texture2D" uid="uid://cdk6mxadpnlxo" path="res://assets/sprites/dungeon/barrel.png" id="1_06jhm"]
+
+[node name="Barrel" type="Node2D" unique_id=213884149]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636166644]
+position = Vector2(0, -7)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("1_06jhm")

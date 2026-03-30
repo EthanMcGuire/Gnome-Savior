@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b2qyp3bpojfkm"]
+
+[ext_resource type="Script" uid="uid://db2lte4cj0sey" path="res://assets/scripts/trap/dog.gd" id="1_4tf2w"]
+[ext_resource type="Texture2D" uid="uid://c0mlop7gfn5ec" path="res://assets/sprites/Dog/dog_evil.png" id="1_i3wsh"]
+[ext_resource type="AudioStream" uid="uid://bmnv11esfl4gk" path="res://assets/audio/sounds/trap/dog/dog.wav" id="3_3ks5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3wsh"]
+size = Vector2(27, 30)
+
+[node name="Dog" type="Node2D" unique_id=2144142115]
+script = ExtResource("1_4tf2w")
+speed = 125.0
+damage = 99
+knockback = 500.0
+
+[node name="BarkTimer" type="Timer" parent="." unique_id=2081587076]
+wait_time = 2.0
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1843705285]
+unique_name_in_owner = true
+stream = ExtResource("3_3ks5q")
+volume_db = 2.5
+pitch_scale = 0.9
+max_distance = 500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=343401948]
+modulate = Color(1, 0.2509804, 0.2509804, 1)
+texture = ExtResource("1_i3wsh")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1983801676]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1882881011]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_i3wsh")
+
+[connection signal="timeout" from="BarkTimer" to="." method="_on_bark_timer_timeout"]

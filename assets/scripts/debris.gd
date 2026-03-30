@@ -3,9 +3,10 @@ class_name Debris
 
 @export var RANDOM_DEGREES := 60.0;
 
-func setTexture(texture: Texture2D, flipH: bool) -> void:
+func setTexture(texture: Texture2D, flipH: bool, scale: float) -> void:
 	%Sprite2D.texture = texture;
 	%Sprite2D.flip_h = flipH;
+	%Sprite2D.scale = Vector2(scale, scale);
 
 func setRegion(xOffset: float, yOffset: float, width: float, height: float) -> void:
 	%Sprite2D.region_rect = Rect2(xOffset, yOffset, width, height);

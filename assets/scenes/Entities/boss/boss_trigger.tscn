@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dgoprtm4tfkvs"]
+
+[ext_resource type="Script" uid="uid://k276anr6mudo" path="res://assets/scripts/boss/boss_trigger.gd" id="1_01bem"]
+[ext_resource type="AudioStream" uid="uid://d4h774ks0nque" path="res://assets/audio/music/boss/zander_noriega_-_the_rigged_game_instrumental_remix_-_01_the_rigged_game_instrumental_remix.wav" id="2_crw4o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xesv"]
+
+[node name="BossTrigger" type="Area2D" unique_id=138798280]
+collision_layer = 0
+script = ExtResource("1_01bem")
+bossMusic = ExtResource("2_crw4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=552977301]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_7xesv")
+
+[node name="TimerStartDelay" type="Timer" parent="." unique_id=1984094216]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerStartDelay" to="." method="_on_timer_start_delay_timeout"]

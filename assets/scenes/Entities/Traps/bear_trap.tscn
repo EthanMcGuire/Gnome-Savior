@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cey5eioca4cbv"]
+
+[ext_resource type="Script" uid="uid://dk04rkkp17mxb" path="res://assets/scripts/trap/bear_trap.gd" id="1_6pk2o"]
+[ext_resource type="Texture2D" uid="uid://dokru28q5kdc" path="res://assets/sprites/dungeon/trap2.png" id="1_3311e"]
+[ext_resource type="Texture2D" uid="uid://1qiu0dw5wtl0" path="res://assets/sprites/dungeon/trap1.png" id="2_6pk2o"]
+[ext_resource type="AudioStream" uid="uid://f5xfm2fabjx2" path="res://assets/audio/sounds/trap/Bear Trap/bearTrapSound.mp3" id="2_vlrmp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlrmp"]
+size = Vector2(24, 3)
+
+[node name="BearTrap" type="Area2D" unique_id=1892005007]
+collision_layer = 2
+script = ExtResource("1_6pk2o")
+damage = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2059629936]
+unique_name_in_owner = true
+stream = ExtResource("2_vlrmp")
+max_distance = 400.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=393050243]
+
+[node name="SpriteOpen" type="Sprite2D" parent="Sprite" unique_id=821508477]
+unique_name_in_owner = true
+position = Vector2(0, -12.75)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_3311e")
+
+[node name="SpriteClosed" type="Sprite2D" parent="Sprite" unique_id=1466924444]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -12.75)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6pk2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417533516]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_vlrmp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

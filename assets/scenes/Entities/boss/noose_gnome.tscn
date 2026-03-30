@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dvtl1ghl7cucs"]
+
+[ext_resource type="Script" uid="uid://brivtahohv8e0" path="res://assets/scripts/trap/noose_gnome.gd" id="1_desof"]
+[ext_resource type="Texture2D" uid="uid://cu5n5bvc85bif" path="res://assets/sprites/Boss/noose.png" id="1_hb4nr"]
+[ext_resource type="Texture2D" uid="uid://b3ukx52g0occo" path="res://assets/sprites/Entities/all_gnomes.png" id="1_lie7c"]
+[ext_resource type="Texture2D" uid="uid://cmao8hu18euqg" path="res://assets/sprites/Boss/nooseRope.png" id="1_wrj1w"]
+[ext_resource type="AudioStream" uid="uid://bl1wrvq0ms4j3" path="res://assets/audio/sounds/gnome/gnome_laugh_1.wav" id="2_hb4nr"]
+[ext_resource type="AudioStream" uid="uid://jnpn72el3xyv" path="res://assets/audio/sounds/gnome/gnome_laugh_2.wav" id="3_wrj1w"]
+[ext_resource type="AudioStream" uid="uid://surk7nbxhq67" path="res://assets/audio/sounds/gnome/gnome_laugh_3.wav" id="4_desof"]
+[ext_resource type="AudioStream" uid="uid://cg8x2najjjvtq" path="res://assets/audio/sounds/gnome/gnome_laugh_4.wav" id="5_6dovy"]
+[ext_resource type="AudioStream" uid="uid://dokq0uk58tjlm" path="res://assets/audio/sounds/Rope/rope.mp3" id="9_6dovy"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_myev1"]
+random_pitch = 1.0028923
+streams_count = 4
+stream_0/stream = ExtResource("2_hb4nr")
+stream_1/stream = ExtResource("3_wrj1w")
+stream_2/stream = ExtResource("4_desof")
+stream_3/stream = ExtResource("5_6dovy")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2dson"]
+radius = 3.0
+height = 14.0
+
+[node name="NooseGnome" type="Node2D" unique_id=828155016]
+script = ExtResource("1_desof")
+knockback = 500.0
+
+[node name="Sprites" type="Node2D" parent="." unique_id=201664762]
+unique_name_in_owner = true
+
+[node name="NooseTop" type="Sprite2D" parent="Sprites" unique_id=586545368]
+texture_repeat = 2
+position = Vector2(0.53162, -118.201294)
+texture = ExtResource("1_wrj1w")
+region_enabled = true
+region_rect = Rect2(0, 0, 2, 200)
+
+[node name="NooseBack" type="Sprite2D" parent="Sprites" unique_id=965815116]
+position = Vector2(0.02743721, -10.707659)
+texture = ExtResource("1_hb4nr")
+region_enabled = true
+region_rect = Rect2(0, 0, 7, 15)
+
+[node name="NooseRight" type="Sprite2D" parent="Sprites" unique_id=1193532403]
+position = Vector2(2.1678028, -4.2590075)
+texture = ExtResource("1_hb4nr")
+region_enabled = true
+region_rect = Rect2(4, 9, 3, 10)
+
+[node name="Gnome" type="Sprite2D" parent="Sprites" unique_id=919756186]
+unique_name_in_owner = true
+position = Vector2(0.5730858, -1.0520992)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_lie7c")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="NooseFrontRight" type="Sprite2D" parent="Sprites" unique_id=1448915697]
+position = Vector2(2.1592999, -0.7776537)
+texture = ExtResource("1_hb4nr")
+region_enabled = true
+region_rect = Rect2(4, 16, 3, 3)
+
+[node name="NooseFront" type="Sprite2D" parent="Sprites" unique_id=494649152]
+position = Vector2(-0.46920013, -1.277832)
+texture = ExtResource("1_hb4nr")
+region_enabled = true
+region_rect = Rect2(0, 15, 6, 4)
+
+[node name="Sound" type="Node2D" parent="." unique_id=1178093934]
+
+[node name="AudioStreamLaugh" type="AudioStreamPlayer2D" parent="Sound" unique_id=992311387]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_myev1")
+volume_db = 3.5
+pitch_scale = 1.75
+autoplay = true
+max_distance = 480.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1258852378]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=104548609]
+shape = SubResource("CapsuleShape2D_2dson")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2024445758]
+unique_name_in_owner = true
+stream = ExtResource("9_6dovy")
+volume_db = -3.0
+pitch_scale = 1.25
+autoplay = true
+max_distance = 400.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://51ys0ho1ckf7"]
+
+[ext_resource type="Texture2D" uid="uid://cks5qpaj4yfjg" path="res://assets/sprites/Boss/fist.png" id="1_ixmcb"]
+[ext_resource type="Script" uid="uid://dllq1ruu6dfj3" path="res://assets/scripts/boss/gnome_fist.gd" id="1_raxfk"]
+[ext_resource type="AudioStream" uid="uid://bncvxbbx0k3n6" path="res://assets/audio/sounds/swoosh/60009__qubodup__swosh_22.wav" id="2_0q2yr"]
+[ext_resource type="AudioStream" uid="uid://6wwg88453cmw" path="res://assets/audio/sounds/8 bit sounds/Hit 2.wav" id="2_dvb2b"]
+[ext_resource type="AudioStream" uid="uid://r03yoe6a8c3t" path="res://assets/audio/sounds/gore/ragecore29-htf-head-or-body-rips-apart-481466.mp3" id="5_e2cry"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_raxfk"]
+radius = 20.5
+height = 52.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mya26"]
+size = Vector2(40, 10)
+
+[node name="GnomeFistRight" type="Node2D" unique_id=1211366112]
+script = ExtResource("1_raxfk")
+isRightHand = true
+knockback = 800.0
+
+[node name="TimerFree" type="Timer" parent="." unique_id=1493672755]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AudioStreamSlap" type="AudioStreamPlayer2D" parent="." unique_id=1872509723]
+unique_name_in_owner = true
+stream = ExtResource("2_0q2yr")
+max_distance = 500.0
+
+[node name="AudioStreamSlam" type="AudioStreamPlayer2D" parent="." unique_id=85784546]
+unique_name_in_owner = true
+stream = ExtResource("2_dvb2b")
+volume_db = 2.0
+pitch_scale = 0.45
+max_distance = 500.0
+
+[node name="AudioStreamDeath" type="AudioStreamPlayer2D" parent="." unique_id=1159519534]
+unique_name_in_owner = true
+stream = ExtResource("5_e2cry")
+pitch_scale = 0.75
+max_distance = 500.0
+
+[node name="Fist" type="Node2D" parent="." unique_id=1370616085]
+unique_name_in_owner = true
+
+[node name="SpriteFist" type="Sprite2D" parent="Fist" unique_id=43020304]
+unique_name_in_owner = true
+rotation = 1.5707964
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ixmcb")
+
+[node name="AreaDamage" type="Area2D" parent="Fist" unique_id=67695644]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fist/AreaDamage" unique_id=786075254]
+position = Vector2(5, 6)
+shape = SubResource("CapsuleShape2D_raxfk")
+
+[node name="AreaHurt" type="Area2D" parent="Fist" unique_id=726299727]
+unique_name_in_owner = true
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fist/AreaHurt" unique_id=1449572812]
+position = Vector2(3, -25)
+shape = SubResource("RectangleShape2D_mya26")
+
+[connection signal="timeout" from="TimerFree" to="." method="_on_timer_free_timeout"]
+[connection signal="body_entered" from="Fist/AreaDamage" to="." method="_on_area_damage_body_entered"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bb0t7x2xq5a2x"]
+
+[ext_resource type="Texture2D" uid="uid://dmkugljfvdfdc" path="res://assets/sprites/dungeon/skull.png" id="1_bc0yx"]
+
+[node name="Skull" type="Node2D" unique_id=213884149]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636166644]
+position = Vector2(0, -7)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("1_bc0yx")

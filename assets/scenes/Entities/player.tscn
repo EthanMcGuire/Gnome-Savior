@@ -188,7 +188,7 @@ one_shot = true
 
 [node name="HurtTimer" type="Timer" parent="." unique_id=696248602]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="EnableOneWayCollision" to="." method="_on_enable_one_way_collision_timeout"]

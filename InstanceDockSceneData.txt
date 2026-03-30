@@ -8,58 +8,57 @@
 &"scene": "res://assets/scenes/Entities/Items/heart_container.tscn"
 }]
 }, {
-"name": "Level",
+"name": "Characters",
 "scenes": [{
-&"scene": "res://assets/scenes/Entities/moving_platform.tscn"
+&"scene": "res://assets/scenes/Entities/gnome.tscn"
+}]
 }, {
-&"scene": "res://assets/scenes/Entities/level_warp.tscn"
+"name": "Decoration",
+"scenes": [{
+&"scene": "res://assets/scenes/Entities/Decoration/barrel.tscn"
 }, {
-&"scene": "res://assets/scenes/Entities/level_warp_door.tscn"
+&"scene": "res://assets/scenes/Entities/Decoration/cage.tscn"
 }, {
-&"scene": "res://assets/scenes/Entities/camera_region.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Level Stuff/sign.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Level Stuff/level_warp_basic.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Level Stuff/portal.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Level Stuff/checkpoint.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Level Stuff/tree.tscn"
+&"scene": "res://assets/scenes/Entities/Decoration/skull.tscn"
 }]
 }, {
 "name": "Traps",
 "scenes": [{
-&"scene": "res://assets/scenes/Entities/spike_eye.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Traps/saw_blade.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Traps/swinging_saw.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Traps/spike.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Traps/moving_spike.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Traps/gun.tscn"
-}, {
-&"scene": "res://assets/scenes/Entities/Traps/rotating_gun.tscn"
+&"scene": "res://assets/scenes/Entities/Traps/bear_trap.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/apple.tscn"
 }, {
-&"scene": "res://assets/scenes/Entities/Traps/spike_eye.tscn"
+&"scene": "res://assets/scenes/Entities/Traps/gun.tscn"
 }, {
-&"scene": "res://assets/scenes/Entities/Traps/spike_eye_fixed.tscn"
+&"scene": "res://assets/scenes/Entities/Traps/moving_spike.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/one_shot_moving_spike.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/spike.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/one_shot_spike.tscn"
 }, {
-&"scene": "res://assets/scenes/Entities/Traps/one_shot_moving_spike.tscn"
+&"scene": "res://assets/scenes/Entities/Traps/rotating_gun.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/saw_blade.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/spike_eye.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/swinging_saw.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/dog.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/dog_spawner.tscn"
 }]
 }, {
-"name": "Characters",
+"name": "Level",
 "scenes": [{
-&"scene": "res://assets/scenes/Entities/gnome.tscn"
+&"scene": "res://assets/scenes/Entities/Level Stuff/checkpoint.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/moving_platform.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/sign.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Level Stuff/tree.tscn"
 }]
 }]

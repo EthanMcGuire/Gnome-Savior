@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://qp2tsvp2nuo6"
+path="res://.godot/imported/doggy earrape theme.ogg-23f6f5e65252ca30625fbac97f11ed5d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/dog/doggy earrape theme.ogg"
+dest_files=["res://.godot/imported/doggy earrape theme.ogg-23f6f5e65252ca30625fbac97f11ed5d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

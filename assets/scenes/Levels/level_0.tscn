@@ -95,27 +95,27 @@ position = Vector2(744, 352)
 [node name="Spike7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="6" unique_id=1458987405 instance=ExtResource("9_ffunk")]
 position = Vector2(728, 352)
 
-[node name="Apple" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="7" unique_id=1202864077 instance=ExtResource("11_5ag3s")]
+[node name="Apple2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="7" unique_id=1202864077 instance=ExtResource("11_5ag3s")]
 position = Vector2(552, 232)
 
-[node name="Apple2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="8" unique_id=1236246808 instance=ExtResource("11_5ag3s")]
+[node name="Apple3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="8" unique_id=1236246808 instance=ExtResource("11_5ag3s")]
 position = Vector2(584, 248)
 
-[node name="Apple3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="9" unique_id=1890912935 instance=ExtResource("11_5ag3s")]
+[node name="Apple4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="9" unique_id=1890912935 instance=ExtResource("11_5ag3s")]
 position = Vector2(833, 203)
 
-[node name="Apple4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="10" unique_id=2110940664 instance=ExtResource("11_5ag3s")]
+[node name="Apple5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="10" unique_id=2110940664 instance=ExtResource("11_5ag3s")]
 position = Vector2(869, 192)
 
-[node name="Apple5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="11" unique_id=209970007 instance=ExtResource("11_5ag3s")]
+[node name="Apple6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="11" unique_id=209970007 instance=ExtResource("11_5ag3s")]
 position = Vector2(210, 256)
 isFake = true
 
-[node name="Apple6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="12" unique_id=407812828 instance=ExtResource("11_5ag3s")]
+[node name="Apple7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="12" unique_id=407812828 instance=ExtResource("11_5ag3s")]
 position = Vector2(318, 254)
 isFake = true
 
-[node name="Apple7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="13" unique_id=375617945 instance=ExtResource("11_5ag3s")]
+[node name="Apple8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="13" unique_id=375617945 instance=ExtResource("11_5ag3s")]
 position = Vector2(654, 320)
 
 [node name="Coin" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="0" unique_id=461514915 instance=ExtResource("9_bsapf")]
@@ -151,5 +151,5 @@ position = Vector2(672, 336)
 [node name="Coin11" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="10" unique_id=1944816348 instance=ExtResource("9_bsapf")]
 position = Vector2(624, 336)
 
-[node name="PlayerSpawn" parent="." index="13" unique_id=641898817]
+[node name="PlayerSpawn" parent="." index="14" unique_id=641898817]
 position = Vector2(46, 312)

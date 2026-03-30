@@ -51,6 +51,8 @@ tile_set = ExtResource("5_myik0")
 
 [node name="Trees" type="Node2D" parent="." unique_id=2098368406]
 
+[node name="Decoration" type="Node2D" parent="." unique_id=1354866758]
+
 [node name="LevelWarps" type="Node2D" parent="." unique_id=49862679]
 
 [node name="MovingPlatforms" type="Node2D" parent="." unique_id=348346419]
@@ -70,6 +72,8 @@ tile_set = ExtResource("5_myik0")
 [node name="Guns" type="Node2D" parent="Traps" unique_id=1289561014]
 
 [node name="Apple" type="Node2D" parent="Traps" unique_id=804475000]
+
+[node name="Bear_Traps" type="Node2D" parent="Traps" unique_id=1645461710]
 
 [node name="Gnomes" type="Node2D" parent="." unique_id=357173629]
 unique_name_in_owner = true

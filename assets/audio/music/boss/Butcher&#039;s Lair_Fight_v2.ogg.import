@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctc72k11oywll"
+path="res://.godot/imported/Butcher&#039;s Lair_Fight_v2.ogg-20dac231e0c86883d111f24f226e055b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/boss/Butcher&#039;s Lair_Fight_v2.ogg"
+dest_files=["res://.godot/imported/Butcher&#039;s Lair_Fight_v2.ogg-20dac231e0c86883d111f24f226e055b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

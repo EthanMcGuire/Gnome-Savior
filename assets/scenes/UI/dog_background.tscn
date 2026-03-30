@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dajysqk0x73io"]
+
+[ext_resource type="Shader" uid="uid://0kiimc1ikvsy" path="res://assets/shaders/background_scroll.gdshader" id="1_kuun6"]
+[ext_resource type="Texture2D" uid="uid://bm0u0y2nuntox" path="res://assets/sprites/Dog/dog_bg.png" id="2_5v8si"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejkrf"]
+shader = ExtResource("1_kuun6")
+shader_parameter/speed = 0.1
+
+[node name="DogBackground" type="Control" unique_id=300809217]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1060354794]
+layout_mode = 1
+offset_right = 911.0
+offset_bottom = 742.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1009418615]
+modulate = Color(1, 0, 0, 0.3764706)
+material = SubResource("ShaderMaterial_ejkrf")
+layout_mode = 1
+offset_right = 912.0
+offset_bottom = 744.0
+texture = ExtResource("2_5v8si")
+stretch_mode = 1

@@ -187,12 +187,15 @@ func _state_falling(delta: float) -> void:
 	
 	if (is_on_floor()):
 		_enter_state(PLAYER_STATE.GROUNDED);
+	# Die when falling out of the screen
+	elif (position.y > %PlayerCamera.limit_bottom + 8):
+		takeDamage(Vector2(), 99);
 		
 func _state_hurt(delta: float) -> void:
 	_moveHorizontalVelocityTowardsZero();
 	_apply_gravity(delta);
 	
-	if (_getHorizontalVelocity() == 0.0 && hurtTimer.is_stopped()):
+	if (hurtTimer.is_stopped()): #_getHorizontalVelocity() == 0.0 && 
 		_enter_state(PLAYER_STATE.FALLING);
 	
 #endregion State_Control
@@ -337,7 +340,7 @@ func _moveHorizontalVelocityTowardsZero() -> void:
 func _createDeathEffects(knockback: Vector2) -> void:
 	GameManager.createBloodParticles(global_position);
 	GameManager.createBloodEffect(global_position, knockback, bloodEffectDegreesRange, bloodEffectVelocityScaleMin, bloodEffectVelocityScaleMax, bloodEffectCountMin, bloodEffectCountMax);
-	GameManager.createDebris(global_position + Vector2(-9.0, -9.0), playerSprite.get_texture(), playerSprite.flip_h, knockback * debrisVelocityScale, Vector2(7.0, 16.0), Vector2(18.0, 16.0), debrisSizeMin, debrisSizeMax)
+	GameManager.createDebris(global_position + Vector2(-9.0, -9.0), playerSprite.get_texture(), playerSprite.flip_h, 1, knockback * debrisVelocityScale, Vector2(7.0, 16.0), Vector2(18.0, 16.0), debrisSizeMin, debrisSizeMax)
 
 #endregion Effects
 

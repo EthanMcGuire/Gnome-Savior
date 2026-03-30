@@ -95,6 +95,7 @@ pause={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Trap"
+2d_physics/layer_3="BossHurtbox"
 2d_physics/layer_9="Ground"
 2d_physics/layer_10="Ground_OneWay"
 

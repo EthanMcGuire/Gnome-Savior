@@ -83,11 +83,11 @@ func _enterState(newState: GNOME_STATE) -> void:
 			
 	state = newState;
 	
-func freeGnome() -> void:
+func freeGnome(moveRight := false) -> void:
 	%AudioStreamFree.play();
 	_enterState(GNOME_STATE.GNOME_STATE_FREE);
 	
-	if (randi_range(0, 1) == 0):
+	if (!moveRight && randi_range(0, 1) == 0):
 		moveDirection = -1;
 		%Sprite2D.flip_h = false;
 	else:
@@ -111,7 +111,7 @@ func takeDamage(knockback: Vector2, damage: int) -> void:
 func _createDeathEffects(knockback: Vector2) -> void:
 	GameManager.createBloodParticles(global_position);
 	GameManager.createBloodEffect(global_position, knockback, bloodEffectDegreesRange, bloodEffectVelocityScaleMin, bloodEffectVelocityScaleMax, bloodEffectCountMin, bloodEffectCountMax);
-	GameManager.createDebris(global_position + Vector2(-10.0, -16.0), %Sprite2D.get_texture(), %Sprite2D.flip_h, knockback * debrisVelocityScale, Vector2(6.0, 0.0), Vector2(22.0, 32.0), debrisSizeMin, debrisSizeMax)
+	GameManager.createDebris(global_position + Vector2(-10.0, -16.0), %Sprite2D.get_texture(), %Sprite2D.flip_h, 1, knockback * debrisVelocityScale, Vector2(6.0, 0.0), Vector2(22.0, 32.0), debrisSizeMin, debrisSizeMax)
 
 #endregion Effects
 

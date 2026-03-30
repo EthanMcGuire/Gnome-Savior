@@ -1,8 +1,8 @@
 extends Node
 
-const IS_TEST := false;
+const IS_TEST := true;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_0.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_9.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -177,6 +177,7 @@ func loadLevel(nextScene: PackedScene) -> void:
 	# Load the level
 	level = currentScene.instantiate();
 	levelData.add_child(level);
+	_loadLevelMusic(level.music);
 	
 	# Player
 	playerSpawn = level.get_node("PlayerSpawn");
@@ -206,7 +207,6 @@ func _loadNewLevelData() -> void:
 	currentLevelName = level.levelName;
 	_createBloodCanvas(level.levelWidth, level.levelHeight);
 	_clearCheckpointData();
-	_loadLevelMusic(level.music);
 
 func startLevelTransition(nextScene: PackedScene) -> void:
 	var transition;
@@ -217,6 +217,8 @@ func startLevelTransition(nextScene: PackedScene) -> void:
 	add_child(transition);
 	transition.startTransition(LEVEL_TRANSITION_TIME, nextScene);
 	
+	soundLifeUp.stop();
+	
 func startDeathTransition(nextScene: PackedScene) -> void:
 	var transition;
 	
@@ -225,6 +227,8 @@ func startDeathTransition(nextScene: PackedScene) -> void:
 	transition = SCENE_DEATH_TRANSITION.instantiate();
 	add_child(transition);
 	transition.startTransition(DEATH_TRANSITION_TIME, nextScene);
+	
+	soundLifeUp.stop();
 
 #endregion Level
 
@@ -232,9 +236,9 @@ func startDeathTransition(nextScene: PackedScene) -> void:
 
 func _loadLevelMusic(music: AudioStream) -> void:
 	if (musicPlayer.stream != music):
-		_playMusic(music);
+		playMusic(music);
 
-func _playMusic(music: AudioStream) -> void:
+func playMusic(music: AudioStream) -> void:
 	if (!music):
 		print("GameManager: In _playMusic() music is null.");
 		return;
@@ -242,7 +246,7 @@ func _playMusic(music: AudioStream) -> void:
 	musicPlayer.stream = music;
 	musicPlayer.play();
 
-func _stopMusic() -> void:
+func stopMusic() -> void:
 	musicPlayer.stop();
 
 #endregion Music
@@ -417,7 +421,7 @@ func moveCameraToGoal():
 
 #region Debris
 
-func createDebris(pos: Vector2, texture: Texture2D, flipH: bool, knockback: Vector2, spriteOffset: Vector2, spriteSize: Vector2, debrisSizeMin: float, debrisSizeMax: float):
+func createDebris(pos: Vector2, texture: Texture2D, flipH: bool, scale: float, knockback: Vector2, spriteOffset: Vector2, spriteSize: Vector2, debrisSizeMin: float, debrisSizeMax: float):
 	var x;
 	var y;
 	
@@ -437,8 +441,8 @@ func createDebris(pos: Vector2, texture: Texture2D, flipH: bool, knockback: Vect
 			debrisHeight = randi_range(debrisSizeMin, debrisSizeMax);
 			debrisHeight = min(debrisHeight, spriteSize.y - y);
 
-			debris.global_position = Vector2(pos.x + x, pos.y + y);
-			debris.setTexture(texture, flipH);
+			debris.global_position = Vector2(pos.x + x * scale, pos.y + y * scale);
+			debris.setTexture(texture, flipH, scale);
 			debris.setRegion(spriteOffset.x + x, spriteOffset.y + y, debrisWidth, debrisHeight);
 			debris.applyKnockback(knockback);
 			

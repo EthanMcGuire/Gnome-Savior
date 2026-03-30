@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bn7lhqotos6aw"]
+
+[ext_resource type="Script" uid="uid://dwyg5ep6foww" path="res://assets/scripts/trap/dog_spawner.gd" id="1_m44qv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkild"]
+size = Vector2(70, 75)
+
+[node name="DogSpawner" type="Area2D" unique_id=1989081481]
+collision_layer = 0
+script = ExtResource("1_m44qv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=210056484]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_bkild")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=221130098]
+unique_name_in_owner = true
+offset_left = -35.0
+offset_top = -38.0
+offset_right = 35.0
+offset_bottom = 37.0
+color = Color(1, 0, 0, 0.5019608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

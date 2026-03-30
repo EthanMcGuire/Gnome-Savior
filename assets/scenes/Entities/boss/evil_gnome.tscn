@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bvq6uj5mv4lxc"]
+
+[ext_resource type="AudioStream" uid="uid://b03nlwob7f8rs" path="res://assets/audio/sounds/gnome/logan/gnomehurt_4.wav" id="1_75h0a"]
+[ext_resource type="Texture2D" uid="uid://ug4bo5g1n88o" path="res://assets/sprites/Boss/evilGnome.png" id="1_ae8dx"]
+[ext_resource type="Script" uid="uid://dkwgdba70ua8n" path="res://assets/scripts/boss/evil_gnome.gd" id="1_imty1"]
+[ext_resource type="AudioStream" uid="uid://c0upla3f2ga5w" path="res://assets/audio/sounds/gnome/logan/gnomehurt_1.wav" id="2_imty1"]
+[ext_resource type="PackedScene" uid="uid://byapsmyhovuev" path="res://assets/scenes/Entities/boss/gnome_fist_left.tscn" id="2_o7f3y"]
+[ext_resource type="PackedScene" uid="uid://51ys0ho1ckf7" path="res://assets/scenes/Entities/boss/gnome_fist_right.tscn" id="3_06b05"]
+[ext_resource type="AudioStream" uid="uid://pxr4a7p53whb" path="res://assets/audio/sounds/gnome/logan/gnomehurt_2.wav" id="3_g3qqx"]
+[ext_resource type="Texture2D" uid="uid://c6me2dageg0qu" path="res://assets/sprites/Boss/evilGnomeHurt.png" id="6_g3qqx"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e0iw7"]
+random_pitch = 1.0028923
+streams_count = 3
+stream_0/stream = ExtResource("1_75h0a")
+stream_1/stream = ExtResource("2_imty1")
+stream_2/stream = ExtResource("3_g3qqx")
+
+[node name="EvilGnome" type="Node2D" unique_id=322590803]
+script = ExtResource("1_imty1")
+
+[node name="AudioStreamHurt" type="AudioStreamPlayer2D" parent="." unique_id=135208977]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_e0iw7")
+volume_db = 0.75
+pitch_scale = 0.6
+max_distance = 480.0
+
+[node name="Sprite" type="Node2D" parent="." unique_id=862738048]
+unique_name_in_owner = true
+
+[node name="SpriteNormal" type="Sprite2D" parent="Sprite" unique_id=1930142511]
+unique_name_in_owner = true
+position = Vector2(-35, 0)
+texture = ExtResource("1_ae8dx")
+
+[node name="SpriteHurt" type="Sprite2D" parent="Sprite" unique_id=1775301403]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-20, 0)
+texture = ExtResource("6_g3qqx")
+
+[node name="FistLeft" parent="." unique_id=1211366112 instance=ExtResource("2_o7f3y")]
+unique_name_in_owner = true
+position = Vector2(-96, 48)
+bloodEffectCountMin = 24
+bloodEffectCountMax = 32
+bloodEffectDegreesRange = 45.0
+bloodEffectVelocityScaleMin = 0.2
+bloodEffectVelocityScaleMax = 0.35
+debrisVelocityScale = 0.5
+debrisSizeMin = 48
+debrisSizeMax = 64
+damage = 1
+
+[node name="FistRight" parent="." unique_id=1570639320 instance=ExtResource("3_06b05")]
+unique_name_in_owner = true
+position = Vector2(64, 48)

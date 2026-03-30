@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d38deqrn4p7x2"]
+
+[ext_resource type="Script" uid="uid://bfk20bawuxjc3" path="res://assets/scripts/boss/boss_door.gd" id="1_apkxm"]
+[ext_resource type="Texture2D" uid="uid://skktqu0rocd4" path="res://assets/sprites/Boss/bossDoor.png" id="1_qsptv"]
+[ext_resource type="PackedScene" uid="uid://b7el0rtw1snaw" path="res://assets/scenes/Entities/Traps/one_shot_spike.tscn" id="3_ccmkx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ta3v"]
+size = Vector2(32, 48)
+
+[node name="BossDoor" type="Node2D" unique_id=809642436]
+script = ExtResource("1_apkxm")
+
+[node name="Door" type="Node2D" parent="." unique_id=653306475]
+position = Vector2(0, -24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1664345226]
+texture = ExtResource("1_qsptv")
+
+[node name="StaticBody" type="StaticBody2D" parent="Door" unique_id=654350992]
+unique_name_in_owner = true
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/StaticBody" unique_id=1433184128]
+shape = SubResource("RectangleShape2D_8ta3v")
+
+[node name="Spikes" type="Node2D" parent="Door" unique_id=1396373280]
+
+[node name="OneShotSpike" parent="Door/Spikes" unique_id=147394102 instance=ExtResource("3_ccmkx")]
+position = Vector2(16, -16)
+rotation = 1.5707964
+
+[node name="OneShotSpike2" parent="Door/Spikes" unique_id=2075237245 instance=ExtResource("3_ccmkx")]
+position = Vector2(16, 0)
+rotation = 1.5707964
+
+[node name="OneShotSpike3" parent="Door/Spikes" unique_id=659838973 instance=ExtResource("3_ccmkx")]
+position = Vector2(16, 16)
+rotation = 1.5707964

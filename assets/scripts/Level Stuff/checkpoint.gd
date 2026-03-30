@@ -4,6 +4,8 @@ class_name Checkpoint
 const GNOME_SCENE := preload("res://assets/scenes/Entities/gnome.tscn");
 
 @export var checkpointName := "default_name";
+### Forces the gnome to walk right when saved
+@export var forceRight := false;
 
 var isOpen = false;
 var gnome: Gnome = null;
@@ -32,7 +34,7 @@ func _open() -> void:
 	%AudioStreamPlayer2D.play();
 	
 	# Free the gnome!!
-	gnome.freeGnome();
+	gnome.freeGnome(forceRight);
 	gnome = null;
 	
 	GameManager.checkpointHit(checkpointName);
