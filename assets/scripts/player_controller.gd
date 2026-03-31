@@ -151,6 +151,9 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 			soundDeath.play();
 			soundScream.stop();
 			_stopJumpSound();
+			
+			# Disable the players layer so objects can't interact with him
+			set_collision_layer_value(1, false);
 
 	state = newState;
 

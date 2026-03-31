@@ -74,7 +74,7 @@ region_rect = Rect2(0, 15, 6, 4)
 [node name="AudioStreamLaugh" type="AudioStreamPlayer2D" parent="Sound" unique_id=992311387]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_myev1")
-volume_db = 3.5
+volume_db = 3.0
 pitch_scale = 1.75
 autoplay = true
 max_distance = 480.0

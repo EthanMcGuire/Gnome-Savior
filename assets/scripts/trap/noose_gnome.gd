@@ -2,7 +2,7 @@ extends Trap
 
 const TRAVEL_DISTANCE := 240.0;
 const START_SPEED := 128.0;
-const SPEED_INCREASE := 400.0;
+const SPEED_INCREASE := 350.0;
 const RAISE_SPEED := 160.0;
 const RAISE_DELAY := 0.5;
 

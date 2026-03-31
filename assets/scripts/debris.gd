@@ -3,6 +3,17 @@ class_name Debris
 
 @export var RANDOM_DEGREES := 60.0;
 
+var despawning := false;
+var alpha := 1.0;
+
+func _process(delta: float) -> void:
+	if (despawning):
+		alpha -= delta * 0.5;
+		modulate = Color(1, 1, 1, alpha);
+		
+		if (alpha <= 0.0):
+			queue_free();
+
 func setTexture(texture: Texture2D, flipH: bool, scale: float) -> void:
 	%Sprite2D.texture = texture;
 	%Sprite2D.flip_h = flipH;
@@ -50,3 +61,6 @@ func applyKnockback(knockback: Vector2) -> void:
 			#gravVector.y = 0.0;
 	#
 	#return gravVector;
+
+func _on_despawn_timer_timeout() -> void:
+	despawning = true;

@@ -1,8 +1,8 @@
 extends Node
 
-const IS_TEST := true;
+const IS_TEST := false;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_9.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_0.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -15,9 +15,12 @@ const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
-var maxHp := 2;
+const STARTING_LIVES := 10;
+const STARTING_MAX_HP := 2;
+
+var maxHp := STARTING_MAX_HP;
 var hp := maxHp;
-var lives := 3;
+var lives := STARTING_LIVES;
 var coins := 0;
 
 var playerIsDead := false;
@@ -75,13 +78,27 @@ func _ready() -> void:
 	
 	if (IS_TEST):
 		get_tree().change_scene_to_file("res://assets/scenes/Levels/level_base.tscn");
-	
+		
 ## This needs to be called to start the game! Should be called when in the scene 'level_base'
 func startGame() -> void:
 	_loadBaseNodes();
 	_resetGameData();
 	
 	loadLevel(STARTING_LEVEL);
+	
+func endGame() -> void:
+	levelLoaded = false;
+	
+	_destroyPlayer();
+	_unloadLevelData();
+	
+	playerIsDead = false;
+	level = null;
+	currentScene = null;
+	currentLevelName = "";
+	playerSpawn = null;
+	
+	get_tree().change_scene_to_file("res://assets/scenes/Levels/level_end.tscn");
 	
 func _process(delta: float) -> void:
 	_update(delta);
@@ -117,8 +134,10 @@ func _loadBaseNodes() -> void:
 	assert(projectiles);
 
 func _resetGameData() -> void:
-	setLives(3);
+	speedrunTimeMs = 0;
+	setLives(STARTING_LIVES);
 	setCoins(0);
+	maxHp = STARTING_MAX_HP;
 	hp = maxHp;
 	setPlayerMaxHp(maxHp);
 
@@ -128,6 +147,9 @@ func gameOver() -> void:
 func _toggleGamePaused() -> void:
 	get_tree().paused = !get_tree().paused;
 	pauseScreen.visible = get_tree().paused;
+
+func getSpeedrunTime() -> int:
+	return speedrunTimeMs;
 
 #region Update
 
@@ -412,6 +434,22 @@ func getPlayerPosition() -> Vector2:
 func setCameraLimits(left: int, top: int, right: int, bottom: int):
 	assert(camera);
 	camera.setLimits(left, top, right, bottom);
+
+func getCameraLimitLeft() -> int:
+	assert(camera);
+	return camera.limit_left;
+	
+func getCameraLimitRight() -> int:
+	assert(camera);
+	return camera.limit_right;
+	
+func getCameraLimitTop() -> int:
+	assert(camera);
+	return camera.limit_top;
+	
+func getCameraLimitBottom() -> int:
+	assert(camera);
+	return camera.limit_bottom;
 
 func moveCameraToGoal():
 	assert(camera);

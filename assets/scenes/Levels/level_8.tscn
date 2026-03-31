@@ -16,60 +16,62 @@
 [ext_resource type="PackedScene" uid="uid://c2fv2jx1g025t" path="res://assets/scenes/Entities/Traps/saw_blade.tscn" id="18_rab21"]
 [ext_resource type="PackedScene" uid="uid://bfkyghq7wcuwa" path="res://assets/scenes/Entities/Traps/swinging_saw.tscn" id="19_ix174"]
 [ext_resource type="PackedScene" uid="uid://bn7lhqotos6aw" path="res://assets/scenes/Entities/Traps/dog_spawner.tscn" id="20_fjt0f"]
+[ext_resource type="PackedScene" uid="uid://vw53d3oqapsy" path="res://assets/scenes/Entities/Items/one_up.tscn" id="20_q44nv"]
+[ext_resource type="Script" uid="uid://bfwm4y1jjshk1" path="res://assets/scripts/item/one_up.gd" id="21_0o3pd"]
 [ext_resource type="PackedScene" uid="uid://com2u5kxhj3vj" path="res://assets/scenes/Entities/Level Stuff/checkpoint.tscn" id="21_dy5f7"]
 [ext_resource type="PackedScene" uid="uid://dv0hpy16a8abt" path="res://assets/scenes/Entities/Traps/gun.tscn" id="21_w4txh"]
 [ext_resource type="PackedScene" uid="uid://5bbrpxagfgdu" path="res://assets/scenes/Entities/Traps/apple.tscn" id="23_nk0of"]
 
-[sub_resource type="Curve2D" id="Curve2D_ip1mx"]
+[sub_resource type="Curve2D" id="Curve2D_r3nol"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -640)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_80hhr"]
+[sub_resource type="Curve2D" id="Curve2D_ntone"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_q44nv"]
+[sub_resource type="Curve2D" id="Curve2D_f1nne"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 97, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_0o3pd"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_r3nol"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -40)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_ntone"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -40)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_f1nne"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_dnqp7"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_35f5k"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -40)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_6ebjc"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -40)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_w4txh"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_x4kcy"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -130,7 +132,7 @@ warpLevel = "res://assets/scenes/Levels/level_9.tscn"
 
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("12_4ypew")]
 position = Vector2(1328, 592)
-curve = SubResource("Curve2D_ip1mx")
+curve = SubResource("Curve2D_r3nol")
 waitForPlayer = true
 stopAtEnd = true
 deltaSpeedPixelsStart = 120.0
@@ -371,38 +373,38 @@ rotation = -3.1415925
 
 [node name="SawBlade" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="0" unique_id=1143145861 instance=ExtResource("18_rab21")]
 position = Vector2(177, 288)
-curve = SubResource("Curve2D_80hhr")
+curve = SubResource("Curve2D_ntone")
 deltaSpeedPixelsStart = 80.0
 deltaSpeedPixelsReturn = 80.0
 
 [node name="SawBlade2" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="1" unique_id=1642136431 instance=ExtResource("18_rab21")]
 position = Vector2(530, 144)
-curve = SubResource("Curve2D_q44nv")
+curve = SubResource("Curve2D_f1nne")
 startDelay = 0.5
 
 [node name="SawBlade3" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="2" unique_id=165807841 instance=ExtResource("18_rab21")]
 position = Vector2(704, 96)
-curve = SubResource("Curve2D_0o3pd")
+curve = SubResource("Curve2D_dnqp7")
 
 [node name="SawBlade4" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="3" unique_id=512995170 instance=ExtResource("18_rab21")]
 position = Vector2(188, 696)
-curve = SubResource("Curve2D_r3nol")
+curve = SubResource("Curve2D_35f5k")
 deltaSpeedPixelsStart = 48.0
 deltaSpeedPixelsReturn = 48.0
 
 [node name="SawBlade5" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="4" unique_id=795354477 instance=ExtResource("18_rab21")]
 position = Vector2(220, 696)
-curve = SubResource("Curve2D_ntone")
+curve = SubResource("Curve2D_6ebjc")
 deltaSpeedPixelsStart = 48.0
 deltaSpeedPixelsReturn = 48.0
 
 [node name="SawBlade6" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="5" unique_id=1248482346 instance=ExtResource("18_rab21")]
 position = Vector2(768, 136)
-curve = SubResource("Curve2D_f1nne")
+curve = SubResource("Curve2D_w4txh")
 
 [node name="SawBlade7" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="6" unique_id=1912491123 instance=ExtResource("18_rab21")]
 position = Vector2(1224, 144)
-curve = SubResource("Curve2D_dnqp7")
+curve = SubResource("Curve2D_x4kcy")
 
 [node name="SwingingSaw" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="0" unique_id=1845960401 instance=ExtResource("19_ix174")]
 position = Vector2(92, 444)
@@ -458,5 +460,12 @@ spawnPoint = Vector2(210, -64)
 position = Vector2(240, 192)
 checkpointName = "Dog_2"
 
+[node name="OneUp" type="Area2D" parent="Items/OneUps" parent_id_path=PackedInt32Array(1275859095) index="0" unique_id=461514915 instance=ExtResource("20_q44nv")]
+position = Vector2(512, 776)
+script = ExtResource("21_0o3pd")
+itemName = "One Up"
+
 [node name="PlayerSpawn" parent="." index="14" unique_id=641898817]
 position = Vector2(83, 88)
+
+[connection signal="body_entered" from="Items/OneUps/OneUp" to="Items/OneUps/OneUp" method="_on_body_entered"]

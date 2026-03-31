@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b8e8agk5wdlu1"]
+
+[ext_resource type="Texture2D" uid="uid://33g1l0d0bduk" path="res://assets/sprites/Entities/door931-fixed.jpg" id="1_norj7"]
+[ext_resource type="Script" uid="uid://dhcvg5lx2a1aq" path="res://assets/scripts/final_door.gd" id="1_q5a8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5a8n"]
+size = Vector2(20, 50)
+
+[node name="FinalDoor" type="Area2D" unique_id=612247687]
+collision_layer = 0
+script = ExtResource("1_q5a8n")
+
+[node name="Door931Fixed2" type="Sprite2D" parent="." unique_id=505482523]
+position = Vector2(-1.4210855e-14, -25.85)
+scale = Vector2(0.019999998, 0.019999998)
+texture = ExtResource("1_norj7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692531411]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_q5a8n")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

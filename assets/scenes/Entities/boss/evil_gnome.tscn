@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://51ys0ho1ckf7" path="res://assets/scenes/Entities/boss/gnome_fist_right.tscn" id="3_06b05"]
 [ext_resource type="AudioStream" uid="uid://pxr4a7p53whb" path="res://assets/audio/sounds/gnome/logan/gnomehurt_2.wav" id="3_g3qqx"]
 [ext_resource type="Texture2D" uid="uid://c6me2dageg0qu" path="res://assets/sprites/Boss/evilGnomeHurt.png" id="6_g3qqx"]
+[ext_resource type="Texture2D" uid="uid://cu6ilhnaif5aj" path="res://assets/sprites/Boss/evilGnomeShoot.png" id="7_e0iw7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e0iw7"]
 random_pitch = 1.0028923
@@ -22,37 +23,48 @@ script = ExtResource("1_imty1")
 [node name="AudioStreamHurt" type="AudioStreamPlayer2D" parent="." unique_id=135208977]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_e0iw7")
-volume_db = 0.75
+volume_db = -2.0
 pitch_scale = 0.6
 max_distance = 480.0
 
-[node name="Sprite" type="Node2D" parent="." unique_id=862738048]
+[node name="AudioStreamDead" type="AudioStreamPlayer2D" parent="." unique_id=479168061]
+unique_name_in_owner = true
+stream = ExtResource("2_imty1")
+volume_db = -2.0
+pitch_scale = 0.3
+max_distance = 480.0
+
+[node name="Head" type="Node2D" parent="." unique_id=862738048]
 unique_name_in_owner = true
 
-[node name="SpriteNormal" type="Sprite2D" parent="Sprite" unique_id=1930142511]
+[node name="SpriteNormal" type="Sprite2D" parent="Head" unique_id=1930142511]
 unique_name_in_owner = true
-position = Vector2(-35, 0)
+position = Vector2(-40, 0)
 texture = ExtResource("1_ae8dx")
 
-[node name="SpriteHurt" type="Sprite2D" parent="Sprite" unique_id=1775301403]
+[node name="SpriteHurt" type="Sprite2D" parent="Head" unique_id=1775301403]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-20, 0)
+position = Vector2(-40, 0)
 texture = ExtResource("6_g3qqx")
+
+[node name="SpriteShoot" type="Sprite2D" parent="Head" unique_id=1255475211]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-40, 0)
+texture = ExtResource("7_e0iw7")
 
 [node name="FistLeft" parent="." unique_id=1211366112 instance=ExtResource("2_o7f3y")]
 unique_name_in_owner = true
 position = Vector2(-96, 48)
-bloodEffectCountMin = 24
-bloodEffectCountMax = 32
-bloodEffectDegreesRange = 45.0
-bloodEffectVelocityScaleMin = 0.2
-bloodEffectVelocityScaleMax = 0.35
-debrisVelocityScale = 0.5
-debrisSizeMin = 48
-debrisSizeMax = 64
-damage = 1
 
 [node name="FistRight" parent="." unique_id=1570639320 instance=ExtResource("3_06b05")]
 unique_name_in_owner = true
 position = Vector2(64, 48)
+
+[node name="DestroyTimer" type="Timer" parent="." unique_id=343342049]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

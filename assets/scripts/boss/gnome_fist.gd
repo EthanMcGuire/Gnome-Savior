@@ -5,6 +5,7 @@ enum FIST_STATE {
 	SLAM,
 	SLAMMING,
 	SLAM_RETURN,
+	SLAP_START,
 	SLAP,
 	DO_SLAP,
 	SLAPPING,
@@ -47,24 +48,21 @@ const SLAM_RETURN_DELAY := 1.0;
 const SLAM_SPEED := 525.0;
 const HAND_LERP := 0.1;
 
-var currentSlamDelay := 0.0; 
-var currentSlamReturnDelay := 0.0; 
-
 # Slap
+const SLAP_START_DELAY := 0.1;
 const SLAP_DELAY := 1.0;
 const SLAP_POS_OFFSET := 120;
 const SLAP_SPEED := 600.0;
 const SLAP_DISTANCE := 364.0;
 
 var slapX;
-var currentSlapDelay := 0.0;
 var currentSlapDistance := 0.0;
 
 # Return
 # Delay before we can attack again
 const RETURN_DELAY = 1.0;
 
-var currentReturnDelay := 0.0;
+var currentDelay := 0.0;
 
 var hp = 6;
 var hurt := 0.0;
@@ -94,7 +92,7 @@ func startSlam() -> void:
 	_startState(FIST_STATE.SLAM);
 	
 func startSlap() -> void:
-	_startState(FIST_STATE.SLAP);
+	_startState(FIST_STATE.SLAP_START);
 
 #endregion Public_Methods
 
@@ -115,9 +113,9 @@ func _stateControl(delta: float) -> void:
 		global_position.x = lerpf(global_position.x, GameManager.getPlayerPosition().x, HAND_LERP);
 		global_position.y = lerpf(global_position.y, fistStartY - SLAM_START_Y_OFFSET, HAND_LERP);
 		
-		currentSlamDelay -= delta;
+		currentDelay -= delta;
 		
-		if (currentSlamDelay <= 0.0):
+		if (currentDelay <= 0.0):
 			_startState(FIST_STATE.SLAMMING);
 			
 	elif (state == FIST_STATE.SLAMMING):
@@ -125,10 +123,17 @@ func _stateControl(delta: float) -> void:
 			_startState(FIST_STATE.SLAM_RETURN);
 			
 	elif (state == FIST_STATE.SLAM_RETURN):
-		currentSlamReturnDelay -= delta;
+		currentDelay -= delta;
 		
-		if (currentSlamReturnDelay <= 0.0):
+		if (currentDelay <= 0.0):
 			_startState(FIST_STATE.RETURN);
+	elif (state == FIST_STATE.SLAP_START):
+		global_position.y = lerpf(global_position.y, fistStartY - SLAM_START_Y_OFFSET, HAND_LERP * 2);
+		
+		currentDelay -= delta;
+		
+		if (currentDelay <= 0.0):
+			_startState(FIST_STATE.SLAP);
 			
 	elif (state == FIST_STATE.SLAP):
 		global_position.x = lerpf(global_position.x, slapX, HAND_LERP);
@@ -136,9 +141,9 @@ func _stateControl(delta: float) -> void:
 		if (_slamToGround(delta)):
 			_startState(FIST_STATE.DO_SLAP);
 	elif (state == FIST_STATE.DO_SLAP):
-		currentSlapDelay -= delta;
+		currentDelay -= delta;
 		
-		if (currentSlapDelay <= 0.0):
+		if (currentDelay <= 0.0):
 			_startState(FIST_STATE.SLAPPING);
 	elif (state == FIST_STATE.SLAPPING):
 		var moveAmount;
@@ -155,9 +160,9 @@ func _stateControl(delta: float) -> void:
 			knockback = BASE_KNOCKBACK;
 			_startState(FIST_STATE.RETURN);
 	elif (state == FIST_STATE.RETURN):
-		currentReturnDelay -= delta;
+		currentDelay -= delta;
 		
-		if (currentReturnDelay <= 0.0):
+		if (currentDelay <= 0.0):
 			_startState(FIST_STATE.IDLE);
 
 func _slamToGround(delta: float) -> bool:
@@ -177,22 +182,25 @@ func _startState(newState: FIST_STATE) -> void:
 			_startIdleAnimation();
 		FIST_STATE.SLAM:
 			_stopIdleAnimation();
-			currentSlamDelay = SLAM_DELAY;
+			currentDelay = SLAM_DELAY;
 		FIST_STATE.SLAMMING:
 			pass
 		FIST_STATE.SLAM_RETURN:
-			currentSlamReturnDelay = SLAM_RETURN_DELAY;
-		FIST_STATE.SLAP:
+			currentDelay = SLAM_RETURN_DELAY;
+		FIST_STATE.SLAP_START:
 			_stopIdleAnimation();
+			currentDelay = SLAP_START_DELAY;
+		FIST_STATE.SLAP:
+			pass
 		FIST_STATE.DO_SLAP:
-			currentSlapDelay = SLAP_DELAY;
+			currentDelay = SLAP_DELAY;
 		FIST_STATE.SLAPPING:
 			currentSlapDistance = SLAP_DISTANCE;
 			%AudioStreamSlap.play();
 			knockback = SLAP_KNOCKBACK;
 		FIST_STATE.RETURN:
 			_startIdleAnimation();
-			currentReturnDelay = RETURN_DELAY;
+			currentDelay = RETURN_DELAY;
 	
 func _startIdleAnimation() -> void:
 	_stopIdleAnimation();

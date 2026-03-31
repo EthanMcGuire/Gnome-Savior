@@ -19,3 +19,10 @@ region_rect = Rect2(-10, 0, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=199682860]
 shape = SubResource("RectangleShape2D_t1r0q")
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1146814669]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

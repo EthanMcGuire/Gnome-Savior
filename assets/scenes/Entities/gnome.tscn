@@ -128,7 +128,7 @@ unique_name_in_owner = true
 [node name="AudioStreamLaugh" type="AudioStreamPlayer2D" parent="Sound" unique_id=370990707]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_6alkd")
-volume_db = 3.5
+volume_db = 3.0
 pitch_scale = 1.1
 max_distance = 480.0
 
@@ -148,7 +148,7 @@ max_distance = 480.0
 [node name="AudioStreamDeath" type="AudioStreamPlayer2D" parent="Sound" unique_id=1673036672]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamMP3_dhn4g")
-max_distance = 480.0
+max_distance = 400.0
 
 [node name="HurtTimer" type="Timer" parent="." unique_id=1996192716]
 unique_name_in_owner = true

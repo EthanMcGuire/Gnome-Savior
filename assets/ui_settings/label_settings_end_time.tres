@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bbq7xjv4rpsuj"]
+
+[ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="1_5of5p"]
+
+[resource]
+resource_local_to_scene = true
+font = ExtResource("1_5of5p")
+font_size = 22
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 4)

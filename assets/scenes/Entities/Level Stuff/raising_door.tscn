@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bd3t34inoxffr"]
+
+[ext_resource type="Script" uid="uid://bx17pw3fr4l38" path="res://assets/scripts/raising_door.gd" id="1_31xjo"]
+[ext_resource type="PackedScene" uid="uid://dwwaffsup3o1d" path="res://assets/scenes/Entities/Level Stuff/level_warp_door.tscn" id="2_tjmir"]
+
+[node name="RaisingDoor" type="Node2D" unique_id=1240558786]
+script = ExtResource("1_31xjo")
+
+[node name="LevelWarpDoor" parent="." unique_id=2082002628 instance=ExtResource("2_tjmir")]
+warpLevel = "res://assets/scenes/Levels/level_10.tscn"

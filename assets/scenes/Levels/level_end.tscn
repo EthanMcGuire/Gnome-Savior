@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://krbvcg5vp4y6"]
+
+[ext_resource type="Script" uid="uid://bkqh3ha21biqy" path="res://assets/scripts/level/end_screen.gd" id="1_jxw33"]
+[ext_resource type="AudioStream" uid="uid://cnmt040smpsc5" path="res://assets/audio/music/Victory.mp3" id="2_jxw33"]
+[ext_resource type="Texture2D" uid="uid://dhdfmto1r26co" path="res://assets/sprites/Background/skyfinal.png" id="3_jxw33"]
+[ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="4_verxc"]
+[ext_resource type="LabelSettings" uid="uid://bqk0yx8cs55w3" path="res://assets/ui_settings/label_settings_title.tres" id="4_x7r3l"]
+[ext_resource type="LabelSettings" uid="uid://bx0k3wsc6pvrt" path="res://assets/ui_settings/label_settings_title_small.tres" id="5_477du"]
+[ext_resource type="LabelSettings" uid="uid://bbq7xjv4rpsuj" path="res://assets/ui_settings/label_settings_end_time.tres" id="6_uf4ci"]
+
+[sub_resource type="Animation" id="Animation_0kqpb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vjl5c"]
+resource_name = "title"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0adw"]
+_data = {
+&"RESET": SubResource("Animation_0kqpb"),
+&"title": SubResource("Animation_vjl5c")
+}
+
+[node name="EndScreen" type="Node2D" unique_id=1928656440]
+script = ExtResource("1_jxw33")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1811038836]
+process_mode = 3
+stream = ExtResource("2_jxw33")
+autoplay = true
+
+[node name="Background" type="Node2D" parent="." unique_id=1889970620]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background" unique_id=597241428]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="Background/CanvasLayer" unique_id=1626608913]
+texture_repeat = 2
+position = Vector2(0, 4.2187476)
+scale = Vector2(0.23437499, 0.26367185)
+texture = ExtResource("3_jxw33")
+centered = false
+offset = Vector2(0, -16)
+region_rect = Rect2(0, 0, 270, 200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819565069]
+layer = 2000
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1810811374]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 64.0
+offset_right = 255.0
+offset_bottom = 110.0
+grow_horizontal = 2
+use_top_left = true
+
+[node name="Title" type="Label" parent="CanvasLayer/CenterContainer" unique_id=1229562817]
+modulate = Color(0, 0.85490197, 1, 1)
+layout_mode = 2
+text = "YOU WIN!!!"
+label_settings = ExtResource("4_x7r3l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalTime" type="Label" parent="CanvasLayer" unique_id=1419522516]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -40.0
+offset_right = 83.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Final Time:"
+label_settings = ExtResource("5_477du")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer" unique_id=1595904435]
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_right = 127.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer2" unique_id=1049821143]
+layout_mode = 2
+
+[node name="LabelTime" type="Label" parent="CanvasLayer/CenterContainer2/HBoxContainer" unique_id=1623171684]
+unique_name_in_owner = true
+modulate = Color(0, 0.94509804, 0, 1)
+layout_mode = 2
+text = "00:00"
+label_settings = ExtResource("6_uf4ci")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelDecimal" type="Label" parent="CanvasLayer/CenterContainer2/HBoxContainer" unique_id=1781235040]
+unique_name_in_owner = true
+modulate = Color(0, 0.94509804, 0, 1)
+layout_mode = 2
+text = ".00"
+label_settings = ExtResource("6_uf4ci")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonQuit" type="MenuButton" parent="CanvasLayer" unique_id=1563036381]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = 64.0
+offset_right = 27.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_verxc")
+toggle_mode = false
+keep_pressed_outside = true
+text = "QUIT
+"
+flat = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1061234694]
+libraries/ = SubResource("AnimationLibrary_m0adw")
+autoplay = &"title"
+
+[connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
