@@ -107,7 +107,7 @@ text = "Watch out for spikes!"
 
 [node name="Sign2" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="1" unique_id=1485581758 instance=ExtResource("5_jrkym")]
 position = Vector2(864, 272)
-text = "Press down + jump to crouch."
+text = "Press down + jump to all through platforms."
 
 [node name="Portal" parent="Portals" parent_id_path=PackedInt32Array(646246642) index="0" unique_id=599182297 node_paths=PackedStringArray("linkedPortal") instance=ExtResource("6_8f3bp")]
 position = Vector2(1456, 288)
@@ -639,5 +639,5 @@ position = Vector2(1128, 360)
 [node name="HeartContainer" parent="Items/HeartContainers" parent_id_path=PackedInt32Array(1360463283) index="0" unique_id=749795648 instance=ExtResource("9_bskwp")]
 position = Vector2(1432, 328)
 
-[node name="PlayerSpawn" parent="." index="13" unique_id=641898817]
+[node name="PlayerSpawn" parent="." index="14" unique_id=641898817]
 position = Vector2(46, 312)

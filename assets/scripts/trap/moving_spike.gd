@@ -1,6 +1,6 @@
 extends Trap
 
-const BASE_OFFSET = -8.0;
+const BASE_OFFSET = -6.0;
 const SIZE = 16.0;
 
 @export var startDelay := 0.0;
@@ -10,6 +10,8 @@ const SIZE = 16.0;
 @export var stabDelay := 0.5;
 
 func _ready() -> void:
+	_setSpikeOffset(BASE_OFFSET);
+	
 	if (startDelay > 0.0):
 		%StartDelayTimer.start(startDelay);
 	else:

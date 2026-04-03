@@ -52,7 +52,7 @@ text = "Thank you hero! You've freed us from Gilgamesh's imprisonement! Please, 
 
 [node name="Sign2" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="1" unique_id=295272234 instance=ExtResource("9_e6bnr")]
 position = Vector2(720, 256)
-text = "Gnome blood may have been split by your hand. But we forgive you!"
+text = "Gnome blood may have been spilt by your hands. But we forgive you!"
 
 [node name="Sign3" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="2" unique_id=1101947929 instance=ExtResource("9_e6bnr")]
 position = Vector2(1280, 256)
@@ -63,24 +63,31 @@ position = Vector2(1, 0)
 
 [node name="Checkpoint" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="0" unique_id=1366965764 instance=ExtResource("11_hvv3x")]
 position = Vector2(216, 272)
+checkpointName = "final_rest_1"
 
 [node name="Checkpoint2" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="1" unique_id=13631687 instance=ExtResource("11_hvv3x")]
 position = Vector2(344, 272)
+checkpointName = "final_rest_2"
 
 [node name="Checkpoint4" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="2" unique_id=1919203943 instance=ExtResource("11_hvv3x")]
 position = Vector2(872, 272)
+checkpointName = "final_rest_4"
 
 [node name="Checkpoint5" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="3" unique_id=2018516322 instance=ExtResource("11_hvv3x")]
 position = Vector2(1000, 272)
+checkpointName = "final_rest_5"
 
 [node name="Checkpoint6" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="4" unique_id=1446192587 instance=ExtResource("11_hvv3x")]
 position = Vector2(1128, 272)
+checkpointName = "final_rest_6"
 
 [node name="Checkpoint7" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="5" unique_id=1203079861 instance=ExtResource("11_hvv3x")]
 position = Vector2(475, 272)
+checkpointName = "final_rest_3"
 
 [node name="HeartContainer" parent="Items/HeartContainers" parent_id_path=PackedInt32Array(1360463283) index="0" unique_id=461514915 instance=ExtResource("11_bgir0")]
 position = Vector2(672, 248)
+heartContainerName = "last_heart_container"
 
 [node name="PlayerSpawn" parent="." index="14" unique_id=641898817]
 position = Vector2(38, 264)

@@ -15,7 +15,7 @@ const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
-const STARTING_LIVES := 10;
+const STARTING_LIVES := 99;
 const STARTING_MAX_HP := 2;
 
 var maxHp := STARTING_MAX_HP;
