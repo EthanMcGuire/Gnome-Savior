@@ -52,6 +52,7 @@ enum GRAVITY {
 @onready var playerSprite = %Sprite2D;
 @onready var oneWayCollisionTimer = %EnableOneWayCollision;
 @onready var hurtTimer = %HurtTimer;
+@onready var coyoteTimer = %CoyoteTimer;
 @onready var soundJump = %AudioStreamJump;
 @onready var soundHurt = %AudioStreamHurt;
 @onready var soundScream = %AudioStreamScream;
@@ -128,6 +129,10 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 					jumpSoundTween.kill();
 
 		PLAYER_STATE.FALLING:
+			# Only start the coyote timer if we were on the ground
+			if (state == PLAYER_STATE.GROUNDED):
+				coyoteTimer.start();
+			
 			playerAnimator.play_animation_falling();
 			_stopJumpSound();
 		
@@ -190,6 +195,9 @@ func _state_falling(delta: float) -> void:
 	
 	if (is_on_floor()):
 		_enter_state(PLAYER_STATE.GROUNDED);
+	elif (!coyoteTimer.is_stopped()):
+		if (Input.is_action_just_pressed("jump")):
+			_enter_state(PLAYER_STATE.JUMPING);
 	# Die when falling out of the screen
 	elif (position.y > %PlayerCamera.limit_bottom + 8):
 		takeDamage(Vector2(), 99);
