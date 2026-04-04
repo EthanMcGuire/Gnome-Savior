@@ -64,6 +64,7 @@ unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("1_o6f3b")
 autoplay = true
+bus = &"Music"
 
 [node name="Background" type="Node2D" parent="." unique_id=1889970620]
 

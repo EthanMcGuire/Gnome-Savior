@@ -144,21 +144,25 @@ current = true
 [node name="AudioStreamJump" type="AudioStreamPlayer2D" parent="Sound" unique_id=35173714]
 unique_name_in_owner = true
 stream = ExtResource("2_mw5aj")
+bus = &"Sound"
 area_mask = 0
 
 [node name="AudioStreamHurt" type="AudioStreamPlayer2D" parent="Sound" unique_id=650982366]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_7s8j0")
+bus = &"Sound"
 area_mask = 0
 
 [node name="AudioStreamScream" type="AudioStreamPlayer2D" parent="Sound" unique_id=734195801]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_sbiuv")
 volume_db = 1.0
+bus = &"Sound"
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer2D" parent="Sound" unique_id=1182894884]
 unique_name_in_owner = true
 stream = ExtResource("8_sbiuv")
+bus = &"Sound"
 
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=2091822403 node_paths=PackedStringArray("animationPlayer", "sprite")]
 unique_name_in_owner = true

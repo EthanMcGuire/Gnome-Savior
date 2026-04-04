@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://yv6e1j5dxplj" path="res://assets/sprites/Background/bg.png" id="2_75tu5"]
 [ext_resource type="AudioStream" uid="uid://dec2cnc60guv5" path="res://assets/audio/music/basic_platformer_music_-_title.wav" id="2_tuuty"]
 [ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="4_0kqpb"]
+[ext_resource type="PackedScene" uid="uid://iima6j6gcyfw" path="res://assets/scenes/UI/button.tscn" id="5_m0adw"]
+[ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="5_vjl5c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0kqpb"]
 font = ExtResource("4_0kqpb")
@@ -13,6 +15,32 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.2509804)
 shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kqpb"]
+bg_color = Color(0, 0.5058824, 0.9411765, 0.5019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjl5c"]
+bg_color = Color(0, 0.5058824, 0.9411765, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [sub_resource type="Animation" id="Animation_0kqpb"]
 length = 0.001
@@ -60,6 +88,7 @@ process_mode = 3
 stream = ExtResource("2_tuuty")
 volume_db = -15.0
 autoplay = true
+bus = &"Music"
 
 [node name="Background" type="Node2D" parent="." unique_id=1889970620]
 
@@ -95,46 +124,162 @@ label_settings = SubResource("LabelSettings_0kqpb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonPlay" type="MenuButton" parent="CanvasLayer" unique_id=2113296807]
-anchors_preset = 8
+[node name="Buttons1" type="VBoxContainer" parent="CanvasLayer" unique_id=1317579499]
+unique_name_in_owner = true
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -27.0
-offset_top = 16.0
+offset_top = -116.0
 offset_right = 27.0
-offset_bottom = 48.0
+offset_bottom = -32.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_0kqpb")
-toggle_mode = false
-keep_pressed_outside = true
-text = "PLAY"
-flat = false
+grow_vertical = 0
+theme_override_constants/separation = 16
+alignment = 1
 
-[node name="ButtonQuit" type="MenuButton" parent="CanvasLayer" unique_id=1563036381]
-anchors_preset = 8
+[node name="ButtonPlay" parent="CanvasLayer/Buttons1" unique_id=1980138239 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+
+[node name="ButtonQuit" parent="CanvasLayer/Buttons1" unique_id=1364343558 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+text = "QUIT"
+
+[node name="Buttons2" type="VBoxContainer" parent="CanvasLayer" unique_id=1074296540]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = 64.0
-offset_right = 27.0
-offset_bottom = 96.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -172.0
+offset_right = 60.0
+offset_bottom = -32.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_0kqpb")
-toggle_mode = false
-keep_pressed_outside = true
-text = "QUIT
-"
-flat = false
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="ButtonEasy" parent="CanvasLayer/Buttons2" unique_id=1012900223 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+text = "EASY"
+
+[node name="ButtonHard" parent="CanvasLayer/Buttons2" unique_id=1700443216 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.8509804, 0, 0, 1)
+text = "HARD"
+
+[node name="ButtonSuperHard" parent="CanvasLayer/Buttons2" unique_id=423504488 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.21568628, 0, 1)
+text = "SUPER HARD"
+
+[node name="ButtonBack" parent="CanvasLayer/Buttons2" unique_id=1020571341 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+text = "BACK"
+
+[node name="ButtonCredits" parent="CanvasLayer" unique_id=1674641696 instance=ExtResource("5_m0adw")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = -28.0
+offset_right = 140.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Credits"
+
+[node name="Sound" type="HBoxContainer" parent="CanvasLayer" unique_id=454018895]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -40.0
+offset_right = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="MusicContainer" type="VBoxContainer" parent="CanvasLayer/Sound" unique_id=1931508581]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer/Sound/MusicContainer" unique_id=1699469535]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("5_vjl5c")
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Sound/MusicContainer" unique_id=93460683]
+unique_name_in_owner = true
+modulate = Color(0.16862746, 0.58431375, 1, 1)
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0kqpb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vjl5c")
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+ticks_position = 3
+
+[node name="SoundContainer" type="VBoxContainer" parent="CanvasLayer/Sound" unique_id=695566656]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="SoundLabel" type="Label" parent="CanvasLayer/Sound/SoundContainer" unique_id=1850152104]
+layout_mode = 2
+text = "Sound"
+label_settings = ExtResource("5_vjl5c")
+
+[node name="SoundSlider" type="HSlider" parent="CanvasLayer/Sound/SoundContainer" unique_id=1090540365]
+unique_name_in_owner = true
+modulate = Color(0.16862746, 0.58431375, 1, 1)
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0kqpb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vjl5c")
+max_value = 1.0
+step = 0.01
+value = 1.0
+scrollable = false
+ticks_position = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1061234694]
 libraries/ = SubResource("AnimationLibrary_m0adw")
 autoplay = &"title"
 
-[connection signal="pressed" from="CanvasLayer/ButtonPlay" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[node name="FunnyToggle" type="CheckBox" parent="CanvasLayer" unique_id=1407118111]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 76.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_0kqpb")
+theme_override_font_sizes/font_size = 12
+text = "Funny"
+
+[connection signal="pressed" from="CanvasLayer/Buttons1/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons1/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons2/ButtonEasy" to="." method="_on_button_easy_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons2/ButtonHard" to="." method="_on_button_hard_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons2/ButtonSuperHard" to="." method="_on_button_super_hard_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons2/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonCredits" to="." method="_on_button_credits_pressed"]
+[connection signal="drag_ended" from="CanvasLayer/Sound/MusicContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="CanvasLayer/Sound/SoundContainer/SoundSlider" to="." method="_on_sound_slider_drag_ended"]
+[connection signal="toggled" from="CanvasLayer/FunnyToggle" to="." method="_on_funny_toggle_toggled"]

@@ -77,6 +77,7 @@ stream = ExtResource("2_aiju2")
 volume_db = -10.0
 autoplay = true
 max_distance = 400.0
+bus = &"Sound"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Trap" unique_id=1122717669]
 libraries/ = SubResource("AnimationLibrary_73wyi")

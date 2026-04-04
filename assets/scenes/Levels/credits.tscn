@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://dqpmmwtl3up80"]
+
+[ext_resource type="Script" uid="uid://cm1vuegcf0gjk" path="res://assets/scripts/UI/credits.gd" id="1_qj772"]
+[ext_resource type="LabelSettings" uid="uid://boolnwfv1u8qb" path="res://assets/ui_settings/label_settings_sign.tres" id="2_qj772"]
+[ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="4_a113b"]
+[ext_resource type="PackedScene" uid="uid://iima6j6gcyfw" path="res://assets/scenes/UI/button.tscn" id="5_yt2ry"]
+
+[sub_resource type="Gradient" id="Gradient_tfswx"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qnabd"]
+gradient = SubResource("Gradient_tfswx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_0kqpb"]
+font = ExtResource("4_a113b")
+font_size = 30
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.2509804)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwda4"]
+bg_color = Color(1, 1, 1, 0.78431374)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Credits" type="Node2D" unique_id=1928656440]
+script = ExtResource("1_qj772")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1811038836]
+process_mode = 3
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[node name="Background" type="Node2D" parent="." unique_id=1889970620]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Background" unique_id=597241428]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="Background/CanvasLayer" unique_id=1626608913]
+texture_repeat = 2
+position = Vector2(0, 4319.999)
+scale = Vector2(1.8749999, 269.99994)
+texture = SubResource("GradientTexture1D_qnabd")
+centered = false
+offset = Vector2(0, -16)
+region_rect = Rect2(0, 0, 270, 200)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1819565069]
+layer = 2000
+
+[node name="LabelCredits" type="Label" parent="CanvasLayer" unique_id=1116946421]
+unique_name_in_owner = true
+modulate = Color(0.21176471, 0.8980392, 1, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -88.0
+offset_right = 93.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MUSIC
+
+\"Basic Platformer music\" - By Vircon32 (Carra). Published at OpenGameArt under license CC-BY 4.0.
+Fire Level - By Spring Spring
+8-bit Mechanical Complex - By HydroGene
+Abandoned Castle Music - By StarNinjas
+Dog Music - By Spring Spring
+Boss Music - By GTDStudio aka Palrom
+
+
+SOUNDS
+
+8-Bit Sound Effect Pack - By @Shades
+
+Man Screams
+//
+
+Helmut Scream - By Creative heroes
+http://freesound.org/people/creativeheroes/sounds/84353/
+http://creativecommons.org/licenses/by/3.0/
+
+Male_Thijs_loud_scream - By thanvannispen
+http://freesound.org/people/thanvannispen/sounds/9432/
+http://creativecommons.org/licenses/by/3.0/
+
+human male scream multi - By JohnsonBrandEditing
+http://freesound.org/people/JohnsonBrandEditing/sounds/173944/
+http://creativecommons.org/publicdomain/zero/1.0/
+
+//
+
+Jump Sound - By Flush
+Knife sharpening - Author: The Berklee College of Music
+Light Machine Gun - Author: KuraiWolf
+NES Sounds - By Basto
+Door open, Door close - By qubodup
+
+Gnome voicelines and screams - My Brother
+Pixabay
+
+ART
+
+Pixel ocean and sky background - By CraftPix.net 2D Game Assets on opengameart
+
+\"Night forest background\" Olga Bikmullina (http://ahninniah.graphics) Licensed under Creative Commons: By Attribution 3.0 http://creativecommons.org/licenses/by/3.0/
+
+Castle platformer assets - By chipmunk"
+label_settings = ExtResource("2_qj772")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1810811374]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 64.0
+offset_right = 255.0
+offset_bottom = 110.0
+grow_horizontal = 2
+use_top_left = true
+
+[node name="Title" type="Label" parent="CanvasLayer/CenterContainer" unique_id=1229562817]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_0kqpb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer" unique_id=1317579499]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -42.0
+offset_right = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ButtonBack" parent="CanvasLayer/Buttons" unique_id=1364343558 instance=ExtResource("5_yt2ry")]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_hwda4")
+text = "BACK"
+
+[connection signal="pressed" from="CanvasLayer/Buttons/ButtonBack" to="." method="_on_button_back_pressed"]

@@ -17,6 +17,7 @@ damage = 2
 unique_name_in_owner = true
 stream = ExtResource("2_vlrmp")
 max_distance = 400.0
+bus = &"Sound"
 
 [node name="Sprite" type="Node2D" parent="." unique_id=393050243]
 

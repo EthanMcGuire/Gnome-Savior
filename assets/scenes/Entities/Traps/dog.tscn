@@ -23,6 +23,7 @@ stream = ExtResource("3_3ks5q")
 volume_db = 2.5
 pitch_scale = 0.9
 max_distance = 500.0
+bus = &"Sound"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=343401948]
 modulate = Color(1, 0.2509804, 0.2509804, 1)

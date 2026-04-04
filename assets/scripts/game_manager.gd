@@ -1,5 +1,11 @@
 extends Node
 
+enum DIFFICULTY {
+	EASY,
+	HARD,
+	SUPER_HARD
+};
+
 const IS_TEST := false;
 
 const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_0.tscn");
@@ -15,13 +21,15 @@ const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
-const STARTING_LIVES := 99;
-const STARTING_MAX_HP := 2;
+const STARTING_LIVES := [99, 3, 3];
+const STARTING_MAX_HP := [2, 2, 1];
 
-var maxHp := STARTING_MAX_HP;
+var difficulty := DIFFICULTY.EASY;
+var maxHp := 2;
 var hp := maxHp;
-var lives := STARTING_LIVES;
+var lives := 3;
 var coins := 0;
+var deaths := 0;
 
 var playerIsDead := false;
 var levelLoaded := false;
@@ -78,15 +86,36 @@ func _ready() -> void:
 	
 	if (IS_TEST):
 		get_tree().change_scene_to_file("res://assets/scenes/Levels/level_base.tscn");
+	
+func setDifficulty(_difficulty: DIFFICULTY) -> void:
+	difficulty = _difficulty;
+	
+func getDifficulty() -> DIFFICULTY:
+	return difficulty;
 		
 ## This needs to be called to start the game! Should be called when in the scene 'level_base'
 func startGame() -> void:
 	_loadBaseNodes();
-	_resetGameData();
+	_resetPlayerStats();
 	
 	loadLevel(STARTING_LEVEL);
-	
+
 func endGame() -> void:
+	_clearGameData();
+	get_tree().change_scene_to_file("res://assets/scenes/Levels/level_end.tscn");
+	
+func _resetPlayerStats() -> void:
+	speedrunTimeMs = 0;
+	
+	setLives(STARTING_LIVES[difficulty]);
+	setCoins(0);
+	_setDeaths(0);
+	
+	maxHp = STARTING_MAX_HP[difficulty];
+	hp = maxHp;
+	setPlayerMaxHp(maxHp);
+	
+func _clearGameData() -> void:
 	levelLoaded = false;
 	
 	_destroyPlayer();
@@ -98,11 +127,6 @@ func endGame() -> void:
 	currentLevelName = "";
 	playerSpawn = null;
 	
-	get_tree().change_scene_to_file("res://assets/scenes/Levels/level_end.tscn");
-	
-func _process(delta: float) -> void:
-	_update(delta);
-
 func _loadBaseNodes() -> void:
 	hud = get_node("/root/LevelBase/CanvasLayer/HUD");
 	assert(hud);
@@ -133,16 +157,12 @@ func _loadBaseNodes() -> void:
 	projectiles = get_node("/root/LevelBase/Projectiles");
 	assert(projectiles);
 
-func _resetGameData() -> void:
-	speedrunTimeMs = 0;
-	setLives(STARTING_LIVES);
-	setCoins(0);
-	maxHp = STARTING_MAX_HP;
-	hp = maxHp;
-	setPlayerMaxHp(maxHp);
-
 func gameOver() -> void:
-	get_tree().quit();
+	_goToTitle();
+	
+func _goToTitle() -> void:
+	_clearGameData();
+	get_tree().change_scene_to_file("res://assets/scenes/Levels/title_screen.tscn");
 	
 func _toggleGamePaused() -> void:
 	get_tree().paused = !get_tree().paused;
@@ -153,6 +173,9 @@ func getSpeedrunTime() -> int:
 
 #region Update
 
+func _process(delta: float) -> void:
+	_update(delta);
+	
 func _update(delta: float) -> void:
 	if (needToRedrawBlood):
 		needToRedrawBlood = false;
@@ -168,16 +191,14 @@ func _updateLevel(delta: float) -> void:
 	if (!get_tree().paused):
 		_updateSpeedrunTime(delta);
 		
-		if (Input.is_action_just_pressed("restart")):
+		# Only allow the player to restart if they are dead
+		if (Input.is_action_just_pressed("restart") && playerIsDead):
 			print("RESTARTING LEVEL.");
 			
 			if (playerIsDead):
 				playerIsDead = false;
 				retryLabel.visible = false;
 				startDeathTransition(currentScene);
-			else:
-				# Don't reduce lives
-				startLevelTransition(currentScene);
 
 func _updateSpeedrunTime(delta: float) -> void:
 	speedrunTimeMs += delta * 1000;
@@ -254,7 +275,7 @@ func startDeathTransition(nextScene: PackedScene) -> void:
 
 #endregion Level
 
-#region Music
+#region Audio
 
 func _loadLevelMusic(music: AudioStream) -> void:
 	if (musicPlayer.stream != music):
@@ -271,7 +292,15 @@ func playMusic(music: AudioStream) -> void:
 func stopMusic() -> void:
 	musicPlayer.stop();
 
-#endregion Music
+func setMusicVolume(db) -> void:
+	var bus_index = AudioServer.get_bus_index("Music");
+	AudioServer.set_bus_volume_db(bus_index, db);
+	
+func setSoundVolume(db) -> void:
+	var bus_index = AudioServer.get_bus_index("Sound");
+	AudioServer.set_bus_volume_db(bus_index, db);
+
+#endregion Audio
 
 #region Blood
 
@@ -520,6 +549,17 @@ func setCoins(amount: int):
 
 #endregion Coins
 
+#region Deaths
+
+func _setDeaths(amount: int) -> void:
+	deaths = amount;
+	hud.updateDeaths(deaths);
+
+func addDeath():
+	_setDeaths(deaths + 1);
+
+#endregion Deaths
+
 #region Lives
 
 func getLives() -> int:
@@ -570,6 +610,7 @@ func removePlayerHp(amount: int) -> void:
 	
 	# Game over
 	if (hp == 0):
+		addDeath();
 		playerIsDead = true;
 		retryLabel.visible = true;
 

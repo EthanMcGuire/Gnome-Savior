@@ -25,6 +25,7 @@ one_shot = true
 unique_name_in_owner = true
 stream = ExtResource("2_rahiw")
 max_distance = 500.0
+bus = &"Sound"
 
 [node name="AudioStreamSlam" type="AudioStreamPlayer2D" parent="." unique_id=1905877801]
 unique_name_in_owner = true
@@ -32,12 +33,14 @@ stream = ExtResource("3_h4jco")
 volume_db = 2.0
 pitch_scale = 0.45
 max_distance = 500.0
+bus = &"Sound"
 
 [node name="AudioStreamDeath" type="AudioStreamPlayer2D" parent="." unique_id=1821163957]
 unique_name_in_owner = true
 stream = ExtResource("5_a0a8g")
 pitch_scale = 0.75
 max_distance = 500.0
+bus = &"Sound"
 
 [node name="Fist" type="Node2D" parent="." unique_id=346570684]
 unique_name_in_owner = true

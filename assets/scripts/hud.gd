@@ -9,6 +9,9 @@ func updateLives(lives: int):
 func updateCoins(coins: int):
 	%CoinLabel.text = str(coins);
 
+func updateDeaths(deaths: int):
+	%DeathLabel.text = str(deaths);
+
 func updateMaxHealth(health: int):
 	var currentHealthCount;
 	

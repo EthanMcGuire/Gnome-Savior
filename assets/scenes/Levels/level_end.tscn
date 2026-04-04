@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bkqh3ha21biqy" path="res://assets/scripts/level/end_screen.gd" id="1_jxw33"]
 [ext_resource type="AudioStream" uid="uid://cnmt040smpsc5" path="res://assets/audio/music/Victory.mp3" id="2_jxw33"]
 [ext_resource type="Texture2D" uid="uid://dhdfmto1r26co" path="res://assets/sprites/Background/skyfinal.png" id="3_jxw33"]
-[ext_resource type="FontFile" uid="uid://8mel60sgk58t" path="res://assets/font/Kenney Pixel Square.ttf" id="4_verxc"]
 [ext_resource type="LabelSettings" uid="uid://bqk0yx8cs55w3" path="res://assets/ui_settings/label_settings_title.tres" id="4_x7r3l"]
 [ext_resource type="LabelSettings" uid="uid://bx0k3wsc6pvrt" path="res://assets/ui_settings/label_settings_title_small.tres" id="5_477du"]
 [ext_resource type="LabelSettings" uid="uid://bbq7xjv4rpsuj" path="res://assets/ui_settings/label_settings_end_time.tres" id="6_uf4ci"]
+[ext_resource type="PackedScene" uid="uid://iima6j6gcyfw" path="res://assets/scenes/UI/button.tscn" id="7_verxc"]
 
 [sub_resource type="Animation" id="Animation_0kqpb"]
 length = 0.001
@@ -140,24 +140,19 @@ label_settings = ExtResource("6_uf4ci")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonQuit" type="MenuButton" parent="CanvasLayer" unique_id=1563036381]
-anchors_preset = 8
+[node name="ButtonQuit" parent="CanvasLayer" unique_id=1980138239 instance=ExtResource("7_verxc")]
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -27.0
-offset_top = 64.0
+offset_top = -71.0
 offset_right = 27.0
-offset_bottom = 96.0
+offset_bottom = -39.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_verxc")
-toggle_mode = false
-keep_pressed_outside = true
-text = "QUIT
-"
-flat = false
+grow_vertical = 0
+text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1061234694]
 libraries/ = SubResource("AnimationLibrary_m0adw")

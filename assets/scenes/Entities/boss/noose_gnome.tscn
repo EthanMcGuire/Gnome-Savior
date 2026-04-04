@@ -78,6 +78,7 @@ volume_db = 3.0
 pitch_scale = 1.75
 autoplay = true
 max_distance = 480.0
+bus = &"Sound"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1258852378]
 collision_layer = 2
@@ -92,5 +93,6 @@ volume_db = -3.0
 pitch_scale = 1.25
 autoplay = true
 max_distance = 400.0
+bus = &"Sound"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

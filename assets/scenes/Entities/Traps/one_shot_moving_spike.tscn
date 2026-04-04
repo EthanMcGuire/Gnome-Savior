@@ -16,6 +16,7 @@ stream = ExtResource("2_m44pk")
 volume_db = -0.5
 pitch_scale = 1.1
 max_distance = 400.0
+bus = &"Sound"
 
 [node name="SpikeHole" type="Sprite2D" parent="." unique_id=855431279]
 position = Vector2(0, -4)

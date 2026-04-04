@@ -96,6 +96,7 @@ script = ExtResource("1_h038i")
 stream = ExtResource("3_mjp8d")
 volume_db = 1.0
 max_distance = 320.0
+bus = &"Sound"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=465129936]
 unique_name_in_owner = true

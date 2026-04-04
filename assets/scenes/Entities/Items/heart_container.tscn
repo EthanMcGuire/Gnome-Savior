@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_syf2w")
 stream = ExtResource("3_x35jy")
 volume_db = 2.5
 pitch_scale = 1.25
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

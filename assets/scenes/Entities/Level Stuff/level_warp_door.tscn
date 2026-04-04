@@ -26,10 +26,12 @@ shape = SubResource("RectangleShape2D_eojlu")
 [node name="AudioStreamDoorOpen" type="AudioStreamPlayer2D" parent="." index="2" unique_id=429705256]
 unique_name_in_owner = true
 stream = ExtResource("3_eihw8")
+bus = &"Sound"
 
 [node name="AudioStreamDoorClose" type="AudioStreamPlayer2D" parent="." index="3" unique_id=1606955271]
 unique_name_in_owner = true
 stream = ExtResource("4_qn3pb")
+bus = &"Sound"
 
 [connection signal="finished" from="AudioStreamDoorOpen" to="." method="_on_audio_stream_door_open_finished"]
 [connection signal="finished" from="AudioStreamDoorClose" to="." method="_on_audio_stream_door_close_finished"]

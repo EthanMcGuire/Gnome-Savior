@@ -26,6 +26,7 @@ stream = SubResource("AudioStreamRandomizer_e0iw7")
 volume_db = -2.0
 pitch_scale = 0.6
 max_distance = 480.0
+bus = &"Sound"
 
 [node name="AudioStreamDead" type="AudioStreamPlayer2D" parent="." unique_id=479168061]
 unique_name_in_owner = true
@@ -33,6 +34,7 @@ stream = ExtResource("2_imty1")
 volume_db = -2.0
 pitch_scale = 0.3
 max_distance = 480.0
+bus = &"Sound"
 
 [node name="Head" type="Node2D" parent="." unique_id=862738048]
 unique_name_in_owner = true

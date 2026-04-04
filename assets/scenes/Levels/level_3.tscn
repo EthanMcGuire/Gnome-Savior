@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b6r8k2yw1fb1u"]
 
 [ext_resource type="PackedScene" uid="uid://civ4yk5xhynw6" path="res://assets/scenes/Levels/level.tscn" id="1_2ky06"]
-[ext_resource type="AudioStream" uid="uid://cfjt40olbbtey" path="res://assets/audio/music/basic_platformer_music_-_world_2.wav" id="2_c4ayk"]
+[ext_resource type="AudioStream" uid="uid://dff6pcdq0erqa" path="res://assets/audio/music/8-bit_mechanical_complex.mp3" id="2_eqj6n"]
 [ext_resource type="Texture2D" uid="uid://b64pc152xe7go" path="res://assets/sprites/Background/Clouds_and_Mountains/Cloud01.png" id="3_w50wg"]
 [ext_resource type="Texture2D" uid="uid://00wex6nc6so" path="res://assets/sprites/Background/Clouds_and_Mountains/Cloud02.png" id="4_urruw"]
 [ext_resource type="Texture2D" uid="uid://dkpfmoxypenni" path="res://assets/sprites/Background/Clouds_and_Mountains/Cloud03.png" id="5_u6awi"]
@@ -20,45 +20,38 @@
 [ext_resource type="PackedScene" uid="uid://vw53d3oqapsy" path="res://assets/scenes/Entities/Items/one_up.tscn" id="20_4clrl"]
 [ext_resource type="PackedScene" uid="uid://com2u5kxhj3vj" path="res://assets/scenes/Entities/Level Stuff/checkpoint.tscn" id="20_xs4mt"]
 
-[sub_resource type="Curve2D" id="Curve2D_eqj6n"]
+[sub_resource type="Curve2D" id="Curve2D_avf6y"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -96)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_avf6y"]
+[sub_resource type="Curve2D" id="Curve2D_xs4mt"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.99942017, 9.081169, 0, 0, 0, 0, 0, 96)
 }
 point_count = 3
 
-[sub_resource type="Curve2D" id="Curve2D_xs4mt"]
+[sub_resource type="Curve2D" id="Curve2D_4clrl"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_4clrl"]
+[sub_resource type="Curve2D" id="Curve2D_plsmh"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -256, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_plsmh"]
-resource_local_to_scene = true
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -46)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_vbky6"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -162)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -46)
 }
 point_count = 2
 
@@ -72,44 +65,44 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_2ky06"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -162)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_c4ayk"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 232, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_w50wg"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -411, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 232, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_urruw"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 411, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -411, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_u6awi"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.99942017, 9.081169, 0, 0, 0, 0, 0, 96)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 411, 0)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_epxek"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1000, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.99942017, 9.081169, 0, 0, 0, 0, 0, 96)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_n2lym"]
 resource_local_to_scene = true
@@ -128,28 +121,28 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_e6c01"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1000, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_8rjrw"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ojixv"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 180, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_g4f1q"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -144)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 180, 0)
 }
 point_count = 2
 
@@ -205,14 +198,14 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_jd6mh"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -144)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ryyi5"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 2
 
@@ -226,119 +219,119 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_mhld1"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -160, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1ek5b"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -160, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ug5jx"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 161, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_pe1h2"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 161, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_p5wcr"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 61)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -48)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1nhlq"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 61)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_qccg5"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -192, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_lgcrh"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -192, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_xik7w"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_jf7sg"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1w8wh"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1kh8d"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_5tryy"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 384, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ehr4t"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 384, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_k4icr"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -384, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 320, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_nlp88"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -320, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -384, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_jitby"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -320, 0)
 }
 point_count = 2
 
@@ -352,6 +345,13 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_dpi2w"]
 resource_local_to_scene = true
 _data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ihuny"]
+resource_local_to_scene = true
+_data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -208, 0)
 }
 point_count = 2
@@ -360,7 +360,7 @@ point_count = 2
 levelName = "Level_3"
 levelWidth = 4500.0
 levelHeight = 800.0
-music = ExtResource("2_c4ayk")
+music = ExtResource("2_eqj6n")
 
 [node name="CloudsBack" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="0" unique_id=1340182314]
 scroll_scale = Vector2(0.15, 0.25)
@@ -617,286 +617,286 @@ position = Vector2(4872, 224)
 
 [node name="SawBlade" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="0" unique_id=1375632531 instance=ExtResource("12_nud7k")]
 position = Vector2(184, 216)
-curve = SubResource("Curve2D_eqj6n")
+curve = SubResource("Curve2D_avf6y")
 
 [node name="SawBlade2" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="1" unique_id=1823573806 instance=ExtResource("12_nud7k")]
 position = Vector2(360, 128)
-curve = SubResource("Curve2D_avf6y")
+curve = SubResource("Curve2D_xs4mt")
 
 [node name="SawBlade3" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="2" unique_id=1143145861 instance=ExtResource("12_nud7k")]
 position = Vector2(648, 128)
-curve = SubResource("Curve2D_xs4mt")
+curve = SubResource("Curve2D_4clrl")
 deltaSpeedPixelsStart = 90.0
 deltaSpeedPixelsReturn = 90.0
 
 [node name="SawBlade4" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="3" unique_id=285866600 instance=ExtResource("12_nud7k")]
 position = Vector2(904, 128)
-curve = SubResource("Curve2D_4clrl")
+curve = SubResource("Curve2D_plsmh")
 deltaSpeedPixelsStart = 90.0
 deltaSpeedPixelsReturn = 90.0
 
 [node name="SawBlade5" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="4" unique_id=1821670227 instance=ExtResource("12_nud7k")]
 position = Vector2(280, 200)
-curve = SubResource("Curve2D_plsmh")
+curve = SubResource("Curve2D_vbky6")
 
 [node name="SawBlade6" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="5" unique_id=486570034 instance=ExtResource("12_nud7k")]
 position = Vector2(1072, 224)
-curve = SubResource("Curve2D_vbky6")
+curve = SubResource("Curve2D_6xmon")
 deltaSpeedPixelsStart = 90.0
 deltaSpeedPixelsReturn = 90.0
 
 [node name="SawBlade7" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="6" unique_id=2012973385 instance=ExtResource("12_nud7k")]
 position = Vector2(1304, 224)
-curve = SubResource("Curve2D_6xmon")
+curve = SubResource("Curve2D_2ky06")
 deltaSpeedPixelsStart = 90.0
 deltaSpeedPixelsReturn = 90.0
 
 [node name="SawBlade8" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="7" unique_id=607165834 instance=ExtResource("12_nud7k")]
 position = Vector2(1185, 164)
-curve = SubResource("Curve2D_2ky06")
+curve = SubResource("Curve2D_c4ayk")
 deltaSpeedPixelsStart = 90.0
 deltaSpeedPixelsReturn = 90.0
 transitionType = 0
 
 [node name="SawBlade9" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="8" unique_id=1787487116 instance=ExtResource("12_nud7k")]
 position = Vector2(1432, 216)
-curve = SubResource("Curve2D_c4ayk")
+curve = SubResource("Curve2D_w50wg")
 
 [node name="SawBlade10" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="9" unique_id=71936572 instance=ExtResource("12_nud7k")]
 position = Vector2(2020, 240)
-curve = SubResource("Curve2D_w50wg")
+curve = SubResource("Curve2D_urruw")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 
 [node name="SawBlade11" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="10" unique_id=2111340655 instance=ExtResource("12_nud7k")]
 position = Vector2(1608, 240)
-curve = SubResource("Curve2D_urruw")
+curve = SubResource("Curve2D_u6awi")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 
 [node name="SawBlade12" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="11" unique_id=1279251930 instance=ExtResource("12_nud7k")]
 position = Vector2(776, 55)
-curve = SubResource("Curve2D_u6awi")
+curve = SubResource("Curve2D_epxek")
 
 [node name="SawBlade14" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="12" unique_id=1842702873 instance=ExtResource("12_nud7k")]
 position = Vector2(3092, 192)
-curve = SubResource("Curve2D_epxek")
+curve = SubResource("Curve2D_n2lym")
 deltaSpeedPixelsStart = 224.0
 deltaSpeedPixelsReturn = 224.0
 transitionType = 0
 
 [node name="SawBlade15" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="13" unique_id=1903344920 instance=ExtResource("12_nud7k")]
 position = Vector2(3092, 160)
-curve = SubResource("Curve2D_n2lym")
+curve = SubResource("Curve2D_8ob46")
 deltaSpeedPixelsStart = 224.0
 deltaSpeedPixelsReturn = 224.0
 transitionType = 0
 
 [node name="SawBlade16" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="14" unique_id=1211050455 instance=ExtResource("12_nud7k")]
 position = Vector2(3092, 128)
-curve = SubResource("Curve2D_8ob46")
+curve = SubResource("Curve2D_e6c01")
 deltaSpeedPixelsStart = 224.0
 deltaSpeedPixelsReturn = 224.0
 transitionType = 0
 
 [node name="SawBlade13" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="15" unique_id=455594086 instance=ExtResource("12_nud7k")]
 position = Vector2(2664, 188)
-curve = SubResource("Curve2D_e6c01")
+curve = SubResource("Curve2D_8rjrw")
 
 [node name="SawBlade17" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="16" unique_id=532355199 instance=ExtResource("12_nud7k")]
 position = Vector2(2780, 128)
-curve = SubResource("Curve2D_8rjrw")
+curve = SubResource("Curve2D_ojixv")
 
 [node name="SawBlade18" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="17" unique_id=712385584 instance=ExtResource("12_nud7k")]
 position = Vector2(2940, 188)
-curve = SubResource("Curve2D_ojixv")
+curve = SubResource("Curve2D_g4f1q")
 
 [node name="SawBlade19" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="18" unique_id=2115803221 instance=ExtResource("12_nud7k")]
 position = Vector2(3336, 224)
-curve = SubResource("Curve2D_g4f1q")
+curve = SubResource("Curve2D_d2wu6")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 
 [node name="SawBlade20" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="19" unique_id=663753917 instance=ExtResource("12_nud7k")]
 position = Vector2(3368, 224)
-curve = SubResource("Curve2D_d2wu6")
+curve = SubResource("Curve2D_sk1t8")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.1
 
 [node name="SawBlade21" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="20" unique_id=909450823 instance=ExtResource("12_nud7k")]
 position = Vector2(3400, 224)
-curve = SubResource("Curve2D_sk1t8")
+curve = SubResource("Curve2D_b0sjc")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.2
 
 [node name="SawBlade22" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="21" unique_id=894485072 instance=ExtResource("12_nud7k")]
 position = Vector2(3432, 224)
-curve = SubResource("Curve2D_b0sjc")
+curve = SubResource("Curve2D_ot8ay")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.3
 
 [node name="SawBlade23" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="22" unique_id=1588233986 instance=ExtResource("12_nud7k")]
 position = Vector2(3464, 224)
-curve = SubResource("Curve2D_ot8ay")
+curve = SubResource("Curve2D_fciha")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.4
 
 [node name="SawBlade24" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="23" unique_id=1869213 instance=ExtResource("12_nud7k")]
 position = Vector2(3496, 224)
-curve = SubResource("Curve2D_fciha")
+curve = SubResource("Curve2D_jjhqj")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.5
 
 [node name="SawBlade25" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="24" unique_id=1044423793 instance=ExtResource("12_nud7k")]
 position = Vector2(3528, 224)
-curve = SubResource("Curve2D_jjhqj")
+curve = SubResource("Curve2D_hyafe")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.6
 
 [node name="SawBlade26" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="25" unique_id=676069488 instance=ExtResource("12_nud7k")]
 position = Vector2(3560, 224)
-curve = SubResource("Curve2D_hyafe")
+curve = SubResource("Curve2D_jd6mh")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 128.0
 startDelay = 0.7
 
 [node name="SawBlade27" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="26" unique_id=1839114600 instance=ExtResource("12_nud7k")]
 position = Vector2(3592, 224)
-curve = SubResource("Curve2D_jd6mh")
+curve = SubResource("Curve2D_ryyi5")
 deltaSpeedPixelsStart = 90.0
 deltaSpeedPixelsReturn = 90.0
 transitionType = 0
 
 [node name="SawBlade28" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="27" unique_id=1144226423 instance=ExtResource("12_nud7k")]
 position = Vector2(3864, 209)
-curve = SubResource("Curve2D_ryyi5")
+curve = SubResource("Curve2D_513ly")
 deltaSpeedPixelsStart = 56.0
 deltaSpeedPixelsReturn = 56.0
 
 [node name="SawBlade29" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="28" unique_id=1523124064 instance=ExtResource("12_nud7k")]
 position = Vector2(3896, 209)
-curve = SubResource("Curve2D_513ly")
+curve = SubResource("Curve2D_mhld1")
 deltaSpeedPixelsStart = 56.0
 deltaSpeedPixelsReturn = 56.0
 
 [node name="SawBlade31" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="29" unique_id=991255984 instance=ExtResource("12_nud7k")]
 position = Vector2(4136, 184)
-curve = SubResource("Curve2D_mhld1")
+curve = SubResource("Curve2D_1ek5b")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade32" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="30" unique_id=316478692 instance=ExtResource("12_nud7k")]
 position = Vector2(3832, 209)
-curve = SubResource("Curve2D_1ek5b")
+curve = SubResource("Curve2D_ug5jx")
 deltaSpeedPixelsStart = 56.0
 deltaSpeedPixelsReturn = 56.0
 
 [node name="SawBlade30" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="31" unique_id=616548905 instance=ExtResource("12_nud7k")]
 position = Vector2(4104, 224)
-curve = SubResource("Curve2D_ug5jx")
+curve = SubResource("Curve2D_pe1h2")
 deltaSpeedPixelsStart = 128.0
 deltaSpeedPixelsReturn = 129.0
 
 [node name="SawBlade33" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="32" unique_id=868892036 instance=ExtResource("12_nud7k")]
 position = Vector2(3928, 209)
-curve = SubResource("Curve2D_pe1h2")
+curve = SubResource("Curve2D_p5wcr")
 deltaSpeedPixelsStart = 56.0
 deltaSpeedPixelsReturn = 56.0
 
 [node name="SawBlade34" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="33" unique_id=850956565 instance=ExtResource("12_nud7k")]
 position = Vector2(4312, 128)
-curve = SubResource("Curve2D_p5wcr")
+curve = SubResource("Curve2D_1nhlq")
 
 [node name="SawBlade36" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="34" unique_id=198362835 instance=ExtResource("12_nud7k")]
 position = Vector2(4376, 208)
-curve = SubResource("Curve2D_1nhlq")
+curve = SubResource("Curve2D_qccg5")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade37" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="35" unique_id=1907508962 instance=ExtResource("12_nud7k")]
 position = Vector2(4568, 208)
-curve = SubResource("Curve2D_qccg5")
+curve = SubResource("Curve2D_lgcrh")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade35" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="36" unique_id=1695484699 instance=ExtResource("12_nud7k")]
 position = Vector2(4680, 208)
-curve = SubResource("Curve2D_lgcrh")
+curve = SubResource("Curve2D_xik7w")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade38" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="37" unique_id=69884701 instance=ExtResource("12_nud7k")]
 position = Vector2(4736, 144)
-curve = SubResource("Curve2D_xik7w")
+curve = SubResource("Curve2D_jf7sg")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade39" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="38" unique_id=2012419336 instance=ExtResource("12_nud7k")]
 position = Vector2(4792, 208)
-curve = SubResource("Curve2D_jf7sg")
+curve = SubResource("Curve2D_1w8wh")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade40" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="39" unique_id=1879968170 instance=ExtResource("12_nud7k")]
 position = Vector2(4848, 144)
-curve = SubResource("Curve2D_1w8wh")
+curve = SubResource("Curve2D_1kh8d")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade41" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="40" unique_id=1918001162 instance=ExtResource("12_nud7k")]
 position = Vector2(4904, 208)
-curve = SubResource("Curve2D_1kh8d")
+curve = SubResource("Curve2D_5tryy")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 transitionType = 0
 
 [node name="SawBlade42" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="41" unique_id=1481550844 instance=ExtResource("12_nud7k")]
 position = Vector2(5040, 256)
-curve = SubResource("Curve2D_5tryy")
+curve = SubResource("Curve2D_ehr4t")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade43" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="42" unique_id=87634660 instance=ExtResource("12_nud7k")]
 position = Vector2(5072, 256)
-curve = SubResource("Curve2D_ehr4t")
+curve = SubResource("Curve2D_k4icr")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade44" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="43" unique_id=1084444868 instance=ExtResource("12_nud7k")]
 position = Vector2(5424, 256)
-curve = SubResource("Curve2D_k4icr")
+curve = SubResource("Curve2D_nlp88")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade45" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="44" unique_id=1640245155 instance=ExtResource("12_nud7k")]
 position = Vector2(5392, 256)
-curve = SubResource("Curve2D_nlp88")
+curve = SubResource("Curve2D_jitby")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 
 [node name="SawBlade46" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="45" unique_id=984159919 instance=ExtResource("12_nud7k")]
 position = Vector2(5528, 192)
-curve = SubResource("Curve2D_jitby")
+curve = SubResource("Curve2D_wfgr1")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 transitionType = 0
 
 [node name="SawBlade47" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="46" unique_id=1139758295 instance=ExtResource("12_nud7k")]
 position = Vector2(5672, 192)
-curve = SubResource("Curve2D_wfgr1")
+curve = SubResource("Curve2D_dpi2w")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 transitionType = 0
 
 [node name="SawBlade48" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="47" unique_id=800509503 instance=ExtResource("12_nud7k")]
 position = Vector2(5704, 192)
-curve = SubResource("Curve2D_dpi2w")
+curve = SubResource("Curve2D_ihuny")
 deltaSpeedPixelsStart = 96.0
 deltaSpeedPixelsReturn = 96.0
 

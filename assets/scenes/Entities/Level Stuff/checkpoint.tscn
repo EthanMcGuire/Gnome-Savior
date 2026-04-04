@@ -20,6 +20,7 @@ stream = ExtResource("3_okqmh")
 volume_db = -2.25
 pitch_scale = 1.25
 max_distance = 580.0
+bus = &"Sound"
 
 [node name="Cage" type="Node2D" parent="." unique_id=1035702497]
 

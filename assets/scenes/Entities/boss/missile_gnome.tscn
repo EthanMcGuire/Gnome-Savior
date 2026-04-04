@@ -41,6 +41,7 @@ region_rect = Rect2(0, 0, 32, 32)
 unique_name_in_owner = true
 stream = SubResource("AudioStreamMP3_xitjp")
 max_distance = 400.0
+bus = &"Sound"
 
 [node name="AudioStreamScream" type="AudioStreamPlayer2D" parent="Sound" unique_id=83242777]
 unique_name_in_owner = true
@@ -48,6 +49,7 @@ stream = SubResource("AudioStreamRandomizer_i888f")
 pitch_scale = 1.4
 autoplay = true
 max_distance = 480.0
+bus = &"Sound"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1258852378]
 collision_layer = 2

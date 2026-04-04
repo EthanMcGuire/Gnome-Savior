@@ -18,9 +18,11 @@ script = ExtResource("1_r3mdm")
 process_mode = 3
 volume_db = -15.0
 autoplay = true
+bus = &"Music"
 
 [node name="AudioStreamLifeUp" type="AudioStreamPlayer" parent="Audio" unique_id=307656827]
 stream = ExtResource("2_5oahs")
+bus = &"Sound"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=124569661]
 layer = 2000

@@ -4,13 +4,18 @@
 [ext_resource type="Script" uid="uid://ctldp0gby4sc0" path="res://assets/scripts/hud.gd" id="1_fkaho"]
 [ext_resource type="LabelSettings" uid="uid://cfk2mqhfwsx4e" path="res://assets/ui_settings/label_settings_hud.tres" id="2_3h8us"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3h8us"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_25gpa"]
 atlas = ExtResource("1_48imw")
-region = Rect2(8, 0, 8, 8)
+region = Rect2(16, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tqus"]
 atlas = ExtResource("1_48imw")
 region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h8us"]
+resource_local_to_scene = true
+atlas = ExtResource("1_48imw")
+region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkaho"]
 atlas = ExtResource("1_48imw")
@@ -36,6 +41,40 @@ anchor_right = 1.0
 offset_bottom = 36.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Deaths" type="TextureRect" parent="." unique_id=220277919]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 1.0
+offset_right = 168.0
+offset_bottom = 17.0
+texture = SubResource("AtlasTexture_25gpa")
+
+[node name="DeathX" type="TextureRect" parent="Deaths" unique_id=224736436]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0tqus")
+
+[node name="DeathLabel" type="Label" parent="Deaths/DeathX" unique_id=294686653]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = 8.0
+grow_vertical = 2
+text = "100"
+label_settings = ExtResource("2_3h8us")
 
 [node name="Coin" type="TextureRect" parent="." unique_id=1683137770]
 layout_mode = 1

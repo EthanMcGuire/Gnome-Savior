@@ -34,6 +34,7 @@ stream = ExtResource("1_p3tkj")
 volume_db = -1.0
 pitch_scale = 1.25
 autoplay = true
+bus = &"Sound"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1733122638]
 amount = 10
@@ -42,7 +43,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_qjd0r")
 
 [node name="Timer" type="Timer" parent="." unique_id=1965150264]
-wait_time = 1.5
+wait_time = 1.4
 one_shot = true
 autostart = true
 

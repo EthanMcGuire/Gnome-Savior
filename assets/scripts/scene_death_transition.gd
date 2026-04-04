@@ -42,9 +42,10 @@ func reduceLives() -> void:
 		%AudioStreamGameOver.play();
 
 func endTranstition() -> void:
-	if (gameOver):
-		GameManager.gameOver();
-		
 	queue_free();
 	get_tree().paused = false;
-	GameManager.loadLevel(nextScene);
+	
+	if (gameOver):
+		GameManager.gameOver();
+	else:
+		GameManager.loadLevel(nextScene);
