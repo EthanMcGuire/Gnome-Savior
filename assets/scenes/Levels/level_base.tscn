@@ -26,7 +26,6 @@ bus = &"Sound"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=124569661]
 layer = 2000
-visible = false
 
 [node name="HUD" parent="CanvasLayer" unique_id=2115374832 instance=ExtResource("2_dw3k1")]
 

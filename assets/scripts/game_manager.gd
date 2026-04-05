@@ -734,9 +734,10 @@ func checkpointHit(name: String) -> void:
 func playerJumpedEvent() -> void:
 	var evilPlayer: PlayerEvil;
 	
-	evilPlayer = level.get_node("PlayerEvil").get_child(0);
-	
-	if (evilPlayer):
-		evilPlayer.playerJumped();
+	if (level.get_node("PlayerEvil").get_child_count() > 0):
+		evilPlayer = level.get_node("PlayerEvil").get_child(0);
+		
+		if (evilPlayer):
+			evilPlayer.playerJumped();
 
 #endregion Game_Events
