@@ -1,6 +1,11 @@
 extends Node2D
 
+@export var dmdOnly := false;
 @export var rotationLerp := 0.2;
+
+func _ready() -> void:
+	if (dmdOnly && GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD):
+		queue_free();
 
 func _process(delta: float) -> void:
 	var playerPos: Vector2;

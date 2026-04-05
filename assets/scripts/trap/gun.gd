@@ -3,6 +3,7 @@ extends Node2D
 
 const BULLET := preload("res://assets/scenes/Entities/Traps/bullet.tscn");
 
+@export var dmdOnly := false;
 @export var range := 160.0:
 	set(value):
 		range = value;
@@ -11,6 +12,9 @@ const BULLET := preload("res://assets/scenes/Entities/Traps/bullet.tscn");
 @export var shootSpeed := 1.0;
 
 func _ready() -> void:
+	if (dmdOnly && GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD):
+		queue_free();
+		
 	%AnimationPlayer.speed_scale = shootSpeed;
 
 func _physics_process(delta: float) -> void:

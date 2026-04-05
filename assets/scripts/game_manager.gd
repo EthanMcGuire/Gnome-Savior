@@ -23,8 +23,8 @@ const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
-const STARTING_LIVES := [99, 3, 99];
-const STARTING_MAX_HP := [2, 2, 2];
+const STARTING_LIVES := [99, 3, 99, 99];
+const STARTING_MAX_HP := [2, 2, 1, 1];
 
 var usingGamepad := false;
 
@@ -256,7 +256,7 @@ func loadLevel(nextScene: PackedScene) -> void:
 		movePlayerToSpawn();
 		
 	# Spawn green demon on super hard mode
-	if (difficulty == DIFFICULTY.SUPER_HARD || difficulty == DIFFICULTY.DMD):
+	if (difficulty == DIFFICULTY.SUPER_HARD):
 		var demon = EVIL_PLAYER.instantiate();
 		var evilPath = level.get_node("PlayerEvil");
 		
