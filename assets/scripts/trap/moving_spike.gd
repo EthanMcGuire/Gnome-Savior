@@ -21,6 +21,7 @@ func _start() -> void:
 	var tween;
 	
 	tween = get_tree().create_tween().set_loops(0);
+	tween.bind_node(self);
 	
 	tween.tween_method(_setSpikeOffset, BASE_OFFSET, BASE_OFFSET + 16.0, returnTime).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_delay(returnDelay);
 	tween.tween_callback(_playSound).set_delay(stabDelay);

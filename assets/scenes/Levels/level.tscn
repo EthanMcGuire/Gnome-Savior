@@ -88,5 +88,7 @@ unique_name_in_owner = true
 
 [node name="HeartContainers" type="Node2D" parent="Items" unique_id=1360463283]
 
+[node name="PlayerEvil" type="Node2D" parent="." unique_id=1665665287]
+
 [node name="PlayerSpawn" parent="." unique_id=641898817 instance=ExtResource("12_gbcxj")]
 position = Vector2(231, 217)

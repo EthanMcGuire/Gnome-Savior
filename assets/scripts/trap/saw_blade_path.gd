@@ -27,7 +27,11 @@ func _start() -> void:
 	started = true;
 
 	pathLength = curve.get_baked_length();
+	
+	if (pathLength <= 0.0): return;
+	
 	tween = get_tree().create_tween().set_loops();
+	tween.bind_node(self);
 	
 	moveTime = pathLength / deltaSpeedPixelsStart;
 	tween.tween_property(%PathFollow2D, "progress_ratio", 1.0, moveTime).set_delay(moveDelayStart).set_ease(easeType).set_trans(transitionType);

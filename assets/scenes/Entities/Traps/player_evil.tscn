@@ -1,0 +1,262 @@
+[gd_scene format=3 uid="uid://cequh2csu7rgf"]
+
+[ext_resource type="Script" uid="uid://bdowaaakx26rd" path="res://assets/scripts/trap/player_evil.gd" id="1_xc8hr"]
+[ext_resource type="AudioStream" uid="uid://w7t2preuny5m" path="res://assets/audio/sounds/player/jump.wav" id="2_hu1hu"]
+[ext_resource type="Script" uid="uid://crpq8k87vblhv" path="res://assets/scripts/player_animator.gd" id="3_kjrje"]
+[ext_resource type="Texture2D" uid="uid://bi0mnos0k5vyu" path="res://assets/sprites/Entities/player.png" id="4_hjrtw"]
+[ext_resource type="Texture2D" uid="uid://crv7bwjj3mngk" path="res://assets/sprites/traps/PlayerEvil/evilPlayerLaughing.png" id="5_kjrje"]
+
+[sub_resource type="Animation" id="Animation_s027a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hjrtw")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimator/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8sknh"]
+resource_name = "Falling"
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 32, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hjrtw")]
+}
+
+[sub_resource type="Animation" id="Animation_rwm0n"]
+resource_name = "Idle"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hjrtw")]
+}
+
+[sub_resource type="Animation" id="Animation_4wcc8"]
+resource_name = "Jump"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 32, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hjrtw")]
+}
+
+[sub_resource type="Animation" id="Animation_hu1hu"]
+resource_name = "laugh"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 32, 32), Rect2(32, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_kjrje")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimator/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_14505"]
+resource_name = "Walking"
+length = 0.6
+loop_mode = 1
+step = 0.16
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(32, 0, 32, 32), Rect2(64, 0, 32, 32), Rect2(0, 32, 32, 32), Rect2(64, 0, 32, 32), Rect2(32, 0, 32, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hjrtw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ca1i"]
+_data = {
+&"RESET": SubResource("Animation_s027a"),
+&"fall": SubResource("Animation_8sknh"),
+&"idle": SubResource("Animation_rwm0n"),
+&"jump": SubResource("Animation_4wcc8"),
+&"laugh": SubResource("Animation_hu1hu"),
+&"walk": SubResource("Animation_14505")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hu1hu"]
+radius = 6.0
+height = 14.0
+
+[node name="PlayerEvil" type="Node2D" unique_id=1327395962]
+script = ExtResource("1_xc8hr")
+damage = 99
+knockback = 450.0
+
+[node name="Sound" type="Node2D" parent="." unique_id=1563451091]
+
+[node name="AudioStreamJump" type="AudioStreamPlayer2D" parent="Sound" unique_id=757067475]
+unique_name_in_owner = true
+stream = ExtResource("2_hu1hu")
+pitch_scale = 2.0
+max_distance = 400.0
+bus = &"Sound"
+area_mask = 0
+
+[node name="PlayerAnimator" type="Node2D" parent="." unique_id=1095610942 node_paths=PackedStringArray("animationPlayer", "sprite")]
+unique_name_in_owner = true
+script = ExtResource("3_kjrje")
+animationPlayer = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator" unique_id=999493697]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_7ca1i")
+autoplay = &"idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=311126778]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("4_hjrtw")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="StartDelay" type="Timer" parent="." unique_id=857863268]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2004324547]
+unique_name_in_owner = true
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1422933241]
+shape = SubResource("CapsuleShape2D_hu1hu")
+
+[connection signal="timeout" from="StartDelay" to="." method="_on_start_delay_timeout"]

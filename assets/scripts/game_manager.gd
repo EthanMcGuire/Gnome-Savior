@@ -17,12 +17,15 @@ const STAR_PARTICLE := preload("res://assets/scenes/Particles/star_particles.tsc
 const BLOOD_EFFECT := preload("res://assets/scenes/Effects/blood.tscn");
 const DEBRIS := preload("res://assets/scenes/Entities/debris.tscn");
 const BLOOD_PARTICLE_SPRITE := preload("res://assets/sprites/Particles/particleblood_small.png");
+const EVIL_PLAYER = preload("res://assets/scenes/Entities/Traps/player_evil.tscn");
 const LEVEL_TRANSITION_TIME := 0.75;
 const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
-const STARTING_LIVES := [99, 3, 3];
+const STARTING_LIVES := [99, 3, 99];
 const STARTING_MAX_HP := [2, 2, 1];
+
+var usingGamepad := false;
 
 var funnyMode := false;
 var difficulty := DIFFICULTY.EASY;
@@ -127,6 +130,10 @@ func _resetPlayerStats() -> void:
 	maxHp = STARTING_MAX_HP[difficulty];
 	hp = maxHp;
 	setPlayerMaxHp(maxHp);
+	
+	heartContainersCollected.clear();
+	checkpointsCollected.clear();
+	currentCheckpoint = "";
 	
 func _clearGameData() -> void:
 	levelLoaded = false;
@@ -247,6 +254,13 @@ func loadLevel(nextScene: PackedScene) -> void:
 	if (currentCheckpoint == ""):
 		movePlayerToSpawn();
 		
+	# Spawn green demon on super hard mode
+	if (difficulty == DIFFICULTY.SUPER_HARD):
+		var demon = EVIL_PLAYER.instantiate();
+		var evilPath = level.get_node("PlayerEvil");
+		
+		evilPath.add_child(demon);
+		
 	levelLoaded = true;
 
 func _unloadLevelData() -> void:
@@ -287,6 +301,25 @@ func startDeathTransition(nextScene: PackedScene) -> void:
 	soundLifeUp.stop();
 
 #endregion Level
+
+#region Input
+
+func _input(event: InputEvent) -> void:
+	if (event is InputEventKey || event is InputEventMouse):
+		usingGamepad = false;
+	elif (event is InputEventJoypadButton):
+		usingGamepad = true;
+	elif (event is InputEventJoypadMotion):
+		var motionEvent: InputEventJoypadMotion = event;
+		var deadZone := InputMap.action_get_deadzone("move_left");
+		
+		if (event.axis_value > deadZone || event.axis_value < -deadZone):
+			usingGamepad = true;
+
+func getUsingGamepad() -> bool:
+	return usingGamepad;
+
+#region Input
 
 #region Audio
 
@@ -480,6 +513,19 @@ func getPlayerPosition() -> Vector2:
 	assert(player);
 	
 	return player.global_position;
+	
+func getPlayerAnimation() -> String:
+	assert(player);
+	
+	return player.getCurrentAnimation();
+		
+func getPlayerHFlip() -> bool:
+	assert(player);
+	
+	return player.getHFlip();
+		
+func getPlayerDead() -> bool:
+	return playerIsDead;
 		
 #endregion Player
 
@@ -684,5 +730,13 @@ func checkpointHit(name: String) -> void:
 	print("Player hit checkpoint: " + name + ".");
 	_setCurrentCheckpoint(name);
 	_addCollectedCheckpoint(name);
+
+func playerJumpedEvent() -> void:
+	var evilPlayer: PlayerEvil;
+	
+	evilPlayer = level.get_node("PlayerEvil").get_child(0);
+	
+	if (evilPlayer):
+		evilPlayer.playerJumped();
 
 #endregion Game_Events

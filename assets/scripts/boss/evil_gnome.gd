@@ -51,6 +51,9 @@ var currentMissileShootTime: float;
 var currentMissileLaunchDelay: float;
 var launchingMissile := false;
 
+@onready var leftFist = %FistLeft;
+@onready var rightFist = %FistRight;
+
 var hp = 12;
 var hurt := 0.0;
 
@@ -61,8 +64,8 @@ var state = BOSS_STATE.STARTING;
 
 func startBoss() -> void:
 	bossStarted = true;
-	%FistLeft.start();
-	%FistRight.start();
+	leftFist.start();
+	rightFist.start();
 	_startState(BOSS_STATE.STARTING);
 
 func takeDamage() -> void:
@@ -89,6 +92,7 @@ func _ready() -> void:
 	var headStartY = %Head.position.y;
 	
 	var tween = get_tree().create_tween().set_loops();
+	tween.bind_node(self);
 	tween.tween_property(%Head, "position:y", headStartY + HEAD_BOB_AMOUNT, HEAD_BOB_TIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD);
 	tween.tween_property(%Head, "position:y", headStartY, HEAD_BOB_TIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD);
 	
@@ -246,32 +250,32 @@ func _setHeadRotation(newRotation: float) -> void:
 #region Attacks
 
 func _doSlam() -> void:
-	if (!%FistLeft && !%FistRight): return;
+	if (!leftFist && !rightFist): return;
 	
 	if (randf() <= 0.5):
-		if (%FistLeft && !%FistLeft.isBusy()):
-			%FistLeft.startSlam();
-		elif (%FistRight && !%FistRight.isBusy()):
-			%FistRight.startSlam();
+		if (leftFist && !leftFist.isBusy()):
+			leftFist.startSlam();
+		elif (rightFist && !rightFist.isBusy()):
+			rightFist.startSlam();
 	else:
-		if (%FistRight && !%FistRight.isBusy()):
-			%FistRight.startSlam();
-		elif (%FistLeft && !%FistLeft.isBusy()):
-			%FistLeft.startSlam();
+		if (rightFist && !rightFist.isBusy()):
+			rightFist.startSlam();
+		elif (leftFist && !leftFist.isBusy()):
+			leftFist.startSlam();
 
 func _doSlap() -> void:
-	if (!%FistLeft && !%FistRight): return;
+	if (!leftFist && !rightFist): return;
 	
 	if (randf() <= 0.5):
-		if (%FistLeft && !%FistLeft.isBusy()):
-			%FistLeft.startSlap();
-		elif (%FistRight && !%FistRight.isBusy()):
-			%FistRight.startSlap();
+		if (leftFist && !leftFist.isBusy()):
+			leftFist.startSlap();
+		elif (rightFist && !rightFist.isBusy()):
+			rightFist.startSlap();
 	else:
-		if (%FistRight && !%FistRight.isBusy()):
-			%FistRight.startSlap();
-		elif (%FistLeft && !%FistLeft.isBusy()):
-			%FistLeft.startSlap();
+		if (rightFist && !rightFist.isBusy()):
+			rightFist.startSlap();
+		elif (leftFist && !leftFist.isBusy()):
+			leftFist.startSlap();
 
 func _doNoose() -> void:
 	var gnome;

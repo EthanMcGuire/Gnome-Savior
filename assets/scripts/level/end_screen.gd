@@ -1,5 +1,17 @@
 extends Node2D
 
+const DIFFICULTY_NAME = {
+	GameManager.DIFFICULTY.EASY: "Easy",
+	GameManager.DIFFICULTY.HARD: "Hard",
+	GameManager.DIFFICULTY.SUPER_HARD: "Super Hard"	
+};
+
+const DIFFICULTY_COLOR = {
+	GameManager.DIFFICULTY.EASY: Color(0.188, 0.855, 1.0, 1.0),
+	GameManager.DIFFICULTY.HARD: Color(1, 0, 0, 1),
+	GameManager.DIFFICULTY.SUPER_HARD: Color(1, 0.2, 0)	
+};
+
 func _ready() -> void:
 	var minutes: int;
 	var seconds: float;
@@ -10,6 +22,9 @@ func _ready() -> void:
 	
 	%LabelTime.text = "%d:%02d" % [minutes, floor(seconds)];
 	%LabelDecimal.text = ".%02d" % [fmod(seconds, 1.0) * 100];
+	
+	%Difficulty.text = "Difficulty: " + DIFFICULTY_NAME[GameManager.getDifficulty()];
+	%Difficulty.modulate = DIFFICULTY_COLOR[GameManager.getDifficulty()];
 
 func _on_button_quit_pressed() -> void:
 	get_tree().quit();

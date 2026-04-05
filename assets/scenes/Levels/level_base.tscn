@@ -26,6 +26,7 @@ bus = &"Sound"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=124569661]
 layer = 2000
+visible = false
 
 [node name="HUD" parent="CanvasLayer" unique_id=2115374832 instance=ExtResource("2_dw3k1")]
 
@@ -43,6 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "PRESS R TO RETRY"
 label_settings = ExtResource("3_8hsts")
+horizontal_alignment = 1
 script = ExtResource("5_5oahs")
 
 [node name="SpeedrunTimer" parent="CanvasLayer" unique_id=110181162 instance=ExtResource("7_xsi40")]

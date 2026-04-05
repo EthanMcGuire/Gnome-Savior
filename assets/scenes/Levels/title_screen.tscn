@@ -216,9 +216,11 @@ focus_previous = NodePath("../../Sound/SoundContainer/SoundSlider")
 
 [node name="ButtonQuit" parent="CanvasLayer/Buttons1" unique_id=1364343558 instance=ExtResource("5_m0adw")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../ButtonCredits")
+focus_neighbor_left = NodePath("../../FullscreenToggle")
+focus_neighbor_top = NodePath("../ButtonPlay")
 focus_neighbor_right = NodePath("../../Sound/MusicContainer/MusicLabel")
-focus_next = NodePath("../../FunnyToggle")
+focus_neighbor_bottom = NodePath("../../FullscreenToggle")
+focus_next = NodePath("../../ButtonCredits")
 focus_previous = NodePath("../ButtonPlay")
 text = "QUIT"
 
@@ -275,15 +277,14 @@ unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 82.0
+offset_left = 5.0
 offset_top = -28.0
-offset_right = 140.0
+offset_right = 63.0
 offset_bottom = -4.0
 grow_vertical = 0
-focus_neighbor_left = NodePath("../FunnyToggle")
-focus_neighbor_right = NodePath("../Buttons1/ButtonQuit")
-focus_next = NodePath("../Sound/MusicContainer/MusicLabel")
-focus_previous = NodePath("../FunnyToggle")
+focus_neighbor_right = NodePath("../FunnyToggle")
+focus_next = NodePath("../FunnyToggle")
+focus_previous = NodePath("../Buttons1/ButtonQuit")
 theme_override_font_sizes/font_size = 10
 text = "Credits"
 
@@ -309,11 +310,12 @@ alignment = 1
 
 [node name="MusicLabel" type="Label" parent="CanvasLayer/Sound/MusicContainer" unique_id=1699469535]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../Buttons1/ButtonQuit")
+focus_neighbor_left = NodePath("../../../FullscreenToggle")
+focus_neighbor_top = NodePath("../../../Buttons1/ButtonQuit")
 focus_neighbor_right = NodePath("../../SoundContainer/SoundLabel")
 focus_neighbor_bottom = NodePath("../MusicSlider")
 focus_next = NodePath("../MusicSlider")
-focus_previous = NodePath("../../../ButtonCredits")
+focus_previous = NodePath("../../../FullscreenToggle")
 focus_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_47ufa")
 text = "Music"
@@ -343,6 +345,7 @@ alignment = 1
 [node name="SoundLabel" type="Label" parent="CanvasLayer/Sound/SoundContainer" unique_id=1850152104]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../MusicContainer/MusicLabel")
+focus_neighbor_top = NodePath("../../../Buttons1/ButtonQuit")
 focus_neighbor_bottom = NodePath("../SoundSlider")
 focus_next = NodePath("../SoundSlider")
 focus_previous = NodePath("../../MusicContainer/MusicSlider")
@@ -376,14 +379,15 @@ unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
+offset_left = 64.0
 offset_top = -28.0
-offset_right = 79.0
+offset_right = 135.0
 offset_bottom = -2.0
 grow_vertical = 0
-focus_neighbor_right = NodePath("../ButtonCredits")
-focus_next = NodePath("../ButtonCredits")
-focus_previous = NodePath("../Buttons1/ButtonQuit")
+focus_neighbor_left = NodePath("../ButtonCredits")
+focus_neighbor_right = NodePath("../FullscreenToggle")
+focus_next = NodePath("../FullscreenToggle")
+focus_previous = NodePath("../ButtonCredits")
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
@@ -392,6 +396,30 @@ theme_override_fonts/font = ExtResource("4_0kqpb")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxFlat_m0adw")
 text = "Funny"
+
+[node name="FullscreenToggle" type="CheckBox" parent="CanvasLayer" unique_id=1941908775]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -28.0
+offset_right = 249.0
+offset_bottom = -2.0
+grow_vertical = 0
+focus_neighbor_left = NodePath("../FunnyToggle")
+focus_neighbor_top = NodePath("../Buttons1/ButtonQuit")
+focus_neighbor_right = NodePath("../Sound/MusicContainer/MusicLabel")
+focus_next = NodePath("../Sound/MusicContainer/MusicLabel")
+focus_previous = NodePath("../FunnyToggle")
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/h_separation = 2
+theme_override_fonts/font = ExtResource("4_0kqpb")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxFlat_m0adw")
+text = "Fullscreen"
 
 [connection signal="pressed" from="CanvasLayer/Buttons1/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons1/ButtonQuit" to="." method="_on_button_quit_pressed"]
@@ -403,3 +431,4 @@ text = "Funny"
 [connection signal="value_changed" from="CanvasLayer/Sound/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Sound/SoundContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]
 [connection signal="toggled" from="CanvasLayer/FunnyToggle" to="." method="_on_funny_toggle_toggled"]
+[connection signal="toggled" from="CanvasLayer/FullscreenToggle" to="." method="_on_fullscreen_toggle_toggled"]

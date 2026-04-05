@@ -52,6 +52,7 @@ tile_map_data = PackedByteArray("AAAaABQAAAACAAQAAAAZABQAAAABAAQAAAAYABQAAAABAAQ
 tile_set = ExtResource("5_nx1an")
 
 [node name="CameraRegion" parent="CameraRegions" parent_id_path=PackedInt32Array(1450925723) index="0" unique_id=936624744 instance=ExtResource("6_5bixj")]
+visible = false
 position = Vector2(2, 128)
 firstRegion = true
 regionSizeX = 1064.0
@@ -69,6 +70,7 @@ position = Vector2(1024, 256)
 [node name="Sign" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="0" unique_id=1649659149 instance=ExtResource("8_n1w8d")]
 position = Vector2(96, 304)
 text = "Press Space to jump."
+textController = "Press A to jump."
 
 [node name="Sign2" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="1" unique_id=711376471 instance=ExtResource("8_n1w8d")]
 position = Vector2(976, 240)
@@ -151,5 +153,5 @@ position = Vector2(672, 336)
 [node name="Coin11" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="10" unique_id=1944816348 instance=ExtResource("9_bsapf")]
 position = Vector2(624, 336)
 
-[node name="PlayerSpawn" parent="." index="14" unique_id=641898817]
-position = Vector2(46, 312)
+[node name="PlayerSpawn" parent="." index="15" unique_id=641898817]
+position = Vector2(46, 313)

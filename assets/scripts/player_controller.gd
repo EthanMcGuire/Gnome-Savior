@@ -16,6 +16,20 @@ enum GRAVITY {
 	RIGHT
 };
 
+enum PLAYER_ANIMATION {
+	IDLE,
+	WALK,
+	JUMP,
+	FALL
+};
+
+const ANIMATION_NAMES = {
+	PLAYER_ANIMATION.IDLE: "idle",
+	PLAYER_ANIMATION.WALK: "walk",
+	PLAYER_ANIMATION.JUMP: "jump",
+	PLAYER_ANIMATION.FALL: "fall"
+}
+
 #region Export_Variables
 
 @export_group("Physics")
@@ -48,7 +62,7 @@ enum GRAVITY {
 
 #endregion Export_Variables
 
-@onready var playerAnimator = %PlayerAnimator;
+@onready var playerAnimator: PlayerAnimator = %PlayerAnimator;
 @onready var playerSprite = %Sprite2D;
 @onready var oneWayCollisionTimer = %EnableOneWayCollision;
 @onready var hurtTimer = %HurtTimer;
@@ -62,11 +76,17 @@ var jumpSoundTween;
 
 var state := PLAYER_STATE.GROUNDED;
 var gravity := GRAVITY.DOWN;
+var currentAnimation := PLAYER_ANIMATION.IDLE;
 
 func _ready() -> void:
+	soundJump.volume_db = baseSoundJumpVolume;
+	
 	_enter_state(state);
 	setGravity(gravity);
-	soundJump.volume_db = baseSoundJumpVolume;
+	
+	# Move to the ground
+	_apply_gravity(1);
+	move_and_slide();
 
 func _physics_process(delta: float) -> void:
 	if (state == PLAYER_STATE.GROUNDED):
@@ -116,10 +136,10 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 	
 	match (newState):
 		PLAYER_STATE.GROUNDED:
-			playerAnimator.play_animation_idle();
+			_setAnimation(PLAYER_ANIMATION.IDLE);
 		
 		PLAYER_STATE.JUMPING:
-			playerAnimator.play_animation_jump();
+			_setAnimation(PLAYER_ANIMATION.JUMP);
 			_addVerticalVelocity(jumpVelocity);
 			
 			soundJump.play(0.0);
@@ -127,17 +147,19 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 			
 			if (jumpSoundTween):
 					jumpSoundTween.kill();
+					
+			GameManager.playerJumpedEvent();
 
 		PLAYER_STATE.FALLING:
 			# Only start the coyote timer if we were on the ground
 			if (state == PLAYER_STATE.GROUNDED):
 				coyoteTimer.start();
 			
-			playerAnimator.play_animation_falling();
+			_setAnimation(PLAYER_ANIMATION.FALL);
 			_stopJumpSound();
 		
 		PLAYER_STATE.HURT:
-			playerAnimator.play_animation_falling();
+			_setAnimation(PLAYER_ANIMATION.FALL);
 			hurtTimer.start();
 			
 			_stopJumpSound();
@@ -166,9 +188,9 @@ func _state_grounded(_delta: float) -> void:
 	_horizontalMovement();
 	
 	if (abs(_getHorizontalVelocity()) > 0.0):
-		playerAnimator.play_animation_moving();
+		_setAnimation(PLAYER_ANIMATION.WALK);
 	else:
-		playerAnimator.play_animation_idle();
+		_setAnimation(PLAYER_ANIMATION.IDLE);
 		
 	if not is_on_floor():
 		_enter_state(PLAYER_STATE.FALLING);
@@ -210,6 +232,20 @@ func _state_hurt(delta: float) -> void:
 		_enter_state(PLAYER_STATE.FALLING);
 	
 #endregion State_Control
+
+#region Animation
+
+func _setAnimation(animation: PLAYER_ANIMATION) -> void:
+	currentAnimation = animation;
+	playerAnimator.play_animation(ANIMATION_NAMES[animation]);
+
+func getCurrentAnimation() -> String:
+	return ANIMATION_NAMES[currentAnimation];
+
+func getHFlip() -> bool:
+	return playerAnimator.get_sprite_h_flip();
+
+#endregion Animation
 		
 #region Gravity
 

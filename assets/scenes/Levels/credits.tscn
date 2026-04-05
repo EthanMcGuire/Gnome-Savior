@@ -61,67 +61,75 @@ modulate = Color(0.21176471, 0.8980392, 1, 1)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -423.0
-offset_right = 423.0
-offset_bottom = 702.0
+offset_left = -239.0
+offset_right = 240.0
+offset_bottom = 732.0
 grow_horizontal = 2
 text = "MUSIC
 
 \"Basic Platformer music\" - By Vircon32 (Carra). Published at OpenGameArt under license CC-BY 4.0.
-Fire Level - By Spring Spring
-8-bit Mechanical Complex - By HydroGene
-Abandoned Castle Music - By StarNinjas
-Dog Music - By Spring Spring
-Boss Music - By GTDStudio aka Palrom
-
+\"Fire Level\" - By Spring Spring
+\"8-bit Mechanical Complex\" - By HydroGene
+\"Abandoned Castle Music\" - By StarNinjas
+\"Doggy Earrape Theme\" - By Spring Spring
+Boss Music \"Butcher Lair Fight v2\" - By GTDStudio aka Palrom
 
 SOUNDS
 
-8-Bit Sound Effect Pack - By @Shades
+\"8-Bit Sound Effect Pack\" - By @Shades
 
 Man Screams
-//
+---
 
-Helmut Scream - By Creative heroes
+\"Helmut Scream\" - By Creative heroes
 http://freesound.org/people/creativeheroes/sounds/84353/
 http://creativecommons.org/licenses/by/3.0/
 
-Male_Thijs_loud_scream - By thanvannispen
+\"Male_Thijs_loud_scream\" - By thanvannispen
 http://freesound.org/people/thanvannispen/sounds/9432/
 http://creativecommons.org/licenses/by/3.0/
 
-human male scream multi - By JohnsonBrandEditing
+\"human male scream multi\" - By JohnsonBrandEditing
 http://freesound.org/people/JohnsonBrandEditing/sounds/173944/
 http://creativecommons.org/publicdomain/zero/1.0/
 
-//
+---
 
-Jump Sound - By Flush
-Knife sharpening - Author: The Berklee College of Music
-Light Machine Gun - Author: KuraiWolf
-NES Sounds - By Basto
-Door open, Door close - By qubodup
+\"Jump Sound\" - By Flush
+\"Knife sharpening\" - By The Berklee College of Music
+\"Light Machine Gun\" - ByKuraiWolf
+\"NES Sounds\" - By Basto
+\"Door open, Door close\" - By qubodup
 
 Gnome voicelines and screams - My Brother
+
 Pixabay
 
 ART
 
-Pixel ocean and sky background - By CraftPix.net 2D Game Assets on opengameart
+\"Night forest background\" - By Olga Bikmullina (http://ahninniah.graphics) Licensed under Creative Commons: By Attribution 3.0 http://creativecommons.org/licenses/by/3.0/
+\"Gnome sprite\" - By inosine Licensed under Creative Commons: By Attribution 3.0 https://creativecommons.org/licenses/by/3.0/
+\"Pixel ocean and sky background\" - By CraftPix.net 2D Game Assets on opengameart
+\"Castle platformer assets\" - By chipmunk
+\"Blood\" - By davididev
+\"Spiked Saw Blade\" - By AnaMayArt
 
-\"Night forest background\" Olga Bikmullina (http://ahninniah.graphics) Licensed under Creative Commons: By Attribution 3.0 http://creativecommons.org/licenses/by/3.0/
+Other asset packs were available in the public domain.
 
-Castle platformer assets - By chipmunk"
+
+
+Thank you for playing!!!"
 label_settings = ExtResource("2_qj772")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1810811374]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 64.0
+offset_top = 26.0
 offset_right = 255.0
-offset_bottom = 110.0
+offset_bottom = 72.0
 grow_horizontal = 2
 use_top_left = true
 

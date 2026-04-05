@@ -206,6 +206,7 @@ func _startIdleAnimation() -> void:
 	_stopIdleAnimation();
 	
 	idleTween = get_tree().create_tween().set_loops();
+	idleTween.bind_node(self);
 	idleTween.tween_property(self, "global_position", Vector2(fistStartX, fistStartY + HAND_BOB_AMOUNT), HAND_BOB_TIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD);
 	idleTween.tween_property(self, "global_position", Vector2(fistStartX, fistStartY), HAND_BOB_TIME).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD);
 	

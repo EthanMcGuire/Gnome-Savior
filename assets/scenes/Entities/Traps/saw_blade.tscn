@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://lvv7odusbkcc" path="res://assets/scripts/trap/saw_blade_path.gd" id="1_aiju2"]
 [ext_resource type="Script" uid="uid://v5hmxqhenvdo" path="res://assets/scripts/trap/saw_blade.gd" id="1_n0j6o"]
-[ext_resource type="AudioStream" uid="uid://clhc0qxiwh1ik" path="res://assets/audio/sounds/trap/saw/dragon-studio-8-bit-buzz-463201.wav" id="2_aiju2"]
 [ext_resource type="Texture2D" uid="uid://b5fw0jb5htkgk" path="res://assets/sprites/traps/serra_redonda.png" id="2_gt25t"]
+[ext_resource type="AudioStream" uid="uid://bgc87acltwjn8" path="res://assets/audio/sounds/trap/saw/castlegardener-miter-saw.wav" id="3_aiju2"]
 
 [sub_resource type="Curve2D" id="Curve2D_gt25t"]
 resource_local_to_scene = true
@@ -73,8 +73,8 @@ script = ExtResource("1_n0j6o")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Trap" unique_id=1734935406]
 rotation = 1.5707964
-stream = ExtResource("2_aiju2")
-volume_db = -10.0
+stream = ExtResource("3_aiju2")
+volume_db = -8.0
 autoplay = true
 max_distance = 400.0
 bus = &"Sound"

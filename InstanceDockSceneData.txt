@@ -49,6 +49,8 @@
 &"scene": "res://assets/scenes/Entities/Traps/dog.tscn"
 }, {
 &"scene": "res://assets/scenes/Entities/Traps/dog_spawner.tscn"
+}, {
+&"scene": "res://assets/scenes/Entities/Traps/player_evil.tscn"
 }]
 }, {
 "name": "Level",

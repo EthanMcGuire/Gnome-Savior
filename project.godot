@@ -16,10 +16,11 @@ instance_dock/preview_resolution=Vector2i(64, 64)
 [application]
 
 config/name="Gnome Savior"
-config/description="You are the only one that can save the gnomes!! Get to work!"
+config/description="The gnomes have been captured! Do you have what it takes to save them?"
+config/version="1.0"
 run/main_scene="uid://v331iayhisit"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cih65gwywndtc"
 
 [audio]
 
