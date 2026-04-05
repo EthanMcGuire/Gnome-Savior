@@ -23,6 +23,7 @@ func _on_button_play_pressed() -> void:
 	%FunnyToggle.visible = false;
 	%FullscreenToggle.visible = false;
 	%ButtonCredits.visible = false;
+	%Title.visible = false;
 	%ButtonEasy.grab_focus();
 	
 func _on_button_quit_pressed() -> void:
@@ -39,6 +40,10 @@ func _on_button_hard_pressed() -> void:
 func _on_button_super_hard_pressed() -> void:
 	GameManager.setDifficulty(GameManager.DIFFICULTY.SUPER_HARD);
 	_start();
+	
+func _on_button_dmd_pressed() -> void:
+	GameManager.setDifficulty(GameManager.DIFFICULTY.DMD);
+	_start();
 
 func _on_button_back_pressed() -> void:
 	%Buttons1.visible = true;
@@ -47,6 +52,7 @@ func _on_button_back_pressed() -> void:
 	%FunnyToggle.visible = true;
 	%FullscreenToggle.visible = true;
 	%ButtonCredits.visible = true;
+	%Title.visible = true;
 	%ButtonPlay.grab_focus();
 		
 func _on_funny_toggle_toggled(toggled_on: bool) -> void:

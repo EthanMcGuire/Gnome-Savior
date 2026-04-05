@@ -41,7 +41,7 @@ const MISSILE_DELAY_MIN := 3;
 const MISSILE_DELAY_MAX := 5;
 const MISSILE_START_DELAY := 1;
 const MISSILE_SHOOT_TIME := 1;
-const MISSILE_LAUNCH_DELAY := 0.15;
+const MISSILE_LAUNCH_DELAY := 0.2;
 
 var currentAttackDelay: float;
 var currentNooseDelay: float;

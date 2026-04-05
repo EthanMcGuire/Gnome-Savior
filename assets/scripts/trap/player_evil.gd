@@ -22,6 +22,7 @@ var currentPositionDelta := 0.0;
 var currentChaseDelta := 0.0;
 
 func _ready() -> void:
+	super();
 	visible = false;
 	modulate = Color(1, 1, 1, 0.5);
 

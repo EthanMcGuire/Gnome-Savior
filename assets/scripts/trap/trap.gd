@@ -1,8 +1,13 @@
 extends Node2D
 class_name Trap
 
+@export var dmdOnly := false;
 @export var damage := 1;
 @export var knockback := 400.0;
+
+func _ready() -> void:
+	if (dmdOnly && GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD):
+		queue_free();
 
 func _dealDamage(body: Node2D, knockbackPos: Vector2) -> bool:
 	if (body.has_method("takeDamage")):

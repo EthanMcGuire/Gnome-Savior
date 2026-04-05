@@ -5,6 +5,7 @@ extends Trap
 @export var startDelay := 0.0;
 
 func _ready() -> void:
+	super();
 	%AnimationPlayer.speed_scale = speed;
 	
 	if (swingLeft):

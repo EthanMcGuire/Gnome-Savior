@@ -12,6 +12,8 @@ enum MOVE_DIR {
 @export var speed := 1.0;
 
 func _ready() -> void:
+	super();
+	
 	match moveDir:
 		MOVE_DIR.MOVE_DIR_NONE:
 			%AnimationPlayer.play("idle");

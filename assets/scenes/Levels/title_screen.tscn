@@ -185,6 +185,7 @@ grow_horizontal = 2
 use_top_left = true
 
 [node name="Title" type="Label" parent="CanvasLayer/CenterContainer" unique_id=1229562817]
+unique_name_in_owner = true
 layout_mode = 2
 text = "GNOME SAVIOR"
 label_settings = SubResource("LabelSettings_0kqpb")
@@ -265,6 +266,15 @@ focus_next = NodePath("../ButtonBack")
 focus_previous = NodePath("../ButtonHard")
 theme_override_colors/font_hover_color = Color(1, 0.21568628, 0, 1)
 text = "SUPER HARD"
+
+[node name="ButtonDMD" parent="CanvasLayer/Buttons2" unique_id=279701619 instance=ExtResource("5_m0adw")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ButtonHard")
+focus_neighbor_bottom = NodePath("../ButtonBack")
+focus_next = NodePath("../ButtonBack")
+focus_previous = NodePath("../ButtonHard")
+theme_override_colors/font_hover_color = Color(0.41960785, 0.14901961, 0.8, 1)
+text = "DMD"
 
 [node name="ButtonBack" parent="CanvasLayer/Buttons2" unique_id=1020571341 instance=ExtResource("5_m0adw")]
 layout_mode = 2
@@ -426,6 +436,7 @@ text = "Fullscreen"
 [connection signal="pressed" from="CanvasLayer/Buttons2/ButtonEasy" to="." method="_on_button_easy_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons2/ButtonHard" to="." method="_on_button_hard_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons2/ButtonSuperHard" to="." method="_on_button_super_hard_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons2/ButtonDMD" to="." method="_on_button_dmd_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons2/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonCredits" to="." method="_on_button_credits_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Sound/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]

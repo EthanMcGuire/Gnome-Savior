@@ -10,6 +10,7 @@ var falling := false;
 var rotateDir := 1.0;
 
 func _ready() -> void:
+	super();
 	%Area2D.set_collision_mask_value(1, false);
 	%Sprite2D.rotation = randf_range(-0.9, 0.9);
 	

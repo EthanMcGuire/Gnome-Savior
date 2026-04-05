@@ -3,12 +3,13 @@ extends Node
 enum DIFFICULTY {
 	EASY,
 	HARD,
-	SUPER_HARD
+	SUPER_HARD,
+	DMD
 };
 
 const IS_TEST := false;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_0.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_9.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -23,7 +24,7 @@ const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
 const STARTING_LIVES := [99, 3, 99];
-const STARTING_MAX_HP := [2, 2, 1];
+const STARTING_MAX_HP := [2, 2, 2];
 
 var usingGamepad := false;
 
@@ -221,7 +222,7 @@ func _updateLevel(delta: float) -> void:
 				startDeathTransition(currentScene);
 
 func _updateSpeedrunTime(delta: float) -> void:
-	speedrunTimeMs += delta * 1000;
+	speedrunTimeMs += delta * 1000.0;
 	speedrunTimer.setTime(speedrunTimeMs);
 
 #endregion Update
@@ -255,7 +256,7 @@ func loadLevel(nextScene: PackedScene) -> void:
 		movePlayerToSpawn();
 		
 	# Spawn green demon on super hard mode
-	if (difficulty == DIFFICULTY.SUPER_HARD):
+	if (difficulty == DIFFICULTY.SUPER_HARD || difficulty == DIFFICULTY.DMD):
 		var demon = EVIL_PLAYER.instantiate();
 		var evilPath = level.get_node("PlayerEvil");
 		

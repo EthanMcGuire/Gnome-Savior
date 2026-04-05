@@ -10,6 +10,7 @@ const SIZE = 16.0;
 @export var stabDelay := 0.5;
 
 func _ready() -> void:
+	super();
 	_setSpikeOffset(BASE_OFFSET);
 	
 	if (startDelay > 0.0):

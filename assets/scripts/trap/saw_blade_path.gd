@@ -1,5 +1,7 @@
 extends Path2D
 
+@export var dmdOnly := false;
+
 @export var looping := false;
 @export var deltaSpeedPixelsStart := 64.0;
 @export var deltaSpeedPixelsReturn := 64.0;	# Only matters if looping is disabled
@@ -12,6 +14,9 @@ extends Path2D
 var started := false;
 
 func _ready() -> void:
+	if (dmdOnly && GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD):
+		queue_free();
+	
 	if (startDelay <= 0.0):
 		_start();
 	else:

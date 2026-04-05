@@ -12,6 +12,8 @@ var falling = true;
 var currentRaiseDelay := RAISE_DELAY;
 
 func _ready() -> void:
+	super();
+	
 	if (randf() <= 0.5):
 		%Sprites.scale.x = -1.0;
 

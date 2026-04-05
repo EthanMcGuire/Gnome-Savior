@@ -14,7 +14,7 @@ func _ready() -> void:
 	var disabled = false;
 	
 	# Disable the checkpoint on super hard mode
-	if (GameManager.getDifficulty() == GameManager.DIFFICULTY.SUPER_HARD):
+	if (GameManager.getDifficulty() == GameManager.DIFFICULTY.DMD):
 		isOpen = true;
 		disabled = true;
 	elif (GameManager.checkCheckpointCollected(checkpointName)):

@@ -3,13 +3,15 @@ extends Node2D
 const DIFFICULTY_NAME = {
 	GameManager.DIFFICULTY.EASY: "Easy",
 	GameManager.DIFFICULTY.HARD: "Hard",
-	GameManager.DIFFICULTY.SUPER_HARD: "Super Hard"	
+	GameManager.DIFFICULTY.SUPER_HARD: "Super Hard",
+	GameManager.DIFFICULTY.DMD: "DMD"
 };
 
 const DIFFICULTY_COLOR = {
 	GameManager.DIFFICULTY.EASY: Color(0.188, 0.855, 1.0, 1.0),
 	GameManager.DIFFICULTY.HARD: Color(1, 0, 0, 1),
-	GameManager.DIFFICULTY.SUPER_HARD: Color(1, 0.2, 0)	
+	GameManager.DIFFICULTY.SUPER_HARD: Color(1, 0.2, 0),
+	GameManager.DIFFICULTY.DMD: Color(0.357, 0.0, 0.843, 1.0)	
 };
 
 func _ready() -> void:

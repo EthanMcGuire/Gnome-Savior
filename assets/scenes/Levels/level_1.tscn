@@ -639,5 +639,5 @@ position = Vector2(1128, 360)
 [node name="HeartContainer" parent="Items/HeartContainers" parent_id_path=PackedInt32Array(1360463283) index="0" unique_id=749795648 instance=ExtResource("9_bskwp")]
 position = Vector2(1432, 328)
 
-[node name="PlayerSpawn" parent="." index="14" unique_id=641898817]
+[node name="PlayerSpawn" parent="." index="15" unique_id=641898817]
 position = Vector2(46, 312)
