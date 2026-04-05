@@ -3,7 +3,8 @@ extends Node2D
 const SPEED := 20;
 
 func _ready() -> void:
-	%LabelCredits.position.y += %LabelCredits.size.y + 32.0;
+	%ButtonBack.grab_focus();
+	%LabelCredits.position.y += 270;
 
 func _process(delta: float) -> void:
 	# Scroll the credits

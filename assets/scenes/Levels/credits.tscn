@@ -58,17 +58,13 @@ layer = 2000
 [node name="LabelCredits" type="Label" parent="CanvasLayer" unique_id=1116946421]
 unique_name_in_owner = true
 modulate = Color(0.21176471, 0.8980392, 1, 1)
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = -88.0
-offset_right = 93.0
-offset_bottom = 89.0
+offset_left = -423.0
+offset_right = 423.0
+offset_bottom = 702.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "MUSIC
 
 \"Basic Platformer music\" - By Vircon32 (Carra). Published at OpenGameArt under license CC-BY 4.0.
@@ -151,6 +147,7 @@ grow_vertical = 0
 alignment = 1
 
 [node name="ButtonBack" parent="CanvasLayer/Buttons" unique_id=1364343558 instance=ExtResource("5_yt2ry")]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_hwda4")
 text = "BACK"

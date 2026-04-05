@@ -24,6 +24,7 @@ const COINS_ONE_UP := 100;
 const STARTING_LIVES := [99, 3, 3];
 const STARTING_MAX_HP := [2, 2, 1];
 
+var funnyMode := false;
 var difficulty := DIFFICULTY.EASY;
 var maxHp := 2;
 var hp := maxHp;
@@ -92,6 +93,18 @@ func setDifficulty(_difficulty: DIFFICULTY) -> void:
 	
 func getDifficulty() -> DIFFICULTY:
 	return difficulty;
+	
+func enableFunnyMode() -> void:
+	var bus_index;
+	var effect_index;
+	
+	bus_index = AudioServer.get_bus_index("Master");
+	AudioServer.set_bus_effect_enabled(bus_index, 0, true);
+	
+	funnyMode = true;
+	
+func getFunnyModeEnabled() -> bool:
+	return funnyMode;
 		
 ## This needs to be called to start the game! Should be called when in the scene 'level_base'
 func startGame() -> void:
@@ -296,9 +309,21 @@ func setMusicVolume(db) -> void:
 	var bus_index = AudioServer.get_bus_index("Music");
 	AudioServer.set_bus_volume_db(bus_index, db);
 	
+## Returns the music audio buses volume in db.
+func getMusicVolume() -> float:
+	var bus_index = AudioServer.get_bus_index("Music");
+	
+	return AudioServer.get_bus_volume_db(bus_index);
+	
 func setSoundVolume(db) -> void:
 	var bus_index = AudioServer.get_bus_index("Sound");
 	AudioServer.set_bus_volume_db(bus_index, db);
+
+## Returns the sound audio buses volume in db.
+func getSoundVolume() -> float:
+	var bus_index = AudioServer.get_bus_index("Sound");
+	
+	return AudioServer.get_bus_volume_db(bus_index);
 
 #endregion Audio
 

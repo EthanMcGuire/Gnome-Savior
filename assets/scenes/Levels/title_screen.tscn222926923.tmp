@@ -16,28 +16,6 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.2509804)
 shadow_offset = Vector2(4, 4)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47ufa"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.4117647, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0kqpb"]
 bg_color = Color(0, 0.5058824, 0.9411765, 0.5019608)
 border_width_left = 1
@@ -63,28 +41,6 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3noo"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.4117647, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 3.0
-expand_margin_top = 3.0
-expand_margin_right = 3.0
-expand_margin_bottom = 3.0
 
 [sub_resource type="Animation" id="Animation_0kqpb"]
 length = 0.001
@@ -123,29 +79,6 @@ _data = {
 &"RESET": SubResource("Animation_0kqpb"),
 &"title": SubResource("Animation_vjl5c")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0adw"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.4117647, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-anti_aliasing = false
 
 [node name="TitleScreen" type="Node2D" unique_id=1928656440]
 script = ExtResource("1_7sbyh")
@@ -208,18 +141,10 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="ButtonPlay" parent="CanvasLayer/Buttons1" unique_id=1980138239 instance=ExtResource("5_m0adw")]
-unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../ButtonQuit")
-focus_next = NodePath("../ButtonQuit")
-focus_previous = NodePath("../../Sound/SoundContainer/SoundSlider")
 
 [node name="ButtonQuit" parent="CanvasLayer/Buttons1" unique_id=1364343558 instance=ExtResource("5_m0adw")]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../ButtonCredits")
-focus_neighbor_right = NodePath("../../Sound/MusicContainer/MusicLabel")
-focus_next = NodePath("../../FunnyToggle")
-focus_previous = NodePath("../ButtonPlay")
 text = "QUIT"
 
 [node name="Buttons2" type="VBoxContainer" parent="CanvasLayer" unique_id=1074296540]
@@ -240,38 +165,24 @@ theme_override_constants/separation = 4
 alignment = 1
 
 [node name="ButtonEasy" parent="CanvasLayer/Buttons2" unique_id=1012900223 instance=ExtResource("5_m0adw")]
-unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../ButtonHard")
-focus_next = NodePath("../ButtonHard")
 text = "EASY"
 
 [node name="ButtonHard" parent="CanvasLayer/Buttons2" unique_id=1700443216 instance=ExtResource("5_m0adw")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../ButtonEasy")
-focus_neighbor_bottom = NodePath("../ButtonSuperHard")
-focus_next = NodePath("../ButtonSuperHard")
-focus_previous = NodePath("../ButtonEasy")
 theme_override_colors/font_hover_color = Color(0.8509804, 0, 0, 1)
 text = "HARD"
 
 [node name="ButtonSuperHard" parent="CanvasLayer/Buttons2" unique_id=423504488 instance=ExtResource("5_m0adw")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../ButtonHard")
-focus_neighbor_bottom = NodePath("../ButtonBack")
-focus_next = NodePath("../ButtonBack")
-focus_previous = NodePath("../ButtonHard")
 theme_override_colors/font_hover_color = Color(1, 0.21568628, 0, 1)
 text = "SUPER HARD"
 
 [node name="ButtonBack" parent="CanvasLayer/Buttons2" unique_id=1020571341 instance=ExtResource("5_m0adw")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../ButtonSuperHard")
-focus_previous = NodePath("../ButtonSuperHard")
 text = "BACK"
 
 [node name="ButtonCredits" parent="CanvasLayer" unique_id=1674641696 instance=ExtResource("5_m0adw")]
-unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -280,15 +191,10 @@ offset_top = -28.0
 offset_right = 140.0
 offset_bottom = -4.0
 grow_vertical = 0
-focus_neighbor_left = NodePath("../FunnyToggle")
-focus_neighbor_right = NodePath("../Buttons1/ButtonQuit")
-focus_next = NodePath("../Sound/MusicContainer/MusicLabel")
-focus_previous = NodePath("../FunnyToggle")
 theme_override_font_sizes/font_size = 10
 text = "Credits"
 
 [node name="Sound" type="HBoxContainer" parent="CanvasLayer" unique_id=454018895]
-unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -309,13 +215,6 @@ alignment = 1
 
 [node name="MusicLabel" type="Label" parent="CanvasLayer/Sound/MusicContainer" unique_id=1699469535]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../../Buttons1/ButtonQuit")
-focus_neighbor_right = NodePath("../../SoundContainer/SoundLabel")
-focus_neighbor_bottom = NodePath("../MusicSlider")
-focus_next = NodePath("../MusicSlider")
-focus_previous = NodePath("../../../ButtonCredits")
-focus_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_47ufa")
 text = "Music"
 label_settings = ExtResource("5_vjl5c")
 
@@ -323,14 +222,11 @@ label_settings = ExtResource("5_vjl5c")
 unique_name_in_owner = true
 modulate = Color(0.16862746, 0.58431375, 1, 1)
 layout_mode = 2
-focus_neighbor_top = NodePath("../MusicLabel")
-focus_next = NodePath("../../SoundContainer/SoundLabel")
-focus_previous = NodePath("../MusicLabel")
 theme_override_constants/center_grabber = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0kqpb")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vjl5c")
 max_value = 1.0
-step = 0.05
+step = 0.01
 value = 1.0
 scrollable = false
 ticks_position = 3
@@ -342,12 +238,6 @@ alignment = 1
 
 [node name="SoundLabel" type="Label" parent="CanvasLayer/Sound/SoundContainer" unique_id=1850152104]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../MusicContainer/MusicLabel")
-focus_neighbor_bottom = NodePath("../SoundSlider")
-focus_next = NodePath("../SoundSlider")
-focus_previous = NodePath("../../MusicContainer/MusicSlider")
-focus_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxFlat_c3noo")
 text = "Sound"
 label_settings = ExtResource("5_vjl5c")
 
@@ -355,14 +245,11 @@ label_settings = ExtResource("5_vjl5c")
 unique_name_in_owner = true
 modulate = Color(0.16862746, 0.58431375, 1, 1)
 layout_mode = 2
-focus_neighbor_top = NodePath("../SoundLabel")
-focus_next = NodePath("../../../Buttons1/ButtonPlay")
-focus_previous = NodePath("../SoundLabel")
 theme_override_constants/center_grabber = 1
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0kqpb")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vjl5c")
 max_value = 1.0
-step = 0.05
+step = 0.01
 value = 1.0
 scrollable = false
 ticks_position = 3
@@ -376,21 +263,14 @@ unique_name_in_owner = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -28.0
-offset_right = 79.0
-offset_bottom = -2.0
+offset_top = -31.0
+offset_right = 76.0
 grow_vertical = 0
-focus_neighbor_right = NodePath("../ButtonCredits")
-focus_next = NodePath("../ButtonCredits")
-focus_previous = NodePath("../Buttons1/ButtonQuit")
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_constants/h_separation = 2
 theme_override_fonts/font = ExtResource("4_0kqpb")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/focus = SubResource("StyleBoxFlat_m0adw")
 text = "Funny"
 
 [connection signal="pressed" from="CanvasLayer/Buttons1/ButtonPlay" to="." method="_on_button_play_pressed"]
@@ -400,6 +280,6 @@ text = "Funny"
 [connection signal="pressed" from="CanvasLayer/Buttons2/ButtonSuperHard" to="." method="_on_button_super_hard_pressed"]
 [connection signal="pressed" from="CanvasLayer/Buttons2/ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonCredits" to="." method="_on_button_credits_pressed"]
-[connection signal="value_changed" from="CanvasLayer/Sound/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/Sound/SoundContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/Sound/MusicContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="CanvasLayer/Sound/SoundContainer/SoundSlider" to="." method="_on_sound_slider_drag_ended"]
 [connection signal="toggled" from="CanvasLayer/FunnyToggle" to="." method="_on_funny_toggle_toggled"]
