@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ccbsxcpsis2gx" path="res://assets/scenes/Entities/Items/coin.tscn" id="9_bsapf"]
 [ext_resource type="PackedScene" uid="uid://dt05ndcmgqls" path="res://assets/scenes/Entities/Traps/spike.tscn" id="9_ffunk"]
 [ext_resource type="PackedScene" uid="uid://5bbrpxagfgdu" path="res://assets/scenes/Entities/Traps/apple.tscn" id="11_5ag3s"]
+[ext_resource type="PackedScene" uid="uid://dv0hpy16a8abt" path="res://assets/scenes/Entities/Traps/gun.tscn" id="12_nx1an"]
 
 [node name="Level_0" unique_id=690160627 instance=ExtResource("1_8dppr")]
 levelName = "Level_0"
@@ -44,6 +45,12 @@ texture = ExtResource("4_t6cw6")
 position = Vector2(145, 96)
 texture = ExtResource("4_t6cw6")
 
+[node name="Tree2" parent="." index="2" unique_id=1037808836 instance=ExtResource("7_ssoh4")]
+position = Vector2(288, 288)
+
+[node name="Tree" parent="." index="3" unique_id=1868469088 instance=ExtResource("7_ssoh4")]
+position = Vector2(192, 288)
+
 [node name="LayerBackFront" parent="TileMap" parent_id_path=PackedInt32Array(1744099430) index="2" unique_id=1463511529]
 tile_map_data = PackedByteArray("AAAlABUAAAACAAgAAAAlABQAAAACAAgAAAAlABMAAAACAAcAAAAkABUAAAABAAgAAAAkABQAAAABAAgAAAAkABMAAAABAAcAAAAjABUAAAABAAgAAAAjABQAAAABAAgAAAAjABMAAAABAAcAAAAiABUAAAABAAgAAAAiABQAAAABAAgAAAAiABMAAAABAAcAAAAhABUAAAAAAAgAAAAhABQAAAAAAAgAAAAhABMAAAAAAAcAAAAsABUAAAACAAgAAAAsABQAAAACAAgAAAAsABMAAAACAAgAAAAsABIAAAACAAgAAAAsABEAAAACAAcAAAArABUAAAABAAgAAAArABQAAAABAAgAAAArABMAAAABAAgAAAArABIAAAABAAgAAAArABEAAAABAAcAAAAqABUAAAAAAAgAAAAqABQAAAAAAAgAAAAqABMAAAAAAAgAAAAqABIAAAAAAAgAAAAqABEAAAAAAAcAAAAMAA8AAAAAAAAAAAAMABAAAAAAAAEAAAAMABEAAAAAAAIAAAANAA8AAAABAAAAAAANABAAAAABAAEAAAANABEAAAABAAIAAAAOAA8AAAACAAAAAAAOABAAAAACAAEAAAAOABEAAAACAAIAAAAPAA8AAAAAAAAAAAAPABAAAAAAAAEAAAAPABEAAAAAAAIAAAAQAA8AAAABAAAAAAAQABAAAAABAAEAAAAQABEAAAABAAIAAAARAA8AAAACAAAAAAARABAAAAACAAEAAAARABEAAAACAAIAAAATAA8AAAABAAAAAAATABAAAAABAAEAAAATABEAAAABAAIAAAAUAA8AAAACAAAAAAAUABAAAAACAAEAAAAUABEAAAACAAIAAAAJAA8AAAAAAAAAAAAJABAAAAAAAAEAAAAJABEAAAAAAAIAAAAKAA8AAAABAAAAAAAKABAAAAABAAEAAAAKABEAAAABAAIAAAALAA8AAAACAAAAAAALABAAAAACAAEAAAALABEAAAACAAIAAAASAA8AAAAAAAAAAAASABAAAAAAAAEAAAASABEAAAAAAAIAAAAcABMAAAAAAAAAAAAcABQAAAAAAAEAAAAcABUAAAAAAAIAAAAdABMAAAABAAAAAAAdABQAAAABAAEAAAAdABUAAAABAAIAAAAeABMAAAACAAAAAAAeABQAAAACAAEAAAAeABUAAAACAAIAAAAnABMAAAAAAAAAAAAnABQAAAAAAAEAAAAnABUAAAAAAAIAAAAoABMAAAABAAAAAAAoABQAAAABAAEAAAAoABUAAAABAAIAAAApABMAAAACAAAAAAApABQAAAACAAEAAAApABUAAAACAAIAAAAuABMAAAAAAAAAAAAuABQAAAAAAAEAAAAuABUAAAAAAAIAAAAvABMAAAABAAAAAAAvABQAAAABAAEAAAAvABUAAAABAAIAAAAwABMAAAACAAAAAAAwABQAAAACAAEAAAAwABUAAAACAAIAAAA=")
 
@@ -58,7 +65,7 @@ firstRegion = true
 regionSizeX = 1064.0
 regionSizeY = 270.0
 
-[node name="Tree" parent="Trees" parent_id_path=PackedInt32Array(2098368406) index="0" unique_id=1037808836 instance=ExtResource("7_ssoh4")]
+[node name="Tree" parent="Trees" parent_id_path=PackedInt32Array(2098368406) index="0" unique_id=802930870 instance=ExtResource("7_ssoh4")]
 position = Vector2(568, 304)
 
 [node name="Tree2" parent="Trees" parent_id_path=PackedInt32Array(2098368406) index="1" unique_id=174426176 instance=ExtResource("7_ssoh4")]
@@ -69,8 +76,10 @@ position = Vector2(1024, 256)
 
 [node name="Sign" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="0" unique_id=1649659149 instance=ExtResource("8_n1w8d")]
 position = Vector2(96, 304)
-text = "Press Space to jump."
+text = "Press space to jump."
 textController = "Press A to jump."
+textDmd = "Just quit now."
+textDmdController = "Controller user? Cringelord."
 
 [node name="Sign2" parent="Signs" parent_id_path=PackedInt32Array(1220717732) index="1" unique_id=711376471 instance=ExtResource("8_n1w8d")]
 position = Vector2(976, 240)
@@ -120,6 +129,94 @@ isFake = true
 [node name="Apple8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="13" unique_id=375617945 instance=ExtResource("11_5ag3s")]
 position = Vector2(654, 320)
 
+[node name="Gun" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="0" unique_id=806748769 instance=ExtResource("12_nx1an")]
+position = Vector2(8, 280)
+dmdOnly = true
+range = 999.0
+shootSpeed = 0.5
+
+[node name="Gun2" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="1" unique_id=871986056 instance=ExtResource("12_nx1an")]
+position = Vector2(8, 264)
+dmdOnly = true
+range = 999.0
+shootSpeed = 0.5
+
+[node name="Gun5" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="2" unique_id=1946060812 instance=ExtResource("12_nx1an")]
+position = Vector2(24, 256)
+dmdOnly = true
+range = 999.0
+shootSpeed = 0.5
+
+[node name="Gun4" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="3" unique_id=297160998 instance=ExtResource("12_nx1an")]
+position = Vector2(24, 272)
+dmdOnly = true
+range = 999.0
+shootSpeed = 0.5
+
+[node name="Gun3" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="4" unique_id=1259946999 instance=ExtResource("12_nx1an")]
+position = Vector2(8, 248)
+dmdOnly = true
+range = 999.0
+shootSpeed = 0.5
+
+[node name="Apple" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="0" unique_id=336947836 instance=ExtResource("11_5ag3s")]
+position = Vector2(176, 208)
+gravity = 600.0
+dmdOnly = true
+
+[node name="Apple2" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="1" unique_id=1702896922 instance=ExtResource("11_5ag3s")]
+position = Vector2(168, 224)
+dmdOnly = true
+
+[node name="Apple3" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="2" unique_id=1038332067 instance=ExtResource("11_5ag3s")]
+position = Vector2(200, 208)
+dmdOnly = true
+
+[node name="Apple4" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="3" unique_id=1071062269 instance=ExtResource("11_5ag3s")]
+position = Vector2(216, 224)
+gravity = 600.0
+dmdOnly = true
+
+[node name="Apple5" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="4" unique_id=1557311744 instance=ExtResource("11_5ag3s")]
+position = Vector2(192, 224)
+dmdOnly = true
+
+[node name="Apple6" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="5" unique_id=176762316 instance=ExtResource("11_5ag3s")]
+position = Vector2(184, 240)
+dmdOnly = true
+
+[node name="Apple7" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="6" unique_id=1532256185 instance=ExtResource("11_5ag3s")]
+position = Vector2(280, 216)
+gravity = 600.0
+dmdOnly = true
+
+[node name="Apple8" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="7" unique_id=1321097209 instance=ExtResource("11_5ag3s")]
+position = Vector2(304, 216)
+dmdOnly = true
+
+[node name="Apple9" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="8" unique_id=193670758 instance=ExtResource("11_5ag3s")]
+position = Vector2(288, 240)
+gravity = 600.0
+dmdOnly = true
+
+[node name="Apple10" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="9" unique_id=1857042684 instance=ExtResource("11_5ag3s")]
+position = Vector2(264, 224)
+dmdOnly = true
+
+[node name="Apple11" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="10" unique_id=1629409787 instance=ExtResource("11_5ag3s")]
+position = Vector2(304, 232)
+dmdOnly = true
+
+[node name="Apple12" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="11" unique_id=123163871 instance=ExtResource("11_5ag3s")]
+position = Vector2(176, 208)
+gravity = 600.0
+dmdOnly = true
+
+[node name="Apple13" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="12" unique_id=1381673929 instance=ExtResource("11_5ag3s")]
+position = Vector2(794, 123)
+gravity = 9999.0
+dmdOnly = true
+
 [node name="Coin" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="0" unique_id=461514915 instance=ExtResource("9_bsapf")]
 position = Vector2(216, 272)
 
@@ -153,5 +250,5 @@ position = Vector2(672, 336)
 [node name="Coin11" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="10" unique_id=1944816348 instance=ExtResource("9_bsapf")]
 position = Vector2(624, 336)
 
-[node name="PlayerSpawn" parent="." index="15" unique_id=641898817]
+[node name="PlayerSpawn" parent="." index="17" unique_id=641898817]
 position = Vector2(46, 313)

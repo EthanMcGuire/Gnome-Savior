@@ -1,0 +1,149 @@
+[gd_scene format=4 uid="uid://cj8h74voj102n"]
+
+[ext_resource type="PackedScene" uid="uid://civ4yk5xhynw6" path="res://assets/scenes/Levels/level.tscn" id="1_ebyar"]
+[ext_resource type="AudioStream" uid="uid://bf20jihp82yf1" path="res://assets/audio/music/basic_platformer_music_-_world_1.wav" id="2_uuwvn"]
+[ext_resource type="Texture2D" uid="uid://rw8vdvehs0nh" path="res://assets/sprites/Background/pixel_ocean_and_sky_background/4.png" id="3_45qs5"]
+[ext_resource type="PackedScene" uid="uid://cey5eioca4cbv" path="res://assets/scenes/Entities/Traps/bear_trap.tscn" id="4_3ejtl"]
+[ext_resource type="Texture2D" uid="uid://bsvpnknf8y4vy" path="res://assets/sprites/Background/Clouds_and_Mountains/Clouds04.png" id="4_dhomt"]
+[ext_resource type="PackedScene" uid="uid://lcnaux1kh772" path="res://assets/scenes/Entities/camera_region.tscn" id="5_3ejtl"]
+[ext_resource type="TileSet" uid="uid://bsj6ahxf3veof" path="res://assets/tilesets/tile_set_fun_platformer.tres" id="6_6yfup"]
+[ext_resource type="PackedScene" uid="uid://bph7yu7b5hiqh" path="res://assets/scenes/Entities/Level Stuff/level_warp_basic.tscn" id="8_683x7"]
+[ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/Level Stuff/moving_platform.tscn" id="8_ebyar"]
+[ext_resource type="PackedScene" uid="uid://1buyysynbwlg" path="res://assets/scenes/Entities/Traps/moving_spike.tscn" id="10_oxnow"]
+[ext_resource type="PackedScene" uid="uid://dv0hpy16a8abt" path="res://assets/scenes/Entities/Traps/gun.tscn" id="12_441do"]
+
+[sub_resource type="Shader" id="Shader_t1cvb"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebyar"]
+shader = SubResource("Shader_t1cvb")
+
+[sub_resource type="Curve2D" id="Curve2D_oxnow"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 24, -6.1035156e-05, 0, 0, 0, 0, 24, -220.80011)
+}
+point_count = 2
+
+[node name="Level_0" unique_id=690160627 instance=ExtResource("1_ebyar")]
+levelName = "Level_0"
+levelWidth = 1100.0
+levelHeight = 600.0
+music = ExtResource("2_uuwvn")
+
+[node name="Background" parent="Background/CanvasLayer" parent_id_path=PackedInt32Array(1881562309) index="0" unique_id=278954215]
+material = SubResource("ShaderMaterial_ebyar")
+position = Vector2(-1, 0)
+scale = Vector2(0.20833333, 0.20833331)
+texture = ExtResource("3_45qs5")
+offset = Vector2(0, 0)
+region_enabled = false
+
+[node name="CloudsFront" type="Parallax2D" parent="Background/Parallax" parent_id_path=PackedInt32Array(1954698119) index="0" unique_id=383782183]
+scroll_scale = Vector2(0.35, 0.55)
+scroll_offset = Vector2(0, 104)
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(-1, 0)
+repeat_times = 2
+
+[node name="Clouds06" type="Sprite2D" parent="Background/Parallax/CloudsFront" index="0" unique_id=1999334985]
+position = Vector2(750, 142)
+texture = ExtResource("4_dhomt")
+
+[node name="Clouds05" type="Sprite2D" parent="Background/Parallax/CloudsFront" index="1" unique_id=1402318452]
+position = Vector2(343, 168)
+texture = ExtResource("4_dhomt")
+
+[node name="Clouds04" type="Sprite2D" parent="Background/Parallax/CloudsFront" index="2" unique_id=661203776]
+position = Vector2(145, 96)
+texture = ExtResource("4_dhomt")
+
+[node name="LayerBack2" parent="TileMap" parent_id_path=PackedInt32Array(1744099430) index="0" unique_id=193524362]
+tile_map_data = PackedByteArray("AAAMAA4AAAAIAAIAAAA=")
+collision_enabled = false
+
+[node name="LayerBack" parent="TileMap" parent_id_path=PackedInt32Array(1744099430) index="1" unique_id=1400858132]
+tile_map_data = PackedByteArray("AAAGABAAAAAIAAcAAAAHABAAAAAIAAcAAAAKABAAAAAIAAcAAAALABAAAAAIAAcAAAAMABAAAAAIAAcAAAANABAAAAAIAAcAAAAOABAAAAAIAAcAAAAFAAMAAAAEAAAAAAAFAAQAAAAEAAEAAAAFAAUAAAAEAAIAAAAGAAMAAAAFAAAAAAAGAAQAAAAFAAEAAAAGAAUAAAAFAAIAAAAHAAMAAAAGAAAAAAAHAAQAAAAGAAEAAAAHAAUAAAAGAAIAAAA=")
+collision_enabled = false
+
+[node name="LayerFront" parent="TileMap" parent_id_path=PackedInt32Array(1744099430) index="3" unique_id=2100117118]
+tile_map_data = PackedByteArray("AAARABAAAAAGAAUAAAARAA8AAAAGAAUAAAARAA4AAAAGAAUAAAAQABAAAAAFAAUAAAAQAA8AAAAFAAUAAAAQAA4AAAAFAAUAAAAPABAAAAAEAAUAAAAPAA8AAAAEAAUAAAAPAA4AAAAEAAUAAAAJABAAAAAGAAUAAAAJAA8AAAAGAAUAAAAJAA4AAAAGAAQAAAAIABAAAAAEAAUAAAAIAA8AAAAEAAUAAAAIAA4AAAAEAAQAAAAFABAAAAAGAAQAAAAEABAAAAAFAAQAAAADABAAAAAFAAQAAAADAA8AAAAHAAQAAAACABAAAAAFAAQAAAABABAAAAAFAAQAAAAAABAAAAAGAAUAAAAAAA8AAAAGAAUAAAAAAA4AAAAGAAUAAAAAAAoAAAAFAAUAAAAAAAsAAAAGAAUAAAAAAAwAAAAGAAUAAAAAAA0AAAAGAAUAAAABAAoAAAAFAAYAAAABAAkAAAAFAAUAAAACAAkAAAAFAAUAAAAAAAkAAAAFAAUAAAADAAkAAAAFAAUAAAADAAgAAAAFAAUAAAAEAAkAAAAFAAYAAAAEAAgAAAAFAAUAAAAFAAgAAAAFAAUAAAAFAAkAAAAFAAYAAAAGAAgAAAAFAAUAAAAHAAgAAAAFAAUAAAAGAAkAAAAFAAYAAAAHAAkAAAAFAAYAAAAIAAkAAAAFAAYAAAAJAAkAAAAFAAYAAAAJAAgAAAAFAAUAAAAIAAgAAAAFAAUAAAAKAAgAAAAFAAUAAAAKAAkAAAAFAAYAAAALAAkAAAAGAAYAAAALAAgAAAAGAAUAAAAPAA0AAAAEAAUAAAAPAAwAAAAEAAUAAAAPAAsAAAAEAAUAAAAPAAoAAAAEAAUAAAAPAAkAAAAEAAUAAAAPAAgAAAAEAAUAAAAQAAgAAAAFAAUAAAAQAAkAAAAFAAUAAAAQAAoAAAAFAAUAAAAQAAsAAAAFAAUAAAAQAAwAAAAFAAUAAAAQAA0AAAAFAAUAAAARAA0AAAAGAAUAAAARAAwAAAAGAAUAAAARAAsAAAAGAAUAAAARAAoAAAAGAAUAAAARAAkAAAAGAAUAAAARAAgAAAAGAAUAAAARAAcAAAAGAAUAAAARAAYAAAAGAAUAAAAQAAYAAAAFAAUAAAAPAAYAAAAEAAUAAAAPAAUAAAAEAAUAAAAQAAUAAAAFAAUAAAARAAUAAAAGAAUAAAAKAAcAAAAFAAUAAAAJAAcAAAAFAAUAAAAGAAcAAAAFAAUAAAAFAAcAAAAFAAUAAAAKAAYAAAAGAAQAAAAJAAYAAAAEAAQAAAAGAAYAAAAGAAQAAAAFAAYAAAAEAAQAAAAIAAcAAAAFAAQAAAAHAAcAAAAFAAQAAAALAAcAAAAGAAQAAAAEAAcAAAAFAAQAAAADAAcAAAAEAAQAAAAPAAQAAAAEAAUAAAAQAAQAAAAFAAUAAAARAAQAAAAGAAUAAAAPAAMAAAAEAAQAAAAQAAMAAAAFAAQAAAARAAMAAAAGAAQAAAACAAgAAAAFAAQAAAABAAgAAAAFAAQAAAAAAAgAAAAFAAQAAAABAAcAAAAHAAQAAAALAAYAAAAHAAQAAAAJAA0AAAAHAAQAAAAPAAcAAAAEAAUAAAAQAAcAAAAFAAUAAAAOAA0AAAAIAAIAAAAOAAsAAAAIAAIAAAACAAoAAAAFAAYAAAADAAoAAAAGAAYAAAAOAAMAAAAJAAIAAAANAAMAAAAJAAIAAAABAAQAAAAKAAEAAAABAAUAAAAKAAEAAAACAAUAAAAKAAEAAAAEAAMAAAAKAAEAAAAHAAIAAAAKAAEAAAAKAAMAAAAKAAEAAAAAAAcAAAAIAAIAAAAAAAYAAAAIAAIAAAAAAAUAAAAIAAIAAAAAAAQAAAAIAAIAAAAAAAMAAAAIAAIAAAAAAAIAAAAIAAIAAAAAAAEAAAAIAAIAAAAAAAAAAAAIAAIAAAABAAAAAAAIAAIAAAACAAAAAAAIAAIAAAADAAAAAAAIAAIAAAAEAAAAAAAIAAIAAAAFAAAAAAAIAAIAAAAGAAAAAAAIAAIAAAAHAAAAAAAIAAIAAAAIAAAAAAAIAAIAAAAJAAAAAAAIAAIAAAAKAAAAAAAIAAIAAAALAAAAAAAIAAIAAAAMAAAAAAAIAAIAAAANAAAAAAAIAAIAAAAOAAAAAAAIAAIAAAAPAAAAAAAIAAIAAAAQAAAAAAAIAAIAAAARAAAAAAAIAAIAAAASAAAAAAAIAAIAAAATAAAAAAAIAAIAAAAUAAAAAAAIAAIAAAAVAAAAAAAIAAIAAAAWAAAAAAAIAAIAAAAXAAAAAAAIAAIAAAAYAAAAAAAIAAIAAAAZAAAAAAAIAAIAAAAaAAAAAAAIAAIAAAAbAAAAAAAIAAIAAAAcAAAAAAAIAAIAAAAdAAAAAAAIAAIAAAAeAAAAAAAIAAIAAAAfAAAAAAAIAAIAAAAgAAAAAAAIAAIAAAAhAAAAAAAIAAIAAAAiAAAAAAAIAAIAAAAjAAAAAAAIAAIAAAAkAAAAAAAIAAIAAAAlAAAAAAAIAAIAAAA=")
+tile_set = ExtResource("6_6yfup")
+
+[node name="CameraRegion" parent="CameraRegions" parent_id_path=PackedInt32Array(1450925723) index="0" unique_id=936624744 instance=ExtResource("5_3ejtl")]
+visible = false
+position = Vector2(2, 128)
+firstRegion = true
+regionSizeX = 1064.0
+regionSizeY = 270.0
+
+[node name="LevelWarpBasic" parent="LevelWarps" parent_id_path=PackedInt32Array(49862679) index="0" unique_id=2082002628 instance=ExtResource("8_683x7")]
+position = Vector2(1809, 286)
+
+[node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("8_ebyar")]
+position = Vector2(185, 157)
+curve = SubResource("Curve2D_oxnow")
+oneWay = false
+looping = true
+
+[node name="MovingSpike" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="0" unique_id=147394102 instance=ExtResource("10_oxnow")]
+position = Vector2(88, 256)
+startDelay = 0.01
+returnTime = 0.01
+returnDelay = 0.01
+stabTime = 0.01
+stabDelay = 0.001
+
+[node name="MovingSpike2" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="1" unique_id=1028464111 instance=ExtResource("10_oxnow")]
+position = Vector2(144, 224)
+returnTime = 0.2
+returnDelay = 0.1
+stabTime = 0.02
+stabDelay = 0.05
+
+[node name="MovingSpike3" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="2" unique_id=1130551639 instance=ExtResource("10_oxnow")]
+position = Vector2(144, 216)
+returnTime = 0.2
+returnDelay = 0.1
+stabTime = 0.02
+stabDelay = 0.05
+
+[node name="MovingSpike4" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="3" unique_id=49357651 instance=ExtResource("10_oxnow")]
+position = Vector2(144, 208)
+returnTime = 0.2
+returnDelay = 0.1
+stabTime = 0.02
+stabDelay = 0.05
+
+[node name="MovingSpike5" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="4" unique_id=1122084083 instance=ExtResource("10_oxnow")]
+position = Vector2(144, 200)
+returnTime = 0.2
+returnDelay = 0.1
+stabTime = 0.02
+stabDelay = 0.05
+
+[node name="Gun" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="0" unique_id=806748769 instance=ExtResource("12_441do")]
+position = Vector2(17, 30)
+
+[node name="BearTrap" parent="Traps/Bear_Traps" parent_id_path=PackedInt32Array(1645461710) index="0" unique_id=1892005007 instance=ExtResource("4_3ejtl")]
+position = Vector2(128, 112.00001)
+
+[node name="BearTrap2" parent="Traps/Bear_Traps" parent_id_path=PackedInt32Array(1645461710) index="1" unique_id=2091709649 instance=ExtResource("4_3ejtl")]
+position = Vector2(64, 112.00001)
+
+[node name="PlayerSpawn" parent="." index="15" unique_id=641898817]
+position = Vector2(34, 239)

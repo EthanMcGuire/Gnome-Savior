@@ -9,7 +9,7 @@ enum DIFFICULTY {
 
 const IS_TEST := false;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_0.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_1.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -24,7 +24,7 @@ const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
 const STARTING_LIVES := [99, 3, 99, 99];
-const STARTING_MAX_HP := [2, 2, 1, 1];
+const STARTING_MAX_HP := [2, 2, 1, 3];
 
 var usingGamepad := false;
 

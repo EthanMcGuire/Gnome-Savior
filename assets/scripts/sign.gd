@@ -3,6 +3,8 @@ class_name Sign
 
 @export var text := "Hello world.";
 @export var textController := "";
+@export var textDmd := "";
+@export var textDmdController := "";
 
 var usingGamepad := false;
 var isVisible = false;
@@ -18,10 +20,20 @@ func _process(delta: float) -> void:
 		if (isVisible): _showText();
 
 func _showText() -> void:
-	if (!usingGamepad || textController == ""):
-		GameManager.showSign(text);
+	var textToShow = "";
+	
+	if (GameManager.getDifficulty() == GameManager.DIFFICULTY.DMD && textDmd != ""):
+		if (!usingGamepad || textDmdController == ""):
+			textToShow = textDmd;
+		else:
+			textToShow = textDmdController;
 	else:
-		GameManager.showSign(textController);
+		if (!usingGamepad || textController == ""):
+			textToShow = text;
+		else:
+			textToShow = textController;
+				
+	GameManager.showSign(textToShow);
 
 func _on_body_entered(body: Node2D) -> void:
 	if (body is PlayerController):

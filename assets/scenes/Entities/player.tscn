@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://r03yoe6a8c3t" path="res://assets/audio/sounds/gore/ragecore29-htf-head-or-body-rips-apart-481466.mp3" id="8_sbiuv"]
 [ext_resource type="AudioStream" uid="uid://d4n0gibv56xmk" path="res://assets/audio/sounds/screams/aargh1.ogg" id="9_8b1vv"]
 [ext_resource type="AudioStream" uid="uid://cq2i2k3v4ki10" path="res://assets/audio/sounds/screams/aargh2.ogg" id="10_725at"]
+[ext_resource type="AudioStream" uid="uid://c82havrvcfln7" path="res://assets/audio/sounds/player/guard.wav" id="12_8b1vv"]
+[ext_resource type="AudioStream" uid="uid://2ydfnasqxdkf" path="res://assets/audio/sounds/nes_sounds/bird.ogg" id="13_725at"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7s8j0"]
 random_pitch = 1.0028923
@@ -57,6 +59,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Rect2(64, 32, 32, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_8b1vv"]
+resource_name = "guard"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(96, 0, 32, 32)]
 }
 
 [sub_resource type="Animation" id="Animation_rwm0n"]
@@ -113,6 +130,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_s027a"),
 &"fall": SubResource("Animation_8sknh"),
+&"guard": SubResource("Animation_8b1vv"),
 &"idle": SubResource("Animation_rwm0n"),
 &"jump": SubResource("Animation_4wcc8"),
 &"walk": SubResource("Animation_14505")
@@ -164,6 +182,21 @@ unique_name_in_owner = true
 stream = ExtResource("8_sbiuv")
 bus = &"Sound"
 
+[node name="AudioStreamRoyalGuard" type="AudioStreamPlayer2D" parent="Sound" unique_id=1338071879]
+unique_name_in_owner = true
+stream = ExtResource("12_8b1vv")
+volume_db = -10.0
+bus = &"Sound"
+area_mask = 0
+
+[node name="AudioStreamParry" type="AudioStreamPlayer2D" parent="Sound" unique_id=1274411946]
+unique_name_in_owner = true
+stream = ExtResource("13_725at")
+volume_db = 5.0
+pitch_scale = 1.5
+bus = &"Sound"
+area_mask = 0
+
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=2091822403 node_paths=PackedStringArray("animationPlayer", "sprite")]
 unique_name_in_owner = true
 script = ExtResource("2_14505")
@@ -197,7 +230,7 @@ one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=554789418]
 unique_name_in_owner = true
-wait_time = 0.15
+wait_time = 0.2
 one_shot = true
 
 [connection signal="timeout" from="EnableOneWayCollision" to="." method="_on_enable_one_way_collision_timeout"]

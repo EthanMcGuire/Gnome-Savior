@@ -6,7 +6,9 @@ enum PLAYER_STATE {
 	JUMPING,
 	FALLING,
 	HURT,
-	DEAD
+	DEAD,
+	GUARD_GROUND,
+	GUARD_AIR
 };
 
 enum GRAVITY {
@@ -20,14 +22,16 @@ enum PLAYER_ANIMATION {
 	IDLE,
 	WALK,
 	JUMP,
-	FALL
+	FALL,
+	GUARD
 };
 
 const ANIMATION_NAMES = {
 	PLAYER_ANIMATION.IDLE: "idle",
 	PLAYER_ANIMATION.WALK: "walk",
 	PLAYER_ANIMATION.JUMP: "jump",
-	PLAYER_ANIMATION.FALL: "fall"
+	PLAYER_ANIMATION.FALL: "fall",
+	PLAYER_ANIMATION.GUARD: "guard"
 }
 
 #region Export_Variables
@@ -36,6 +40,12 @@ const ANIMATION_NAMES = {
 @export var speed = 136.0;
 @export var speedStopLerp = 32.0;
 @export var jumpVelocity = -300.0;
+
+@export_group("Royal_Guard")
+@export var royalGuardTime := 0.2;
+@export var royalGuardCooldown := 0.25;
+@export var royalGuardInvincibilityTime := 0.25;
+@export var royalGuardKnockbackScale := 1.25;
 
 @export_group("Sound")
 @export var baseSoundJumpVolume := 1.0;
@@ -71,12 +81,19 @@ const ANIMATION_NAMES = {
 @onready var soundHurt = %AudioStreamHurt;
 @onready var soundScream = %AudioStreamScream;
 @onready var soundDeath = %AudioStreamDeath;
+@onready var soundGuard = %AudioStreamRoyalGuard;
+@onready var soundParry = %AudioStreamParry;
 
 var jumpSoundTween;
 
 var state := PLAYER_STATE.GROUNDED;
 var gravity := GRAVITY.DOWN;
 var currentAnimation := PLAYER_ANIMATION.IDLE;
+
+var royalGuarding := false;
+var currentRoyalGuardTime := 0.0;
+var currentRoyalGuardCooldown := 0.0;
+var currentRoyalGuardIFrameTime := 0.0;
 
 func _ready() -> void:
 	soundJump.volume_db = baseSoundJumpVolume;
@@ -89,6 +106,9 @@ func _ready() -> void:
 	move_and_slide();
 
 func _physics_process(delta: float) -> void:
+	_updateRoyalGuardIFrames(delta);
+	_updateRoyalGuardCooldown(delta);
+	
 	if (state == PLAYER_STATE.GROUNDED):
 		_state_grounded(delta);
 	elif (state == PLAYER_STATE.JUMPING):
@@ -97,12 +117,22 @@ func _physics_process(delta: float) -> void:
 		_state_falling(delta);
 	elif (state == PLAYER_STATE.HURT):
 		_state_hurt(delta);
+	elif (state == PLAYER_STATE.GUARD_GROUND):
+		_state_guard_ground(delta);
+	elif (state == PLAYER_STATE.GUARD_AIR):
+		_state_guard_air(delta);
 	
 	if (state != PLAYER_STATE.DEAD):
 		move_and_slide();
 
 func takeDamage(knockback: Vector2, damage: int) -> void:
-	if (state == PLAYER_STATE.HURT || state == PLAYER_STATE.DEAD): return;
+	if (state == PLAYER_STATE.HURT || state == PLAYER_STATE.DEAD || currentRoyalGuardIFrameTime > 0.0): return;
+	
+	if (royalGuarding):
+		_royalGuardParryCallback();
+		_addHorizontalVelocity(knockback.x * royalGuardKnockbackScale);
+		_addVerticalVelocity(knockback.y * royalGuardKnockbackScale);
+		return;
 	
 	if (GameManager.getPlayerHp() > damage):
 		_addHorizontalVelocity(knockback.x);
@@ -134,12 +164,15 @@ func _stopJumpSound() -> void:
 func _enter_state(newState: PLAYER_STATE) -> void:
 	if (state == newState): return;
 	
+	royalGuarding = false;
+	
 	match (newState):
 		PLAYER_STATE.GROUNDED:
 			_setAnimation(PLAYER_ANIMATION.IDLE);
 		
 		PLAYER_STATE.JUMPING:
 			_setAnimation(PLAYER_ANIMATION.JUMP);
+			_setVerticalVelocity(0.0);
 			_addVerticalVelocity(jumpVelocity);
 			
 			soundJump.play(0.0);
@@ -181,6 +214,12 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 			
 			# Disable the players layer so objects can't interact with him
 			set_collision_layer_value(1, false);
+			
+		PLAYER_STATE.GUARD_GROUND:
+			_startRoyalGuard();
+			
+		PLAYER_STATE.GUARD_AIR:
+			_startRoyalGuard();
 
 	state = newState;
 
@@ -194,6 +233,8 @@ func _state_grounded(_delta: float) -> void:
 		
 	if not is_on_floor():
 		_enter_state(PLAYER_STATE.FALLING);
+	elif (_checkForRoyalGuard()):
+		_enter_state(PLAYER_STATE.GUARD_GROUND);
 	elif (Input.is_action_just_pressed("jump")):
 		if (Input.is_action_pressed("crouch")):
 			set_collision_mask_value(10, false);
@@ -205,7 +246,9 @@ func _state_jumping(delta: float) -> void:
 	_horizontalMovement();
 	_apply_gravity(delta);
 	
-	if (Input.is_action_just_released("jump")):
+	if (_checkForRoyalGuard()):
+		_enter_state(PLAYER_STATE.GUARD_AIR);
+	elif (Input.is_action_just_released("jump")):
 		_setVerticalVelocity(0.0);
 		_enter_state(PLAYER_STATE.FALLING);
 	elif (_getVerticalVelocity() >= 0.0):
@@ -217,6 +260,8 @@ func _state_falling(delta: float) -> void:
 	
 	if (is_on_floor()):
 		_enter_state(PLAYER_STATE.GROUNDED);
+	elif (_checkForRoyalGuard()):
+		_enter_state(PLAYER_STATE.GUARD_AIR);
 	elif (!coyoteTimer.is_stopped()):
 		if (Input.is_action_just_pressed("jump")):
 			_enter_state(PLAYER_STATE.JUMPING);
@@ -230,6 +275,20 @@ func _state_hurt(delta: float) -> void:
 	
 	if (hurtTimer.is_stopped()): #_getHorizontalVelocity() == 0.0 && 
 		_enter_state(PLAYER_STATE.FALLING);
+	
+func _state_guard_ground(delta: float) -> void:
+	_moveHorizontalVelocityTowardsZero();
+	_apply_gravity(delta);
+	_updateRoyalGuard(delta);
+		
+func _state_guard_air(delta: float) -> void:
+	#_moveHorizontalVelocityTowardsZero();
+	_apply_gravity(delta);
+	
+	if (is_on_floor()):
+		_enter_state(PLAYER_STATE.GROUNDED);
+	else:
+		_updateRoyalGuard(delta);
 	
 #endregion State_Control
 
@@ -246,6 +305,60 @@ func getHFlip() -> bool:
 	return playerAnimator.get_sprite_h_flip();
 
 #endregion Animation
+	
+#region Royal_Guard
+
+func _startRoyalGuard() -> void:
+	royalGuarding = true;
+	currentRoyalGuardTime = royalGuardTime;
+	currentRoyalGuardIFrameTime = 0.0;	# Reset iframe time when royal guard is triggered again
+	soundGuard.play();
+	#_setHorizontalVelocity(0.0);
+	_setAnimation(PLAYER_ANIMATION.GUARD);
+	modulate = Color(1, 1, 1, 1);
+			
+func _updateRoyalGuardIFrames(delta: float) -> void:
+	if (currentRoyalGuardIFrameTime > 0.0):
+		currentRoyalGuardIFrameTime = max(currentRoyalGuardIFrameTime - delta, 0.0);
+		
+		if (currentRoyalGuardIFrameTime == 0.0):
+			modulate = Color(1, 1, 1, 1);
+			
+func _updateRoyalGuardCooldown(delta: float) -> void:
+	currentRoyalGuardCooldown = max(currentRoyalGuardCooldown - delta, 0.0);
+
+func _checkForRoyalGuard() -> bool:
+	# Only allow royal guard on DMD
+	if (GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD): return false;
+	
+	if (currentRoyalGuardCooldown == 0.0 && Input.is_action_just_pressed("guard")):
+		return true;
+		
+	return false;
+
+func _updateRoyalGuard(delta: float) -> void:
+	currentRoyalGuardTime -= delta;
+	
+	if (currentRoyalGuardTime <= 0.0):
+		_endRoyalGuard();
+		currentRoyalGuardCooldown = royalGuardCooldown;
+
+func _royalGuardParryCallback() -> void:
+	currentRoyalGuardTime = 0.0;
+	currentRoyalGuardIFrameTime = royalGuardInvincibilityTime;
+	modulate = Color(1, 0.9, 0, 1);
+	soundParry.play();
+	_endRoyalGuard();
+
+func _endRoyalGuard() -> void:
+	currentRoyalGuardTime = 0.0;
+	
+	if (state == PLAYER_STATE.GUARD_GROUND):
+		_enter_state(PLAYER_STATE.GROUNDED);
+	else:
+		_enter_state(PLAYER_STATE.FALLING);
+
+#endregion
 		
 #region Gravity
 
