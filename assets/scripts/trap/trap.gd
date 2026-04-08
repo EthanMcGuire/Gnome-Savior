@@ -3,7 +3,7 @@ class_name Trap
 
 @export var dmdOnly := false;
 @export var damage := 1;
-@export var knockback := 400.0;
+@export var knockback := 225.0;
 
 func _ready() -> void:
 	if (dmdOnly && GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD):

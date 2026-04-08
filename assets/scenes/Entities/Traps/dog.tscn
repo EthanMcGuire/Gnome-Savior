@@ -11,7 +11,7 @@ size = Vector2(27, 30)
 script = ExtResource("1_4tf2w")
 speed = 125.0
 damage = 99
-knockback = 500.0
+knockback = 250.0
 
 [node name="BarkTimer" type="Timer" parent="." unique_id=2081587076]
 wait_time = 2.0

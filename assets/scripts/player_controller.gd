@@ -11,13 +11,6 @@ enum PLAYER_STATE {
 	GUARD_AIR
 };
 
-enum GRAVITY {
-	DOWN,
-	UP,
-	LEFT,
-	RIGHT
-};
-
 enum PLAYER_ANIMATION {
 	IDLE,
 	WALK,
@@ -37,7 +30,10 @@ const ANIMATION_NAMES = {
 #region Export_Variables
 
 @export_group("Physics")
-@export var speed = 136.0;
+@export var maxSpeed = 136.0;
+@export var moveVelocity = 600.0;
+@export var stopVelocity = 900.0;
+@export var turnAroundVelocity := 950.0;
 @export var speedStopLerp = 32.0;
 @export var jumpVelocity = -300.0;
 
@@ -46,6 +42,7 @@ const ANIMATION_NAMES = {
 @export var royalGuardCooldown := 0.25;
 @export var royalGuardInvincibilityTime := 0.25;
 @export var royalGuardKnockbackScale := 1.25;
+@export var royalGuardHorizontalVelocityScale := 0.75;
 
 @export_group("Sound")
 @export var baseSoundJumpVolume := 1.0;
@@ -63,10 +60,10 @@ const ANIMATION_NAMES = {
 ## Velocity angular range for the blood
 @export var bloodEffectDegreesRange := 45.0;
 ## Velocity scale in relation to knockback the player received.
-@export var bloodEffectVelocityScaleMin := 0.2;
-@export var bloodEffectVelocityScaleMax := 0.35;
+@export var bloodEffectVelocityScaleMin := 0.3;
+@export var bloodEffectVelocityScaleMax := 0.5;
 ## Velocity scale in relation to knockback the player received.
-@export var debrisVelocityScale := 0.5;
+@export var debrisVelocityScale := 0.6;
 @export var debrisSizeMin := 2;
 @export var debrisSizeMax := 5;
 
@@ -87,7 +84,6 @@ const ANIMATION_NAMES = {
 var jumpSoundTween;
 
 var state := PLAYER_STATE.GROUNDED;
-var gravity := GRAVITY.DOWN;
 var currentAnimation := PLAYER_ANIMATION.IDLE;
 
 var royalGuarding := false;
@@ -99,7 +95,6 @@ func _ready() -> void:
 	soundJump.volume_db = baseSoundJumpVolume;
 	
 	_enter_state(state);
-	setGravity(gravity);
 	
 	# Move to the ground
 	_apply_gravity(1);
@@ -130,13 +125,13 @@ func takeDamage(knockback: Vector2, damage: int) -> void:
 	
 	if (royalGuarding):
 		_royalGuardParryCallback();
-		_addHorizontalVelocity(knockback.x * royalGuardKnockbackScale);
-		_addVerticalVelocity(knockback.y * royalGuardKnockbackScale);
+		velocity = knockback * royalGuardKnockbackScale;
+		#velocity += knockback * royalGuardKnockbackScale;
 		return;
 	
 	if (GameManager.getPlayerHp() > damage):
-		_addHorizontalVelocity(knockback.x);
-		_addVerticalVelocity(knockback.y);
+		velocity = knockback;
+		#velocity += knockback;
 		_enter_state(PLAYER_STATE.HURT);
 	else:
 		_enter_state(PLAYER_STATE.DEAD);
@@ -144,15 +139,28 @@ func takeDamage(knockback: Vector2, damage: int) -> void:
 		
 	GameManager.removePlayerHp(damage);
 
-func _horizontalMovement() -> void:
+func _horizontalMovement(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right");
 	
 	if (direction):
-		_setHorizontalVelocity(direction * speed);
+		var velocityToMoveBy = moveVelocity;
 		
-		playerAnimator.set_sprite_h_flip(direction < 0.0);
-	else:
-		_moveHorizontalVelocityTowardsZero();
+		if (sign(direction) != sign(velocity.x)):
+			velocityToMoveBy = turnAroundVelocity;
+			
+		velocity.x += direction * velocityToMoveBy * delta;
+		#velocity.x = clamp(velocity.x, -maxSpeed, maxSpeed);
+		
+		#print("Current move velocity: " + str(velocityToMoveBy))
+		print("Current velocity X: " + str(velocity.x))
+		
+		if (velocity.x > 0.0):
+			playerAnimator.set_sprite_h_flip(false);
+		elif (velocity.x < 0.0):
+			playerAnimator.set_sprite_h_flip(true);
+	
+	if (!direction || (velocity.x > maxSpeed || velocity.x < -maxSpeed)):
+		_moveHorizontalVelocityTowardsZero(delta);
 
 func _stopJumpSound() -> void:
 	if (state == PLAYER_STATE.JUMPING):
@@ -172,8 +180,8 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 		
 		PLAYER_STATE.JUMPING:
 			_setAnimation(PLAYER_ANIMATION.JUMP);
-			_setVerticalVelocity(0.0);
-			_addVerticalVelocity(jumpVelocity);
+			velocity.y = 0.0;
+			velocity.y += jumpVelocity;
 			
 			soundJump.play(0.0);
 			soundJump.volume_db = baseSoundJumpVolume;
@@ -224,9 +232,9 @@ func _enter_state(newState: PLAYER_STATE) -> void:
 	state = newState;
 
 func _state_grounded(_delta: float) -> void:
-	_horizontalMovement();
+	_horizontalMovement(_delta);
 	
-	if (abs(_getHorizontalVelocity()) > 0.0):
+	if (abs(velocity.x) > 0.0):
 		_setAnimation(PLAYER_ANIMATION.WALK);
 	else:
 		_setAnimation(PLAYER_ANIMATION.IDLE);
@@ -243,19 +251,19 @@ func _state_grounded(_delta: float) -> void:
 			_enter_state(PLAYER_STATE.JUMPING);
 
 func _state_jumping(delta: float) -> void:
-	_horizontalMovement();
+	_horizontalMovement(delta);
 	_apply_gravity(delta);
 	
 	if (_checkForRoyalGuard()):
 		_enter_state(PLAYER_STATE.GUARD_AIR);
 	elif (Input.is_action_just_released("jump")):
-		_setVerticalVelocity(0.0);
+		velocity.y = 0.0;
 		_enter_state(PLAYER_STATE.FALLING);
-	elif (_getVerticalVelocity() >= 0.0):
+	elif (velocity.y >= 0.0):
 		_enter_state(PLAYER_STATE.FALLING);
 
 func _state_falling(delta: float) -> void:
-	_horizontalMovement();
+	_horizontalMovement(delta);
 	_apply_gravity(delta);
 	
 	if (is_on_floor()):
@@ -270,19 +278,21 @@ func _state_falling(delta: float) -> void:
 		takeDamage(Vector2(), 99);
 		
 func _state_hurt(delta: float) -> void:
-	_moveHorizontalVelocityTowardsZero();
+	_moveHorizontalVelocityTowardsZero(delta);
 	_apply_gravity(delta);
 	
 	if (hurtTimer.is_stopped()): #_getHorizontalVelocity() == 0.0 && 
 		_enter_state(PLAYER_STATE.FALLING);
 	
 func _state_guard_ground(delta: float) -> void:
-	_moveHorizontalVelocityTowardsZero();
+	_moveHorizontalVelocityTowardsZero(delta);
 	_apply_gravity(delta);
 	_updateRoyalGuard(delta);
 		
 func _state_guard_air(delta: float) -> void:
-	#_moveHorizontalVelocityTowardsZero();
+	# Allow the  player to move at a reduced velocity
+	_horizontalMovement(delta);
+	velocity.x *= royalGuardHorizontalVelocityScale;
 	_apply_gravity(delta);
 	
 	if (is_on_floor()):
@@ -313,7 +323,7 @@ func _startRoyalGuard() -> void:
 	currentRoyalGuardTime = royalGuardTime;
 	currentRoyalGuardIFrameTime = 0.0;	# Reset iframe time when royal guard is triggered again
 	soundGuard.play();
-	#_setHorizontalVelocity(0.0);
+	#velocity.x = 0.0;
 	_setAnimation(PLAYER_ANIMATION.GUARD);
 	modulate = Color(1, 1, 1, 1);
 			
@@ -359,142 +369,22 @@ func _endRoyalGuard() -> void:
 		_enter_state(PLAYER_STATE.FALLING);
 
 #endregion
-		
-#region Gravity
 
-#func _process(delta: float) -> void:
-	#if (Input.is_action_just_pressed("gravity")):
-		#_switchGravity();
-#
-#func _switchGravity() -> void:
-	#match (gravity):
-		#GRAVITY.DOWN:
-			#setGravity(GRAVITY.UP);
-		#GRAVITY.UP:
-			#setGravity(GRAVITY.LEFT);
-		#GRAVITY.LEFT:
-			#setGravity(GRAVITY.RIGHT);
-		#GRAVITY.RIGHT:
-			#setGravity(GRAVITY.DOWN);
-
-func setGravity(newGravity: GRAVITY) -> void:
-	gravity = newGravity;
-	
-	match (gravity):
-		GRAVITY.DOWN:
-			up_direction = Vector2(0.0, -1.0);
-			rotation_degrees = 0.0;
-		GRAVITY.UP:
-			up_direction = Vector2(0.0, 1.0);
-			rotation_degrees = 180.0;
-		GRAVITY.LEFT:
-			up_direction = Vector2(1.0, 0.0);
-			rotation_degrees = 90.0;
-		GRAVITY.RIGHT:
-			up_direction = Vector2(-1.0, 0.0);
-			rotation_degrees = -90.0;
+#region Physics
 
 func _apply_gravity(delta: float) -> void:
-	velocity += _getGravityVector() * delta;
+	velocity += get_gravity() * delta;
 
-func _getGravityVector() -> Vector2:
-	var gravVector = get_gravity();
+func _moveHorizontalVelocityTowardsZero(delta: float) -> void:
+	if (velocity.x > 0.0):
+		velocity.x = max(velocity.x - stopVelocity * delta, 0.0);
+	elif (velocity.x < 0.0):
+		velocity.x = min(velocity.x + stopVelocity * delta, 0.0);
 	
-	match (gravity):
-		GRAVITY.UP:
-			gravVector.y *= -1.0;
-		GRAVITY.LEFT:
-			gravVector.x = gravVector.y * -1.0;
-			gravVector.y = 0.0;
-		GRAVITY.RIGHT:
-			gravVector.x = gravVector.y;
-			gravVector.y = 0.0;
+	#velocity.x = move_toward(velocity.x, 0, speedStopLerp);
 	
-	return gravVector;
-
-func _getHorizontalVelocity() -> float:
-	match (gravity):
-		GRAVITY.DOWN:
-			return velocity.x;
-		GRAVITY.UP:
-			return velocity.x;	# -velocity.x
-		GRAVITY.LEFT:
-			return velocity.y;
-		GRAVITY.RIGHT:
-			return -velocity.y;
+#endregion Physics
 	
-	return 0.0;
-			
-func _getVerticalVelocity() -> float:
-	match (gravity):
-		GRAVITY.DOWN:
-			return velocity.y;
-		GRAVITY.UP:
-			return -velocity.y;
-		GRAVITY.LEFT:
-			return -velocity.x;
-		GRAVITY.RIGHT:
-			return velocity.x;
-			
-	return 0.0;
-
-func _setHorizontalVelocity(newVelocity: float) -> void:
-	match (gravity):
-		GRAVITY.DOWN:
-			velocity.x = newVelocity;
-		GRAVITY.UP:
-			velocity.x = newVelocity;	# -newVelocity.x
-		GRAVITY.LEFT:
-			velocity.y = newVelocity;
-		GRAVITY.RIGHT:
-			velocity.y = -newVelocity;
-			
-func _addHorizontalVelocity(addVelocity: float) -> void:
-	match (gravity):
-		GRAVITY.DOWN:
-			velocity.x += addVelocity;
-		GRAVITY.UP:
-			velocity.x += addVelocity;	# -newVelocity.x
-		GRAVITY.LEFT:
-			velocity.y += addVelocity;
-		GRAVITY.RIGHT:
-			velocity.y += -addVelocity;
-			
-func _setVerticalVelocity(newVelocity: float) -> void:
-	match (gravity):
-		GRAVITY.DOWN:
-			velocity.y = newVelocity;
-		GRAVITY.UP:
-			velocity.y = -newVelocity;
-		GRAVITY.LEFT:
-			velocity.x = -newVelocity;
-		GRAVITY.RIGHT:
-			velocity.x = newVelocity;
-			
-func _addVerticalVelocity(addVelocity: float) -> void:
-	match (gravity):
-		GRAVITY.DOWN:
-			velocity.y += addVelocity;
-		GRAVITY.UP:
-			velocity.y += -addVelocity;
-		GRAVITY.LEFT:
-			velocity.x += -addVelocity;
-		GRAVITY.RIGHT:
-			velocity.x += addVelocity;
-
-func _moveHorizontalVelocityTowardsZero() -> void:
-	match (gravity):
-		GRAVITY.DOWN:
-			velocity.x = move_toward(velocity.x, 0, speedStopLerp);
-		GRAVITY.UP:
-			velocity.x = move_toward(velocity.x, 0, speedStopLerp);
-		GRAVITY.LEFT:
-			velocity.y = move_toward(velocity.y, 0, speedStopLerp);
-		GRAVITY.RIGHT:
-			velocity.y = move_toward(velocity.y, 0, speedStopLerp);
-	
-#endregion Gravity
-
 #region Effects
 
 func _createDeathEffects(knockback: Vector2) -> void:

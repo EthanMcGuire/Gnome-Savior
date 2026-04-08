@@ -216,7 +216,6 @@ height = 14.0
 
 [node name="PlayerEvil" type="Node2D" unique_id=1327395962]
 script = ExtResource("1_xc8hr")
-knockback = 450.0
 
 [node name="Sound" type="Node2D" parent="." unique_id=1563451091]
 

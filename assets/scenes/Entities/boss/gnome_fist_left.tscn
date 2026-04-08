@@ -15,7 +15,7 @@ size = Vector2(40, 10)
 
 [node name="GnomeFistLeft" type="Node2D" unique_id=1211366112]
 script = ExtResource("1_lu0t1")
-knockback = 800.0
+knockback = 300.0
 
 [node name="TimerFree" type="Timer" parent="." unique_id=354000780]
 unique_name_in_owner = true

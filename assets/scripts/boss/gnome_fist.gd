@@ -29,11 +29,12 @@ enum FIST_STATE {
 @export var debrisSizeMax := 64;
 
 const HURT_TIME := 0.5;
-const PLAYER_JUMP_KNOCKBACK := 650.0;
+const PLAYER_JUMP_KNOCKBACK_Y := 400.0;
+const PLAYER_JUMP_KNOCKBACK_X := 200.0;
 const FIST_DEATH_KNOCKBACK := 500.0;
 
-const BASE_KNOCKBACK := 400.0;
-const SLAP_KNOCKBACK := 1400.0;
+const BASE_KNOCKBACK := 225.0;
+const SLAP_KNOCKBACK := 1000.0;
 
 # Idle
 const HAND_BOB_AMOUNT := 6.0;
@@ -263,18 +264,20 @@ func _takeDamage(player) -> void:
 	
 ### Knockback the player when they jump on us
 func _knockbackPlayer(player) -> void:
-	var knockbackDir: Vector2;
+	#var knockbackDir: Vector2;
 		
-	knockbackDir = Vector2.UP;
+	#knockbackDir = Vector2.UP;
 	
-	if (isRightHand):
-		knockbackDir = knockbackDir.rotated(1);
-		player.velocity.x -= PLAYER_JUMP_KNOCKBACK;
-	else:
-		knockbackDir = knockbackDir.rotated(-1);
-		player.velocity.x += PLAYER_JUMP_KNOCKBACK;
+	#if (isRightHand):
+		#player.velocity.x = -PLAYER_JUMP_KNOCKBACK_X;
+		#knockbackDir = knockbackDir.rotated(1);
+		#player.velocity.x -= PLAYER_JUMP_KNOCKBACK;
+	#else:
+		#player.velocity.x = PLAYER_JUMP_KNOCKBACK_X;
+		#knockbackDir = knockbackDir.rotated(-1);
+		#player.velocity.x += PLAYER_JUMP_KNOCKBACK;
 	
-	player.velocity += knockbackDir * PLAYER_JUMP_KNOCKBACK;
+	player.velocity += Vector2.UP * PLAYER_JUMP_KNOCKBACK_Y;
 	
 func _createDeathEffects(knockback: Vector2) -> void:
 	GameManager.createBloodParticles(global_position);

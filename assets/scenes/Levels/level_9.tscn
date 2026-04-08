@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://lcnaux1kh772" path="res://assets/scenes/Entities/camera_region.tscn" id="7_id5ot"]
 [ext_resource type="PackedScene" uid="uid://dgoprtm4tfkvs" path="res://assets/scenes/Entities/boss/boss_trigger.tscn" id="8_jpm6m"]
 [ext_resource type="PackedScene" uid="uid://bd3t34inoxffr" path="res://assets/scenes/Entities/Level Stuff/raising_door.tscn" id="9_earva"]
+[ext_resource type="PackedScene" uid="uid://1g1oi8h4rkvv" path="res://assets/scenes/Entities/Level Stuff/portal.tscn" id="10_ooais"]
 [ext_resource type="PackedScene" uid="uid://b7el0rtw1snaw" path="res://assets/scenes/Entities/Traps/one_shot_spike.tscn" id="11_dyko5"]
+[ext_resource type="PackedScene" uid="uid://dgt6mejq5mnsr" path="res://assets/scenes/Entities/Level Stuff/portal_endpoint.tscn" id="11_l6cac"]
 [ext_resource type="PackedScene" uid="uid://bvq6uj5mv4lxc" path="res://assets/scenes/Entities/boss/evil_gnome.tscn" id="18_tnak5"]
 [ext_resource type="PackedScene" uid="uid://com2u5kxhj3vj" path="res://assets/scenes/Entities/Level Stuff/checkpoint.tscn" id="19_pcv6d"]
 
@@ -57,6 +59,14 @@ regionSizeY = 384.0
 
 [node name="BossDoor" parent="." index="7" unique_id=809642436 instance=ExtResource("7_4hrn5")]
 position = Vector2(2672, 368)
+
+[node name="Portal" parent="Portals" parent_id_path=PackedInt32Array(646246642) index="0" unique_id=599182297 node_paths=PackedStringArray("linkedPortal") instance=ExtResource("10_ooais")]
+position = Vector2(81, 231)
+linkedPortal = NodePath("../PortalEndpoint")
+dmdOnly = true
+
+[node name="PortalEndpoint" parent="Portals" parent_id_path=PackedInt32Array(646246642) index="1" unique_id=521861170 instance=ExtResource("11_l6cac")]
+position = Vector2(2484, 232)
 
 [node name="Spikes" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="0" unique_id=1768530179]
 position = Vector2(1, 0)
@@ -162,107 +172,107 @@ position = Vector2(2311, 320)
 [node name="OneShotSpike26" parent="Traps/Spikes" index="25" unique_id=1233892261 instance=ExtResource("11_dyko5")]
 position = Vector2(2327, 336)
 
-[node name="OneShotSpike27" type="Node2D" parent="Traps/Spikes" index="26" unique_id=1400253151 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike27" parent="Traps/Spikes" index="26" unique_id=1400253151 instance=ExtResource("11_dyko5")]
 position = Vector2(2743, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike28" type="Node2D" parent="Traps/Spikes" index="27" unique_id=20834810 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike28" parent="Traps/Spikes" index="27" unique_id=20834810 instance=ExtResource("11_dyko5")]
 position = Vector2(2759, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike29" type="Node2D" parent="Traps/Spikes" index="28" unique_id=467569168 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike29" parent="Traps/Spikes" index="28" unique_id=467569168 instance=ExtResource("11_dyko5")]
 position = Vector2(2775, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike30" type="Node2D" parent="Traps/Spikes" index="29" unique_id=303072485 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike30" parent="Traps/Spikes" index="29" unique_id=303072485 instance=ExtResource("11_dyko5")]
 position = Vector2(2791, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike31" type="Node2D" parent="Traps/Spikes" index="30" unique_id=1580573925 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike31" parent="Traps/Spikes" index="30" unique_id=1580573925 instance=ExtResource("11_dyko5")]
 position = Vector2(2807, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike32" type="Node2D" parent="Traps/Spikes" index="31" unique_id=1312128326 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike32" parent="Traps/Spikes" index="31" unique_id=1312128326 instance=ExtResource("11_dyko5")]
 position = Vector2(2823, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike33" type="Node2D" parent="Traps/Spikes" index="32" unique_id=796697755 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike33" parent="Traps/Spikes" index="32" unique_id=796697755 instance=ExtResource("11_dyko5")]
 position = Vector2(2839, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike34" type="Node2D" parent="Traps/Spikes" index="33" unique_id=885721665 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike34" parent="Traps/Spikes" index="33" unique_id=885721665 instance=ExtResource("11_dyko5")]
 position = Vector2(2855, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike35" type="Node2D" parent="Traps/Spikes" index="34" unique_id=1510673636 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike35" parent="Traps/Spikes" index="34" unique_id=1510673636 instance=ExtResource("11_dyko5")]
 position = Vector2(2871, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike36" type="Node2D" parent="Traps/Spikes" index="35" unique_id=1004077610 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike36" parent="Traps/Spikes" index="35" unique_id=1004077610 instance=ExtResource("11_dyko5")]
 position = Vector2(2887, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike37" type="Node2D" parent="Traps/Spikes" index="36" unique_id=932882297 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike37" parent="Traps/Spikes" index="36" unique_id=932882297 instance=ExtResource("11_dyko5")]
 position = Vector2(2903, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike38" type="Node2D" parent="Traps/Spikes" index="37" unique_id=27030159 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike38" parent="Traps/Spikes" index="37" unique_id=27030159 instance=ExtResource("11_dyko5")]
 position = Vector2(2919, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike39" type="Node2D" parent="Traps/Spikes" index="38" unique_id=1274486035 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike39" parent="Traps/Spikes" index="38" unique_id=1274486035 instance=ExtResource("11_dyko5")]
 position = Vector2(2935, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike40" type="Node2D" parent="Traps/Spikes" index="39" unique_id=1273651900 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike40" parent="Traps/Spikes" index="39" unique_id=1273651900 instance=ExtResource("11_dyko5")]
 position = Vector2(2951, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike41" type="Node2D" parent="Traps/Spikes" index="40" unique_id=1273320560 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike41" parent="Traps/Spikes" index="40" unique_id=1273320560 instance=ExtResource("11_dyko5")]
 position = Vector2(2967, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike42" type="Node2D" parent="Traps/Spikes" index="41" unique_id=1832672275 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike42" parent="Traps/Spikes" index="41" unique_id=1832672275 instance=ExtResource("11_dyko5")]
 position = Vector2(2983, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike43" type="Node2D" parent="Traps/Spikes" index="42" unique_id=2110662133 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike43" parent="Traps/Spikes" index="42" unique_id=2110662133 instance=ExtResource("11_dyko5")]
 position = Vector2(2999, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike44" type="Node2D" parent="Traps/Spikes" index="43" unique_id=566713417 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike44" parent="Traps/Spikes" index="43" unique_id=566713417 instance=ExtResource("11_dyko5")]
 position = Vector2(3015, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike45" type="Node2D" parent="Traps/Spikes" index="44" unique_id=504311065 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike45" parent="Traps/Spikes" index="44" unique_id=504311065 instance=ExtResource("11_dyko5")]
 position = Vector2(3031, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike46" type="Node2D" parent="Traps/Spikes" index="45" unique_id=321623077 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike46" parent="Traps/Spikes" index="45" unique_id=321623077 instance=ExtResource("11_dyko5")]
 position = Vector2(3047, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike47" type="Node2D" parent="Traps/Spikes" index="46" unique_id=333847391 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike47" parent="Traps/Spikes" index="46" unique_id=333847391 instance=ExtResource("11_dyko5")]
 position = Vector2(3063, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike48" type="Node2D" parent="Traps/Spikes" index="47" unique_id=550536293 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike48" parent="Traps/Spikes" index="47" unique_id=550536293 instance=ExtResource("11_dyko5")]
 position = Vector2(3079, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike49" type="Node2D" parent="Traps/Spikes" index="48" unique_id=2079965374 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike49" parent="Traps/Spikes" index="48" unique_id=2079965374 instance=ExtResource("11_dyko5")]
 position = Vector2(3095, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike50" type="Node2D" parent="Traps/Spikes" index="49" unique_id=688166397 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike50" parent="Traps/Spikes" index="49" unique_id=688166397 instance=ExtResource("11_dyko5")]
 position = Vector2(3111, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike51" type="Node2D" parent="Traps/Spikes" index="50" unique_id=1778208933 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike51" parent="Traps/Spikes" index="50" unique_id=1778208933 instance=ExtResource("11_dyko5")]
 position = Vector2(3127, 160)
 rotation = -3.1415925
 
-[node name="OneShotSpike52" type="Node2D" parent="Traps/Spikes" index="51" unique_id=1491295429 instance=ExtResource("11_dyko5")]
+[node name="OneShotSpike52" parent="Traps/Spikes" index="51" unique_id=1491295429 instance=ExtResource("11_dyko5")]
 position = Vector2(3143, 160)
 rotation = -3.1415925
 

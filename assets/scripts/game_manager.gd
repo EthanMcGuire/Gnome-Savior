@@ -7,9 +7,9 @@ enum DIFFICULTY {
 	DMD
 };
 
-const IS_TEST := false;
+const IS_TEST := true;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_1.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_9.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -29,7 +29,7 @@ const STARTING_MAX_HP := [2, 2, 1, 3];
 var usingGamepad := false;
 
 var funnyMode := false;
-var difficulty := DIFFICULTY.EASY;
+var difficulty := DIFFICULTY.DMD;
 var maxHp := 2;
 var hp := maxHp;
 var lives := 3;
@@ -91,6 +91,7 @@ func _ready() -> void:
 	
 	if (IS_TEST):
 		get_tree().change_scene_to_file("res://assets/scenes/Levels/level_base.tscn");
+		setMusicVolume(-80.0);
 	
 func setDifficulty(_difficulty: DIFFICULTY) -> void:
 	difficulty = _difficulty;
