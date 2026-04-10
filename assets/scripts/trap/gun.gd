@@ -12,6 +12,8 @@ const BULLET := preload("res://assets/scenes/Entities/Traps/bullet.tscn");
 @export var shootSpeed := 1.0;
 
 func _ready() -> void:
+	if Engine.is_editor_hint(): return;
+	
 	if (dmdOnly && GameManager.getDifficulty() != GameManager.DIFFICULTY.DMD):
 		queue_free();
 		

@@ -9,7 +9,7 @@ enum DIFFICULTY {
 
 const IS_TEST := true;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_9.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_2.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -92,6 +92,7 @@ func _ready() -> void:
 	if (IS_TEST):
 		get_tree().change_scene_to_file("res://assets/scenes/Levels/level_base.tscn");
 		setMusicVolume(-80.0);
+		setSoundVolume(-10.0);
 	
 func setDifficulty(_difficulty: DIFFICULTY) -> void:
 	difficulty = _difficulty;

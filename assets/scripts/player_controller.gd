@@ -296,7 +296,7 @@ func _state_guard_air(delta: float) -> void:
 	_apply_gravity(delta);
 	
 	if (is_on_floor()):
-		_enter_state(PLAYER_STATE.GROUNDED);
+		state = PLAYER_STATE.GUARD_GROUND;
 	else:
 		_updateRoyalGuard(delta);
 	

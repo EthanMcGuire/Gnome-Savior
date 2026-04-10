@@ -23,22 +23,44 @@
 [ext_resource type="PackedScene" uid="uid://bbsb1cb286pwf" path="res://assets/scenes/Entities/Traps/one_shot_moving_spike.tscn" id="19_3b8l8"]
 [ext_resource type="PackedScene" uid="uid://c1qymjpfc2q21" path="res://assets/scenes/Entities/Level Stuff/moving_platform.tscn" id="19_evslj"]
 [ext_resource type="PackedScene" uid="uid://b7el0rtw1snaw" path="res://assets/scenes/Entities/Traps/one_shot_spike.tscn" id="20_sjh31"]
+[ext_resource type="Script" uid="uid://dpoq1t2of6ykv" path="res://assets/scripts/trap/spike.gd" id="22_r7sca"]
+[ext_resource type="Script" uid="uid://bblxnwf38pllg" path="res://assets/scripts/trap/spike_eye.gd" id="23_n1jn8"]
 [ext_resource type="PackedScene" uid="uid://dv0hpy16a8abt" path="res://assets/scenes/Entities/Traps/gun.tscn" id="23_nj166"]
+[ext_resource type="Script" uid="uid://dt050w0lib6jg" path="res://assets/scripts/trap/moving_spike.gd" id="24_40dsa"]
 [ext_resource type="PackedScene" uid="uid://ccbsxcpsis2gx" path="res://assets/scenes/Entities/Items/coin.tscn" id="24_h3pb5"]
+[ext_resource type="PackedScene" uid="uid://c2fv2jx1g025t" path="res://assets/scenes/Entities/Traps/saw_blade.tscn" id="24_qryt2"]
+[ext_resource type="Script" uid="uid://lvv7odusbkcc" path="res://assets/scripts/trap/saw_blade_path.gd" id="25_72vx2"]
+[ext_resource type="Script" uid="uid://sk6msjpmf8s1" path="res://assets/scripts/trap/swinging_saw.gd" id="25_mgunj"]
 [ext_resource type="PackedScene" uid="uid://vw53d3oqapsy" path="res://assets/scenes/Entities/Items/one_up.tscn" id="26_nj166"]
+[ext_resource type="Script" uid="uid://3ghp5aqp5jcf" path="res://assets/scripts/trap/gun.gd" id="27_kwjln"]
 [ext_resource type="PackedScene" uid="uid://cg7q83fhkm7dr" path="res://assets/scenes/Entities/Items/heart_container.tscn" id="28_mgunj"]
+[ext_resource type="Script" uid="uid://cwqipr5362ild" path="res://assets/scripts/item/coin.gd" id="28_n1jn8"]
 
-[sub_resource type="Curve2D" id="Curve2D_h3pb5"]
+[sub_resource type="Curve2D" id="Curve2D_nj166"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1924.5122, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_r7sca"]
+[sub_resource type="Curve2D" id="Curve2D_n1jn8"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -132)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_40dsa"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_a2x1w"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -96, 0)
 }
 point_count = 2
 
@@ -163,7 +185,7 @@ warpLevel = "res://assets/scenes/Levels/level_3.tscn"
 [node name="MovingPlatform" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="0" unique_id=1846491825 instance=ExtResource("19_evslj")]
 position = Vector2(3197, 358)
 scale = Vector2(1.1945883, 1)
-curve = SubResource("Curve2D_h3pb5")
+curve = SubResource("Curve2D_nj166")
 looping = true
 waitForPlayer = true
 stopAtEnd = true
@@ -172,7 +194,7 @@ deltaSpeedPixelsReturn = 56.0
 
 [node name="MovingPlatform2" parent="MovingPlatforms" parent_id_path=PackedInt32Array(348346419) index="1" unique_id=1133021977 instance=ExtResource("19_evslj")]
 position = Vector2(5099, 279)
-curve = SubResource("Curve2D_r7sca")
+curve = SubResource("Curve2D_n1jn8")
 easeType = 2
 transitionType = 4
 
@@ -191,897 +213,1130 @@ linkedPortal = NodePath("../PortalEndpoint")
 [node name="PortalEndpoint" parent="Portals" parent_id_path=PackedInt32Array(646246642) index="1" unique_id=521861170 instance=ExtResource("16_40dsa")]
 position = Vector2(5040, 104)
 
-[node name="Spike" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="0" unique_id=147394102 instance=ExtResource("18_65if4")]
+[node name="SpikeEye46" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="0" unique_id=1651396377 instance=ExtResource("14_rdkgg")]
+position = Vector2(5064, 680)
+moveDir = 4
+
+[node name="Spike" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="1" unique_id=147394102 instance=ExtResource("18_65if4")]
 position = Vector2(216, 272)
 
-[node name="Spike2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="1" unique_id=481792847 instance=ExtResource("18_65if4")]
+[node name="Spike2" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="2" unique_id=481792847 instance=ExtResource("18_65if4")]
 position = Vector2(200, 272)
 
-[node name="Spike3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="2" unique_id=1314513295 instance=ExtResource("18_65if4")]
+[node name="Spike3" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="3" unique_id=1314513295 instance=ExtResource("18_65if4")]
 position = Vector2(232, 272)
 
-[node name="Spike4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="3" unique_id=697214205 instance=ExtResource("18_65if4")]
+[node name="Spike4" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="4" unique_id=697214205 instance=ExtResource("18_65if4")]
 position = Vector2(120, 208)
 rotation = -3.1415925
 
-[node name="Spike5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="4" unique_id=1376242336 instance=ExtResource("18_65if4")]
+[node name="Spike5" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="5" unique_id=1376242336 instance=ExtResource("18_65if4")]
 position = Vector2(136, 208)
 rotation = -3.1415925
 
-[node name="Spike6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="5" unique_id=1154487104 instance=ExtResource("18_65if4")]
+[node name="Spike6" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="6" unique_id=1154487104 instance=ExtResource("18_65if4")]
 position = Vector2(152, 208)
 rotation = -3.1415925
 
-[node name="Spike7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="6" unique_id=449374925 instance=ExtResource("18_65if4")]
+[node name="Spike7" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="7" unique_id=449374925 instance=ExtResource("18_65if4")]
 position = Vector2(280, 192)
 rotation = -3.1415925
 
-[node name="Spike8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="7" unique_id=1442526687 instance=ExtResource("18_65if4")]
+[node name="Spike8" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="8" unique_id=1442526687 instance=ExtResource("18_65if4")]
 position = Vector2(296, 192)
 rotation = -3.1415925
 
-[node name="MovingSpike" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="8" unique_id=1913052122 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="9" unique_id=1913052122 instance=ExtResource("16_3b8l8")]
 position = Vector2(456, 208)
 rotation = -3.1415925
 
-[node name="MovingSpike2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="9" unique_id=2045882014 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike2" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="10" unique_id=2045882014 instance=ExtResource("16_3b8l8")]
 position = Vector2(440, 208)
 rotation = -3.1415925
 
-[node name="MovingSpike3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="10" unique_id=733145747 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike3" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="11" unique_id=733145747 instance=ExtResource("16_3b8l8")]
 position = Vector2(424, 208)
 rotation = -3.1415925
 
-[node name="MovingSpike4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="11" unique_id=334397580 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike4" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="12" unique_id=334397580 instance=ExtResource("16_3b8l8")]
 position = Vector2(472, 208)
 rotation = -3.1415925
 
-[node name="Spike9" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="12" unique_id=995651332 instance=ExtResource("18_65if4")]
+[node name="Spike9" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="13" unique_id=995651332 instance=ExtResource("18_65if4")]
 position = Vector2(408, 272)
 
-[node name="Spike10" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="13" unique_id=1000382217 instance=ExtResource("18_65if4")]
+[node name="Spike10" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="14" unique_id=1000382217 instance=ExtResource("18_65if4")]
 position = Vector2(424, 272)
 
-[node name="Spike11" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="14" unique_id=1131711912 instance=ExtResource("18_65if4")]
+[node name="Spike11" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="15" unique_id=1131711912 instance=ExtResource("18_65if4")]
 position = Vector2(392, 272)
 
-[node name="Spike12" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="15" unique_id=276994391 instance=ExtResource("18_65if4")]
+[node name="Spike12" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="16" unique_id=276994391 instance=ExtResource("18_65if4")]
 position = Vector2(312, 192)
 rotation = -3.1415925
 
-[node name="Spike13" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="16" unique_id=1767839332 instance=ExtResource("18_65if4")]
-position = Vector2(264, 208)
-rotation = -3.1415925
-
-[node name="Spike14" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="17" unique_id=257303459 instance=ExtResource("18_65if4")]
+[node name="Spike14" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="17" unique_id=257303459 instance=ExtResource("18_65if4")]
 position = Vector2(328, 208)
 rotation = -3.1415925
 
-[node name="Spike15" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="18" unique_id=27377283 instance=ExtResource("18_65if4")]
+[node name="Spike15" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="18" unique_id=27377283 instance=ExtResource("18_65if4")]
 position = Vector2(560, 248)
 rotation = -1.5707964
 
-[node name="Spike16" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="19" unique_id=68506769 instance=ExtResource("18_65if4")]
+[node name="Spike16" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="19" unique_id=68506769 instance=ExtResource("18_65if4")]
 position = Vector2(560, 264)
 rotation = -1.5707964
 
-[node name="Spike17" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="20" unique_id=894313292 instance=ExtResource("18_65if4")]
+[node name="Spike17" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="20" unique_id=894313292 instance=ExtResource("18_65if4")]
 position = Vector2(608, 216)
 rotation = -1.5707964
 
-[node name="Spike18" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="21" unique_id=1463667865 instance=ExtResource("18_65if4")]
+[node name="Spike18" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="21" unique_id=1463667865 instance=ExtResource("18_65if4")]
 position = Vector2(608, 232)
 rotation = -1.5707964
 
-[node name="MovingSpike5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="22" unique_id=418030829 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike5" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="22" unique_id=418030829 instance=ExtResource("16_3b8l8")]
 position = Vector2(584, 240)
 startDelay = 1.0
 returnTime = 0.75
 
-[node name="MovingSpike6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="23" unique_id=332469156 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike6" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="23" unique_id=332469156 instance=ExtResource("16_3b8l8")]
 position = Vector2(568, 240)
 startDelay = 1.0
 returnTime = 0.75
 
-[node name="MovingSpike7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="24" unique_id=904752063 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike7" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="24" unique_id=904752063 instance=ExtResource("16_3b8l8")]
 position = Vector2(616, 208)
 returnTime = 0.75
 
-[node name="MovingSpike8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="25" unique_id=411041626 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike8" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="25" unique_id=411041626 instance=ExtResource("16_3b8l8")]
 position = Vector2(632, 208)
 returnTime = 0.75
 
-[node name="MovingSpike9" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="26" unique_id=2089499875 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike9" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="26" unique_id=2089499875 instance=ExtResource("16_3b8l8")]
 position = Vector2(648, 208)
 returnTime = 0.75
 
-[node name="SpikeEye" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="27" unique_id=1136304704 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="27" unique_id=1136304704 instance=ExtResource("14_rdkgg")]
 position = Vector2(744, 216)
 moveDir = 4
 
-[node name="SpikeEye2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="28" unique_id=1283949925 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye2" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="28" unique_id=1283949925 instance=ExtResource("14_rdkgg")]
 position = Vector2(760, 216)
 moveDir = 4
 
-[node name="SpikeEye3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="29" unique_id=1388741970 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye3" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="29" unique_id=1388741970 instance=ExtResource("14_rdkgg")]
 position = Vector2(776, 216)
 moveDir = 4
 
-[node name="SpikeEye4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="30" unique_id=1148577969 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye4" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="30" unique_id=1148577969 instance=ExtResource("14_rdkgg")]
 position = Vector2(792, 216)
 moveDir = 4
 
-[node name="SpikeEye5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="31" unique_id=2133455236 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye5" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="31" unique_id=2133455236 instance=ExtResource("14_rdkgg")]
 position = Vector2(808, 216)
 moveDir = 4
 
-[node name="SpikeEye6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="32" unique_id=1047345083 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye6" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="32" unique_id=1047345083 instance=ExtResource("14_rdkgg")]
 position = Vector2(824, 216)
 moveDir = 4
 
-[node name="Spike20" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="33" unique_id=1574933061 instance=ExtResource("18_65if4")]
+[node name="Spike20" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="33" unique_id=1574933061 instance=ExtResource("18_65if4")]
 position = Vector2(952, 208)
 
-[node name="Spike21" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="34" unique_id=972312645 instance=ExtResource("18_65if4")]
+[node name="Spike21" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="34" unique_id=972312645 instance=ExtResource("18_65if4")]
 position = Vector2(968, 208)
 
-[node name="Spike22" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="35" unique_id=1293071524 instance=ExtResource("18_65if4")]
+[node name="Spike22" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="35" unique_id=1293071524 instance=ExtResource("18_65if4")]
 position = Vector2(984, 208)
 
-[node name="MovingSpike10" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="36" unique_id=1718429455 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike10" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="36" unique_id=1718429455 instance=ExtResource("16_3b8l8")]
 position = Vector2(952, 144)
 rotation = -3.1415925
 
-[node name="MovingSpike11" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="37" unique_id=769719741 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike11" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="37" unique_id=769719741 instance=ExtResource("16_3b8l8")]
 position = Vector2(968, 144)
 rotation = -3.1415925
 
-[node name="MovingSpike12" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="38" unique_id=22481511 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike12" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="38" unique_id=22481511 instance=ExtResource("16_3b8l8")]
 position = Vector2(984, 144)
 rotation = -3.1415925
 
-[node name="MovingSpike13" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="39" unique_id=1849579687 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike13" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="39" unique_id=1849579687 instance=ExtResource("16_3b8l8")]
 position = Vector2(936, 144)
 rotation = -3.1415925
 
-[node name="MovingSpike14" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="40" unique_id=1344046885 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike14" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="40" unique_id=1344046885 instance=ExtResource("16_3b8l8")]
 position = Vector2(1000, 144)
 rotation = -3.1415925
 
-[node name="Spike19" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="41" unique_id=775761401 instance=ExtResource("18_65if4")]
+[node name="Spike19" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="41" unique_id=775761401 instance=ExtResource("18_65if4")]
 position = Vector2(904, 144)
 rotation = -3.1415925
 
-[node name="Spike23" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="42" unique_id=1849811442 instance=ExtResource("18_65if4")]
+[node name="Spike23" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="42" unique_id=1849811442 instance=ExtResource("18_65if4")]
 position = Vector2(920, 144)
 rotation = -3.1415925
 
-[node name="Spike24" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="43" unique_id=2050475252 instance=ExtResource("18_65if4")]
+[node name="Spike24" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="43" unique_id=2050475252 instance=ExtResource("18_65if4")]
 position = Vector2(1016, 144)
 rotation = -3.1415925
 
-[node name="Spike25" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="44" unique_id=2045241022 instance=ExtResource("18_65if4")]
+[node name="Spike25" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="44" unique_id=2045241022 instance=ExtResource("18_65if4")]
 position = Vector2(1032, 144)
 rotation = -3.1415925
 
-[node name="Spike26" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="45" unique_id=1431174838 instance=ExtResource("18_65if4")]
+[node name="Spike26" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="45" unique_id=1431174838 instance=ExtResource("18_65if4")]
 position = Vector2(1056, 216)
 rotation = 1.5707964
 
-[node name="Spike27" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="46" unique_id=416017985 instance=ExtResource("18_65if4")]
+[node name="Spike27" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="46" unique_id=416017985 instance=ExtResource("18_65if4")]
 position = Vector2(1056, 232)
 rotation = 1.5707964
 
-[node name="SpikeEye7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="47" unique_id=399459419 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye7" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="47" unique_id=399459419 instance=ExtResource("14_rdkgg")]
 position = Vector2(1112, 232)
 moveDir = 3
 
-[node name="SpikeEye8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="48" unique_id=1998784547 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye8" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="48" unique_id=1998784547 instance=ExtResource("14_rdkgg")]
 position = Vector2(1128, 232)
 moveDir = 3
 
-[node name="SpikeEye9" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="49" unique_id=1714749564 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye9" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="49" unique_id=1714749564 instance=ExtResource("14_rdkgg")]
 position = Vector2(1144, 232)
 moveDir = 3
 
-[node name="SpikeEye10" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="50" unique_id=1119144273 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye10" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="50" unique_id=1119144273 instance=ExtResource("14_rdkgg")]
 position = Vector2(1160, 232)
 moveDir = 3
 
-[node name="SpikeEye11" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="51" unique_id=1375408682 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye11" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="51" unique_id=1375408682 instance=ExtResource("14_rdkgg")]
 position = Vector2(1176, 232)
 moveDir = 3
 
-[node name="SpikeEye12" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="52" unique_id=757842994 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye12" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="52" unique_id=757842994 instance=ExtResource("14_rdkgg")]
 position = Vector2(1416, 248)
 moveDir = 4
 
-[node name="SpikeEye13" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="53" unique_id=1048437957 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye13" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="53" unique_id=1048437957 instance=ExtResource("14_rdkgg")]
 position = Vector2(1432, 248)
 moveDir = 4
 
-[node name="SpikeEye14" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="54" unique_id=1595891636 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye14" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="54" unique_id=1595891636 instance=ExtResource("14_rdkgg")]
 position = Vector2(1448, 248)
 moveDir = 4
 
-[node name="SpikeEye15" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="55" unique_id=2041273399 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye15" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="55" unique_id=2041273399 instance=ExtResource("14_rdkgg")]
 position = Vector2(1640, 232)
 moveDir = 4
 
-[node name="SpikeEye16" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="56" unique_id=1828298290 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye16" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="56" unique_id=1828298290 instance=ExtResource("14_rdkgg")]
 position = Vector2(1656, 232)
 moveDir = 4
 
-[node name="SpikeEye17" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="57" unique_id=1248892113 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye17" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="57" unique_id=1248892113 instance=ExtResource("14_rdkgg")]
 position = Vector2(1672, 232)
 moveDir = 4
 
-[node name="Spike28" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="58" unique_id=532745044 instance=ExtResource("18_65if4")]
+[node name="Spike28" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="58" unique_id=532745044 instance=ExtResource("18_65if4")]
 position = Vector2(1224, 304)
 
-[node name="Spike29" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="59" unique_id=1496072880 instance=ExtResource("18_65if4")]
+[node name="Spike29" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="59" unique_id=1496072880 instance=ExtResource("18_65if4")]
 position = Vector2(1240, 304)
 
-[node name="Spike30" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="60" unique_id=286916520 instance=ExtResource("18_65if4")]
+[node name="Spike30" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="60" unique_id=286916520 instance=ExtResource("18_65if4")]
 position = Vector2(1256, 304)
 
-[node name="Spike31" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="61" unique_id=282138580 instance=ExtResource("18_65if4")]
+[node name="Spike31" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="61" unique_id=282138580 instance=ExtResource("18_65if4")]
 position = Vector2(1272, 304)
 
-[node name="Spike32" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="62" unique_id=146666598 instance=ExtResource("18_65if4")]
+[node name="Spike32" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="62" unique_id=146666598 instance=ExtResource("18_65if4")]
 position = Vector2(1288, 304)
 
-[node name="Spike33" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="63" unique_id=1454131415 instance=ExtResource("18_65if4")]
+[node name="Spike33" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="63" unique_id=1454131415 instance=ExtResource("18_65if4")]
 position = Vector2(1352, 304)
 
-[node name="Spike34" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="64" unique_id=1439496299 instance=ExtResource("18_65if4")]
+[node name="Spike34" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="64" unique_id=1439496299 instance=ExtResource("18_65if4")]
 position = Vector2(1368, 304)
 
-[node name="Spike35" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="65" unique_id=364720350 instance=ExtResource("18_65if4")]
+[node name="Spike35" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="65" unique_id=364720350 instance=ExtResource("18_65if4")]
 position = Vector2(1384, 304)
 
-[node name="Spike36" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="66" unique_id=717627437 instance=ExtResource("18_65if4")]
+[node name="Spike36" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="66" unique_id=717627437 instance=ExtResource("18_65if4")]
 position = Vector2(1400, 304)
 
-[node name="Spike37" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="67" unique_id=961954660 instance=ExtResource("18_65if4")]
+[node name="Spike37" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="67" unique_id=961954660 instance=ExtResource("18_65if4")]
 position = Vector2(1464, 304)
 
-[node name="Spike38" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="68" unique_id=2143133185 instance=ExtResource("18_65if4")]
+[node name="Spike38" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="68" unique_id=2143133185 instance=ExtResource("18_65if4")]
 position = Vector2(1480, 304)
 
-[node name="Spike39" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="69" unique_id=170768306 instance=ExtResource("18_65if4")]
+[node name="Spike39" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="69" unique_id=170768306 instance=ExtResource("18_65if4")]
 position = Vector2(1496, 304)
 
-[node name="Spike40" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="70" unique_id=1697851305 instance=ExtResource("18_65if4")]
+[node name="Spike40" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="70" unique_id=1697851305 instance=ExtResource("18_65if4")]
 position = Vector2(1512, 304)
 
-[node name="Spike41" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="71" unique_id=1461099700 instance=ExtResource("18_65if4")]
+[node name="Spike41" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="71" unique_id=1461099700 instance=ExtResource("18_65if4")]
 position = Vector2(1528, 304)
 
-[node name="Spike42" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="72" unique_id=2035374593 instance=ExtResource("18_65if4")]
+[node name="Spike42" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="72" unique_id=2035374593 instance=ExtResource("18_65if4")]
 position = Vector2(1592, 304)
 
-[node name="Spike43" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="73" unique_id=424665765 instance=ExtResource("18_65if4")]
+[node name="Spike43" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="73" unique_id=424665765 instance=ExtResource("18_65if4")]
 position = Vector2(1608, 304)
 
-[node name="Spike44" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="74" unique_id=453464287 instance=ExtResource("18_65if4")]
+[node name="Spike44" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="74" unique_id=453464287 instance=ExtResource("18_65if4")]
 position = Vector2(1624, 304)
 
-[node name="Spike45" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="75" unique_id=1637166864 instance=ExtResource("18_65if4")]
+[node name="Spike45" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="75" unique_id=1637166864 instance=ExtResource("18_65if4")]
 position = Vector2(1688, 304)
 
-[node name="Spike46" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="76" unique_id=1086863594 instance=ExtResource("18_65if4")]
+[node name="Spike46" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="76" unique_id=1086863594 instance=ExtResource("18_65if4")]
 position = Vector2(1704, 304)
 
-[node name="Spike47" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="77" unique_id=1844766468 instance=ExtResource("18_65if4")]
+[node name="Spike47" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="77" unique_id=1844766468 instance=ExtResource("18_65if4")]
 position = Vector2(1720, 304)
 
-[node name="Spike48" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="78" unique_id=2041405210 instance=ExtResource("18_65if4")]
+[node name="Spike48" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="78" unique_id=2041405210 instance=ExtResource("18_65if4")]
 position = Vector2(1736, 304)
 
-[node name="MovingSpike15" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="79" unique_id=983560503 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike15" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="79" unique_id=983560503 instance=ExtResource("16_3b8l8")]
 position = Vector2(1832, 224)
 
-[node name="MovingSpike16" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="80" unique_id=584855606 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike16" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="80" unique_id=584855606 instance=ExtResource("16_3b8l8")]
 position = Vector2(1848, 224)
 
-[node name="MovingSpike17" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="81" unique_id=1251026349 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike17" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="81" unique_id=1251026349 instance=ExtResource("16_3b8l8")]
 position = Vector2(1864, 224)
 
-[node name="MovingSpike18" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="82" unique_id=2079452271 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike18" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="82" unique_id=2079452271 instance=ExtResource("16_3b8l8")]
 position = Vector2(1880, 224)
 startDelay = 0.5
 
-[node name="MovingSpike19" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="83" unique_id=182976055 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike19" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="83" unique_id=182976055 instance=ExtResource("16_3b8l8")]
 position = Vector2(1896, 224)
 startDelay = 0.5
 
-[node name="MovingSpike20" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="84" unique_id=1771876191 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike20" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="84" unique_id=1771876191 instance=ExtResource("16_3b8l8")]
 position = Vector2(1912, 224)
 startDelay = 0.5
 
-[node name="MovingSpike21" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="85" unique_id=117937317 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike21" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="85" unique_id=117937317 instance=ExtResource("16_3b8l8")]
 position = Vector2(1928, 224)
 startDelay = 1.0
 
-[node name="MovingSpike22" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="86" unique_id=852933365 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike22" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="86" unique_id=852933365 instance=ExtResource("16_3b8l8")]
 position = Vector2(1944, 224)
 startDelay = 1.0
 
-[node name="MovingSpike23" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="87" unique_id=183485424 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike23" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="87" unique_id=183485424 instance=ExtResource("16_3b8l8")]
 position = Vector2(1960, 224)
 startDelay = 1.0
 
-[node name="SpikeEye18" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="88" unique_id=295568786 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye18" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="88" unique_id=295568786 instance=ExtResource("14_rdkgg")]
 position = Vector2(2056, 216)
 moveDir = 1
 
-[node name="SpikeEye19" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="89" unique_id=1336386581 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye19" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="89" unique_id=1336386581 instance=ExtResource("14_rdkgg")]
 position = Vector2(2056, 200)
 moveDir = 1
 
-[node name="SpikeEye20" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="90" unique_id=1706572928 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye20" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="90" unique_id=1706572928 instance=ExtResource("14_rdkgg")]
 position = Vector2(2056, 184)
 moveDir = 1
 
-[node name="SpikeEye21" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="91" unique_id=778431916 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye21" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="91" unique_id=778431916 instance=ExtResource("14_rdkgg")]
 position = Vector2(2056, 168)
 moveDir = 1
 
-[node name="SpikeEye22" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="92" unique_id=9167472 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye22" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="92" unique_id=9167472 instance=ExtResource("14_rdkgg")]
 position = Vector2(2056, 232)
 moveDir = 1
 
-[node name="Spike49" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="93" unique_id=416583581 instance=ExtResource("18_65if4")]
+[node name="Spike49" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="93" unique_id=416583581 instance=ExtResource("18_65if4")]
 position = Vector2(2152, 432)
 
-[node name="Spike50" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="94" unique_id=1631349316 instance=ExtResource("18_65if4")]
+[node name="Spike50" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="94" unique_id=1631349316 instance=ExtResource("18_65if4")]
 position = Vector2(2168, 416)
 
-[node name="Spike51" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="95" unique_id=306032446 instance=ExtResource("18_65if4")]
+[node name="Spike51" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="95" unique_id=306032446 instance=ExtResource("18_65if4")]
 position = Vector2(2248, 416)
 
-[node name="Spike52" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="96" unique_id=861452310 instance=ExtResource("18_65if4")]
+[node name="Spike52" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="96" unique_id=861452310 instance=ExtResource("18_65if4")]
 position = Vector2(2264, 432)
 
-[node name="Spike53" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="97" unique_id=913449170 instance=ExtResource("18_65if4")]
+[node name="Spike53" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="97" unique_id=913449170 instance=ExtResource("18_65if4")]
 position = Vector2(2152, 336)
 rotation = -3.1415925
 
-[node name="Spike54" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="98" unique_id=1888012641 instance=ExtResource("18_65if4")]
+[node name="Spike54" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="98" unique_id=1888012641 instance=ExtResource("18_65if4")]
 position = Vector2(2136, 336)
 rotation = -3.1415925
 
-[node name="Spike55" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="99" unique_id=1877004629 instance=ExtResource("18_65if4")]
+[node name="Spike55" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="99" unique_id=1877004629 instance=ExtResource("18_65if4")]
 position = Vector2(2120, 336)
 rotation = -3.1415925
 
-[node name="Spike56" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="100" unique_id=1344632354 instance=ExtResource("18_65if4")]
+[node name="Spike56" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="100" unique_id=1344632354 instance=ExtResource("18_65if4")]
 position = Vector2(2264, 336)
 rotation = -3.1415925
 
-[node name="Spike57" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="101" unique_id=461113938 instance=ExtResource("18_65if4")]
+[node name="Spike57" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="101" unique_id=461113938 instance=ExtResource("18_65if4")]
 position = Vector2(2280, 336)
 rotation = -3.1415925
 
-[node name="Spike58" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="102" unique_id=1657570789 instance=ExtResource("18_65if4")]
+[node name="Spike58" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="102" unique_id=1657570789 instance=ExtResource("18_65if4")]
 position = Vector2(2296, 336)
 rotation = -3.1415925
 
-[node name="Spike59" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="103" unique_id=1987584850 instance=ExtResource("18_65if4")]
+[node name="Spike59" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="103" unique_id=1987584850 instance=ExtResource("18_65if4")]
 position = Vector2(2184, 320)
 rotation = -3.1415925
 
-[node name="Spike60" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="104" unique_id=1380170481 instance=ExtResource("18_65if4")]
+[node name="Spike60" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="104" unique_id=1380170481 instance=ExtResource("18_65if4")]
 position = Vector2(2200, 304)
 rotation = -3.1415925
 
-[node name="Spike61" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="105" unique_id=1233424703 instance=ExtResource("18_65if4")]
+[node name="Spike61" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="105" unique_id=1233424703 instance=ExtResource("18_65if4")]
 position = Vector2(2216, 304)
 rotation = -3.1415925
 
-[node name="Spike62" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="106" unique_id=316414726 instance=ExtResource("18_65if4")]
+[node name="Spike62" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="106" unique_id=316414726 instance=ExtResource("18_65if4")]
 position = Vector2(2232, 320)
 rotation = -3.1415925
 
-[node name="MovingSpike24" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="107" unique_id=514645975 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike24" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="107" unique_id=514645975 instance=ExtResource("16_3b8l8")]
 position = Vector2(2360, 400)
 
-[node name="MovingSpike25" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="108" unique_id=732790595 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike25" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="108" unique_id=732790595 instance=ExtResource("16_3b8l8")]
 position = Vector2(2376, 400)
 
-[node name="MovingSpike26" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="109" unique_id=12336936 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike26" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="109" unique_id=12336936 instance=ExtResource("16_3b8l8")]
 position = Vector2(2392, 400)
 
-[node name="SwingingSaw" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="110" unique_id=2045486040 instance=ExtResource("12_evslj")]
-position = Vector2(2504, 300)
-speed = 1.5
-
-[node name="SwingingSaw3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="111" unique_id=1567687870 instance=ExtResource("12_evslj")]
-position = Vector2(2584, 300)
-swingLeft = true
-speed = 1.5
-
-[node name="MovingSpike27" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="112" unique_id=2000046166 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike27" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="110" unique_id=2000046166 instance=ExtResource("16_3b8l8")]
 position = Vector2(2408, 368)
 startDelay = 0.5
 
-[node name="MovingSpike28" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="113" unique_id=1175006062 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike28" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="111" unique_id=1175006062 instance=ExtResource("16_3b8l8")]
 position = Vector2(2424, 368)
 startDelay = 0.5
 
-[node name="Spike63" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="114" unique_id=2065206980 instance=ExtResource("18_65if4")]
+[node name="Spike63" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="112" unique_id=2065206980 instance=ExtResource("18_65if4")]
 position = Vector2(2776, 384)
 
-[node name="Spike64" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="115" unique_id=1738444914 instance=ExtResource("18_65if4")]
+[node name="Spike64" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="113" unique_id=1738444914 instance=ExtResource("18_65if4")]
 position = Vector2(2824, 384)
 
-[node name="Spike65" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="116" unique_id=735022693 instance=ExtResource("18_65if4")]
+[node name="Spike65" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="114" unique_id=735022693 instance=ExtResource("18_65if4")]
 position = Vector2(2888, 384)
 
-[node name="Spike66" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="117" unique_id=1450317677 instance=ExtResource("18_65if4")]
+[node name="Spike66" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="115" unique_id=1450317677 instance=ExtResource("18_65if4")]
 position = Vector2(2952, 384)
 
-[node name="Spike67" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="118" unique_id=1477424826 instance=ExtResource("18_65if4")]
+[node name="Spike67" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="116" unique_id=1477424826 instance=ExtResource("18_65if4")]
 position = Vector2(2968, 384)
 
-[node name="SwingingSaw4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="119" unique_id=849946541 instance=ExtResource("12_evslj")]
-position = Vector2(3040, 300)
-swingLeft = true
-
-[node name="SwingingSaw5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="120" unique_id=631757671 instance=ExtResource("12_evslj")]
-position = Vector2(2888, 332)
-swingLeft = true
-
-[node name="SwingingSaw6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="121" unique_id=662031912 instance=ExtResource("12_evslj")]
-position = Vector2(2968, 316)
-
-[node name="SwingingSaw2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="122" unique_id=1612698081 instance=ExtResource("12_evslj")]
-position = Vector2(3128, 300)
-
-[node name="SpikeEye24" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="123" unique_id=257823116 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye24" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="117" unique_id=257823116 instance=ExtResource("14_rdkgg")]
 position = Vector2(3328, 360)
 moveDir = 4
 speed = 2.0
 
-[node name="SpikeEye25" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="124" unique_id=1279540299 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye25" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="118" unique_id=1279540299 instance=ExtResource("14_rdkgg")]
 position = Vector2(3344, 360)
 moveDir = 4
 speed = 2.0
 
-[node name="SpikeEye27" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="125" unique_id=250856466 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye27" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="119" unique_id=250856466 instance=ExtResource("14_rdkgg")]
 position = Vector2(3497, 344)
 moveDir = 3
 speed = 2.0
 
-[node name="SpikeEye28" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="126" unique_id=1439055383 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye28" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="120" unique_id=1439055383 instance=ExtResource("14_rdkgg")]
 position = Vector2(3513, 344)
 moveDir = 3
 speed = 2.0
 
-[node name="SpikeEye31" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="127" unique_id=1171617749 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye31" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="121" unique_id=1171617749 instance=ExtResource("14_rdkgg")]
 position = Vector2(3944, 344)
 
-[node name="SpikeEye32" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="128" unique_id=1767491550 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye32" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="122" unique_id=1767491550 instance=ExtResource("14_rdkgg")]
 position = Vector2(3960, 344)
 
-[node name="SpikeEye33" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="129" unique_id=1705997474 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye33" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="123" unique_id=1705997474 instance=ExtResource("14_rdkgg")]
 position = Vector2(3976, 344)
 
-[node name="SpikeEye34" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="130" unique_id=556875138 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye34" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="124" unique_id=556875138 instance=ExtResource("14_rdkgg")]
 position = Vector2(3992, 344)
 
-[node name="MovingSpike29" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="131" unique_id=1639469842 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike29" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="125" unique_id=1639469842 instance=ExtResource("16_3b8l8")]
 position = Vector2(4008, 320)
 startDelay = 0.5
 
-[node name="MovingSpike30" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="132" unique_id=845186049 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike30" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="126" unique_id=845186049 instance=ExtResource("16_3b8l8")]
 position = Vector2(4024, 320)
 startDelay = 0.5
 
-[node name="SwingingSaw7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="133" unique_id=718291830 instance=ExtResource("12_evslj")]
-position = Vector2(4136, 248)
-
-[node name="OneShotSpike" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="134" unique_id=623043394 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="127" unique_id=623043394 instance=ExtResource("20_sjh31")]
 position = Vector2(3160, 528)
 
-[node name="OneShotSpike2" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="135" unique_id=112602413 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike2" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="128" unique_id=112602413 instance=ExtResource("20_sjh31")]
 position = Vector2(3176, 528)
 
-[node name="OneShotSpike3" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="136" unique_id=705350081 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike3" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="129" unique_id=705350081 instance=ExtResource("20_sjh31")]
 position = Vector2(3192, 528)
 
-[node name="OneShotSpike4" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="137" unique_id=425489319 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike4" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="130" unique_id=425489319 instance=ExtResource("20_sjh31")]
 position = Vector2(3208, 528)
 
-[node name="OneShotSpike5" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="138" unique_id=757252836 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike5" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="131" unique_id=757252836 instance=ExtResource("20_sjh31")]
 position = Vector2(3224, 528)
 
-[node name="OneShotSpike6" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="139" unique_id=625620439 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike6" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="132" unique_id=625620439 instance=ExtResource("20_sjh31")]
 position = Vector2(3240, 528)
 
-[node name="OneShotSpike7" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="140" unique_id=1132227913 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike7" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="133" unique_id=1132227913 instance=ExtResource("20_sjh31")]
 position = Vector2(3256, 528)
 
-[node name="OneShotSpike8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="141" unique_id=9264439 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike8" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="134" unique_id=9264439 instance=ExtResource("20_sjh31")]
 position = Vector2(3272, 528)
 
-[node name="OneShotSpike9" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="142" unique_id=1154185771 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike9" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="135" unique_id=1154185771 instance=ExtResource("20_sjh31")]
 position = Vector2(3288, 528)
 
-[node name="OneShotSpike10" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="143" unique_id=311579985 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike10" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="136" unique_id=311579985 instance=ExtResource("20_sjh31")]
 position = Vector2(3304, 528)
 
-[node name="OneShotSpike11" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="144" unique_id=70016830 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike11" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="137" unique_id=70016830 instance=ExtResource("20_sjh31")]
 position = Vector2(3320, 528)
 
-[node name="OneShotSpike12" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="145" unique_id=276817890 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike12" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="138" unique_id=276817890 instance=ExtResource("20_sjh31")]
 position = Vector2(3336, 528)
 
-[node name="OneShotSpike13" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="146" unique_id=1802739713 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike13" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="139" unique_id=1802739713 instance=ExtResource("20_sjh31")]
 position = Vector2(3352, 528)
 
-[node name="OneShotSpike14" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="147" unique_id=978480744 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike14" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="140" unique_id=978480744 instance=ExtResource("20_sjh31")]
 position = Vector2(3368, 528)
 
-[node name="OneShotSpike15" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="148" unique_id=2056069669 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike15" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="141" unique_id=2056069669 instance=ExtResource("20_sjh31")]
 position = Vector2(3384, 528)
 
-[node name="OneShotSpike16" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="149" unique_id=1384377061 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike16" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="142" unique_id=1384377061 instance=ExtResource("20_sjh31")]
 position = Vector2(3400, 528)
 
-[node name="OneShotSpike17" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="150" unique_id=2076943912 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike17" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="143" unique_id=2076943912 instance=ExtResource("20_sjh31")]
 position = Vector2(3416, 528)
 
-[node name="OneShotSpike18" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="151" unique_id=401270960 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike18" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="144" unique_id=401270960 instance=ExtResource("20_sjh31")]
 position = Vector2(3432, 528)
 
-[node name="OneShotSpike19" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="152" unique_id=1078861870 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike19" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="145" unique_id=1078861870 instance=ExtResource("20_sjh31")]
 position = Vector2(3448, 528)
 
-[node name="OneShotSpike20" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="153" unique_id=1382371161 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike20" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="146" unique_id=1382371161 instance=ExtResource("20_sjh31")]
 position = Vector2(3464, 528)
 
-[node name="OneShotSpike21" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="154" unique_id=1476406328 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike21" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="147" unique_id=1476406328 instance=ExtResource("20_sjh31")]
 position = Vector2(3480, 528)
 
-[node name="OneShotSpike22" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="155" unique_id=1774855921 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike22" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="148" unique_id=1774855921 instance=ExtResource("20_sjh31")]
 position = Vector2(3496, 528)
 
-[node name="OneShotSpike23" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="156" unique_id=1855733600 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike23" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="149" unique_id=1855733600 instance=ExtResource("20_sjh31")]
 position = Vector2(3512, 528)
 
-[node name="OneShotSpike24" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="157" unique_id=90337898 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike24" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="150" unique_id=90337898 instance=ExtResource("20_sjh31")]
 position = Vector2(3528, 528)
 
-[node name="OneShotSpike25" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="158" unique_id=2016704913 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike25" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="151" unique_id=2016704913 instance=ExtResource("20_sjh31")]
 position = Vector2(3544, 528)
 
-[node name="OneShotSpike26" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="159" unique_id=943223292 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike26" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="152" unique_id=943223292 instance=ExtResource("20_sjh31")]
 position = Vector2(3560, 528)
 
-[node name="OneShotSpike27" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="160" unique_id=943316043 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike27" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="153" unique_id=943316043 instance=ExtResource("20_sjh31")]
 position = Vector2(3576, 528)
 
-[node name="OneShotSpike28" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="161" unique_id=191579735 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike28" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="154" unique_id=191579735 instance=ExtResource("20_sjh31")]
 position = Vector2(3592, 528)
 
-[node name="OneShotSpike29" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="162" unique_id=1069033609 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike29" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="155" unique_id=1069033609 instance=ExtResource("20_sjh31")]
 position = Vector2(3608, 528)
 
-[node name="OneShotSpike30" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="163" unique_id=1140132071 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike30" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="156" unique_id=1140132071 instance=ExtResource("20_sjh31")]
 position = Vector2(3624, 528)
 
-[node name="OneShotSpike31" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="164" unique_id=1365645653 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike31" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="157" unique_id=1365645653 instance=ExtResource("20_sjh31")]
 position = Vector2(3640, 528)
 
-[node name="OneShotSpike32" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="165" unique_id=821986280 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike32" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="158" unique_id=821986280 instance=ExtResource("20_sjh31")]
 position = Vector2(3656, 528)
 
-[node name="OneShotSpike33" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="166" unique_id=1673127909 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike33" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="159" unique_id=1673127909 instance=ExtResource("20_sjh31")]
 position = Vector2(3720, 528)
 
-[node name="OneShotSpike34" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="167" unique_id=998523070 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike34" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="160" unique_id=998523070 instance=ExtResource("20_sjh31")]
 position = Vector2(3736, 528)
 
-[node name="OneShotSpike35" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="168" unique_id=898742429 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike35" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="161" unique_id=898742429 instance=ExtResource("20_sjh31")]
 position = Vector2(3752, 528)
 
-[node name="OneShotSpike36" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="169" unique_id=974492039 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike36" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="162" unique_id=974492039 instance=ExtResource("20_sjh31")]
 position = Vector2(3768, 528)
 
-[node name="OneShotSpike37" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="170" unique_id=124531373 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike37" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="163" unique_id=124531373 instance=ExtResource("20_sjh31")]
 position = Vector2(3784, 528)
 
-[node name="OneShotSpike38" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="171" unique_id=932437555 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike38" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="164" unique_id=932437555 instance=ExtResource("20_sjh31")]
 position = Vector2(3800, 528)
 
-[node name="OneShotSpike39" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="172" unique_id=1342935439 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike39" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="165" unique_id=1342935439 instance=ExtResource("20_sjh31")]
 position = Vector2(3816, 528)
 
-[node name="OneShotSpike40" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="173" unique_id=77298659 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike40" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="166" unique_id=77298659 instance=ExtResource("20_sjh31")]
 position = Vector2(3832, 528)
 
-[node name="OneShotSpike41" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="174" unique_id=1276251993 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike41" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="167" unique_id=1276251993 instance=ExtResource("20_sjh31")]
 position = Vector2(3848, 528)
 
-[node name="OneShotSpike42" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="175" unique_id=1004239177 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike42" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="168" unique_id=1004239177 instance=ExtResource("20_sjh31")]
 position = Vector2(3864, 528)
 
-[node name="OneShotSpike43" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="176" unique_id=255770415 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike43" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="169" unique_id=255770415 instance=ExtResource("20_sjh31")]
 position = Vector2(3880, 528)
 
-[node name="OneShotSpike44" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="177" unique_id=653949270 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike44" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="170" unique_id=653949270 instance=ExtResource("20_sjh31")]
 position = Vector2(3944, 528)
 
-[node name="OneShotSpike45" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="178" unique_id=1544443725 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike45" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="171" unique_id=1544443725 instance=ExtResource("20_sjh31")]
 position = Vector2(3960, 528)
 
-[node name="OneShotSpike46" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="179" unique_id=632158642 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike46" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="172" unique_id=632158642 instance=ExtResource("20_sjh31")]
 position = Vector2(3976, 528)
 
-[node name="OneShotSpike47" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="180" unique_id=1595656532 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike47" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="173" unique_id=1595656532 instance=ExtResource("20_sjh31")]
 position = Vector2(3992, 528)
 
-[node name="OneShotSpike48" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="181" unique_id=2066850884 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike48" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="174" unique_id=2066850884 instance=ExtResource("20_sjh31")]
 position = Vector2(4040, 528)
 
-[node name="OneShotSpike49" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="182" unique_id=2141826358 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike49" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="175" unique_id=2141826358 instance=ExtResource("20_sjh31")]
 position = Vector2(4056, 528)
 
-[node name="OneShotSpike50" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="183" unique_id=796553105 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike50" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="176" unique_id=796553105 instance=ExtResource("20_sjh31")]
 position = Vector2(4072, 528)
 
-[node name="OneShotSpike51" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="184" unique_id=173478425 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike51" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="177" unique_id=173478425 instance=ExtResource("20_sjh31")]
 position = Vector2(4088, 528)
 
-[node name="OneShotSpike52" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="185" unique_id=288755971 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike52" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="178" unique_id=288755971 instance=ExtResource("20_sjh31")]
 position = Vector2(3704, 528)
 
-[node name="OneShotSpike53" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="186" unique_id=1762854007 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike53" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="179" unique_id=1762854007 instance=ExtResource("20_sjh31")]
 position = Vector2(3896, 528)
 
-[node name="SpikeEye23" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="187" unique_id=2069734055 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye23" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="180" unique_id=2069734055 instance=ExtResource("14_rdkgg")]
 position = Vector2(3800, 344)
 
-[node name="MovingSpike31" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="188" unique_id=51436246 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike31" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="181" unique_id=51436246 instance=ExtResource("16_3b8l8")]
 position = Vector2(3912, 320)
 
-[node name="MovingSpike32" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="189" unique_id=1229554872 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike32" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="182" unique_id=1229554872 instance=ExtResource("16_3b8l8")]
 position = Vector2(3928, 320)
 
-[node name="MovingSpike33" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="190" unique_id=1641417713 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike33" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="183" unique_id=1641417713 instance=ExtResource("16_3b8l8")]
 position = Vector2(3672, 320)
 startDelay = 0.5
 returnTime = 0.75
 
-[node name="MovingSpike34" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="191" unique_id=2114897796 instance=ExtResource("16_3b8l8")]
+[node name="MovingSpike34" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="184" unique_id=2114897796 instance=ExtResource("16_3b8l8")]
 position = Vector2(3688, 320)
 startDelay = 0.5
 returnTime = 0.75
 
-[node name="SwingingSaw8" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="192" unique_id=612265189 instance=ExtResource("12_evslj")]
-position = Vector2(4401, 252)
-
-[node name="Spike68" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="193" unique_id=1687328575 instance=ExtResource("18_65if4")]
+[node name="Spike68" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="185" unique_id=1687328575 instance=ExtResource("18_65if4")]
 position = Vector2(4264, 352)
 
-[node name="SpikeEye30" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="194" unique_id=2002791058 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye30" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="186" unique_id=2002791058 instance=ExtResource("14_rdkgg")]
 position = Vector2(4376, 360)
 
-[node name="SpikeEye39" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="195" unique_id=89121584 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye39" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="187" unique_id=89121584 instance=ExtResource("14_rdkgg")]
 position = Vector2(4392, 360)
 
-[node name="SpikeEye40" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="196" unique_id=1960710662 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye40" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="188" unique_id=1960710662 instance=ExtResource("14_rdkgg")]
 position = Vector2(4408, 360)
 
-[node name="SpikeEye41" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="197" unique_id=112989022 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye41" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="189" unique_id=112989022 instance=ExtResource("14_rdkgg")]
 position = Vector2(4424, 360)
 
-[node name="OneShotSpike54" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="198" unique_id=2058900810 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike54" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="190" unique_id=2058900810 instance=ExtResource("20_sjh31")]
 position = Vector2(4864, 376)
 rotation = -1.5707964
 
-[node name="OneShotSpike55" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="199" unique_id=1378960843 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike55" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="191" unique_id=1378960843 instance=ExtResource("20_sjh31")]
 position = Vector2(4880, 360)
 rotation = -1.5707964
 
-[node name="OneShotSpike56" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="200" unique_id=1497946783 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike56" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="192" unique_id=1497946783 instance=ExtResource("20_sjh31")]
 position = Vector2(4896, 344)
 rotation = -1.5707964
 
-[node name="OneShotSpike57" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="201" unique_id=1159603826 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike57" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="193" unique_id=1159603826 instance=ExtResource("20_sjh31")]
 position = Vector2(4896, 328)
 rotation = -1.5707964
 
-[node name="OneShotSpike58" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="202" unique_id=1525377878 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike58" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="194" unique_id=1525377878 instance=ExtResource("20_sjh31")]
 position = Vector2(4896, 312)
 rotation = -1.5707964
 
-[node name="OneShotSpike59" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="203" unique_id=868407956 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike59" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="195" unique_id=868407956 instance=ExtResource("20_sjh31")]
 position = Vector2(4880, 296)
 rotation = -1.5707964
 
-[node name="OneShotSpike60" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="204" unique_id=1380822819 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike60" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="196" unique_id=1380822819 instance=ExtResource("20_sjh31")]
 position = Vector2(4864, 280)
 rotation = -1.5707964
 
-[node name="SwingingSaw11" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="205" unique_id=1597067126 instance=ExtResource("12_evslj")]
-position = Vector2(4984, 396)
-
-[node name="SwingingSaw12" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="206" unique_id=755490661 instance=ExtResource("12_evslj")]
-position = Vector2(4904, 396)
-
-[node name="SwingingSaw13" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="207" unique_id=1437394253 instance=ExtResource("12_evslj")]
-position = Vector2(5048, 348)
-
-[node name="OneShotSpike63" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="208" unique_id=1818461738 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike63" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="197" unique_id=1818461738 instance=ExtResource("20_sjh31")]
 position = Vector2(4216, 528)
 
-[node name="OneShotSpike64" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="209" unique_id=1023804566 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike64" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="198" unique_id=1023804566 instance=ExtResource("20_sjh31")]
 position = Vector2(4232, 528)
 
-[node name="OneShotSpike65" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="210" unique_id=1605777428 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike65" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="199" unique_id=1605777428 instance=ExtResource("20_sjh31")]
 position = Vector2(4248, 528)
 
-[node name="OneShotSpike66" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="211" unique_id=890723990 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike66" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="200" unique_id=890723990 instance=ExtResource("20_sjh31")]
 position = Vector2(4264, 528)
 
-[node name="OneShotSpike67" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="212" unique_id=1507751520 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike67" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="201" unique_id=1507751520 instance=ExtResource("20_sjh31")]
 position = Vector2(4280, 528)
 
-[node name="OneShotSpike68" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="213" unique_id=164712339 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike68" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="202" unique_id=164712339 instance=ExtResource("20_sjh31")]
 position = Vector2(4296, 528)
 
-[node name="OneShotSpike69" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="214" unique_id=1816002247 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike69" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="203" unique_id=1816002247 instance=ExtResource("20_sjh31")]
 position = Vector2(4312, 528)
 
-[node name="OneShotSpike70" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="215" unique_id=1116653642 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike70" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="204" unique_id=1116653642 instance=ExtResource("20_sjh31")]
 position = Vector2(4328, 528)
 
-[node name="OneShotSpike71" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="216" unique_id=516917008 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike71" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="205" unique_id=516917008 instance=ExtResource("20_sjh31")]
 position = Vector2(4376, 528)
 
-[node name="OneShotSpike72" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="217" unique_id=1094122465 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike72" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="206" unique_id=1094122465 instance=ExtResource("20_sjh31")]
 position = Vector2(4392, 528)
 
-[node name="OneShotSpike73" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="218" unique_id=1904269352 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike73" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="207" unique_id=1904269352 instance=ExtResource("20_sjh31")]
 position = Vector2(4408, 528)
 
-[node name="OneShotSpike74" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="219" unique_id=503676280 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike74" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="208" unique_id=503676280 instance=ExtResource("20_sjh31")]
 position = Vector2(4424, 528)
 
-[node name="OneShotSpike75" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="220" unique_id=1190993360 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike75" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="209" unique_id=1190993360 instance=ExtResource("20_sjh31")]
 position = Vector2(4472, 528)
 
-[node name="OneShotSpike76" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="221" unique_id=101635476 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike76" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="210" unique_id=101635476 instance=ExtResource("20_sjh31")]
 position = Vector2(4488, 528)
 
-[node name="OneShotSpike77" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="222" unique_id=1672538985 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike77" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="211" unique_id=1672538985 instance=ExtResource("20_sjh31")]
 position = Vector2(4504, 528)
 
-[node name="OneShotSpike80" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="223" unique_id=1410500756 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike80" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="212" unique_id=1410500756 instance=ExtResource("20_sjh31")]
 position = Vector2(4552, 528)
 
-[node name="OneShotSpike81" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="224" unique_id=1497856786 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike81" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="213" unique_id=1497856786 instance=ExtResource("20_sjh31")]
 position = Vector2(4568, 528)
 
-[node name="OneShotSpike82" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="225" unique_id=529745839 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike82" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="214" unique_id=529745839 instance=ExtResource("20_sjh31")]
 position = Vector2(4584, 528)
 
-[node name="OneShotSpike83" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="226" unique_id=792570978 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike83" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="215" unique_id=792570978 instance=ExtResource("20_sjh31")]
 position = Vector2(4600, 528)
 
-[node name="SpikeEye42" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="227" unique_id=2016007748 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye42" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="216" unique_id=2016007748 instance=ExtResource("14_rdkgg")]
 position = Vector2(4472, 344)
 
-[node name="SpikeEye43" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="228" unique_id=363251856 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye43" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="217" unique_id=363251856 instance=ExtResource("14_rdkgg")]
 position = Vector2(4488, 344)
 
-[node name="SpikeEye44" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="229" unique_id=95467913 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye44" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="218" unique_id=95467913 instance=ExtResource("14_rdkgg")]
 position = Vector2(4504, 344)
 
-[node name="OneShotSpike78" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="230" unique_id=1589974544 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike78" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="219" unique_id=1589974544 instance=ExtResource("20_sjh31")]
 position = Vector2(4616, 528)
 
-[node name="OneShotSpike79" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="231" unique_id=422950175 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike79" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="220" unique_id=422950175 instance=ExtResource("20_sjh31")]
 position = Vector2(4632, 528)
 
-[node name="OneShotSpike84" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="232" unique_id=1555264595 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike84" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="221" unique_id=1555264595 instance=ExtResource("20_sjh31")]
 position = Vector2(4648, 528)
 
-[node name="OneShotSpike85" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="233" unique_id=158535846 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike85" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="222" unique_id=158535846 instance=ExtResource("20_sjh31")]
 position = Vector2(4664, 528)
 
-[node name="OneShotSpike86" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="234" unique_id=1715003606 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike86" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="223" unique_id=1715003606 instance=ExtResource("20_sjh31")]
 position = Vector2(4680, 528)
 
-[node name="OneShotSpike87" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="235" unique_id=1947584321 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike87" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="224" unique_id=1947584321 instance=ExtResource("20_sjh31")]
 position = Vector2(4696, 528)
 
-[node name="OneShotSpike88" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="236" unique_id=573480898 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike88" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="225" unique_id=573480898 instance=ExtResource("20_sjh31")]
 position = Vector2(4712, 528)
 
-[node name="OneShotSpike89" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="237" unique_id=395743081 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike89" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="226" unique_id=395743081 instance=ExtResource("20_sjh31")]
 position = Vector2(4728, 528)
 
-[node name="OneShotSpike90" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="238" unique_id=931231778 instance=ExtResource("20_sjh31")]
+[node name="OneShotSpike90" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="227" unique_id=931231778 instance=ExtResource("20_sjh31")]
 position = Vector2(4744, 528)
 
-[node name="SwingingSaw9" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="239" unique_id=1354476920 instance=ExtResource("12_evslj")]
-position = Vector2(4488, 252)
-
-[node name="MovingSpike35" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="240" unique_id=601348055 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike35" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="228" unique_id=601348055 instance=ExtResource("19_3b8l8")]
 position = Vector2(4760, 528)
 
-[node name="MovingSpike36" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="241" unique_id=795366125 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike36" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="229" unique_id=795366125 instance=ExtResource("19_3b8l8")]
 position = Vector2(4776, 528)
 
-[node name="MovingSpike37" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="242" unique_id=100721354 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike37" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="230" unique_id=100721354 instance=ExtResource("19_3b8l8")]
 position = Vector2(4888, 672)
 
-[node name="MovingSpike38" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="243" unique_id=1219166107 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike38" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="231" unique_id=1219166107 instance=ExtResource("19_3b8l8")]
 position = Vector2(4904, 672)
 
-[node name="MovingSpike39" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="244" unique_id=467568801 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike39" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="232" unique_id=467568801 instance=ExtResource("19_3b8l8")]
 position = Vector2(4920, 672)
 
-[node name="SwingingSaw10" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="245" unique_id=1503659223 instance=ExtResource("12_evslj")]
-position = Vector2(4984, 632)
-swingLeft = true
-
-[node name="SwingingSaw14" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="246" unique_id=113482538 instance=ExtResource("12_evslj")]
-position = Vector2(5000, 632)
-swingLeft = true
-
-[node name="SwingingSaw15" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="247" unique_id=940016984 instance=ExtResource("12_evslj")]
-position = Vector2(5080, 632)
-
-[node name="SwingingSaw16" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="248" unique_id=131551173 instance=ExtResource("12_evslj")]
-position = Vector2(5096, 632)
-
-[node name="SpikeEye26" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="249" unique_id=673733791 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye26" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="233" unique_id=673733791 instance=ExtResource("14_rdkgg")]
 position = Vector2(5016, 680)
 moveDir = 4
 
-[node name="SpikeEye29" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="250" unique_id=1412910155 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye29" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="234" unique_id=1412910155 instance=ExtResource("14_rdkgg")]
 position = Vector2(5048, 680)
 moveDir = 4
 
-[node name="SpikeEye45" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="251" unique_id=1071490799 instance=ExtResource("14_rdkgg")]
+[node name="SpikeEye45" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="235" unique_id=1071490799 instance=ExtResource("14_rdkgg")]
 position = Vector2(5032, 680)
 moveDir = 4
 
-[node name="MovingSpike40" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="252" unique_id=2056398940 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike40" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="236" unique_id=2056398940 instance=ExtResource("19_3b8l8")]
 position = Vector2(5176, 672)
 
-[node name="MovingSpike41" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="253" unique_id=515679242 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike41" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="237" unique_id=515679242 instance=ExtResource("19_3b8l8")]
 position = Vector2(5192, 672)
 
-[node name="MovingSpike42" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="254" unique_id=564472107 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike42" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="238" unique_id=564472107 instance=ExtResource("19_3b8l8")]
 position = Vector2(5176, 640)
 rotation = -3.1415925
 
-[node name="MovingSpike43" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="255" unique_id=1898404658 instance=ExtResource("19_3b8l8")]
+[node name="MovingSpike43" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="239" unique_id=1898404658 instance=ExtResource("19_3b8l8")]
 position = Vector2(5192, 640)
 rotation = -3.1415925
 
-[node name="Gun" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="256" unique_id=806748769 instance=ExtResource("23_nj166")]
-position = Vector2(5360, 664)
-rotation = -3.1415925
+[node name="Spike69" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="240" unique_id=492140894 instance=ExtResource("18_65if4")]
+position = Vector2(184, 272)
+script = ExtResource("22_r7sca")
 
-[node name="SwingingSaw17" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="257" unique_id=1540447762 instance=ExtResource("12_evslj")]
+[node name="Spike70" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="241" unique_id=442537061 instance=ExtResource("18_65if4")]
+position = Vector2(248, 272)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike71" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="242" unique_id=142288680 instance=ExtResource("18_65if4")]
+position = Vector2(168, 272)
+
+[node name="SpikeEye35" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="243" unique_id=1801167166 instance=ExtResource("14_rdkgg")]
+position = Vector2(208, 248)
+script = ExtResource("23_n1jn8")
+dmdOnly = true
+
+[node name="SpikeEye36" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="244" unique_id=2065439556 instance=ExtResource("14_rdkgg")]
+position = Vector2(432, 248)
+script = ExtResource("23_n1jn8")
+dmdOnly = true
+
+[node name="Spike72" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="245" unique_id=466808421 instance=ExtResource("18_65if4")]
+position = Vector2(440, 272)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike73" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="246" unique_id=609913491 instance=ExtResource("18_65if4")]
+position = Vector2(456, 272)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike74" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="247" unique_id=2089649799 instance=ExtResource("18_65if4")]
+position = Vector2(472, 272)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="SpikeEye37" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="248" unique_id=422109573 instance=ExtResource("14_rdkgg")]
+position = Vector2(728, 216)
+script = ExtResource("23_n1jn8")
+moveDir = 4
+dmdOnly = true
+
+[node name="SpikeEye38" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="249" unique_id=1580352979 instance=ExtResource("14_rdkgg")]
+position = Vector2(712, 216)
+script = ExtResource("23_n1jn8")
+moveDir = 4
+dmdOnly = true
+
+[node name="SpikeEye47" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="250" unique_id=694013915 instance=ExtResource("14_rdkgg")]
+position = Vector2(840, 216)
+script = ExtResource("23_n1jn8")
+moveDir = 4
+dmdOnly = true
+
+[node name="SpikeEye48" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="251" unique_id=919729410 instance=ExtResource("14_rdkgg")]
+position = Vector2(856, 216)
+script = ExtResource("23_n1jn8")
+moveDir = 4
+dmdOnly = true
+
+[node name="SpikeEye49" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="252" unique_id=589298782 instance=ExtResource("14_rdkgg")]
+position = Vector2(872, 216)
+script = ExtResource("23_n1jn8")
+moveDir = 4
+dmdOnly = true
+
+[node name="SpikeEye50" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="253" unique_id=1064122390 instance=ExtResource("14_rdkgg")]
+position = Vector2(696, 216)
+script = ExtResource("23_n1jn8")
+moveDir = 4
+dmdOnly = true
+
+[node name="Spike75" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="254" unique_id=607253736 instance=ExtResource("18_65if4")]
+position = Vector2(1144, 240)
+script = ExtResource("22_r7sca")
+
+[node name="Spike76" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="255" unique_id=2060631854 instance=ExtResource("18_65if4")]
+position = Vector2(1144, 224)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike77" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="256" unique_id=177061467 instance=ExtResource("18_65if4")]
+position = Vector2(1144, 208)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike78" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="257" unique_id=213924520 instance=ExtResource("18_65if4")]
+position = Vector2(1320, 256)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike79" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="258" unique_id=240975152 instance=ExtResource("18_65if4")]
+position = Vector2(1320, 240)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike80" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="259" unique_id=422178864 instance=ExtResource("18_65if4")]
+position = Vector2(1320, 224)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike13" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="260" unique_id=1169230709 instance=ExtResource("18_65if4")]
+position = Vector2(2136, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike81" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="261" unique_id=1594099323 instance=ExtResource("18_65if4")]
+position = Vector2(2120, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike82" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="262" unique_id=327907262 instance=ExtResource("18_65if4")]
+position = Vector2(2104, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike83" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="263" unique_id=578326020 instance=ExtResource("18_65if4")]
+position = Vector2(2088, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="SpikeEye51" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="264" unique_id=292886285 instance=ExtResource("14_rdkgg")]
+position = Vector2(2128, 400)
+script = ExtResource("23_n1jn8")
+dmdOnly = true
+
+[node name="Spike84" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="265" unique_id=2072412089 instance=ExtResource("18_65if4")]
+position = Vector2(2280, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike85" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="266" unique_id=1247257335 instance=ExtResource("18_65if4")]
+position = Vector2(2296, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="Spike86" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="267" unique_id=287476867 instance=ExtResource("18_65if4")]
+position = Vector2(2312, 432)
+script = ExtResource("22_r7sca")
+dmdOnly = true
+
+[node name="SpikeEye52" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="268" unique_id=523288226 instance=ExtResource("14_rdkgg")]
+position = Vector2(2280, 400)
+script = ExtResource("23_n1jn8")
+dmdOnly = true
+
+[node name="MovingSpike44" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="269" unique_id=363091345 instance=ExtResource("19_3b8l8")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(2984, 384)
+script = ExtResource("24_40dsa")
+dmdOnly = true
+damage = 99
+
+[node name="MovingSpike45" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="270" unique_id=2016579602 instance=ExtResource("19_3b8l8")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(3000, 384)
+script = ExtResource("24_40dsa")
+dmdOnly = true
+damage = 99
+
+[node name="MovingSpike46" type="Node2D" parent="Traps/Spikes" parent_id_path=PackedInt32Array(1768530179) index="271" unique_id=1531515185 instance=ExtResource("19_3b8l8")]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(3016, 384)
+script = ExtResource("24_40dsa")
+dmdOnly = true
+damage = 99
+
+[node name="SawBlade" type="Path2D" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="0" unique_id=1143145861 instance=ExtResource("24_qryt2")]
+position = Vector2(1848, 192)
+curve = SubResource("Curve2D_40dsa")
+script = ExtResource("25_72vx2")
+dmdOnly = true
+
+[node name="SawBlade2" type="Path2D" parent="Traps/Saws" parent_id_path=PackedInt32Array(534004286) index="1" unique_id=1782232672 instance=ExtResource("24_qryt2")]
+position = Vector2(1944, 192)
+curve = SubResource("Curve2D_a2x1w")
+script = ExtResource("25_72vx2")
+dmdOnly = true
+
+[node name="SwingingSaw17" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="0" unique_id=1540447762 instance=ExtResource("12_evslj")]
 position = Vector2(5276, 620)
 rotation = -1.5707964
 swingLeft = true
 
-[node name="SwingingSaw18" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="258" unique_id=474138229 instance=ExtResource("12_evslj")]
+[node name="SwingingSaw18" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="1" unique_id=474138229 instance=ExtResource("12_evslj")]
 position = Vector2(5332, 620)
 rotation = 1.5707964
 
-[node name="SpikeEye46" parent="Traps" parent_id_path=PackedInt32Array(364773924) index="259" unique_id=1651396377 instance=ExtResource("14_rdkgg")]
-position = Vector2(5064, 680)
-moveDir = 4
+[node name="SwingingSaw9" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="2" unique_id=1354476920 instance=ExtResource("12_evslj")]
+position = Vector2(4488, 252)
+
+[node name="SwingingSaw10" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="3" unique_id=1503659223 instance=ExtResource("12_evslj")]
+position = Vector2(4984, 632)
+swingLeft = true
+
+[node name="SwingingSaw14" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="4" unique_id=113482538 instance=ExtResource("12_evslj")]
+position = Vector2(5000, 632)
+swingLeft = true
+
+[node name="SwingingSaw15" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="5" unique_id=940016984 instance=ExtResource("12_evslj")]
+position = Vector2(5080, 632)
+
+[node name="SwingingSaw16" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="6" unique_id=131551173 instance=ExtResource("12_evslj")]
+position = Vector2(5096, 632)
+
+[node name="SwingingSaw11" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="7" unique_id=1597067126 instance=ExtResource("12_evslj")]
+position = Vector2(4984, 396)
+
+[node name="SwingingSaw12" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="8" unique_id=755490661 instance=ExtResource("12_evslj")]
+position = Vector2(4904, 396)
+
+[node name="SwingingSaw13" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="9" unique_id=1437394253 instance=ExtResource("12_evslj")]
+position = Vector2(5048, 348)
+
+[node name="SwingingSaw" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="10" unique_id=2045486040 instance=ExtResource("12_evslj")]
+position = Vector2(2504, 300)
+speed = 1.5
+
+[node name="SwingingSaw3" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="11" unique_id=1567687870 instance=ExtResource("12_evslj")]
+position = Vector2(2584, 300)
+swingLeft = true
+speed = 1.5
+
+[node name="SwingingSaw4" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="12" unique_id=849946541 instance=ExtResource("12_evslj")]
+position = Vector2(3040, 300)
+swingLeft = true
+
+[node name="SwingingSaw5" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="13" unique_id=631757671 instance=ExtResource("12_evslj")]
+position = Vector2(2888, 332)
+swingLeft = true
+
+[node name="SwingingSaw6" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="14" unique_id=662031912 instance=ExtResource("12_evslj")]
+position = Vector2(2968, 316)
+
+[node name="SwingingSaw2" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="15" unique_id=1612698081 instance=ExtResource("12_evslj")]
+position = Vector2(3128, 300)
+
+[node name="SwingingSaw7" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="16" unique_id=718291830 instance=ExtResource("12_evslj")]
+position = Vector2(4136, 248)
+
+[node name="SwingingSaw8" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="17" unique_id=612265189 instance=ExtResource("12_evslj")]
+position = Vector2(4401, 252)
+
+[node name="SwingingSaw19" type="Node2D" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="18" unique_id=2072395252 instance=ExtResource("12_evslj")]
+position = Vector2(2544, 300)
+script = ExtResource("25_mgunj")
+swingLeft = true
+speed = 1.5
+dmdOnly = true
+
+[node name="SwingingSaw20" type="Node2D" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="19" unique_id=664303060 instance=ExtResource("12_evslj")]
+position = Vector2(2620, 300)
+script = ExtResource("25_mgunj")
+swingLeft = true
+speed = 1.5
+dmdOnly = true
+
+[node name="SwingingSaw21" type="Node2D" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="20" unique_id=193350041 instance=ExtResource("12_evslj")]
+position = Vector2(2656, 300)
+script = ExtResource("25_mgunj")
+speed = 1.5
+dmdOnly = true
+
+[node name="SwingingSaw22" type="Node2D" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="21" unique_id=1827293577 instance=ExtResource("12_evslj")]
+position = Vector2(2796, 332)
+script = ExtResource("25_mgunj")
+speed = 1.5
+dmdOnly = true
+
+[node name="SwingingSaw23" type="Node2D" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="22" unique_id=1535085008 instance=ExtResource("12_evslj")]
+position = Vector2(2940, 332)
+script = ExtResource("25_mgunj")
+swingLeft = true
+speed = 1.25
+dmdOnly = true
+
+[node name="SwingingSaw24" type="Node2D" parent="Traps/Swinging_Saws" parent_id_path=PackedInt32Array(1879756540) index="23" unique_id=501897630 instance=ExtResource("12_evslj")]
+position = Vector2(3012, 300)
+script = ExtResource("25_mgunj")
+speed = 1.25
+dmdOnly = true
+
+[node name="Gun" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="0" unique_id=806748769 instance=ExtResource("23_nj166")]
+position = Vector2(5360, 664)
+rotation = -3.1415925
+
+[node name="Gun2" type="Node2D" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="1" unique_id=1252791966 instance=ExtResource("23_nj166")]
+position = Vector2(1560, 136)
+rotation = 1.5707964
+script = ExtResource("27_kwjln")
+dmdOnly = true
+
+[node name="Gun3" type="Node2D" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="2" unique_id=1760569601 instance=ExtResource("23_nj166")]
+position = Vector2(1576, 136)
+rotation = 1.5707964
+script = ExtResource("27_kwjln")
+dmdOnly = true
+
+[node name="Gun4" type="Node2D" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="3" unique_id=141213301 instance=ExtResource("23_nj166")]
+position = Vector2(1544, 136)
+rotation = 1.5707964
+script = ExtResource("27_kwjln")
+dmdOnly = true
 
 [node name="Checkpoint" parent="Checkpoints" parent_id_path=PackedInt32Array(2110013711) index="0" unique_id=1366965764 instance=ExtResource("18_evslj")]
 position = Vector2(2208, 400)
@@ -1091,131 +1346,140 @@ checkpointName = "Altar_of_Sacrifice"
 position = Vector2(5040, 288)
 checkpointName = "Respite"
 
-[node name="Coin" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="0" unique_id=461514915 instance=ExtResource("24_h3pb5")]
-position = Vector2(576, 228)
-
-[node name="Coin2" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="1" unique_id=1813758006 instance=ExtResource("24_h3pb5")]
-position = Vector2(632, 196)
-
-[node name="Coin3" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="2" unique_id=1469622304 instance=ExtResource("24_h3pb5")]
+[node name="Coin3" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="0" unique_id=1469622304 instance=ExtResource("24_h3pb5")]
 position = Vector2(784, 196)
 
-[node name="Coin4" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="3" unique_id=641875492 instance=ExtResource("24_h3pb5")]
+[node name="Coin4" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="1" unique_id=641875492 instance=ExtResource("24_h3pb5")]
 position = Vector2(808, 196)
 
-[node name="Coin5" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="4" unique_id=1642304873 instance=ExtResource("24_h3pb5")]
+[node name="Coin5" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="2" unique_id=1642304873 instance=ExtResource("24_h3pb5")]
 position = Vector2(760, 196)
 
-[node name="Coin6" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="5" unique_id=1674583329 instance=ExtResource("24_h3pb5")]
+[node name="Coin6" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="3" unique_id=1674583329 instance=ExtResource("24_h3pb5")]
 position = Vector2(832, 196)
 
-[node name="Coin7" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="6" unique_id=1538788499 instance=ExtResource("24_h3pb5")]
+[node name="Coin7" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="4" unique_id=1538788499 instance=ExtResource("24_h3pb5")]
 position = Vector2(736, 196)
 
-[node name="Coin8" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="7" unique_id=1385085316 instance=ExtResource("24_h3pb5")]
+[node name="Coin8" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="5" unique_id=1385085316 instance=ExtResource("24_h3pb5")]
 position = Vector2(1144, 228)
 
-[node name="Coin9" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="8" unique_id=1955021913 instance=ExtResource("24_h3pb5")]
+[node name="Coin9" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="6" unique_id=1955021913 instance=ExtResource("24_h3pb5")]
 position = Vector2(1120, 228)
 
-[node name="Coin10" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="9" unique_id=1741229503 instance=ExtResource("24_h3pb5")]
+[node name="Coin10" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="7" unique_id=1741229503 instance=ExtResource("24_h3pb5")]
 position = Vector2(1168, 228)
 
-[node name="Coin14" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="10" unique_id=914173593 instance=ExtResource("24_h3pb5")]
+[node name="Coin14" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="8" unique_id=914173593 instance=ExtResource("24_h3pb5")]
 position = Vector2(1848, 208)
 
-[node name="Coin15" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="11" unique_id=2882025 instance=ExtResource("24_h3pb5")]
+[node name="Coin15" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="9" unique_id=2882025 instance=ExtResource("24_h3pb5")]
 position = Vector2(1872, 208)
 
-[node name="Coin16" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="12" unique_id=323755927 instance=ExtResource("24_h3pb5")]
+[node name="Coin16" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="10" unique_id=323755927 instance=ExtResource("24_h3pb5")]
 position = Vector2(1896, 208)
 
-[node name="Coin17" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="13" unique_id=1522646910 instance=ExtResource("24_h3pb5")]
+[node name="Coin17" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="11" unique_id=1522646910 instance=ExtResource("24_h3pb5")]
 position = Vector2(1920, 208)
 
-[node name="Coin18" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="14" unique_id=257123967 instance=ExtResource("24_h3pb5")]
+[node name="Coin18" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="12" unique_id=257123967 instance=ExtResource("24_h3pb5")]
 position = Vector2(1944, 208)
 
-[node name="Coin19" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="15" unique_id=978697693 instance=ExtResource("24_h3pb5")]
+[node name="Coin19" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="13" unique_id=978697693 instance=ExtResource("24_h3pb5")]
 position = Vector2(2040, 280)
 
-[node name="Coin20" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="16" unique_id=1979264924 instance=ExtResource("24_h3pb5")]
+[node name="Coin20" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="14" unique_id=1979264924 instance=ExtResource("24_h3pb5")]
 position = Vector2(2040, 304)
 
-[node name="Coin21" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="17" unique_id=533592732 instance=ExtResource("24_h3pb5")]
+[node name="Coin21" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="15" unique_id=533592732 instance=ExtResource("24_h3pb5")]
 position = Vector2(2040, 328)
 
-[node name="Coin22" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="18" unique_id=1108040107 instance=ExtResource("24_h3pb5")]
+[node name="Coin22" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="16" unique_id=1108040107 instance=ExtResource("24_h3pb5")]
 position = Vector2(2696, 328)
 
-[node name="Coin23" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="19" unique_id=41757399 instance=ExtResource("24_h3pb5")]
+[node name="Coin23" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="17" unique_id=41757399 instance=ExtResource("24_h3pb5")]
 position = Vector2(2712, 344)
 
-[node name="Coin24" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="20" unique_id=933893542 instance=ExtResource("24_h3pb5")]
+[node name="Coin24" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="18" unique_id=933893542 instance=ExtResource("24_h3pb5")]
 position = Vector2(2728, 360)
 
-[node name="Coin25" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="21" unique_id=1994610036 instance=ExtResource("24_h3pb5")]
+[node name="Coin25" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="19" unique_id=1994610036 instance=ExtResource("24_h3pb5")]
 position = Vector2(3408, 344)
 
-[node name="Coin26" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="22" unique_id=230850217 instance=ExtResource("24_h3pb5")]
+[node name="Coin26" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="20" unique_id=230850217 instance=ExtResource("24_h3pb5")]
 position = Vector2(3432, 344)
 
-[node name="Coin27" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="23" unique_id=2054884012 instance=ExtResource("24_h3pb5")]
+[node name="Coin27" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="21" unique_id=2054884012 instance=ExtResource("24_h3pb5")]
 position = Vector2(3384, 344)
 
-[node name="Coin28" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="24" unique_id=972862121 instance=ExtResource("24_h3pb5")]
+[node name="Coin28" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="22" unique_id=972862121 instance=ExtResource("24_h3pb5")]
 position = Vector2(3744, 344)
 
-[node name="Coin29" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="25" unique_id=1204811618 instance=ExtResource("24_h3pb5")]
+[node name="Coin29" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="23" unique_id=1204811618 instance=ExtResource("24_h3pb5")]
 position = Vector2(3768, 344)
 
-[node name="Coin30" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="26" unique_id=1281665632 instance=ExtResource("24_h3pb5")]
+[node name="Coin30" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="24" unique_id=1281665632 instance=ExtResource("24_h3pb5")]
 position = Vector2(3832, 344)
 
-[node name="Coin31" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="27" unique_id=1029430176 instance=ExtResource("24_h3pb5")]
+[node name="Coin31" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="25" unique_id=1029430176 instance=ExtResource("24_h3pb5")]
 position = Vector2(3856, 344)
 
-[node name="Coin32" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="28" unique_id=2070261717 instance=ExtResource("24_h3pb5")]
+[node name="Coin32" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="26" unique_id=2070261717 instance=ExtResource("24_h3pb5")]
 position = Vector2(4264, 320)
 
-[node name="Coin33" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="29" unique_id=857745296 instance=ExtResource("24_h3pb5")]
+[node name="Coin33" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="27" unique_id=857745296 instance=ExtResource("24_h3pb5")]
 position = Vector2(4288, 328)
 
-[node name="Coin34" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="30" unique_id=839540977 instance=ExtResource("24_h3pb5")]
+[node name="Coin34" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="28" unique_id=839540977 instance=ExtResource("24_h3pb5")]
 position = Vector2(4240, 328)
 
-[node name="Coin35" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="31" unique_id=2124410811 instance=ExtResource("24_h3pb5")]
+[node name="Coin35" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="29" unique_id=2124410811 instance=ExtResource("24_h3pb5")]
 position = Vector2(4808, 368)
 
-[node name="Coin36" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="32" unique_id=1680037713 instance=ExtResource("24_h3pb5")]
+[node name="Coin36" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="30" unique_id=1680037713 instance=ExtResource("24_h3pb5")]
 position = Vector2(4808, 392)
 
-[node name="Coin37" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="33" unique_id=1917729988 instance=ExtResource("24_h3pb5")]
+[node name="Coin37" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="31" unique_id=1917729988 instance=ExtResource("24_h3pb5")]
 position = Vector2(4808, 416)
 
-[node name="Coin38" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="34" unique_id=201181759 instance=ExtResource("24_h3pb5")]
+[node name="Coin38" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="32" unique_id=201181759 instance=ExtResource("24_h3pb5")]
 position = Vector2(5320, 192)
 
-[node name="Coin39" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="35" unique_id=821499605 instance=ExtResource("24_h3pb5")]
+[node name="Coin39" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="33" unique_id=821499605 instance=ExtResource("24_h3pb5")]
 position = Vector2(5352, 192)
 
-[node name="Coin40" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="36" unique_id=1610750731 instance=ExtResource("24_h3pb5")]
+[node name="Coin40" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="34" unique_id=1610750731 instance=ExtResource("24_h3pb5")]
 position = Vector2(5384, 192)
 
-[node name="Coin41" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="37" unique_id=1947187870 instance=ExtResource("24_h3pb5")]
+[node name="Coin41" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="35" unique_id=1947187870 instance=ExtResource("24_h3pb5")]
 position = Vector2(5416, 192)
 
-[node name="Coin42" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="38" unique_id=1734608497 instance=ExtResource("24_h3pb5")]
+[node name="Coin42" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="36" unique_id=1734608497 instance=ExtResource("24_h3pb5")]
 position = Vector2(5288, 192)
 
-[node name="Coin43" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="39" unique_id=1463825346 instance=ExtResource("24_h3pb5")]
+[node name="Coin43" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="37" unique_id=1463825346 instance=ExtResource("24_h3pb5")]
 position = Vector2(1472, 192)
 
-[node name="Coin44" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="40" unique_id=868774258 instance=ExtResource("24_h3pb5")]
+[node name="Coin44" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="38" unique_id=868774258 instance=ExtResource("24_h3pb5")]
 position = Vector2(1496, 200)
 
-[node name="Coin45" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="41" unique_id=1438290227 instance=ExtResource("24_h3pb5")]
+[node name="Coin45" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="39" unique_id=1438290227 instance=ExtResource("24_h3pb5")]
 position = Vector2(1520, 216)
+
+[node name="Coin" type="Area2D" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="40" unique_id=461514915 instance=ExtResource("24_h3pb5")]
+position = Vector2(352, 256)
+script = ExtResource("28_n1jn8")
+itemName = "Coin"
+
+[node name="Coin2" type="Area2D" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="41" unique_id=1606074630 instance=ExtResource("24_h3pb5")]
+position = Vector2(328, 256)
+script = ExtResource("28_n1jn8")
+itemName = "Coin"
+
+[node name="Coin11" type="Area2D" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="42" unique_id=718619799 instance=ExtResource("24_h3pb5")]
+position = Vector2(304, 256)
+script = ExtResource("28_n1jn8")
+itemName = "Coin"
 
 [node name="OneUp" parent="Items/OneUps" parent_id_path=PackedInt32Array(1275859095) index="0" unique_id=1920719270 instance=ExtResource("26_nj166")]
 position = Vector2(4136, 264)
@@ -1228,4 +1492,8 @@ position = Vector2(5304, 592)
 heartContainerName = "Red_Spike_Trial_Heart_Container"
 
 [node name="PlayerSpawn" parent="." index="15" unique_id=641898817]
-position = Vector2(50, 264)
+position = Vector2(2208, 387)
+
+[connection signal="body_entered" from="Items/Coins/Coin" to="Items/Coins/Coin" method="_on_body_entered"]
+[connection signal="body_entered" from="Items/Coins/Coin2" to="Items/Coins/Coin2" method="_on_body_entered"]
+[connection signal="body_entered" from="Items/Coins/Coin11" to="Items/Coins/Coin11" method="_on_body_entered"]

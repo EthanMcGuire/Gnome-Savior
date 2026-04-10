@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://burwfbpxr3qit" path="res://assets/sprites/traps/swinging_saw_anchor.png" id="4_skin3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m71lg"]
-radius = 6.0
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_m71lg"]
 length = 0.001
