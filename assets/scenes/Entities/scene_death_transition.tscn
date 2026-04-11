@@ -73,8 +73,10 @@ label_settings = ExtResource("3_s3d36")
 unique_name_in_owner = true
 stream = ExtResource("4_leo5o")
 volume_db = 15.0
+bus = &"Sound"
 
 [node name="AudioStreamHaha" type="AudioStreamPlayer" parent="." unique_id=1183852286]
 unique_name_in_owner = true
 stream = ExtResource("5_cc1yf")
 volume_db = 2.0
+bus = &"Sound"

@@ -7,9 +7,9 @@ enum DIFFICULTY {
 	DMD
 };
 
-const IS_TEST := true;
+const IS_TEST := false;
 
-const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_2.tscn");
+const STARTING_LEVEL := preload("res://assets/scenes/Levels/level_0.tscn");
 const PLAYER_SCENE := preload("res://assets/scenes/Entities/player.tscn");
 const SCENE_TRANSITION = preload("res://assets/scenes/Entities/scene_end_transition.tscn");
 const SCENE_DEATH_TRANSITION = preload("res://assets/scenes/Entities/scene_death_transition.tscn");
@@ -24,12 +24,15 @@ const DEATH_TRANSITION_TIME := 0.5;
 const COINS_ONE_UP := 100; 
 
 const STARTING_LIVES := [99, 3, 99, 99];
-const STARTING_MAX_HP := [2, 2, 1, 3];
+const STARTING_MAX_HP := [2, 2, 1, 2];
+const FUNNY_MODE_COLOR_DELAY := 0.2;
+const FUNNY_MODE_SATURATION_RANGE := 30.0;
 
 var usingGamepad := false;
 
 var funnyMode := false;
-var difficulty := DIFFICULTY.DMD;
+var funnyModeColorDelay := 0.0;
+var difficulty := DIFFICULTY.EASY;
 var maxHp := 2;
 var hp := maxHp;
 var lives := 3;
@@ -54,6 +57,7 @@ var soundLifeUp: AudioStreamPlayer;
 var bloodSprite: Sprite2D;
 var signText: SignText;
 var projectiles: Node2D;
+var environment: WorldEnvironment;
 
 var player : PlayerController;
 var camera: PlayerCamera = null;
@@ -179,6 +183,8 @@ func _loadBaseNodes() -> void:
 	assert(signText);
 	projectiles = get_node("/root/LevelBase/Projectiles");
 	assert(projectiles);
+	environment = get_node("/root/LevelBase/WorldEnvironment");
+	assert(environment);
 
 func gameOver() -> void:
 	_goToTitle();
@@ -222,10 +228,22 @@ func _updateLevel(delta: float) -> void:
 				playerIsDead = false;
 				retryLabel.visible = false;
 				startDeathTransition(currentScene);
+				
+		_updateFunnyMode(delta);
 
 func _updateSpeedrunTime(delta: float) -> void:
 	speedrunTimeMs += delta * 1000.0;
 	speedrunTimer.setTime(speedrunTimeMs);
+
+func _updateFunnyMode(delta: float) -> void:
+	if (funnyMode):
+		funnyModeColorDelay -= delta;
+		
+		if (funnyModeColorDelay <= 0.0):
+			funnyModeColorDelay = FUNNY_MODE_COLOR_DELAY;
+			environment.environment.adjustment_saturation = randf_range(-FUNNY_MODE_SATURATION_RANGE, FUNNY_MODE_SATURATION_RANGE);
+			#environment.environment.adjustment_brightness = randf_range(0.0, 1.0);
+			environment.environment.adjustment_contrast = randf_range(-10.0, 10.0);
 
 #endregion Update
 		

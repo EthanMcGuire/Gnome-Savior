@@ -9,6 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://dhbkiap1a2c1l" path="res://assets/scenes/UI/sign_text.tscn" id="6_r3mdm"]
 [ext_resource type="PackedScene" uid="uid://cds5hbhmmuixs" path="res://assets/scenes/UI/speedrun_timer.tscn" id="7_xsi40"]
 
+[sub_resource type="Sky" id="Sky_xsi40"]
+process_mode = 1
+radiance_size = 6
+
+[sub_resource type="Environment" id="Environment_xsi40"]
+background_mode = 3
+sky = SubResource("Sky_xsi40")
+sky_custom_fov = 161.5
+ambient_light_source = 1
+tonemap_white = 1.75
+adjustment_enabled = true
+
 [node name="LevelBase" type="Node2D" unique_id=709013900]
 script = ExtResource("1_r3mdm")
 
@@ -70,3 +82,7 @@ layer = 500
 
 [node name="Blood" type="Sprite2D" parent="." unique_id=421080039]
 centered = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1398912610]
+unique_name_in_owner = true
+environment = SubResource("Environment_xsi40")

@@ -214,7 +214,7 @@ dmdOnly = true
 
 [node name="Apple13" parent="Traps/Apple" parent_id_path=PackedInt32Array(804475000) index="12" unique_id=1381673929 instance=ExtResource("11_5ag3s")]
 position = Vector2(794, 123)
-gravity = 1750.0
+gravity = 1850.0
 dmdOnly = true
 
 [node name="Coin" parent="Items/Coins" parent_id_path=PackedInt32Array(1668497872) index="0" unique_id=461514915 instance=ExtResource("9_bsapf")]

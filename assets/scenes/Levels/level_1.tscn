@@ -411,14 +411,6 @@ stabTime = 0.01
 stabDelay = 0.01
 dmdOnly = true
 
-[node name="MovingSpike" parent="Traps/Swinging_Saws/MovingSpike" index="4" unique_id=886588145 instance=ExtResource("18_e5382")]
-position = Vector2(80, 320)
-returnTime = 0.01
-returnDelay = 0.01
-stabTime = 0.01
-stabDelay = 0.01
-dmdOnly = true
-
 [node name="Gun" parent="Traps/Guns" parent_id_path=PackedInt32Array(1289561014) index="0" unique_id=806748769 instance=ExtResource("21_c1x4s")]
 position = Vector2(912, 96)
 rotation = 2.6700711
